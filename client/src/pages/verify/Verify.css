@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.white-text {
+  color: #fff;
+}
+.maintext {
+  font-size: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Roboto", sans-serif;
+}
+.mainimage {
+  width: 60%;
+}
+.imagediv {
+  padding-top: 25%;
+}
+
+.verifycomponent {
+  transform: translateY(30%);
+  padding: 0 0px 0 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.h2 {
+  margin-bottom: 30px;
+  font-family: "Roboto", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+
+  line-height: normal;
+
+  color: rgb(0, 0, 0);
+}
+.detail2 {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.text-details {
+  font-size: 14px;
+  margin-bottom: 10px;
+  justify-content: start;
+  align-self: start;
+  display: flex;
+  font-family: "Roboto", sans-serif;
+}
+
+.imagediv {
+  background-color: #4770ff;
+}
+.button {
+  padding: 18px 140px;
+  text-decoration: none;
+  background-color: black;
+  color: #fff;
+  border-radius: 7px;
+}
+.button:hover {
+  background-color: #4770ff;
+}
+input {
+  width: 35px;
+  height: 55px;
+  margin-right: 15px;
+  margin-bottom: 26px;
+}
+.password {
+  margin-top: 25px;
+  color: #20b2aa;
+}
+
+input::placeholder {
+  padding-left: 10px;
+  font-family: "Roboto", sans-serif;
+  color: #999;
+}
+.plutus {
+  font-size: 30px;
+  color: #4770ff;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+}
+.onlinebanking {
+  color: #4770ff;
+  font-family: "Roboto", sans-serif;
+  margin-top: 12px;
+}
+.topright {
+  position: absolute;
+  top: -25%;
+  right: 0;
+}
