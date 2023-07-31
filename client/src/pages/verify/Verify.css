@@ -6,11 +6,15 @@
 .container {
   height: 100vh;
   display: grid;
+  width: 100%;
   grid-template-columns: 1fr 1fr;
 }
 .white-text {
   color: #fff;
 }
+/* .otpInput {
+  width: 70px;
+} */
 .maintext {
   font-size: 25px;
   margin-top: 20px;
@@ -66,16 +70,27 @@
 
   border-radius: 7px;
 }
+.button2 {
+  padding: 18px 99px;
+  margin-top: 20px;
+  color: #fff;
+  background-color: black;
+}
 .button:hover,
 .button:active {
   background-color: #4770ff;
 }
 input {
-  width: 35px;
+  width: 40px;
   height: 55px;
   margin-right: 15px;
   margin-bottom: 26px;
 }
+
+input:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.8);
+}
+
 .password {
   margin-top: 25px;
   color: #20b2aa;
@@ -196,6 +211,14 @@ input::placeholder {
   .password {
     margin-bottom: 40px;
   }
+}
+
+/* otp */
+
+.otpInput input {
+  height: 70px;
+  margin-right: 20px;
+  font-size: 40px;
 }
 
 @media (max-width: 768px) {
