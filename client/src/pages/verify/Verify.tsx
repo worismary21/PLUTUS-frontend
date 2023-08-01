@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import verify from "./verifyImage/verify-image.png";
-import "./Verify.css";
+import veriffy from "./Verify.module.css";
 import OtpInput from "react-otp-input";
 import { Link } from "react-router-dom";
 
@@ -41,47 +41,45 @@ export default function Verify() {
   };
 
   return (
-    <body>
-      <div className="container">
-        <div className="imagediv">
-          <img className="mainimage" src={verify} alt="" />
-          <p className="white-text maintext">
-            Plutus is personal <br /> finance, made simple
-          </p>
-          <p className="white-text">
-            All your accounts,cards, savings and investments in <br /> one place
-          </p>
-        </div>
-        <div className="verifycomponent">
-          <div className="topright">
-            <span className="plutus">Plutus</span>
-            <p className="onlinebanking">Online banking</p>
+      <div className={veriffy.wrapper}>
+        <div className={veriffy.imagediv}>
+          <img className={veriffy.mainimage} src={verify} alt="" />
+          <div className={veriffy.maindiv}>
+            <p className={veriffy.maintext}>
+              Plutus is personal finance, made simple
+            </p>
+            <p className={veriffy.whitetext}>
+              All your accounts,cards, savings and investments in one place
+            </p>
+
           </div>
-          <h2 className="h2">Verify your identity</h2>
-          <p className="text-details">
-            We've just sent a text message with your security code
+         
+        </div>
+        <div className={veriffy.verifycomponent}>
+          <div className={veriffy.topright}>
+            <span className={veriffy.plutus}>Plutus</span>
+            <p className={veriffy.onlinebanking}>Online banking</p>
+          </div>
+          <h2 className={veriffy.h2}>Verify your identity</h2>
+          <p className={veriffy.textdetails}>
+            We've just sent a text message with your security code on the email example@gmail.com
           </p>
-          <p className=" detail2">on the email example@gmail.com</p>
-          <p className="text-details">
+          <p className={veriffy.textdetails}>
             Please enter the number in order to continue
           </p>
-          {/* <div className="inputs">
-            <input type="text" placeholder="0" />
-            <input type="text" placeholder="0" />
-            <input type="text" placeholder="0" />
-            <input type="text" placeholder="0" />
-          </div> */}
-
-          <div className="otpInput">
+        
+          <div className={veriffy.otpInput}>
             <OtpInput
               value={otp}
               onChange={setOtp}
               numInputs={4}
               renderInput={(props) => <input {...props} />}
+              inputStyle={{width: '50px'}}
+              containerStyle={veriffy.otpStyle}
             />
           </div>
 
-          <div className="countdown-text">
+          <div className={veriffy.countdowntext}>
             {seconds > 0 || minutes > 0 ? (
               <p>
                 Time Remaining: {minutes < 10 ? `0${minutes}` : minutes};
@@ -91,23 +89,22 @@ export default function Verify() {
               <p>Didn't receive code?</p>
             )}
           </div>
-          <Link to="/dashboard">
-            <button className="button" onClick={sendOTP}>
-              Verify
+          <div className={veriffy.btncont}>
+            <Link to="/dashboard">
+              <button className={veriffy.button} onClick={sendOTP}>Verify</button>
+            </Link>
+            <button
+            className={veriffy.button}
+              disabled={seconds > 0 || minutes > 0}
+              style={{
+                color: seconds > 0 || minutes > 0 ? "#fff" : "#FF5630",
+              }}
+              onClick={resendOTP}>
+              I didn't get the code
             </button>
-          </Link>
-          <button
-            className="button2"
-            disabled={seconds > 0 || minutes > 0}
-            style={{
-              color: seconds > 0 || minutes > 0 ? "#fff" : "#FF5630",
-            }}
-            onClick={resendOTP}>
-            I didn't get the code
-          </button>
-          <p className="password">Forgot your password?</p>
+            <p className={veriffy.password}>Forgot your password?</p>
+          </div>
         </div>
       </div>
-    </body>
   );
 }

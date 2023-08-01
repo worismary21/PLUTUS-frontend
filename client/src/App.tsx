@@ -1,20 +1,31 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// import { useState } from "react";
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import {BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import SignUp from './pages/signUp/SignUp';
 import Verify from "./pages/verify/Verify";
+import "./App.css"
+
+
 function App() {
+
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/verify" element={<Verify />} />
-        </Routes>
-      </Router>
-    </>
-  );
-}
+   <BrowserRouter>
+   <ToastContainer
+          theme="dark"
+          position="top-right"
+          autoClose={3000}
+          closeOnClick     
+          pauseOnHover={false}      
+        />
+      <Routes>
+       <Route path='/signup' element={<SignUp/>}/>
+       <Route path="/verify" element={<Verify />} />
+      </Routes>
+     </BrowserRouter> 
+     </>
 
-export default App;
+)}
+
+export default App
+
