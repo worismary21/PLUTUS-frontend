@@ -2,6 +2,8 @@
 import {BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import SignUp from './pages/signUp/SignUp';
+import Verify from "./pages/verify/Verify";
+import "./App.css"
 
 
 function App() {
@@ -18,10 +20,12 @@ function App() {
         />
       <Routes>
        <Route path='/signup' element={<SignUp/>}/>
+       <Route path="/verify" element={<Verify />} />
       </Routes>
      </BrowserRouter> 
-    </>
-  )
-}
+     </>
+
+)}
 
 export default App
+
