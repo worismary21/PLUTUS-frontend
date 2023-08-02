@@ -1,24 +1,36 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import ChangePass from './pages/changePass/ChangePass'
 import ChangePass2 from './pages/changePass/ChangePass2'
 import Error404 from './pages/error404/Error404'
-import './App.css'
+import {BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import Verify from "./pages/verify/Verify";
+import "./App.css"
+import SignUp from './pages/signUp/signUp';
+
 
 function App() {
 
+  return (
+    <>
+     <BrowserRouter>
+          <ToastContainer
+          theme="dark"
+          position="top-right"
+          autoClose={3000}
+          closeOnClick     
+          pauseOnHover={false}      
+        />
+      <Routes>
+       <Route path='/signup' element={<SignUp/>}/>
+       <Route path="/verify" element={<Verify />} />
+       <Route path="/changePassword" element={<ChangePass />}/>
+     <Route path='*' element={<Error404 />}/>
+     <Route path='/changePasswordConfirm' element={<ChangePass2 />}/>  
+      </Routes>
+     </BrowserRouter> 
+     </>
 
-  return <>
-    <div className="App">
-     <Router>
-          <Routes>
-               <Route path="/changePassword" element={<ChangePass />}/>
-               <Route path='*' element={<Error404 />}/>
-               <Route path='/changePasswordConfirm' element={<ChangePass2 />}/>  
-          </Routes>
-     </Router>
-       
-    </div>
-  </>
-}
+)}
 
 export default App
+

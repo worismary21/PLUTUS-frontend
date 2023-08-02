@@ -1,12 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface State {
-  data: any[];
+  data:any[];
   user: any[];
-  photographer: any[];
-  books: any[];
-  movies: any[];
-  notifications: any[];
   loading: boolean;
   error: string | null;
 }
@@ -14,10 +12,6 @@ export interface State {
 const initialState: State = {
   data: [],
   user: [],
-  photographer: [],
-  books:[],
-  movies: [],
-  notifications: [],
   loading: false,
   error: null,
 };
@@ -27,32 +21,13 @@ const dataSlice = createSlice({
   initialState,
   reducers: {
     fetchDataStart: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
-      state.error = null;
-    },
-    fetchDataSuccess: (state, action: PayloadAction<any[]>) => {
       state.loading = false;
-      state.data = action.payload;
+      state.error = null;
     },
     fetchDataUser: (state, action: PayloadAction<any[]>) => {
       state.loading = false;
+      console.log(action)
       state.user = action.payload;
-    },
-    fetchDataPhoto : (state, action: PayloadAction<any[]>) => {
-      state.loading = false;
-      state.photographer = action.payload;
-    },
-    fetchBooks : (state, action: PayloadAction<any[]>) => {
-      state.loading = false;
-      state.books = action.payload;
-    },
-    fetchMovies: (state, action: PayloadAction<any[]>) => {
-      state.loading = false;
-      state.movies = action.payload;
-    },
-    fetchNotifications: (state, action: PayloadAction<any[]>) => {
-      state.loading = false;
-      state.notifications = action.payload;
     },
     fetchDataFailure: (state, action: PayloadAction<string>) => {
       state.loading = false;
@@ -61,6 +36,6 @@ const dataSlice = createSlice({
   },
 });
 
-export const { fetchDataStart, fetchDataSuccess, fetchDataUser, fetchDataPhoto, fetchDataFailure, fetchBooks, fetchMovies, fetchNotifications } = dataSlice.actions;
+export const { fetchDataStart,  fetchDataUser,  fetchDataFailure } = dataSlice.actions;
 
 export default dataSlice.reducer;

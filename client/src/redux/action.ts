@@ -1,9 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { LoginData } from "../interface";
 import { FormDataPost, apiDelete, apiGet, apiPatch, apiPost, apiPut, formDataPatch } from "../utils/axios";
-import { fetchBooks, fetchDataFailure, fetchDataPhoto, fetchDataStart, fetchDataSuccess, fetchDataUser, fetchMovies, fetchNotifications } from "./reducer";
+import { fetchDataFailure, fetchDataStart,  fetchDataUser} from "./reducers";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+interface LoginData{
+     email:string,
+     password:string
+}
 
 
 export const loginUser = createAsyncThunk(
@@ -13,10 +18,9 @@ export const loginUser = createAsyncThunk(
       dispatch(fetchDataStart(true));
       const response = await apiPost("/user/login", formData);
       localStorage.setItem("userId", response.data.id);
-      localStorage.setItem("signature", response.data.signature);
+      localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
       toast.success(response.data.message);
-      dispatch(fetchDataSuccess(response.data));
       setTimeout(() => {
         window.location.href = "/dashboard";
       }, 2000);
@@ -33,30 +37,28 @@ export const registerUser = createAsyncThunk(
     try {
       dispatch(fetchDataStart(true));
       const response = await apiPost("/user/signup", formData);
-      toast.success(response.data.message);
-      localStorage.setItem("signature", response.data.signature);
-      localStorage.setItem("role", response.data.role);
-      dispatch(fetchDataSuccess(response.data));
+      console.log('resp', response)
+      localStorage.setItem("token", response.data.token);
+      dispatch(fetchDataUser(response.data));
+     //  localStorage.setItem("role", response.data.role);
       setTimeout(() => {
-        window.location.href = "/confirm";
+        window.location.href = "/verify";
       }, 2000);
     } catch (error: any) {
-      toast.error(error.response.data.Error);
-      dispatch(fetchDataFailure(error.response.data.error));
+      toast.error(error.response.data.message);
+      dispatch(fetchDataFailure(error.response.data.message));
     }
   }
 );
 
 export const verifyUser = createAsyncThunk(
   "verifyUser",
-  async (token: string, { dispatch }) => {
+  async (otp: string, { dispatch }) => {
     try {
       dispatch(fetchDataStart(true));
-      const response = await apiPatch(`/user/verify/?token=${token}`, {});
-      toast.success(response.data.message);
-      dispatch(fetchDataSuccess(response.data));
+      await apiPatch(`/user/verify`, {otp});
       setTimeout(() => {
-        window.location.href = "/verified";
+        window.location.href = "/login";
       }, 2000);
     } catch (error: any) {
       toast.error(error.response.data.message);
@@ -66,14 +68,13 @@ export const verifyUser = createAsyncThunk(
   }
 );
 
-export const resendverification = createAsyncThunk(
-  "resendverification",
+export const changePassword = createAsyncThunk(
+  "changePassword",
   async (token: string, { dispatch }) => {
     try {
       dispatch(fetchDataStart(true));
-      const response = await apiGet(`/user/resendverification/${token}`);
+      const response = await apiGet(`/user/changePassword/${token}`);
       toast.success(response.data.message);
-      dispatch(fetchDataSuccess(response.data));
       setTimeout(() => {
         window.location.href = "/confirm";
       }, 2000);
@@ -203,39 +204,6 @@ export const saveImages = createAsyncThunk(
   );
 
 
-  /**==============Get Photographers======= **/
-  export const getPhotographers = createAsyncThunk(
-    "getPhotographers",
-    async (_, { dispatch }) => {
-      try {
-        dispatch(fetchDataStart(true));
-        const response = await apiGet(`/photographer/get-photographer`);
-        toast.success(response.data.message);
-        dispatch(fetchDataPhoto(response.data));
-      } catch (error: any) {
-
-        toast.error(error.response.data.message);
-        dispatch(fetchDataFailure(error.response.data.message));
-      }
-    }
-  );
-
-    /**==============Get Photographers======= **/
-    export const getSinglePhotographer = createAsyncThunk(
-      "getSinglePhotographer",
-      async (_, { dispatch }) => {
-        try {
-          dispatch(fetchDataStart(true));
-          const response = await apiGet(`/photographer/get-singlephotographer`);
-          toast.success(response.data.message);
-          dispatch(fetchDataPhoto(response.data));
-        } catch (error: any) {
-  
-          toast.error(error.response.data.message);
-          dispatch(fetchDataFailure(error.response.data.message));
-        }
-      }
-    );
 
     /**==============Get All Users ========= **/
     export const getUsers= createAsyncThunk(
@@ -399,58 +367,8 @@ export const saveImages = createAsyncThunk(
     }
   );
 
-  /**==============Get Books ========= **/
-      export const getBooks = createAsyncThunk(
-        "getBooks",
-        async (_, { dispatch }) => {
-          try {
-            dispatch(fetchDataStart(true));
-            const response = await apiGet(`/user/get-books`);
-            toast.success(response.data.message);
-            dispatch(fetchBooks(response.data));
-          } catch (error: any) {
-    
-            toast.error(error.response.data.message);
-            dispatch(fetchDataFailure(error.response.data.message));
-          }
-        }
-      );
 
-  /**==============Get Movies ========= **/
-    export const getMovies = createAsyncThunk(
-    "getMovies",
-    async (_, { dispatch }) => {
-      try {
-        dispatch(fetchDataStart(true));
-        const response = await apiGet(`/user/get-movies`);
-        toast.success(response.data.message);
-        dispatch(fetchMovies(response.data));
-      } catch (error: any) {
-
-        toast.error(error.response.data.message);
-        dispatch(fetchDataFailure(error.response.data.message));
-      }
-    }
-  );
-
-
-/**============== Notifications ========= **/
-    export const notifications = createAsyncThunk(
-      "notifications",
-      async (_, { dispatch }) => {
-        try {
-          dispatch(fetchDataStart(true));
-          const response = await apiGet(`/user/notifications`);
-          toast.success(response.data.message);
-          dispatch(fetchNotifications(response.data));
-
-        } catch (error: any) {
-  
-          toast.error(error.response.data.message);
-          dispatch(fetchDataFailure(error.response.data.message));
-        }
-      }
-    );
+ 
 
    /**==============Verify Email======= **/
    export const verifyEmail = createAsyncThunk(
