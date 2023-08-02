@@ -28,7 +28,7 @@ export default function Verify() {
     return () => {
       clearInterval(interval);
     };
-  });
+  }, []);
 
   const sendOTP = () => {
     setMinutes(4);

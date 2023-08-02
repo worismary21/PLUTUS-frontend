@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, FormEvent } from "react";
 import logo from "../../assets/logo.png";
 import "./signup.css";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../redux/action";
 
 interface SignupComponent {
   firstName: string;
@@ -31,12 +34,15 @@ const SignUp = () => {
   };
   console.log(formData);
 
+  const dispatch = useDispatch() as unknown as any
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formData.password !== cPassword) {
       toast.error("Invalid Password");
     } else {
       toast.success("Registration Successful...");
+      dispatch(registerUser(formData))
     }
   };
 

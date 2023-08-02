@@ -1,17 +1,19 @@
-
+import ChangePass from './pages/changePass/ChangePass'
+import ChangePass2 from './pages/changePass/ChangePass2'
+import Error404 from './pages/error404/Error404'
 import {BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import SignUp from './pages/signUp/SignUp';
 import Verify from "./pages/verify/Verify";
 import "./App.css"
+import SignUp from './pages/signUp/signUp';
 
 
 function App() {
 
   return (
     <>
-   <BrowserRouter>
-   <ToastContainer
+     <BrowserRouter>
+          <ToastContainer
           theme="dark"
           position="top-right"
           autoClose={3000}
@@ -21,6 +23,9 @@ function App() {
       <Routes>
        <Route path='/signup' element={<SignUp/>}/>
        <Route path="/verify" element={<Verify />} />
+       <Route path="/changePassword" element={<ChangePass />}/>
+     <Route path='*' element={<Error404 />}/>
+     <Route path='/changePasswordConfirm' element={<ChangePass2 />}/>  
       </Routes>
      </BrowserRouter> 
      </>
