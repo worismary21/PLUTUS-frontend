@@ -41,7 +41,7 @@ const SignUp = () => {
     if (formData.password !== cPassword) {
       toast.error("Invalid Password");
     } else {
-      toast.success("Registration Successful...");
+
       dispatch(registerUser(formData))
     }
   };

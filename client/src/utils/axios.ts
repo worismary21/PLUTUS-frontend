@@ -5,7 +5,7 @@ const baseUrl = "http://localhost:4500";
 export const apiGet = (path:string) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("signature")}`
+      Authorization: `Bearer ${localStorage.getItem("token")}`
     },
   };
 
@@ -15,7 +15,7 @@ export const apiGet = (path:string) => {
 export const apiPost = async (path:string, data:any) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("signature")}`
+      Authorization: `Bearer ${localStorage.getItem("token")}`
     },
   };
   return await axios.post(`${baseUrl}${path}`, data, config); // axios.post('http://localhost:4500/user/signup', formdata config)
@@ -24,7 +24,7 @@ export const apiPost = async (path:string, data:any) => {
 export const FormDataPost = async (path:string, data:any) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("signature")}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "multipart/form-data",
     },
   };
@@ -34,7 +34,7 @@ export const FormDataPost = async (path:string, data:any) => {
 export const apiPut = (path:string, data:object) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("signature")}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": [ "application/json"]
     },
   };
@@ -45,7 +45,7 @@ export const apiPut = (path:string, data:object) => {
 export const apiPatch = (path:string, data:object) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("signature")}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": ["application/json"]
     },
   };
@@ -56,7 +56,7 @@ export const apiPatch = (path:string, data:object) => {
 export const formDataPatch = (path:string, data:object) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("signature")}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "multipart/form-data"
     },
   };
@@ -67,7 +67,7 @@ export const formDataPatch = (path:string, data:object) => {
 export const apiDelete = (path:string) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("signature")}`
+      Authorization: `Bearer ${localStorage.getItem("token")}`
     },
   };
 
