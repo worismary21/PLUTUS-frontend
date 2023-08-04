@@ -5,7 +5,6 @@ import { fetchDataFailure, fetchDataStart,  fetchDataUser} from "./reducers";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 interface LoginData{
      email:string,
      password:string
