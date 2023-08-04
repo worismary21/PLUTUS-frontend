@@ -1,4 +1,3 @@
-import Login from './pages/login/login'
 import ChangePass from './pages/changePass/ChangePass'
 import ChangePass2 from './pages/changePass/ChangePass2'
 import Error404 from './pages/error404/Error404'
@@ -7,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import Verify from "./pages/verify/Verify";
 import "./App.css"
 import SignUp from './pages/signUp/signUp';
+import Login from './pages/login/login'
 import Dashboard from './pages/Dashboard/Dashboard';
 import Loggin from './pages/onboarding/Loggin';
 import Signupp from './pages/onboarding/Signupp';

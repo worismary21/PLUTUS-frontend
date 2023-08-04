@@ -4,8 +4,7 @@ import {  apiDelete, apiGet, apiPatch, apiPost, apiPut, formDataPatch } from "..
 import { fetchDataFailure, fetchDataStart,  fetchDataUser} from "./reducers";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useEffect } from "react";
-import axios from "../api/axios";
+
 
 interface LoginData{
      email:string,
@@ -13,10 +12,9 @@ interface LoginData{
 }
 
 
-
 export const loginUser = createAsyncThunk(
   "loginUser",
-  async (formData: LoginData, { dispatch }) => {
+  async (formData: LoginData, { dispatch }:any) => {
     try {
       dispatch(fetchDataStart(true));
       const response = await apiPost("/user/login", formData);
@@ -35,7 +33,7 @@ export const loginUser = createAsyncThunk(
 
 export const registerUser = createAsyncThunk(
   "registerUser",
-  async (formData: LoginData, { dispatch }) => {
+  async (formData: LoginData, { dispatch }:any) => {
     try {
       dispatch(fetchDataStart(true));
       const response = await apiPost("/user/signup", formData);
@@ -55,7 +53,7 @@ export const registerUser = createAsyncThunk(
 
 export const verifyUser = createAsyncThunk(
   "verifyUser",
-  async (otp: string, { dispatch }) => {
+  async (otp: string, { dispatch }:any) => {
     try {
       dispatch(fetchDataStart(true));
       await apiPatch(`/user/verify`, {otp});
@@ -72,7 +70,7 @@ export const verifyUser = createAsyncThunk(
 
 export const changePassword = createAsyncThunk(
   "changePassword",
-  async (token: string, { dispatch }) => {
+  async (token: string, { dispatch }:any) => {
     try {
       dispatch(fetchDataStart(true));
       const response = await apiGet(`/user/changePassword/${token}`);
@@ -88,11 +86,10 @@ export const changePassword = createAsyncThunk(
 );
 
 
-
   /**==============Upload Photos=======  **/
 export const uploadPhotos = createAsyncThunk(
   "uploadPhotos",
-  async (formData:any, { dispatch }) => {
+  async (formData:any, { dispatch }:any) => {
     try {
       dispatch(fetchDataStart(true));
       const response = await formDataPatch(`/photographer/upload-photos`, formData);
@@ -108,7 +105,7 @@ export const uploadPhotos = createAsyncThunk(
 /**==============Save Photos======= **/
 export const saveImages = createAsyncThunk(
   "saveImages",
-  async (formData:any, { dispatch }) => {
+  async (formData:any, { dispatch }:any) => {
     try {
       dispatch(fetchDataStart(true));
       const response = await apiPut(`/user/save-image`, formData);
@@ -123,7 +120,7 @@ export const saveImages = createAsyncThunk(
 /**==============Delete Photos======= **/
   export const deletePhotos = createAsyncThunk(
     "deletePhotos",
-    async ({eventId, url}:any, { dispatch }) => {
+    async ({eventId, url}:any, { dispatch }:any) => {
       try {
         dispatch(fetchDataStart(true));
         const response = await apiDelete(`/photographer/delete-photos?eventId=${eventId}&url=${url}`);
