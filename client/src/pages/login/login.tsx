@@ -19,9 +19,9 @@ function Login() {
     password:''
   })
 
-  const [error, setError] = useState('')
+  const [error] = useState('')
 
-  const [loading, setLoading] = useState(false)
+  const [loading] = useState(false)
 
   const handleChange = (e:any) => {
     const {name, value} = e.target

@@ -20,7 +20,7 @@ const dataSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    fetchDataStart: (state, action: PayloadAction<boolean>) => {
+    fetchDataStart: (state, _action: PayloadAction<boolean>) => {
       state.loading = false;
       state.error = null;
     },

@@ -10,7 +10,7 @@ import Login from './pages/login/login'
 import Dashboard from './pages/Dashboard/Dashboard';
 import Loggin from './pages/onboarding/Loggin';
 import Signupp from './pages/onboarding/Signupp';
-import React from 'react';
+// import React from 'react';
 
 
 function App() {
