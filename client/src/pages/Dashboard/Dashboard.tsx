@@ -4,6 +4,7 @@ import DashboardHome from './DashboardHome'
 import Transfer from './Transfer'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
+import AccountSettings from "../accountSettings/accountSetting"
 
 const Dashboard = () => {
   return (
@@ -14,7 +15,8 @@ const Dashboard = () => {
             <Navbar />
         <Routes>
                 <Route path="" element={<DashboardHome />} />
-                <Route path="/transfer" element={<Transfer />} />
+          <Route path="/transfer" element={<Transfer />} />
+          <Route path="/accountSettings" element={<AccountSettings />}/>
         </Routes>
 
         </div>

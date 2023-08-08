@@ -10,6 +10,7 @@ import Login from './pages/login/login'
 import Dashboard from './pages/Dashboard/Dashboard';
 import Loggin from './pages/onboarding/Loggin';
 import Signupp from './pages/onboarding/Signupp';
+import AccountSettings from "./pages/accountSettings/accountSetting"
 // import React from 'react';
 
 
@@ -25,7 +26,8 @@ function App() {
           closeOnClick     
           pauseOnHover={false}      
         />
-      <Routes>
+        <Routes>
+        <Route path='/accountSettings' element={<AccountSettings />}/>
        <Route path='/signup' element={<SignUp />}/>
        <Route path="/verify" element={<Verify />} />
        <Route path="/changePassword" element={<ChangePass />}/>
