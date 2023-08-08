@@ -13,7 +13,7 @@ const Dashboard = () => {
         <div>
             <Navbar />
         <Routes>
-                <Route path="" element={<DashboardHome />} />
+                <Route path="/dashboardHome" element={<DashboardHome />} />
                 <Route path="/transfer" element={<Transfer />} />
         </Routes>
 
