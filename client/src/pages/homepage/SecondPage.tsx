@@ -2,7 +2,6 @@ import React from "react";
 import pics from "./images/pic.svg";
 import num from "./images/num.svg";
 import world from "./images/world.svg";
-import ThirdPage from "./ThirdPage";
 
 const SecondPage = () => {
   return (
@@ -14,7 +13,7 @@ const SecondPage = () => {
             <p className="text-xs mt-3">
               Send and request money easily with anyone. No extra fees
             </p>
-            <button className="bg-white text-black rounded-2xl text-xs w-40 mt-10 h-10">
+            <button className="bg-white hover:bg-blue-200 hover:scale-110 text-black rounded-full text-xs w-40 mt-10 h-10">
               <p>Explore Products</p>
             </button>
           </div>
@@ -44,10 +43,6 @@ const SecondPage = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div>
-        <ThirdPage/>
       </div>
     </section>
   );

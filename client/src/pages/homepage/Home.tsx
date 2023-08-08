@@ -14,19 +14,19 @@ const Home = () => {
         </p>
 
         <div className="z-10 flex mt-20 h-10 w-80 items-center ml-60">
-          <button className="bg-white text-black flex pt-3 mr-5 rounded-lg h-15 text-xs">
+          <button className="bg-white hover:bg-blue-200 hover:scale-110 text-black flex pt-3 mr-5 rounded-lg h-15 text-xs">
             <AiFillApple size={30} />
             <div className="mr-5 w-40 mb-3">
               <p>Download on</p>
-              <p>App Store</p>
+              <p className="text-bold">App Store</p>
             </div>
           </button>
 
-          <button className="bg-white text-black flex pt-3 rounded-lg text-xs">
+          <button className="bg-white hover:bg-blue-200 hover:scale-110 text-black flex pt-3 rounded-lg text-xs">
             <BiLogoPlayStore size={30} />
             <div className="mr-5 w-40 mb-3">
               <p>Get on</p>
-              <p>Google Play</p>
+              <p className="text-bold">Google Play</p>
             </div>
           </button>
         </div>

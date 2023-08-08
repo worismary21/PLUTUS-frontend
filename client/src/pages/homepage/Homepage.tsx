@@ -8,7 +8,7 @@ const Homepage = () => {
   return (
     <>
       <div className="overlay"></div>
-      <main className="HomeContainer">
+      <main className="HomeContainer ">
         <FirstPage />
         <Home />
         <SecondPage />
