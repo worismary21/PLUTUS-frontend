@@ -1,26 +1,25 @@
 // import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import DashboardHome from './DashboardHome'
-import Transfer from './Transfer'
-import Navbar from './Navbar'
-import Sidebar from './Sidebar'
+import { Route, Routes } from "react-router-dom";
+import DashboardHome from "./DashboardHome";
+import Transfer from "./Transfer";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
+import Investment from "./Investment/Investment";
 
 const Dashboard = () => {
   return (
-    <div style={{display:"flex"}} >
-        
-        <Sidebar />
-        <div>
-            <Navbar />
+    <div style={{ display: "flex" }}>
+      <Sidebar />
+      <div>
+        <Navbar />
         <Routes>
-                <Route path="" element={<DashboardHome />} />
-                <Route path="/transfer" element={<Transfer />} />
+          <Route path="" element={<DashboardHome />} />
+          <Route path="/transfer" element={<Transfer />} />
+          <Route path="/investment" element={<Investment />} />
         </Routes>
-
-        </div>
-       
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

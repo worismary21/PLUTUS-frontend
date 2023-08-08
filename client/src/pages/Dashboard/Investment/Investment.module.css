@@ -1,0 +1,90 @@
+* {
+  margin: 50px;
+}
+.investment {
+  margin-top: 50px;
+  margin-left: 50px;
+}
+.statContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  margin: 0px 50px;
+}
+.firstinv {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 50px;
+}
+
+.secondinv {
+  /* display: flex; */
+  margin-bottom: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.thirdinv {
+  display: flex;
+  margin-left: 50px;
+  margin-right: 50px;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+
+  /* margin-bottom: 200px; */
+}
+.total {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  background-color: #eee;
+}
+.dollaricon {
+  margin: 0;
+}
+.secondline {
+  display: flex;
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+
+.secondinvone {
+  background-color: #ebf3f9;
+  width: 550px;
+  height: 200px;
+}
+.secondinvtwo {
+  background-color: #dfd8f2;
+  width: 550px;
+  height: 200px;
+}
+.thirdline {
+  display: flex;
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+.thirdinvone {
+  /* background-color: rgb(0, 255, 179); */
+  width: 550px;
+  height: 200px;
+}
+.thirdinvtwo {
+  background-color: #030303;
+  width: 500px;
+  height: 200px;
+  margin-left: 200px;
+}
+.myinvestment {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+/* Table {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  background-color: #030303;
+  color: white;
+} */
