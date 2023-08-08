@@ -16,7 +16,10 @@ const Dashboard = () => {
         <Routes>
                 <Route path="" element={<DashboardHome />} />
           <Route path="/transfer" element={<Transfer />} />
-          <Route path="/accountSettings" element={<AccountSettings />}/>
+          <Route path="/accountSettings" element={<AccountSettings />} />
+          <Route path='/notifications' element={<AccountSettings />} />
+          <Route path='/password-and-security' element={<AccountSettings />}/>
+          <Route path='/choose-plan' element={<AccountSettings />}/>
         </Routes>
 
         </div>

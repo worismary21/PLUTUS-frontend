@@ -2,54 +2,57 @@ import { BsPersonFillGear } from 'react-icons/bs';
 import { BiSolidLockOpen } from 'react-icons/bi';
 import { BiSolidBellRing } from 'react-icons/bi';
 import { BsFillCreditCard2FrontFill } from 'react-icons/bs';
+import { Link, useLocation } from 'react-router-dom';
 
 
 const AccountSettings = () => {
+  const location = useLocation()
   return (
     <>
        <div className="flex space-x-4 px-20 mt-16">
       {/* Personal Info */}
       <div className="flex flex-col items-center">
-        <button className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
+        <Link to="/dashboard/accountsettings" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
           <div className="flex items-center text-left space-x-4">
             <BsPersonFillGear className="h-6 w-6 ml-4 text-black" />
             <span className="text-black justify-start">Personal Info</span>
           </div>
-        </button>
+        </Link>
       </div>
 
       {/* Password and Security */}
       <div className="flex flex-col items-center">
-        <button className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
+        <Link to="/dashboard/password-and-security"  className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
           <div className="flex items-center text-left space-x-4">
             <BiSolidLockOpen className="h-6 w-6 ml-4 text-black" />
             <span className="text-black justify-start">Password and Security</span>
           </div>
-        </button>
+        </Link >
       </div>
         
       {/* Notifications */}
       <div className="flex flex-col items-center">
-      <button className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
+      <Link to="/dashboard/notifications" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
           <div className="flex items-center text-left space-x-4">
             <BiSolidBellRing className="h-6 w-6 ml-4 text-black" />
             <span className="text-black justify-start">Notifications</span>
           </div>
-        </button>
+        </Link >
       </div>
 
       {/* Choose Plan */}
       <div className="flex flex-col items-center">
-      <button className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
+      <Link to="/dashboard/choose-plan" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
           <div className="flex items-center text-left space-x-4">
             <BsFillCreditCard2FrontFill className="h-6 w-6 ml-4 text-black" />
             <span className="text-black justify-start">Choose Plan</span>
           </div>
-        </button>
+        </Link>
       </div>
       </div>
       
-      <form>
+      {location.pathname === "/dashboard/accountsettings" ?
+        <form>
       <div className="flex items-center space-x-2">
           <label htmlFor="fileInput" className="w-24 ml-20 mt-4 mb-0 h-24 flex items-center justify-center rounded-full bg-gray-300">
             <svg
@@ -123,7 +126,7 @@ const AccountSettings = () => {
         </div>
           
 
-      </form>
+      </form> : location.pathname === "/dashboard/notifications" ? <div> notifications</div>  : location.pathname === "/dashboard/password-and-security" ? <div> Password and Security</div> : location.pathname === "/dashboard/choose-plan" ? <div> Choose Plan</div> : null }
     </>
   )
 }

@@ -27,7 +27,7 @@ function App() {
           pauseOnHover={false}      
         />
         <Routes>
-        <Route path='/accountSettings' element={<AccountSettings />}/>
+   
        <Route path='/signup' element={<SignUp />}/>
        <Route path="/verify" element={<Verify />} />
        <Route path="/changePassword" element={<ChangePass />}/>
