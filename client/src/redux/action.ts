@@ -50,6 +50,30 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+  /**============== Transfer Money =======  **/
+
+export const transferFunds = createAsyncThunk(
+  "transferFunds",
+  async (formData: any, { dispatch }:any) => {
+    try {
+      dispatch(fetchDataStart(true));
+      const response = await apiPost("/transfer", formData);
+      console.log('resp', response)
+      localStorage.setItem("token", response.data.token);
+      toast.success("transfer successful");
+
+      // setTimeout(() => {
+      //   window.location.href = "/verify";
+      // }, 2000);
+    } catch (error: any) {
+      console.log(error)
+      toast.error(error.response.data.message);
+      dispatch(fetchDataFailure(error.response.data.message));
+    }
+  }
+);
+
+
 export const verifyUser = createAsyncThunk(
   "verifyUser",
   async (otp: string, { dispatch }:any) => {
