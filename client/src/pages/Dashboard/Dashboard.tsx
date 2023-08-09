@@ -15,6 +15,7 @@ const Dashboard = () => {
       <div>
         <Navbar />
         <Routes>
+          <Route path="/dashboardHome" element={<DashboardHome />} />
           <Route path="" element={<DashboardHome />} />
           <Route path="/transfer" element={<Transfer />} />
           <Route path="/investment" element={<Investment />} />

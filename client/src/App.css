@@ -17,3 +17,9 @@ body{
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
+.content{
+     background-color: rgba(235, 243, 249, 1);
+}
+
+/* samuel */
