@@ -2,7 +2,7 @@ import React from "react";
 import pics from "./images/pic.svg";
 import num from "./images/num.svg";
 import world from "./images/world.svg";
-import ThirdPage from "./ThirdPage";
+import About from "./About";
 
 const SecondPage = () => {
   return (
@@ -47,7 +47,7 @@ const SecondPage = () => {
       </div>
 
       <div>
-        <ThirdPage/>
+        <About />
       </div>
     </section>
   );
