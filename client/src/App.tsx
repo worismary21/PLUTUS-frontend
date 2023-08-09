@@ -10,7 +10,9 @@ import Login from './pages/login/login'
 import Dashboard from './pages/Dashboard/Dashboard';
 import Loggin from './pages/onboarding/Loggin';
 import Signupp from './pages/onboarding/Signupp';
+import Homepage from './pages/homepage/Homepage';
 // import React from 'react';
+
 
 
 function App() {
@@ -25,7 +27,9 @@ function App() {
           closeOnClick     
           pauseOnHover={false}      
         />
+   
       <Routes>
+        <Route path='/' element={<Homepage />} />
        <Route path='/signup' element={<SignUp />}/>
        <Route path="/verify" element={<Verify />} />
        <Route path="/changePassword" element={<ChangePass />}/>
@@ -35,7 +39,7 @@ function App() {
      <Route path='*' element={<Error404 />}/>
      <Route path='/changePasswordConfirm' element={<ChangePass2 />}/>  
      <Route path='/dashboard/*' element={<Dashboard />} />
-     
+
       </Routes>
      </BrowserRouter> 
      </>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState } from "react";
 import change from "./changePass.module.css";
@@ -8,17 +9,17 @@ import OtpInput from "react-otp-input";
 
 function changePass() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-     const [email, setEmail] = useState("")
-     const [otp, setOtp] = useState("")
-     const [modal, setModal] = useState(false);
-     const [minutes, setMinutes] = useState(0);
-     const [seconds, setSeconds] = useState(0);
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const [modal, setModal] = useState(false);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-     const handleInputChange = (e: any) => {
-          setEmail(e.target.value)
-};
+  const handleInputChange = (e: any) => {
+    setEmail(e.target.value);
+  };
 
-console.log("otp", otp);
+  console.log("otp", otp);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -33,7 +34,7 @@ console.log("otp", otp);
   };
 
   const handleVerify = async (e: any) => {
-    e.preventDefault()
+    e.preventDefault();
     // const otpResponse = await changePassword(otp)
     // console.log("otp", otpResponse)
   };
@@ -85,7 +86,7 @@ console.log("otp", otp);
             <div className={change.content}>
               <h2>Change Password</h2>
               <p>Enter you email address</p>
-              <form action="" className={change.form} >
+              <form action="" className={change.form}>
                 <input
                   className={change.inputEmail}
                   type="email"
@@ -95,7 +96,13 @@ console.log("otp", otp);
                   required
                   onChange={handleInputChange}
                 ></input>
-                <button onClick={handleSubmit} type="submit" className={change.button}>Submit</button>
+                <button
+                  onClick={handleSubmit}
+                  type="submit"
+                  className={change.button}
+                >
+                  Submit
+                </button>
               </form>
             </div>
           )}
@@ -117,7 +124,6 @@ console.log("otp", otp);
                     containerStyle={change.otpStyle}
                   />
                 </div>
-                {/* <h1>Hover Me</h1> */}
                 <div className={change.countdowntext}>
                   {seconds > 0 || minutes > 0 ? (
                     <p>
@@ -129,7 +135,9 @@ console.log("otp", otp);
                   )}
                 </div>
                 <Link to="/changePasswordConfirm">
-                  <button onClick={handleVerify} className={change.button}>Verify</button>
+                  <button onClick={handleVerify} className={change.button}>
+                    Verify
+                  </button>
                 </Link>
 
                 <button
