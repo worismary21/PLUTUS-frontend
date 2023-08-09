@@ -8,7 +8,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ percentage }) => {
   return (
     <div className="w-full bg-gray-300">
       <div
-        className="bg-blue-500 h-2"
+        className="bg-black -500 h-2"
         style={{ width: `${percentage}%` }}
       ></div>
     </div>

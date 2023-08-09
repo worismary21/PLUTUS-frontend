@@ -7,7 +7,8 @@ import {
   BsCaretDownFill,
 } from "react-icons/bs"
 import {FaGreaterThan, FaLessThan, FaPlane} from 'react-icons/fa'
-import "../../App.css"
+import "../../App.css";
+import "./DashboardHome.css";
 
 
 
@@ -87,14 +88,16 @@ const DashboardHome = () => {
               </div>
               <div>
                 <div>
-                  <div className="flex flex-column ">
-                  <div className="bg-white rounded-full flex items-center justify-center w-12 h-12">
-                  <FaPlane className=" w-6 h-6" />
-                 </div>
-                  <h2><b>62% reached</b></h2>
+                  <div className="flex flex-column justify-between p-3 ">
+                    <div className="bg-white rounded-full flex items-center justify-center w-12 h-12">
+                    <FaPlane className=" w-10 h-10" />
+                    </div>
+                    <div className="w-3/5">
+                      <h2><b>62% reached</b></h2>
+                      <ProgressBar percentage={80} />
+                      <p>$1,485 out of $2,385</p>
+                    </div>
                   </div>
-                  <div></div>
-                  <p>$1,485 out of $2,385</p>
                 </div>
               </div>
             </div>
@@ -155,7 +158,11 @@ const DashboardHome = () => {
               <p>Income</p>
           </div>
           <div className="h-1/4">
-            Beneficiary
+            {/* Here we would be adding the component coming from the transactions */}
+            {/* <transaction /> */}
+          </div>
+          <div>
+            beneficiary
           </div>
         </div>
         
@@ -165,3 +172,6 @@ const DashboardHome = () => {
 }
 
 export default DashboardHome
+
+
+
