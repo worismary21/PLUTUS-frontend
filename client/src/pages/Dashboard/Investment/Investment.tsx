@@ -14,43 +14,13 @@ const Investment = () => {
   const ti = "#10,000";
   const noi = "1600";
 
-  // const data = [
-  //   { Year: "2017", Users: "3" },
-  //   { Year: "2018", Users: "2.3" },
-  //   { Year: "2019", Users: "1.9" },
-  //   { Year: "2020", Users: "3.5" },
-  //   { Year: "2021", Users: "2.5" },
-  //   { Year: "2022", Users: "3.1" },
-  // ];
-  // const YInvestment = () => {
-  //   const plotRef = useRef();
-
-  //   useEffect(() => {
-  //     const barChart = Plot.plot({
-  //       marks: [
-  //         Plot.barY(data, {
-  //           x: "Year",
-  //           y: "Users",
-  //         }),
-  //       ],
-  //       y: { grid: true },
-  //       marginTop: 50,
-  //       marginBottom: 50,
-  //       marginLeft: 50,
-  //     });
-  //     plotRef.current.append(barChart);
-  //     return () => barChart.remove();
-  //   }, [data]);
-  //   return <div ref={plotRef}></div>;
-  // };
-
   const Idata = [
-    { name: "Page A", value: "3.0" },
-    { name: "Page B", value: 2.3 },
-    { name: "Page C", value: 1.9 },
-    { name: "Page D", value: 3.5 },
-    { name: "Page E", value: 3.5 },
-    { name: "Page F", value: 3.1 },
+    { name: "2017", value: 3.0 },
+    { name: "2018", value: 2.3 },
+    { name: "2019", value: 1.9 },
+    { name: "2020", value: 3.5 },
+    { name: "2021", value: 3.5 },
+    { name: "2022", value: 3.1 },
   ];
 
   const renderInvBarChart = (
@@ -64,12 +34,12 @@ const Investment = () => {
   );
 
   const Irevenue = [
-    { name: "Page A", value: "3.0" },
-    { name: "Page B", value: 2.3 },
-    { name: "Page C", value: 1.9 },
-    { name: "Page D", value: 3.5 },
-    { name: "Page E", value: 3.5 },
-    { name: "Page F", value: 3.1 },
+    { name: "2017", value: 0.8 },
+    { name: "2018", value: 1.25 },
+    { name: "2019", value: 1.9 },
+    { name: "2020", value: 3.7 },
+    { name: "2021", value: 3.1 },
+    { name: "2022", value: 3.8 },
   ];
 
   const renderRevBarChart = (
@@ -83,11 +53,11 @@ const Investment = () => {
   );
 
   return (
-    <>
+    <div className=" h-auto px-[5%] md:px-[0%] ml-[10%] md:ml-[0%]">
       <div>
         <h3>Investment</h3>
-        <div className=" px-[5%] flex justify-between my-[5%] md:flex-row ">
-          <div className="bg-[#f8f9fa] w-[30%] flex justify-center py-[3%] rounded-md">
+        <div className=" px-[5%] flex flex-col justify-between my-[5%] md:my-[0%] md:flex-row  ">
+          <div className="bg-[#f8f9fa] md:w-[30%] flex justify-center py-[3%] rounded-md">
             <div className="bg-[#b5dcf2] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px]">
               <TbCurrencyNaira />
             </div>
@@ -96,7 +66,7 @@ const Investment = () => {
               <p>{ti}</p>
             </div>
           </div>
-          <div className="bg-[#f8f9fa] w-[30%] flex justify-center py-[3%] rounded-md">
+          <div className="bg-[#f8f9fa] md:w-[30%] flex justify-center py-[3%] rounded-md my-[5%] md:my-[0%]">
             <div className="bg-[#c6b5f2] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px] ">
               <FaCoins />
             </div>
@@ -106,7 +76,7 @@ const Investment = () => {
               <p>{noi}</p>
             </div>
           </div>
-          <div className="bg-[#f8f9fa] w-[30%] flex justify-center py-[3%] rounded-md">
+          <div className="bg-[#f8f9fa] md:w-[30%] flex justify-center py-[3%] rounded-md">
             <div className="bg-[#f5bfa6] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px] ">
               <GiAnticlockwiseRotation />
             </div>
@@ -119,28 +89,29 @@ const Investment = () => {
         </div>
       </div>
 
-      <div className={invest.secondline}>
-        <p style={{ fontSize: 20 }}>Yearly total investment</p>
+      <div className={invest.secondline}></div>
 
-        <p style={{ fontSize: 20 }}>Yearly total revenue</p>
-      </div>
+      <div className="flex flex-col px-[5%] md:flex-row justify-between w-[100%] overflow-x-scroll">
+        <div>
+          <p className="text-[23px]">Yearly total investment</p>
+          <div className="w-[550px] bg-[#ebf3f9] my-[5%] md:my-[0%]">
+            {renderInvBarChart}
+            Graph 1
+          </div>
+        </div>
 
-      <div className={invest.secondinv}>
-        <div className={invest.secondinvone}>{renderInvBarChart}</div>
-        <div className={invest.secondinvtwo}>
-          {renderRevBarChart}
-          Graph 2
+        <div>
+          <p className="text-[23px]">Yearly total revenue</p>
+          <div className="w-[550px] bg-[#dfd8f2] my-[5%] md:my-[0%]">
+            {renderRevBarChart}
+            Graph 2
+          </div>
         </div>
       </div>
 
-      <div className={invest.thirdline}>
-        <p style={{ fontSize: 20 }}>My investment</p>
-
-        <p style={{ fontSize: 20, marginLeft: 130 }}>Trending stock</p>
-      </div>
-
-      <div className="flex justify-between px-[5%] h-[20vh] ">
-        <div className="w-[40%] pt-[2%]">
+      <div className="flex flex-col md:flex-row justify-between px-[5%] h-[20vh] w-[100%] ">
+        <div className="w-[50%] pt-[2%]">
+          <p className="text-[23px]">My investment</p>
           <Table striped>
             <Table.Body className="divide-y ">
               <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -181,8 +152,9 @@ const Investment = () => {
             </Table.Body>
           </Table>
         </div>
-        <div className="w-[40%]">
-          <Table className="bg-[#000] text-[#fff]">
+        <div className="w-[40%] pt-[30px]">
+          <p className="text-[23px]">Trending stock</p>
+          <Table className="bg-[#000] text-[#fff] pt-[70px]">
             <Table.Body>
               <Table.Cell>Name</Table.Cell>
               <Table.Cell>Price</Table.Cell>
@@ -220,64 +192,8 @@ const Investment = () => {
           </Table>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
 export default Investment;
-
-// import invest from "./Investment.module.css";
-// import { Table } from "flowbite-react";
-// import { TbCurrencyNaira } from "react-icons/tb";
-// import { FaCoins } from "react-icons/fa";
-// import { GiAnticlockwiseRotation } from "react-icons/gi";
-// import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
-
-// const Investment = () => {
-//   const ror = "+4.75%";
-//   const ti = "#10,000";
-//   const noi = "1600";
-
-//   // Rest of your code...
-
-//   return (
-//     <>
-//       <div>
-//         <h3>Investment</h3>
-//         <div className="px-[5%] flex flex-col md:flex-row justify-between my-[5%] md:flex-row justify-between">
-//           <div className="bg-[#f8f9fa] w-full md:w-[30%] flex justify-center py-[3%] rounded-md mb-4 md:mb-0">
-//             <div className="bg-[#b5dcf2] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px]">
-//               <TbCurrencyNaira />
-//             </div>
-//             <div className="w-[auto]">
-//               <p className="text-sm font-medium">Total Invested</p>
-//               <p className="text-lg">{ti}</p>
-//             </div>
-//           </div>
-//           <div className="bg-[#f8f9fa] w-full md:w-[30%] flex justify-center py-[3%] rounded-md mb-4 md:mb-0">
-//             <div className="bg-[#c6b5f2] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px]">
-//               <FaCoins />
-//             </div>
-//             <div className="w-[auto]">
-//               <p className="text-sm font-medium">No. of investments</p>
-//               <p className="text-lg">{noi}</p>
-//             </div>
-//           </div>
-//           <div className="bg-[#f8f9fa] w-full md:w-[30%] flex justify-center py-[3%] rounded-md">
-//             <div className="bg-[#f5bfa6] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px]">
-//               <GiAnticlockwiseRotation />
-//             </div>
-//             <div className="w-[auto]">
-//               <p className="text-sm font-medium">Rate of return</p>
-//               <p className="text-lg">{ror}</p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Rest of your code... */}
-//     </>
-//   );
-// };
-
-// export default Investment;
