@@ -5,79 +5,98 @@ import { Table } from "flowbite-react";
 import { TbCurrencyNaira } from "react-icons/tb";
 import { FaCoins } from "react-icons/fa";
 import { GiAnticlockwiseRotation } from "react-icons/gi";
-// import { Bar } from "react-chartjs-2";
-import { BarChart } from "recharts";
-
-// import { useReactTable } from '@tanstack/react-table'
+// import Plot from "@observablehq/plot";
+// import { useEffect, useRef, useState } from "react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 const Investment = () => {
   const ror = "+4.75%";
   const ti = "#10,000";
   const noi = "1600";
 
-  // Data for Graph 1
-  // const graph1Data = {
-  //   labels: [
-  //     "Category 1",
-  //     "Category 2",
-  //     "Category 3",
-  //     "Category 4",
-  //     "Category 5",
-  //   ],
-  //   datasets: [
-  //     {
-  //       label: "Graph 1",
-  //       data: [10, 25, 15, 30, 20],
-  //       backgroundColor: "rgba(75, 192, 192, 0.6)",
-  //       borderWidth: 1,
-  //     },
-  //   ],
+  // const data = [
+  //   { Year: "2017", Users: "3" },
+  //   { Year: "2018", Users: "2.3" },
+  //   { Year: "2019", Users: "1.9" },
+  //   { Year: "2020", Users: "3.5" },
+  //   { Year: "2021", Users: "2.5" },
+  //   { Year: "2022", Users: "3.1" },
+  // ];
+  // const YInvestment = () => {
+  //   const plotRef = useRef();
+
+  //   useEffect(() => {
+  //     const barChart = Plot.plot({
+  //       marks: [
+  //         Plot.barY(data, {
+  //           x: "Year",
+  //           y: "Users",
+  //         }),
+  //       ],
+  //       y: { grid: true },
+  //       marginTop: 50,
+  //       marginBottom: 50,
+  //       marginLeft: 50,
+  //     });
+  //     plotRef.current.append(barChart);
+  //     return () => barChart.remove();
+  //   }, [data]);
+  //   return <div ref={plotRef}></div>;
   // };
 
-  // Data for Graph 2
-  // const graph2Data = {
-  //   labels: ["Item A", "Item B", "Item C", "Item D", "Item E"],
-  //   datasets: [
-  //     {
-  //       label: "Graph 2",
-  //       data: [5, 10, 8, 15, 12],
-  //       backgroundColor: "rgba(153, 102, 255, 0.6)",
-  //       borderWidth: 1,
-  //     },
-  //   ],
-  // };
+  const Idata = [
+    { name: "Page A", value: "3.0" },
+    { name: "Page B", value: 2.3 },
+    { name: "Page C", value: 1.9 },
+    { name: "Page D", value: 3.5 },
+    { name: "Page E", value: 3.5 },
+    { name: "Page F", value: 3.1 },
+  ];
 
-  // const options = {
-  //   scales: {
-  //     x: {
-  //       grid: {
-  //         display: false,
-  //       },
-  //     },
-  //     y: {
-  //       beginAtZero: true,
-  //     },
-  //   },
-  // };
+  const renderInvBarChart = (
+    <BarChart width={550} height={200} data={Idata}>
+      <XAxis dataKey="name" stroke="#8884d8" />
+      <YAxis />
+      <Tooltip />
+      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+      <Bar dataKey="value" fill="#b5dcf2" barSize={23} />
+    </BarChart>
+  );
+
+  const Irevenue = [
+    { name: "Page A", value: "3.0" },
+    { name: "Page B", value: 2.3 },
+    { name: "Page C", value: 1.9 },
+    { name: "Page D", value: 3.5 },
+    { name: "Page E", value: 3.5 },
+    { name: "Page F", value: 3.1 },
+  ];
+
+  const renderRevBarChart = (
+    <BarChart width={550} height={200} data={Irevenue}>
+      <XAxis dataKey="name" stroke="#8884d8" />
+      <YAxis />
+      <Tooltip />
+      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+      <Bar dataKey="value" fill="#c6b5f2" barSize={23} />
+    </BarChart>
+  );
 
   return (
     <>
       <div>
         <h3>Investment</h3>
-        <div className=" px-[5%] flex justify-between my-[5%]">
+        <div className=" px-[5%] flex justify-between my-[5%] md:flex-row ">
           <div className="bg-[#f8f9fa] w-[30%] flex justify-center py-[3%] rounded-md">
-            {/* <FontAwesomeIcon icon={faDollarSign} /> */}
             <div className="bg-[#b5dcf2] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px]">
               <TbCurrencyNaira />
             </div>
-
             <div className="w-[auto]">
               <p>Total Invested</p>
               <p>{ti}</p>
             </div>
           </div>
           <div className="bg-[#f8f9fa] w-[30%] flex justify-center py-[3%] rounded-md">
-            {/* <FontAwesomeIcon icon={faDollarSign} /> */}
             <div className="bg-[#c6b5f2] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px] ">
               <FaCoins />
             </div>
@@ -88,7 +107,6 @@ const Investment = () => {
             </div>
           </div>
           <div className="bg-[#f8f9fa] w-[30%] flex justify-center py-[3%] rounded-md">
-            {/* <FontAwesomeIcon icon={faDollarSign} /> */}
             <div className="bg-[#f5bfa6] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px] ">
               <GiAnticlockwiseRotation />
             </div>
@@ -108,18 +126,10 @@ const Investment = () => {
       </div>
 
       <div className={invest.secondinv}>
-        <div
-          className={invest.secondinvone}
-          // style={{ width: 500, height: 300, backgroundColor: "orange" }}
-        >
-          <BarChart />
-          BarChart
-        </div>
-        <div
-          className={invest.secondinvtwo}
-          // style={{ width: 500, height: 300, backgroundColor: "orange" }}
-        >
-          Graph 2{/* <Bar data={graph2Data} options={options} /> */}
+        <div className={invest.secondinvone}>{renderInvBarChart}</div>
+        <div className={invest.secondinvtwo}>
+          {renderRevBarChart}
+          Graph 2
         </div>
       </div>
 
@@ -215,3 +225,59 @@ const Investment = () => {
 };
 
 export default Investment;
+
+// import invest from "./Investment.module.css";
+// import { Table } from "flowbite-react";
+// import { TbCurrencyNaira } from "react-icons/tb";
+// import { FaCoins } from "react-icons/fa";
+// import { GiAnticlockwiseRotation } from "react-icons/gi";
+// import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+
+// const Investment = () => {
+//   const ror = "+4.75%";
+//   const ti = "#10,000";
+//   const noi = "1600";
+
+//   // Rest of your code...
+
+//   return (
+//     <>
+//       <div>
+//         <h3>Investment</h3>
+//         <div className="px-[5%] flex flex-col md:flex-row justify-between my-[5%] md:flex-row justify-between">
+//           <div className="bg-[#f8f9fa] w-full md:w-[30%] flex justify-center py-[3%] rounded-md mb-4 md:mb-0">
+//             <div className="bg-[#b5dcf2] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px]">
+//               <TbCurrencyNaira />
+//             </div>
+//             <div className="w-[auto]">
+//               <p className="text-sm font-medium">Total Invested</p>
+//               <p className="text-lg">{ti}</p>
+//             </div>
+//           </div>
+//           <div className="bg-[#f8f9fa] w-full md:w-[30%] flex justify-center py-[3%] rounded-md mb-4 md:mb-0">
+//             <div className="bg-[#c6b5f2] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px]">
+//               <FaCoins />
+//             </div>
+//             <div className="w-[auto]">
+//               <p className="text-sm font-medium">No. of investments</p>
+//               <p className="text-lg">{noi}</p>
+//             </div>
+//           </div>
+//           <div className="bg-[#f8f9fa] w-full md:w-[30%] flex justify-center py-[3%] rounded-md">
+//             <div className="bg-[#f5bfa6] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px]">
+//               <GiAnticlockwiseRotation />
+//             </div>
+//             <div className="w-[auto]">
+//               <p className="text-sm font-medium">Rate of return</p>
+//               <p className="text-lg">{ror}</p>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Rest of your code... */}
+//     </>
+//   );
+// };
+
+// export default Investment;

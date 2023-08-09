@@ -17,15 +17,6 @@
   gap: 50px;
 }
 
-.secondinv {
-  /* display: flex; */
-  margin-bottom: 50px;
-  margin-left: 50px;
-  margin-right: 50px;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
 .thirdinv {
   display: flex;
   margin-left: 50px;
@@ -46,6 +37,15 @@
 .dollaricon {
   margin: 0;
 }
+.secondinv {
+  /* display: flex; */
+  margin-bottom: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 .secondline {
   display: flex;
   margin-left: 50px;
@@ -55,12 +55,12 @@
 .secondinvone {
   background-color: #ebf3f9;
   width: 550px;
-  height: 200px;
+  height: 250px;
 }
 .secondinvtwo {
   background-color: #dfd8f2;
   width: 550px;
-  height: 200px;
+  height: 250px;
 }
 .thirdline {
   display: flex;
