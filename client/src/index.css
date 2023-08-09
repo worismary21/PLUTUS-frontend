@@ -24,3 +24,11 @@ html{
     width:100%;
     box-sizing: border-box;
 }
+
+.spendingOverview{
+     background-color: #fec0a7;
+}
+
+.goals{
+     background-color: #c6b5f2;
+}
