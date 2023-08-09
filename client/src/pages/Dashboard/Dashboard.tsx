@@ -6,6 +6,7 @@ import Transfer from "./Transfer/Transfer";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Savings from "./Transfer/Savings";
+import AccountSettings from "../accountSettings/accountSetting";
 
 const Dashboard = () => {
   return (
@@ -20,6 +21,10 @@ const Dashboard = () => {
           <Route path="" element={<DashboardHome />} />
           <Route path="/transfer" element={<Transfer />} />
           <Route path="/transfer/savings" element={<Savings />} />
+          <Route path="/accountSettings" element={<AccountSettings />} />
+          <Route path="/notifications" element={<AccountSettings />} />
+          <Route path="/password-and-security" element={<AccountSettings />} />
+          <Route path="/choose-plan" element={<AccountSettings />} />
         </Routes>
       </div>
     </div>
