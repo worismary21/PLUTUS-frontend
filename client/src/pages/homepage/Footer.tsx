@@ -1,7 +1,6 @@
 import { PiLinkedinLogoThin } from "react-icons/pi";
-import { BiLogoInstagram } from "react-icons/bi";
 import { PiTwitterLogoThin } from "react-icons/pi";
-import { BsFacebook } from "react-icons/bs";
+import { BsFacebook, BsInstagram } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -54,51 +53,72 @@ const Footer = () => {
     // //   </div>
     // // </div>
     <footer className="bg-[#082151] mt-20">
-      <div className="flex justify-end pt-5 pb-5 gap-5 pr-10">
+      <div className="flex justify-end pt-8 pb-8 gap-5 pr-10">
         <input
           type="text"
           placeholder="Enter your email"
-          className="text-gray-800 w-[20%] rounded-full h-10"
+          className="text-gray-800 w-[20%] rounded-full h-10 p-3"
         />
-        <button className="bg-teal-100 rounded-full text-black w-40">
+        <button className="bg-teal-100 hover:scale-110 hover:bg-teal-200 rounded-full text-black w-40">
           Subscribe
         </button>
       </div>
       <hr />
-      <div className="text-white grid grid-cols-4 mt-10 text-center pb-10 gap-20">
-        <div className="flex flex-wrap text-start">
+      <div className="text-white lg:grid lg:grid-cols-4 mt-10 text-center pb-10 gap-20">
+        <div className=" flex-wrap text-start">
           <h1 className="text-2xl pl-10">Plutus</h1>
           <div className="flex p-5 rounded-lg">
-            <BiLogoInstagram size={40} />
-            <BsFacebook size={40}/>
-            <PiLinkedinLogoThin size={40}/>
-            <PiTwitterLogoThin size={40}/>
+            <Link to={"#"}>
+              {" "}
+              <div className="hover:scale-125">
+                <BsFacebook size={40} />
+              </div>
+            </Link>
+            <Link to={"#"}>
+              {" "}
+              <div className="hover:scale-125">
+                {" "}
+                <PiLinkedinLogoThin size={40} />
+              </div>
+            </Link>
+            <Link to={"#"}>
+              {" "}
+              <div className="hover:scale-125">
+                <PiTwitterLogoThin size={40} />
+              </div>
+            </Link>
+            <Link to={"#"}>
+              {" "}
+              <div className="hover:scale-125">
+                <BsInstagram size={40} />
+              </div>
+            </Link>
           </div>
         </div>
 
         <div className="flex flex-wrap text-start">
           <h1>Help</h1>
           <div className="text-gray-400 flex flex-wrap text-start">
-          <Link to={"#"}>FAQ</Link>
-          <Link to={"#"}>Customer Service</Link>
-          <Link to={"#"}>How to guides</Link>
+            <Link to={"#"}>FAQ</Link>
+            <Link to={"#"}>Customer Service</Link>
+            <Link to={"#"}>How to guides</Link>
           </div>
         </div>
 
         <div className="flex flex-wrap text-start">
           <h1>Other</h1>
           <div className="text-gray-400 flex flex-wrap text-start">
-          <Link to={"#"}>Privacy Policy</Link>
-          <Link to={"#"}>Sitemap</Link>
-          <Link to={"#"}>Subscriptions</Link>
+            <Link to={"#"}>Privacy Policy</Link>
+            <Link to={"#"}>Sitemap</Link>
+            <Link to={"#"}>Subscriptions</Link>
           </div>
         </div>
 
         <div className="flex flex-wrap text-start">
           <h1>Contact us</h1>
           <div className="text-gray-400 flex flex-wrap text-start">
-          <p>plutus@gmail.com</p>
-          <p>+234 111 222 333</p>
+            <p>plutus@gmail.com</p>
+            <p>+234 111 222 333</p>
           </div>
         </div>
       </div>
