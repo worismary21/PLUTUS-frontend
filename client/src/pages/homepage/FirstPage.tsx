@@ -9,14 +9,14 @@ const FirstPage = () => {
     <>
       <div>
         <nav>
-          <div className="flex mx-40 pt-10 mb-3">
+          <div className="flex flex-col lg:flex-row lg:mx-40 pt-10 mb-3 hidden lg:flex">
             <div>
               <h1 className="w-full text-3xl font-bold text-white z-10 w-0">
                 Plutus.
               </h1>
               <p className="text-white z-40 font-bold">Online Banking</p>
             </div>
-            <div className="flex text-[#4770ff] font-bold ml-20">
+            <div className="flex flex-col lg:flex-row  text-[#4770ff] font-bold lg:ml-20">
               <Link
                 to="/signup"
                 className="p-4 mr-10  bg-white w-40 hover:bg-blue-200 hover:scale-110 py-2 px-4 rounded-full z-10 h-[90%] pt-4"
@@ -30,7 +30,7 @@ const FirstPage = () => {
                 <button>Login</button>
               </Link>
             </div>
-            <div className="md:hidden">
+            <div className="md:hidden relative z-[5]">
               <button className="text-white">
                 <GiHamburgerMenu />
               </button>

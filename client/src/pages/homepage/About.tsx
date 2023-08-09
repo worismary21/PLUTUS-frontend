@@ -5,7 +5,7 @@ import arrow from "./images/arrow_forward.png";
 const About = () => {
   return (
     <div>
-      <div className="flex">
+      <div className="flex flex-col lg:flex-row">
         <div className="">
           <h1 className="text-3xl font-bold">Personalize your credit card</h1>
           <p className="mt-3">
@@ -21,17 +21,17 @@ const About = () => {
             <img src={arrow} className="h-6 w-6" />
           </button>
         </div>
-        <div className="ml-40">
+        <div className="lg:ml-40">
           <img src={atmCard} alt="" className=" rounded-lg " />
         </div>
       </div>
 
-      <div className="flex mt-20">
+      <div className="flex flex-col md:flex-row mt-20">
         <div className="">
           <img src={penCard} className="h-[100%] w-[90%] rounded-lg " />
         </div>
 
-        <div className="pl-10">
+        <div className="lg:pl-10">
           <h1 className="text-3xl font-bold">Investment made simple</h1>
           <p className="mt-3">
             Our financial advisors are here to guide you through the investment

@@ -64,8 +64,8 @@ const Footer = () => {
         </button>
       </div>
       <hr />
-      <div className="text-white grid grid-cols-4 mt-10 text-center pb-10 gap-20">
-        <div className="flex flex-wrap text-start">
+      <div className="text-white lg:grid lg:grid-cols-4 mt-10 text-center pb-10 gap-20">
+        <div className=" flex-wrap text-start">
           <h1 className="text-2xl pl-10">Plutus</h1>
           <div className="flex p-5 rounded-lg">
             <Link to={"#"}>
