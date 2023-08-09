@@ -18,7 +18,7 @@ const DashboardHome = () => {
 
   return (
     <>
-      <div className="flex flex-row w-full h-full">
+      <div className="flex flex-row w-full h-full ml-[4%]">
         <div className="flex flex-col p-10">
           <div className="  flex flex-row mb-5">
             <div className="content w-full h-48 p-4 mr-5">

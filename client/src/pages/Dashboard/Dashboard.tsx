@@ -15,10 +15,7 @@ const Dashboard = () => {
       <div>
         <Navbar />
         <Routes>
-<<<<<<< HEAD
-                <Route path="/dashboardHome" element={<DashboardHome />} />
-                <Route path="/transfer" element={<Transfer />} />
-=======
+          <Route path="/dashboardHome" element={<DashboardHome />} />
           <Route path="" element={<DashboardHome />} />
           <Route path="/transfer" element={<Transfer />} />
           <Route path="/investment" element={<Investment />} />
@@ -29,7 +26,6 @@ const Dashboard = () => {
           <Route path="/notifications" element={<AccountSettings />} />
           <Route path="/password-and-security" element={<AccountSettings />} />
           <Route path="/choose-plan" element={<AccountSettings />} />
->>>>>>> 8a67b1a12973a7b4fd6a21ea8d682bdaf1fa976d
         </Routes>
       </div>
     </div>

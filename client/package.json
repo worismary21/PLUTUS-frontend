@@ -25,10 +25,7 @@
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
-=======
     "react-google-charts": "^4.0.1",
->>>>>>> 8a67b1a12973a7b4fd6a21ea8d682bdaf1fa976d
     "react-icons": "^4.10.1",
     "react-otp-input": "^3.0.4",
     "react-redux": "^8.1.2",
