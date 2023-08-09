@@ -38,6 +38,9 @@ function App() {
      <Route path='*' element={<Error404 />}/>
      <Route path='/changePasswordConfirm' element={<ChangePass2 />}/>  
      <Route path='/dashboard/*' element={<Dashboard />} />
+
+
+
      
       </Routes>
      </BrowserRouter> 

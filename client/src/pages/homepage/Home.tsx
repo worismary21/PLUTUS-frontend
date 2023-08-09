@@ -4,7 +4,7 @@ import { BiLogoPlayStore } from "react-icons/bi";
 
 const Home = () => {
   return (
-    <div className="text-white">
+    <div className="text-white w-full">
       <div className="max-w-[800px] mt-[-150px] w-full h-screen mx-auto text-center flex flex-col justify-center">
         <h1 className="text-5xl font-bold text-white z-10 hover:none">
           Simple and Safe Banking
@@ -13,20 +13,20 @@ const Home = () => {
           Approved by millions of Users Worldwide
         </p>
 
-        <div className="z-10 flex mt-20 h-10 w-80 items-center ml-60">
+        <div className="z-10 flex mt-20 h-10 w-80 items-center ml-[25%]">
           <button className="bg-white hover:bg-blue-200 hover:scale-110 text-black flex pt-3 mr-5 rounded-lg h-15 text-xs">
             <AiFillApple size={30} />
-            <div className="mr-5 w-40 mb-3">
+            <div className="mr-5 w-44 mb-3 text-start">
               <p>Download on</p>
-              <p className="text-bold">App Store</p>
+              <p className="font-bold">App Store</p>
             </div>
           </button>
 
           <button className="bg-white hover:bg-blue-200 hover:scale-110 text-black flex pt-3 rounded-lg text-xs">
             <BiLogoPlayStore size={30} />
-            <div className="mr-5 w-40 mb-3">
+            <div className="mr-5 w-44 mb-3 text-start">
               <p>Get on</p>
-              <p className="text-bold">Google Play</p>
+              <p className="font-bold">Google Play</p>
             </div>
           </button>
         </div>

@@ -2,6 +2,7 @@ import React from "react";
 import pics from "./images/pic.svg";
 import num from "./images/num.svg";
 import world from "./images/world.svg";
+import About from "./About";
 
 const SecondPage = () => {
   return (
@@ -43,6 +44,10 @@ const SecondPage = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div>
+        <About />
       </div>
     </section>
   );

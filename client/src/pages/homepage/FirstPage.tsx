@@ -2,13 +2,14 @@ import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import SignUp from "../signUp/signUp";
 import Login from "../login/login";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const FirstPage = () => {
   return (
     <>
       <div>
         <nav>
-          <div className="flex mx-40 pt-10">
+          <div className="flex mx-40 pt-10 mb-3">
             <div>
               <h1 className="w-full text-3xl font-bold text-white z-10 w-0">
                 Plutus.
@@ -28,6 +29,11 @@ const FirstPage = () => {
               >
                 <button>Login</button>
               </Link>
+            </div>
+            <div className="md:hidden">
+              <button className="text-white">
+                <GiHamburgerMenu />
+              </button>
             </div>
           </div>
         </nav>
