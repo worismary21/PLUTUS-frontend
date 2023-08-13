@@ -3,27 +3,36 @@
 import TransactionsList from "./TransactionsList";
 import { transaction } from "./TransactionsList";
 import SpendingYGraph from "./SpendingYGraph";
+import SpendingXGraph from "./SpendingXGraph"
 import CheckingAccount from "./CheckingAccount";
 import MasterCard from "./MasterCard";
 
 interface Props {
   userTransactions: transaction[];
+  userDetails: any;
 }
-export default function Transactions({ userTransactions}: Props) {
+export default function Transactions({ userTransactions, userDetails}: Props) {
   return (
+    <>
     <div className='flex justify-between'>
-      <div>
+      <div className="ml-20 h-screen">
         <div className='flex justify-between'>
-          <CheckingAccount accBalance={10000}/>
-          <MasterCard accBalance={10000} cardDetails='2345 7689 9005 4222'/>
+          <CheckingAccount userDetails={userDetails}/>
+          <MasterCard userDetails={userDetails}/>
         </div >
+        <div className="" >
         <div className="">
-        <SpendingYGraph userTransactions={userTransactions}/>
+        {/* <SpendingYGraph userTransactions={userTransactions}/> */}
+        </div>
+        <div className="">
+        {/* <SpendingXGraph userTransactions={userTransactions}></SpendingXGraph> */}
+        </div>
         </div>
       </div>
     <div className="w-2/5">
     <TransactionsList userTransactions={userTransactions}/>
     </div>
     </div>
+    </>
   );
 }

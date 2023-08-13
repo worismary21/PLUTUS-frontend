@@ -1,9 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable react-hooks/exhaustive-deps */
+// import React from 'react'
 import * as Plot from "@observablehq/plot";
 import { useRef, useEffect /*useState, LegacyRef*/ } from "react";
 import { transaction } from "./TransactionsList";
 
-export interface sorted {
+interface sorted {
   expense: string;
   value: number;
 }
@@ -32,24 +38,25 @@ export default function SpendingYGraph({ userTransactions }: Props) {
 
   const plotRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
+    console.log(countedArray)
     const barChart = Plot.plot({
       marks: [
-        Plot.barY(countedArray, {
+        Plot.barX(countedArray, {
           x: "expense",
           y: "value",
         }),
       ],
-    //   y: { grid: true },
+      // y: { grid: true },
     });
     if (plotRef.current) {
       plotRef.current.append(barChart);
       return () => barChart.remove();
     }
-  }, [countedArray]);
+  }, [userTransactions]);
   return (
     <>
     <h1>Spending Overview</h1>
-  <div ref={plotRef}></div>;
+  <div ref={plotRef} className=""></div>;
   </>
   )
 }

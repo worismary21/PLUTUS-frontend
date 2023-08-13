@@ -1,84 +1,143 @@
 // import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import DashboardHome from './DashboardHome'
-import Transfer from './Transfer/Transfer'
-import Navbar from './Navbar'
-import Sidebar from './Sidebar'
+
 import Savings from './Transfer/Savings'
 import Transactions from './Transactions/Transactions'
 import { transaction } from "./Transactions/TransactionsList";
+import { Route, Routes } from "react-router-dom";
+import Investment from "./Investment/Investment";
+import DashboardHome from "./DashboardHome";
+import Transfer from "./Transfer/Transfer";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
+import AccountSettings from "../accountSettings/accountSetting";
 
 const Dashboard = () => {
 
-  const transactions: transaction[] = [{user: "tony markle",
-  otherUser: "Central Burger",
-  userTotalBalance: 10000,
-  amount: -189.36,
-  type: "Quick Transfer",
-  date: new Date(),
-  id: "dubqidg82392t38"
-}, {user: "tony markle",
-userTotalBalance: 10000,
-otherUser: "The Market",
-amount: -92.50,
-type: "Groceries",
-date: new Date(),
-id: "uwqueufh72389kqd"
+  const transactions: transaction[] = [{id: "uwuuuiwiwow123",
+    accountNumber: 2636326829,
+    amount: 200,
+    transfer_purpose: "food",
+    beneficiary_name: "tolu stacks",
+    beneficiary_email: "tolustacks@gmail.com",
+    payer_reference: "suosodnjosbidwu",
+    information_for_beneficiary: "subdbybybaybaybs",
+    status: "sucessful",
+    senderId: "string"
+}, {id: "uwuuuiwiwow123",
+accountNumber: 2636326829,
+amount: 200,
+transfer_purpose: "food",
+beneficiary_name: "tolu stacks",
+beneficiary_email: "tolustacks@gmail.com",
+payer_reference: "suosodnjosbidwu",
+information_for_beneficiary: "subdbybybaybaybs",
+status: "sucessful",
+senderId: "string"
 },
-{user: "tony markle",
-userTotalBalance: 10000,
-  otherUser: "Quick Transfer",
-  amount: 350,
-  type: "Quick Transfer",
-  date: new Date(),
-  id: "dubqidg82392t38"
+{id: "uwuuuiwiwow123",
+    accountNumber: 2636326829,
+    amount: 200,
+    transfer_purpose: "food",
+    beneficiary_name: "tolu stacks",
+    beneficiary_email: "tolustacks@gmail.com",
+    payer_reference: "suosodnjosbidwu",
+    information_for_beneficiary: "subdbybybaybaybs",
+    status: "sucessful",
+    senderId: "string"
 },
-{user: "tony markle",
-userTotalBalance: 10000,
-otherUser: "The Market",
-amount: -36,
-type: "Groceries",
-date: new Date(),
-id: "dubqidg82392t38"
+{id: "uwuuuiwiwow123",
+    accountNumber: 2636326829,
+    amount: 200,
+    transfer_purpose: "food",
+    beneficiary_name: "tolu stacks",
+    beneficiary_email: "tolustacks@gmail.com",
+    payer_reference: "suosodnjosbidwu",
+    information_for_beneficiary: "subdbybybaybaybs",
+    status: "sucessful",
+    senderId: "string"
 },
-{user: "tony markle",
-userTotalBalance: 10000,
-  otherUser: "Central Burger",
-  amount: -18.40,
-  type: "Cafe and Resturant",
-  date: new Date(),
-  id: "dubqidg82392t38"
+{id: "uwuuuiwiwow123",
+accountNumber: 2636326829,
+amount: 200,
+transfer_purpose: "food",
+beneficiary_name: "tolu stacks",
+beneficiary_email: "tolustacks@gmail.com",
+payer_reference: "suosodnjosbidwu",
+information_for_beneficiary: "subdbybybaybaybs",
+status: "sucessful",
+senderId: "string"
 },
-{user: "tony markle",
-userTotalBalance: 10000,
-  otherUser: "Quick Transfer",
-  amount: 350,
-  type: "Cafe and Resturant",
-  date: new Date(),
-  id: "dubqidg82392t38"
+{id: "uwuuuiwiwow123",
+    accountNumber: 2636326829,
+    amount: 200,
+    transfer_purpose: "food",
+    beneficiary_name: "tolu stacks",
+    beneficiary_email: "tolustacks@gmail.com",
+    payer_reference: "suosodnjosbidwu",
+    information_for_beneficiary: "subdbybybaybaybs",
+    status: "sucessful",
+    senderId: "string"
+},
+{id: "uwuuuiwiwow123",
+    accountNumber: 2636326829,
+    amount: 200,
+    transfer_purpose: "food",
+    beneficiary_name: "tolu stacks",
+    beneficiary_email: "tolustacks@gmail.com",
+    payer_reference: "suosodnjosbidwu",
+    information_for_beneficiary: "subdbybybaybaybs",
+    status: "sucessful",
+    senderId: "string"
+},
+{id: "uwuuuiwiwow123",
+    accountNumber: 2636326829,
+    amount: 200,
+    transfer_purpose: "food",
+    beneficiary_name: "tolu stacks",
+    beneficiary_email: "tolustacks@gmail.com",
+    payer_reference: "suosodnjosbidwu",
+    information_for_beneficiary: "subdbybybaybaybs",
+    status: "sucessful",
+    senderId: "string"
 }
 ]
 
+const userDetails = {
+  fullName: "tolu bands",
+  cardNumber: "4444 4444 4444 4444",
+  accountBalance: 10000,
+  cardexp: "2/28"
+
+}
+
 
   return (
-    <div style={{display:"flex"}} >
-        
-        <Sidebar />
-        <div>
-            <Navbar />
+    <div style={{ display: "flex", overflowX: "hidden" }}>
+      <Sidebar />
+      <div>
+        <Navbar />
         <Routes>
                 <Route path="" element={<DashboardHome />} />
                 <Route path="/transfer" element={<Transfer />} />
                 <Route path="/transfer/savings" element={<Savings />} />
-                <Route path="/transactions" element={<Transactions userTransactions={transactions}/>}/>
+                <Route path="/transactions" element={<Transactions userTransactions={transactions} userDetails ={userDetails}/>}/>
 
 
+          <Route path="/dashboardHome" element={<DashboardHome />} />
+          <Route path="" element={<DashboardHome />} />
+          <Route path="/transfer" element={<Transfer />} />
+          <Route path="/investment" element={<Investment />} />
+          <Route path="" element={<DashboardHome />} />
+          <Route path="/transfer" element={<Transfer />} />
+          <Route path="/transfer/savings" element={<Savings />} />
+          <Route path="/accountSettings" element={<AccountSettings />} />
+          <Route path="/notifications" element={<AccountSettings />} />
+          <Route path="/password-and-security" element={<AccountSettings />} />
+          <Route path="/choose-plan" element={<AccountSettings />} />
         </Routes>
-
-        </div>
-       
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

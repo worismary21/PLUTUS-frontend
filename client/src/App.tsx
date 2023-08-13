@@ -16,6 +16,7 @@ import Homepage from './pages/homepage/Homepage';
 // import React from 'react';
 
 
+
 function App() {
 
   return (
@@ -28,6 +29,7 @@ function App() {
           closeOnClick     
           pauseOnHover={false}      
         />
+   
       <Routes>
         <Route path='/' element={<Homepage />} />
        <Route path='/signup' element={<SignUp />}/>
@@ -41,9 +43,6 @@ function App() {
      <Route path='/dashboard/*' element={<Dashboard />} />
      {/* <Route path="/transactions" element={<Transactions/>}/> */}
 
-
-
-     
       </Routes>
      </BrowserRouter> 
      </>
