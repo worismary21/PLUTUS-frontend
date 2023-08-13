@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState } from "react";
@@ -34,7 +35,7 @@ function changePass() {
   };
 
   const handleVerify = async (e: any) => {
-    e.preventDefault();
+//     e.preventDefault();
     // const otpResponse = await changePassword(otp)
     // console.log("otp", otpResponse)
   };
@@ -58,7 +59,7 @@ function changePass() {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [seconds]);
 
   const sendOTP = () => {
     setMinutes(4);
