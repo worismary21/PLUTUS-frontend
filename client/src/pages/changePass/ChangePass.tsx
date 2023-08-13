@@ -81,7 +81,7 @@ function changePass() {
         <div className={change.rightSide}>
           <div className={change.logo}>
             <h2>Plutus</h2>
-            <p>Online Banking</p>
+            <p>Online Bankin</p>
           </div>
           {!modal && (
             <div className={change.content}>
