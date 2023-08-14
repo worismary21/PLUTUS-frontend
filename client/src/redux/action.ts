@@ -57,9 +57,8 @@ export const transferFunds = createAsyncThunk(
   async (formData: any, { dispatch }:any) => {
     try {
       dispatch(fetchDataStart(true));
-      const response = await apiPost("/transfer", formData);
+      const response = await apiPost("/transfer/transactions", formData);
       console.log('resp', response)
-      localStorage.setItem("token", response.data.token);
       toast.success("transfer successful");
 
       // setTimeout(() => {
@@ -72,6 +71,43 @@ export const transferFunds = createAsyncThunk(
     }
   }
 );
+
+  /**============== Transfer Money to Savings Wallet=======  **/
+  export const savingswallet = createAsyncThunk(
+  "saveImages",
+  async (formData:any, { dispatch }:any) => {
+    try {
+      dispatch(fetchDataStart(true));
+      const response = await apiPut(`/transfer/savings`, formData);
+      toast.success(response.data.message);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+      dispatch(fetchDataFailure(error.response.data.message));
+    }
+  }
+);
+
+  /**============== Transfer Money to Investment Company =======  **/
+
+  export const transferInvestment = createAsyncThunk(
+    "transferInvestment",
+    async (formData: any, { dispatch }:any) => {
+      try {
+        dispatch(fetchDataStart(true));
+        const response = await apiPost("/transfer/investment", formData);
+        console.log('resp', response)
+        toast.success("transfer successful");
+  
+        // setTimeout(() => {
+        //   window.location.href = "/verify";
+        // }, 2000);
+      } catch (error: any) {
+        console.log(error)
+        toast.error(error.response.data.message);
+        dispatch(fetchDataFailure(error.response.data.message));
+      }
+    }
+  );
 
 
 export const verifyUser = createAsyncThunk(

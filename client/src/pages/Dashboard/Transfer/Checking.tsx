@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
-import { AiOutlineCaretUp, AiOutlineCaretDown } from "react-icons/ai";
+// import { AiOutlineCaretUp, AiOutlineCaretDown } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import share from "./assets/share.svg";
 import transaction from "./assets/transaction.svg";
@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 const Checking = () => {
  const [formData, setFormData] = useState({
     accountNumber:"",
-    amount:0,
+    amount:"",
     transfer_purpose:"",
     beneficiary_name:"",
     beneficiary_email:"",
@@ -20,21 +20,31 @@ const Checking = () => {
     information_for_beneficiary:""
   })
 
-  const [isOpen, setIsOpen] = useState(false);
+//   const [isOpen, setIsOpen] = useState(false);
 
   const dispatch = useDispatch() as unknown as any
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    if(name === "amount"){
+        setFormData({
+            ...formData,
+            [name]: +value 
+          });
+          console.log(formData)
+    }else{
+        setFormData({
+            ...formData,
+            [name]: value,
+          });
+    }
+    
   };
 //   console.log(formData);
 
   const handleSubmit = async(e:any) => {
     e.preventDefault()
+    console.log(formData)
     dispatch(transferFunds(formData))
 
   }
@@ -45,20 +55,20 @@ const Checking = () => {
       <h3 className="mb-5 font-bold text-lg">Select Payer</h3>
      <div className="relative">
       <button
-        onClick={() => setIsOpen((prev) => !prev)}
+        // onClick={() => setIsOpen((prev) => !prev)}
         className="bg-slate-900 p-4 w-full items-center flex 
         justify-between font-bold text-white tracking-wider 
         border-4 border-transparent active:border-white duration-300 
         active:text-white"
       >
-        CheckingAccount
-        {!isOpen ? (
+        Checking Account
+        {/* {!isOpen ? (
           <AiOutlineCaretDown className="h-3" />
         ) : (
           <AiOutlineCaretUp className="h-3" />
-        )}
+        )} */}
       </button>
-      {isOpen && (
+      {/* {isOpen && (
         <div className="bg-gray-200 absolute top-20 flex flex-col items-start  p-2 w-full">
           <div
             className=" hover:bg-slate-500 cursor-pointer rounded-r-lg hover:border-l-white border-l-4
@@ -73,11 +83,11 @@ const Checking = () => {
                 border-l-transparent"
           >
             <h3 className="font-bold text-gray">
-              <Link to="/dashboard/transfer/savings">Savings Account</Link>
+              <Link to="/dashboard/transfer/savings">Savings Wallet</Link>
             </h3>
           </div>
         </div>
-      )}
+      )} */}
       </div>
       <div className="bg-slate-900 mt-7">
         <div className="m-5">
@@ -137,8 +147,10 @@ const Checking = () => {
         </div>
         <div className="mt-10 lg:hidden md:hidden">
       <h3 className="mb-5 font-bold text-lg">Transfer to</h3>
-        <span className="text-sm">Own account</span>
-        <span className="text-sm ml-5">Other account</span>
+      <Link to="/dashboard/transfer/savings" className="text-sm">Savings</Link><br />
+      <Link to="/dashboard/transfer/investment" className="text-sm ml-5">Investment</Link><br />
+        <Link to="/dashboard/transfer" className="text-sm ml-5">Other account</Link>
+
         <div className="border-solid border-2 border-gray-100 mt-7"></div>
 
 
@@ -224,8 +236,10 @@ const Checking = () => {
     </div>
     <div className="ml-10 lg:w-[680px] md:w-[200px] hidden lg:block md:block">
       <h3 className="mb-5 font-bold text-lg">Transfer to</h3>
-        <span className="text-sm">Own account</span>
-        <span className="text-sm ml-5">Other account</span>
+        <Link to="/dashboard/transfer/savings" className="text-sm">Savings</Link>
+        <Link to="/dashboard/transfer/investment" className="text-sm ml-5 break-after-all">Investment</Link>
+        <Link to="/dashboard/transfer" className="text-sm ml-5">Other account</Link>
+
         <div className="border-solid border-2 border-gray-100 mt-3"></div>
 
         <form action="" onSubmit={handleSubmit} className="flex flex-col mt-7">
@@ -243,7 +257,7 @@ const Checking = () => {
             />
             <input
             className="mt-6 w-full"
-              type="text"
+              type="number"
               name={"amount"}
               onChange={handleChange}
               value={formData.amount}
