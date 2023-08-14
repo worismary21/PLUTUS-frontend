@@ -1,5 +1,5 @@
 
-import graph from "../../assets/graph.png"
+// import graph from "../../assets/graph.png"
 import ProgressBar from './ProgressBar';
 import {
   BsFillArrowUpCircleFill, 
@@ -7,7 +7,7 @@ import {
   BsCaretDownFill,
 } from "react-icons/bs"
 import {FaGreaterThan, FaLessThan, FaPlane} from 'react-icons/fa'
-import "../../App.css";
+import "../../../App.css";
 import "./DashboardHome.css";
 
 
