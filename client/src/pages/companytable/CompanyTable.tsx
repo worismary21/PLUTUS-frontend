@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useEffect, useState } from 'react';
 import emptyProduct from './CompanyData';
+import { getCompanies } from '../../redux/action';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 interface Company {
   id: number;
@@ -13,6 +18,37 @@ const CompanyTable: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [companyData, setCompanyData] = useState<Company[]>(emptyProduct);
 
+  // const [comp, setComp] = useState<any[]>([])
+
+  // const getCompanies = async() => {
+  //   try{
+  //     const response = await axios.get(`${baseUrl}/company/get-companies`)
+  //     console.log('resppp ++++++', response)
+  //     setComp(response.data.company)
+  //   }catch(error){
+  //     console.log(error)
+  //   }
+  
+  // }
+
+  // console.log("company", comp)
+
+  // useEffect(() => {
+  //   getCompanies()
+  // }, [])
+const dispatch = useDispatch() as unknown as any
+
+const companies = useSelector((state:any) => state.company)
+
+
+console.log(companies)
+
+  useEffect(() => {
+    dispatch(getCompanies())
+  }, [])
+
+
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
@@ -24,7 +60,7 @@ const CompanyTable: React.FC = () => {
 
   const startIndex = (currentPage - 1) * companiesPerPage;
   const endIndex = startIndex + companiesPerPage;
-  const companiesToDisplay = companyData.slice(startIndex, endIndex);
+  const companiesToDisplay = companies.slice(startIndex, endIndex);
 
   return (
     <div className='p-4 md:p-8 lg:p-16'>
@@ -41,7 +77,7 @@ const CompanyTable: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {companiesToDisplay.map((company) => (
+            {companiesToDisplay?.map((company:any) => (
               <tr key={company.id} className='border-b hover:bg-gray-100'>
                 <td className='py-2 px-4'>{company.id}</td>
                 <td className='py-2 px-4'>{company.companyName}</td>
