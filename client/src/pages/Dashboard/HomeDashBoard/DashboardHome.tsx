@@ -1,6 +1,6 @@
 
-import TransactionChart from "./TransactionChart";
-import TransactionsHome from "./TransactionsHome";
+// import TransactionChart from "./TransactionChart";
+// import TransactionsHome from "./TransactionsHome";
 // import graph from "../../assets/graph.png"
 import ProgressBar from './ProgressBar';
 import {
@@ -12,11 +12,14 @@ import {
 import {FaGreaterThan, FaLessThan, FaPlane} from 'react-icons/fa'
 import "../../../App.css";
 import "./DashboardHome.css";
-import Add from "../../assets/Add new.svg"
-import Karen from "../../assets/Karen Potter.jpeg"
-import Leonard from "../../assets/Leonard Smith.jpeg"
-import Maria from "../../assets/Maria Purple.jpeg"
-import Oscar from "../../assets/Oscar Wild.jpeg"
+import Add from "../../../assets/Add new.svg"
+import Karen from "../../../assets/Karen Potter.jpeg"
+import Leonard from "../../../assets/Leonard Smith.jpeg"
+import Maria from "../../../assets/Maria Purple.jpeg"
+import Oscar from "../../../assets/Oscar Wild.jpeg"
+import TransactionsHome from '../TransactionsHome';
+import TransactionChart from '../TransactionChart';
+import TransactionsList from '../Transactions/mainCode/TransactionsList';
 
 
 
@@ -194,12 +197,12 @@ const DashboardHome = () => {
 
         <div className=" w-3/5 h-3/4">
           <div className="h-3/4">
-            <TransactionsHome />
-              <div className="flex flex-row w-44 pl-5">
+              {/* <div className="flex flex-row w-44 pl-5">
               <p className="mr-3">All</p>
               <p className="mr-3">Expenses</p>
               <p>Income</p>
-              </div>
+              </div> */}
+            <TransactionsList userTransactions={[]} userDetails={undefined}/>
             </div>
             
           {/* <div className=" bg-gray-800  px-20 mt-7"> 
