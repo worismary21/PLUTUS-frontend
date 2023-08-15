@@ -6,6 +6,8 @@ import Transfer from "./Transfer/Transfer";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Savings from "./Transfer/Savings";
+import Invest from "./Transfer/investment"
+import AddBeneficiary from "./Transfer/AddBeneficiary"
 import AccountSettings from "./accountSettings/accountSetting";
 
 const RoutesDashBoard = () => {
@@ -24,6 +26,10 @@ const RoutesDashBoard = () => {
           <Route path="/notifications" element={<AccountSettings />} />
           <Route path="/password-and-security" element={<AccountSettings />} />
           <Route path="/choose-plan" element={<AccountSettings />} />
+          <Route path="/transfer/investment" element={<Invest />} />
+          <Route path="/transfer/addbeneficiary" element={<AddBeneficiary />} />
+
+
         </Routes>
       </div>
     </div>

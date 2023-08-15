@@ -69,7 +69,7 @@ const DashboardHome = () => {
             </div>
           </div>
           <div className="h-96 mb-2">
-            <img src={graph} alt="graph" />
+            {/* <img src={graph} alt="graph" /> */}
           </div>
           <div className="flex flex-row"> 
             <div className="goals h-40 p-4 mr-5 w-1/2">
