@@ -7,10 +7,6 @@ import picture from "./images/logo.png"
 import { Link } from 'react-router-dom'
 // import { ToastContainer, toast } from 'react-toastify';
 
-
-
-
-
 function ChangePass2() {
 
 const [changePasswordDataValue, setChangePasswordDataValue] = useState({})
@@ -23,9 +19,8 @@ const handleInputChange = (e: any) => {
           ...changePasswordDataValue,
           [e.target.name]: e.target.value
      })
-
 }
-     
+
 const handleRegister = async (e: any) => {
      e.preventDefault()
      if( e.target.newPassword !== e.target.changePassword){
@@ -57,17 +52,14 @@ console.log("data", changePasswordDataValue )
                          <input type='password' placeholder='Old Password' name='oldPassword' required onChange={handleInputChange}  className={change.inputEmail} ></input>
                          <input type='password' placeholder='New Password' name='newPassword'  required onChange={handleInputChange} className={change.inputEmail}></input>
                          <input type='password' placeholder='Confirm Password' name='confirmPassword' required onChange={handleInputChange}  className={change.inputEmail}></input>
-                         <Link to="/changePassword">
+                         <Link to="/dashBoard/accountSettings">
                               <button className={change.button} >Submit</button>
                               {/* <ToastContainer /> */}
                          </Link>
                     </form>
                </div>
           </div>
-
      </div>
-
-
     </>
   )
 }

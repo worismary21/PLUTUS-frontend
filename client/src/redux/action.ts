@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {  apiDelete, apiGet, apiPatch, apiPost, apiPut, formDataPatch } from "../utils/axios";
-import { fetchDataFailure, fetchDataStart,  fetchDataUser} from "./reducers";
+import {  fetchDataCompany, fetchDataFailure, fetchDataStart,  fetchDataUser} from "./reducers";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -16,14 +16,23 @@ export const loginUser = createAsyncThunk(
   async (formData: LoginData, { dispatch }:any) => {
     try {
       dispatch(fetchDataStart(true));
+
+      //axios call
       const response = await apiPost("/user/login", formData);
       console.log(response)
+
+
+      //response check
       localStorage.setItem('token', response.data.token)
+      localStorage.setItem('role', response.data.role)
       toast.success("user login successful");
+
+      //redirect
       setTimeout(() => {
         window.location.href = "/dashboard";
       }, 2000);
     } catch (error: any) {
+      //error check
       toast.error('error loggin In');
       dispatch(fetchDataFailure(error.response.data.message));
     }
@@ -49,6 +58,30 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
+
+  /**============== Transfer Money =======  **/
+
+export const transferFunds = createAsyncThunk(
+  "transferFunds",
+  async (formData: any, { dispatch }:any) => {
+    try {
+      dispatch(fetchDataStart(true));
+      const response = await apiPost("/transfer", formData);
+      console.log('resp', response)
+      localStorage.setItem("token", response.data.token);
+      toast.success("transfer successful");
+
+      // setTimeout(() => {
+      //   window.location.href = "/verify";
+      // }, 2000);
+    } catch (error: any) {
+      console.log(error)
+      toast.error(error.response.data.message);
+      dispatch(fetchDataFailure(error.response.data.message));
+    }
+  }
+);
+
 
 export const verifyUser = createAsyncThunk(
   "verifyUser",
@@ -83,7 +116,6 @@ export const changePassword = createAsyncThunk(
     }
   }
 );
-
 
   /**==============Upload Photos=======  **/
 export const uploadPhotos = createAsyncThunk(
@@ -132,3 +164,21 @@ export const saveImages = createAsyncThunk(
       }
     }
   );
+
+
+  export const getCompanies= createAsyncThunk(
+    "getCompanies",
+    async (_, {dispatch}:any) => {
+      try {
+        //set loader true
+       dispatch(fetchDataStart(true))
+
+       //axios call
+       const response = await apiGet('/company/get-companies')
+       console.log(response.data)
+       
+       dispatch(fetchDataCompany(response.data.company))
+      } catch (error: any) {
+       console.log(error)
+    }
+  });

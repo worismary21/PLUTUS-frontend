@@ -5,6 +5,7 @@ import log from "./login.module.css";
 import Plutosimage1 from "./imagesforlogin/Plutosimage1.png";
 import { loginUser } from "../../redux/action";
 import { useDispatch } from "react-redux";
+import { Link } from 'react-router-dom'
 // import { useDispatch } from "react-redux";
 // import axios from "axios";
 
@@ -90,11 +91,13 @@ function Login() {
                 onChange={handleChange}
               />
             </div>
+       
             <button
             type = "submit" 
             className={log.btn1}>
-                {loading ? 'Loading...' : 'Login' }
+                Login
                 </button>
+  
                 {error &&(
                     <div>{error}</div>
                 )}
