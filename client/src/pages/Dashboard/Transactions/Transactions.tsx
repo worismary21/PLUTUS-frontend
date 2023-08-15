@@ -26,7 +26,7 @@ export default function Transactions({ userTransactions ,userDetails}: Props) {
 
   return (
     <>
-    <h6 className="bg-slate-900 ml-20 mb-5 mt-5 p-2 w-2/6 w-fit text-white">Checking Account</h6>
+    <h6 className="bg-slate-900 ml-20 mb-5 mt-5 p-2  w-fit text-white">Checking Account</h6>
     <div className='flex justify-between'>
       <div className="ml-20 h-full">
         <div className='flex justify-between h-3/5'>
@@ -34,7 +34,7 @@ export default function Transactions({ userTransactions ,userDetails}: Props) {
           <MasterCard userDetails={userDetails}/>
         </div >
         <div className="w-full flex flex-col" >
-        <div className="mb-5">
+        <div className="">
           <YBarChart userTransactions={userTransactions}></YBarChart>
         </div>
         <div className="">
