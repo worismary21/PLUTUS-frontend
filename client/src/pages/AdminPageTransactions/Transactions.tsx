@@ -39,14 +39,14 @@ function Transactions (){
         <div className="mt-12 releative w-full flex flex-col shadow-lg mb-6">
             <div className = "flex flex-wrap items-center">
                 <div className = "relative w-full px-4 max-w-full flex-grow">
-            <p className = "text-center text-xl decoration-from-font text-red-700">TRANSACTIONS FOR ALL USERS</p>
+            <p className = "text-center text-xl decoration-from-font text-black-700">TRANSACTIONS FOR ALL USERS</p>
             </div>
             </div>
 
             <div className = "block bg-transparent m-4 p-4 w-full overflow-x-auto">
             <table className = " border-2 w-6/12 ml-38 pt-px">
                 <thead>
-                    <tr className = "border border-solid border-l-0 bg-green-500">
+                    <tr className = "border border-solid border-l-0 bg-blue-500">
                         <th className = "text-md px-6 py-1">id</th>
                         <th className = "text-md px-6 py-1">accountNumber</th>
                         <th className = "text-md px-6 py-1">amount</th>
@@ -61,7 +61,7 @@ function Transactions (){
                 <tbody>
                     {
                         currentTransactions.map((val) => {
-                            return <tr className = "hover:bg-green-300 cursor-pointer bg-green-100" key = {val.id}>
+                            return <tr className = "hover:bg-blue-300 cursor-pointer bg-blue-100" key = {val.id}>
                             <td className = "text-sm  py-1 text-center w-80">{val.id}</td>
                             <td className = "text-sm px-6 py-1 text-center">{val.accountNumber}</td>
                             <td className = "text-sm px-6 py-1 text-center">{val.amount}</td>
@@ -70,7 +70,7 @@ function Transactions (){
                             <td className = "text-sm px-6 py-1 text-center">{val.beneficiary_email}</td>
                             <td className = "text-sm px-6 py-1 text-center">{val.status}</td>
                             <td className = "text-sm px-6 py-1 text-center">{val.senderId}</td>
-                            <td> <button type = "button" className = "bg-red-400 hover:bg-red-600" onClick = {() => handleClick(val.id)}>DELETE</button> </td>
+                            <td> <button type = "button" className = "bg-red-400 hover:bg-red-600 text-white" onClick = {() => handleClick(val.id)}>DELETE</button> </td>
                          </tr>
                         })
                     }

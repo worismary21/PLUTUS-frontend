@@ -40,7 +40,7 @@ function Pagination({ totalTransactions, postsPerPage, setCurrentPage, currentPa
     return (
       <div className="flex w-20 justify-center">
         {currentPage > 1 && (
-          <button className = "bg-green-700 px-4 rounded-2xl flex justify-center items-center mx-4 mt-4 hover:bg-red-700 text-white tracking-wide" onClick={goToPrevPage}>Prev</button>
+          <button className = "bg-blue-500 px-4 rounded-2xl flex justify-center items-center mx-4 mt-4 hover:bg-blue-700 text-white tracking-wide" onClick={goToPrevPage}>Prev</button>
         )}
   
         <button className = "mt-4 text-lg hover:text-red-700" onClick = {() => handleStartingClick()}>{`${pages[0]}>>`}</button>
@@ -51,7 +51,7 @@ function Pagination({ totalTransactions, postsPerPage, setCurrentPage, currentPa
             className={`rounded-2xl px-4 py-2 mx-1 ${
               page === currentPage
                 ? 'bg-red-700 text-white'
-                : 'bg-green-500 hover:bg-green-700 text-white'
+                : 'bg-blue-500 hover:bg-blue-700 text-white'
             }`}
             key={index}
             onClick={() => goToPage(page)}
@@ -64,7 +64,7 @@ function Pagination({ totalTransactions, postsPerPage, setCurrentPage, currentPa
         
   
         {currentPage < Math.ceil(totalTransactions / postsPerPage) && (
-          <button className = "bg-green-700 px-4 rounded-2xl flex justify-center items-center mx-4 mt-4 hover:bg-red-700 text-white tracking-wide" onClick={goToNextPage}>Next</button>
+          <button className = "bg-blue-500 px-4 rounded-2xl flex justify-center items-center mx-4 mt-4 hover:bg-blue-700 text-white tracking-wide" onClick={goToNextPage}>Next</button>
         )}
       </div>
     );
