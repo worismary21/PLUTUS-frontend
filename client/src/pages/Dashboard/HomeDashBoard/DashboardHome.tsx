@@ -1,6 +1,7 @@
 
 import TransactionChart from "./TransactionChart";
 import TransactionsHome from "./TransactionsHome";
+// import graph from "../../assets/graph.png"
 import ProgressBar from './ProgressBar';
 import {
   BsFillArrowUpCircleFill, 
@@ -9,13 +10,14 @@ import {
   BsFillBarChartFill,
 } from "react-icons/bs"
 import {FaGreaterThan, FaLessThan, FaPlane} from 'react-icons/fa'
-import "../../App.css";
+import "../../../App.css";
 import "./DashboardHome.css";
 import Add from "../../assets/Add new.svg"
 import Karen from "../../assets/Karen Potter.jpeg"
 import Leonard from "../../assets/Leonard Smith.jpeg"
 import Maria from "../../assets/Maria Purple.jpeg"
 import Oscar from "../../assets/Oscar Wild.jpeg"
+
 
 
 
