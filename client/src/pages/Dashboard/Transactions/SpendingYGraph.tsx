@@ -29,7 +29,7 @@ export default function SpendingYGraph({ userTransactions }: Props) {
   for (const key in sorting) {
     countedArray.push({ expense: key, value: sorting[key] });
   }
-
+  console.log(countedArray) 
   const plotRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     const barChart = Plot.plot({
@@ -45,7 +45,7 @@ export default function SpendingYGraph({ userTransactions }: Props) {
       plotRef.current.append(barChart);
       return () => barChart.remove();
     }
-  }, [countedArray]);
+  }, [userTransactions])
   return (
     <>
     <h1>Spending Overview</h1>

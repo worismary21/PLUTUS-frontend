@@ -19,7 +19,7 @@ interface Props {
   userTransactions: transaction[];
 }
 
-export default function SpendingYGraph({ userTransactions }: Props) {
+export default function SpendingXGraph({ userTransactions }: Props) {
   const sorting: Record<string, number> = {};
   const countedArray: sorted[] = [];
   const expenses: transaction[] = userTransactions.filter(
@@ -38,12 +38,12 @@ export default function SpendingYGraph({ userTransactions }: Props) {
 
   const plotRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
-    console.log(countedArray)
+    // console.log(countedArray)
     const barChart = Plot.plot({
       marks: [
         Plot.barX(countedArray, {
-          x: "expense",
-          y: "value",
+          x: "value",
+          y: "expense",
         }),
       ],
       // y: { grid: true },

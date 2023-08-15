@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState } from "react";
 export interface transaction {
   id: string;
   accountNumber: number;
@@ -17,18 +18,31 @@ export interface Props {
 }
 
 export default function TransactionsList({ userTransactions}: Props) {
+
+  const [transactions, setTransactions] = useState(userTransactions);
+  const expensesClick =()=>{
+    setTransactions(userTransactions.filter(transaction=> transaction.amount < 0))
+  }
+  const incomeClick =()=>{
+    setTransactions(userTransactions.filter(transaction=> transaction.amount > 0))
+  }
+  const allClick =()=>{
+    setTransactions(userTransactions)
+  }
+ 
+
   return (
     <>
       <h1 className="text-2xl text-left p-2">Transactions</h1>
-      <input type="text" placeholder="Search" className="w-full p-2" />
+      <input type="text" placeholder="Search" className="w-full p-2" onChange={(e)=>{setTransactions(userTransactions.filter(transaction=> transaction.beneficiary_name.toLowerCase().includes(e.target.value.toLowerCase())))}}/>
       <ul className="list-none">
       <div className="flex justify-start">
-          <h6 className="p-2">All</h6>
-          <h6 className="p-2">Expenses</h6>
-          <h6 className="p-2">Income</h6>
+          <button className="p-2" onClick={()=> allClick()}>All</button>
+          <button className="p-2" onClick={()=> expensesClick()}>Expenses</button>
+          <button className="p-2" onClick={()=> incomeClick()}>Income</button>
         </div>
         <div>
-          {userTransactions.map((transaction) => (
+          {transactions?.map((transaction) => (
             <li
               key={transaction.id}
               // className={
