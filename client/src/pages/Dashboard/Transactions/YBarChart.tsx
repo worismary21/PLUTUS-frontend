@@ -64,7 +64,7 @@ export default function YGraph({ userTransactions }: Props) {
 
   return (
     <>
-      <Bar data={data} options={options}></Bar>
+      <Bar height="100%" data={data} options={options}></Bar>
     </>
   );
 }

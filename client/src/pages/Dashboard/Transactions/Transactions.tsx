@@ -33,11 +33,11 @@ export default function Transactions({ userTransactions ,userDetails}: Props) {
           <CheckingAccount userDetails={userDetails}/>
           <MasterCard userDetails={userDetails}/>
         </div >
-        <div className="w-full" >
-        <div className="chart">
+        <div className="w-full flex flex-col" >
+        <div className="mb-5">
           <YBarChart userTransactions={userTransactions}></YBarChart>
         </div>
-        <div className="chart">
+        <div className="">
         <YBarChart userTransactions={userTransactions}></YBarChart>
         </div>
         </div>
