@@ -17,7 +17,7 @@ const Sidebar = () => {
     {name: "Transactions", link:'/dashboard/transactions', icon: BiTransfer},
     {name: "Accounts and Cards", link:'/dashboard/accountsandcards', icon: IoIosCard},
     {name: "Investment", link:'/dashboard/investment', icon: BsSave},
-    {name: "Settings", link:'/dashboard/settings', icon: FiSettings, margin: true},
+    {name: "Settings", link:'/dashboard/accountsettings', icon: FiSettings, margin: true},
     {name: "Log out", link:'/dashboard/logout', icon: MdLogout}
   ];
   const [open, setOpen] = useState(true);

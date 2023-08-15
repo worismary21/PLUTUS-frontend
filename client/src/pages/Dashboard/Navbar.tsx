@@ -1,4 +1,3 @@
-import React from 'react';
 import { BsBellFill } from 'react-icons/bs';
 import { FaUserCircle } from 'react-icons/fa';
 
