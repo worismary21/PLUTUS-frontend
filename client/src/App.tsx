@@ -11,6 +11,7 @@ import RoutesDashBoard from './pages/Dashboard/Routes';
 import Loggin from './pages/onboarding/Loggin';
 import Signupp from './pages/onboarding/Signupp';
 import Homepage from './pages/homepage/Homepage';
+import UsersAdmin from './pages/UsersAdmin/users';
 // import React from 'react';
 
 
@@ -29,16 +30,18 @@ function App() {
         />
    
       <Routes>
-        <Route path='/' element={<Homepage />} />
-       <Route path='/signup' element={<SignUp />}/>
-       <Route path="/verify" element={<Verify />} />
-       <Route path="/changePassword" element={<ChangePass />}/>
-       <Route path="/login" element={<Login />} />
-       <Route path="/loggin" element={<Loggin />} />
-       <Route path="/signupp" element={<Signupp />} />
-     <Route path='*' element={<Error404 />}/>
-     <Route path='/changePasswordConfirm' element={<ChangePass2 />}/>  
-     <Route path='/dashboard/*' element={<RoutesDashBoard />} />
+          <Route path='/' element={<Homepage />} />
+          <Route path='/signup' element={<SignUp />}/>
+          <Route path="/verify" element={<Verify />} />
+          <Route path="/changePassword" element={<ChangePass />}/>
+          <Route path="/login" element={<Login />} />
+          <Route path="/loggin" element={<Loggin />} />
+          <Route path="/signupp" element={<Signupp />} />
+          <Route path='*' element={<Error404 />}/>
+          <Route path='/changePasswordConfirm' element={<ChangePass2 />}/>  
+          <Route path='/dashboard/*' element={<RoutesDashBoard />} />
+          <Route path='/userAdmin' element={<UsersAdmin />} />
+
 
       </Routes>
      </BrowserRouter> 

@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Savings from "./Transfer/Savings";
 import AccountSettings from "./accountSettings/accountSetting";
+import UsersAdmin from "../UsersAdmin/users";
 
 const RoutesDashBoard = () => {
   return (
@@ -15,6 +16,7 @@ const RoutesDashBoard = () => {
       <div>
         <Navbar />
         <Routes>
+          <Route path="/admin"  element={<UsersAdmin />} />
           <Route path="/dashboardHome" element={<DashboardHome />} />
           <Route path="/transfer" element={<Transfer />} />
           <Route path="/investment" element={<Investment />} />
