@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import data from "./users.json"
 import { Link } from 'react-router-dom';
 import { apiGet } from '../../utils/axios';
 
@@ -15,11 +16,11 @@ function UsersAdmin() {
      const [searchInput, setSearchInput] = useState("")
 
 
-     const recordsPerPage = 8;
+     const recordsPerPage = 10;
      const lastIndex = currentPage * recordsPerPage
      const firstIndex = lastIndex - recordsPerPage
-     const records = userDetails.slice(firstIndex, lastIndex)
-     const npage = Math.ceil(userDetails.length / recordsPerPage)
+     const records = data.slice(firstIndex, lastIndex)
+     const npage = Math.ceil(data.length / recordsPerPage)
      const numbers = [...Array(npage + 1).keys()].slice(1)
 
      const handleChange = (e) => {
@@ -53,9 +54,11 @@ function UsersAdmin() {
 
      const getUsers = async () => {
           const response = await apiGet("/transactions/getUserDetails")
-          console.log("res", response)
+          console.log(response.data.data)
           setUserDetails(response.data.data)
      }
+
+     console.log("data", data)
 
      useEffect(()=>{
           getUsers()
@@ -63,9 +66,12 @@ function UsersAdmin() {
 
   return (
      <>
-          <div>
-               <table className='ml-10'>
-                    
+          <div className='pl-6'>
+
+               <div className='mx-auto p-'> 
+                    <input type='search' placeholder='Search here' onChange={handleChange} value={searchInput} className='w-full h-10 rounded-lg m-auto'/>
+                </div>
+               <table className='ml-10'>    
                     <thead className='shadow-lg sticky top-0 bg-blue-500 text-white-50'>
                          <th className='p-4 w-4'>ID</th>
                          <th className='p-2 w-4'>First Name</th>
@@ -77,13 +83,9 @@ function UsersAdmin() {
                          <th className='p-2 w-4'>Options</th>
                     </thead>
 
-                    <div className='mx-auto w-80'> 
-                         <input type='search' placeholder='Search here' onChange={handleChange} value={searchInput} className='w-full h-10 rounded-lg m-auto'/>
-                    </div>
-
                     <tbody>
                          {records.map((val) => (
-                              <tr key={val.id} className='h-20 shadow-sm hover:bg-slate-200'>
+                              <tr key={val.id} className='h-20 shadow-sm hover:bg-blue-300 bg-blue-100'>
                                    <td className='text-center w-4'>{val.id}</td>
                                    <td className='text-center w-4'>{val.firstName}</td>
                                    <td className='text-center w-4'>{val.lastName}</td>
@@ -92,7 +94,7 @@ function UsersAdmin() {
                                    <td className='text-center w-4'>{val.savingsWallet}</td>
                                    <td className='text-center w-4'>{val.accountBalance}</td>
                                    <td className='text-center w-1'>
-                                        <button className='border bg-red-700 w-40 h-10 text-white rounded' >Delete</button>
+                                        <button className='border bg-red-400 hover:bg-red-600 w-40 h-10 text-white rounded' >Delete</button>
                                    </td>
 
                               </tr>
