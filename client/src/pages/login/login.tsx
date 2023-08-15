@@ -96,6 +96,7 @@ function Login() {
             type = "submit" 
             className="bg-[#000] text-[#fff] w-80 h-10 justify-center mt-5 ml-44">
                 {loading ? 'Loading...' : 'Login' }
+                Login
                 </button>
   
                 {error &&(
