@@ -51,7 +51,7 @@ const AccountSettings = () => {
       </div>
       </div>
       
-      {location.pathnme === "/dashboard/accountsettings" ?
+      {location.pathname === "/dashboard/accountsettings" ?
         <form>
       <div className="flex items-center space-x-2">
           <label htmlFor="fileInput" className="w-24 ml-20 mt-4 mb-0 h-24 flex items-center justify-center rounded-full bg-gray-300">

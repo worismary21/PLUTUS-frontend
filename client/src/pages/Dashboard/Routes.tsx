@@ -6,6 +6,8 @@ import Transfer from "./Transfer/Transfer";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Savings from "./Transfer/Savings";
+import Invest from "./Transfer/investment"
+import AddBeneficiary from "./Transfer/AddBeneficiary"
 import AccountSettings from "./accountSettings/accountSetting";
 import Transactions from "./Transactions/Transactions";
 
@@ -307,6 +309,10 @@ const userDetails = {
           <Route path="/password-and-security" element={<AccountSettings />} />
           <Route path="/choose-plan" element={<AccountSettings />} />
           <Route path="/transactions" element={<Transactions userTransactions={transactions} userDetails={userDetails}  />} />
+          <Route path="/transfer/investment" element={<Invest />} />
+          <Route path="/transfer/addbeneficiary" element={<AddBeneficiary />} />
+
+
         </Routes>
       </div>
     </div>
