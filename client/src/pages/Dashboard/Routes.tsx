@@ -10,8 +10,289 @@ import AccountSettings from "./accountSettings/accountSetting";
 import Transactions from "./Transactions/Transactions";
 
 const RoutesDashBoard = () => {
+  interface transaction {
+
+    id: string;
+  
+    accountNumber: number;
+  
+    amount: number;
+  
+    transfer_purpose: string;
+  
+    beneficiary_name: string;
+  
+    beneficiary_email: string;
+  
+    payer_reference: string;
+  
+    information_for_beneficiary: string;
+  
+    status: string;
+  
+    senderId: string;
+  
+  }
+
+  const transactions: transaction[] = [{id: "1",
+
+    accountNumber: 2636326829,
+
+    amount: -200,
+
+    transfer_purpose: "food",
+
+    beneficiary_name: "tolu stacks",
+
+    beneficiary_email: "tolustacks@gmail.com",
+
+    payer_reference: "suosodnjosbidwu",
+
+    information_for_beneficiary: "subdbybybaybaybs",
+
+    status: "sucessful",
+
+    senderId: "string"
+
+}, {id: "2",
+
+accountNumber: 2636326829,
+
+amount: -200,
+
+transfer_purpose: "food",
+
+beneficiary_name: "Victoria Helen",
+
+beneficiary_email: "tolustacks@gmail.com",
+
+payer_reference: "suosodnjosbidwu",
+
+information_for_beneficiary: "subdbybybaybaybs",
+
+status: "sucessful",
+
+senderId: "string"
+
+},
+
+{id: "3",
+
+    accountNumber: 2636326829,
+
+    amount: 200,
+
+    transfer_purpose: "food",
+
+    beneficiary_name: "Tony Bands",
+
+    beneficiary_email: "tolustacks@gmail.com",
+
+    payer_reference: "suosodnjosbidwu",
+
+    information_for_beneficiary: "subdbybybaybaybs",
+
+    status: "sucessful",
+
+    senderId: "string"
+
+},
+
+{id: "4",
+
+    accountNumber: 2636326829,
+
+    amount: -50,
+
+    transfer_purpose: "drinks",
+
+    beneficiary_name: "Gig Briggs",
+
+    beneficiary_email: "tolustacks@gmail.com",
+
+    payer_reference: "suosodnjosbidwu",
+
+    information_for_beneficiary: "subdbybybaybaybs",
+
+    status: "sucessful",
+
+    senderId: "string"
+
+},
+
+{id: "5",
+
+accountNumber: 2636326829,
+
+amount: -5000,
+
+transfer_purpose: "vacation",
+
+beneficiary_name: "Saturn Light",
+
+beneficiary_email: "tolustacks@gmail.com",
+
+payer_reference: "suosodnjosbidwu",
+
+information_for_beneficiary: "subdbybybaybaybs",
+
+status: "sucessful",
+
+senderId: "string"
+
+},
+
+{id: "6",
+
+    accountNumber: 2636326829,
+
+    amount: -2000,
+
+    transfer_purpose: "vacation",
+
+    beneficiary_name: "Gojo Satori",
+
+    beneficiary_email: "tolustacks@gmail.com",
+
+    payer_reference: "suosodnjosbidwu",
+
+    information_for_beneficiary: "subdbybybaybaybs",
+
+    status: "sucessful",
+
+    senderId: "string"
+
+},
+
+{id: "7",
+
+    accountNumber: 2636326829,
+
+    amount: -200,
+
+    transfer_purpose: "food",
+
+    beneficiary_name: "Jide Uchiha",
+
+    beneficiary_email: "tolustacks@gmail.com",
+
+    payer_reference: "suosodnjosbidwu",
+
+    information_for_beneficiary: "subdbybybaybaybs",
+
+    status: "sucessful",
+
+    senderId: "string"
+
+},
+
+{id: "8",
+
+    accountNumber: 2636326829,
+
+    amount: -200,
+
+    transfer_purpose: "food",
+
+    beneficiary_name: "Virgo Tune",
+
+    beneficiary_email: "tolustacks@gmail.com",
+
+    payer_reference: "suosodnjosbidwu",
+
+    information_for_beneficiary: "subdbybybaybaybs",
+
+    status: "sucessful",
+
+    senderId: "string"
+
+},
+
+{id: "9",
+
+    accountNumber: 2636326829,
+
+    amount: -200,
+
+    transfer_purpose: "entertainment",
+
+    beneficiary_name: "tolu stacks",
+
+    beneficiary_email: "tolustacks@gmail.com",
+
+    payer_reference: "suosodnjosbidwu",
+
+    information_for_beneficiary: "subdbybybaybaybs",
+
+    status: "sucessful",
+
+    senderId: "string"
+
+},
+
+{id: "10",
+
+    accountNumber: 2636326829,
+
+    amount: -200,
+
+    transfer_purpose: "entertainment",
+
+    beneficiary_name: "tolu stacks",
+
+    beneficiary_email: "tolustacks@gmail.com",
+
+    payer_reference: "suosodnjosbidwu",
+
+    information_for_beneficiary: "subdbybybaybaybs",
+
+    status: "sucessful",
+
+    senderId: "string"
+
+},
+
+{id: "11",
+
+    accountNumber: 2636326829,
+
+    amount: 10200,
+
+    transfer_purpose: "revenue",
+
+    beneficiary_name: "tolu stacks",
+
+    beneficiary_email: "tolustacks@gmail.com",
+
+    payer_reference: "suosodnjosbidwu",
+
+    information_for_beneficiary: "subdbybybaybaybs",
+
+    status: "sucessful",
+
+    senderId: "string"
+
+}
+
+]
+
+ 
+
+const userDetails = {
+
+  fullName: "tolu bands",
+
+  cardNumber: "4444 4444 4444 4444",
+
+  accountBalance: 10000,
+
+  cardexp: "2/28"
+
+ 
+
+}
   return (
-    <div style={{ display: "flex", overflowX: "hidden" }}>
+    <div style={{ display: "flex", }}>
       <Sidebar />
       <div>
         <Navbar />
@@ -25,7 +306,7 @@ const RoutesDashBoard = () => {
           <Route path="/notifications" element={<AccountSettings />} />
           <Route path="/password-and-security" element={<AccountSettings />} />
           <Route path="/choose-plan" element={<AccountSettings />} />
-          <Route path="/transactions" element={<Transactions userTransactions={[]} userDetails={undefined}  />} />
+          <Route path="/transactions" element={<Transactions userTransactions={transactions} userDetails={userDetails}  />} />
         </Routes>
       </div>
     </div>

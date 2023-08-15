@@ -45,7 +45,7 @@ const Sidebar = () => {
   const role = localStorage.getItem("role")
   return (
     // <section className='flex gap-6'>
-    <div className={`${open ? 'w-72': 'w-16'} duration-500 min-h-screen bg-[#f7fafc]  text-gray-500 px-4`}>
+    <div className={`${open ? 'w-72': 'w-16'} duration-500 h-[120vh] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4`}>
         <div className='py-3 flex justify-end'>
           <HiMenuAlt3 size={26} className='cursor-pointer float-right' onClick={()=>setOpen(!open)}/>
         </div>

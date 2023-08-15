@@ -9,7 +9,7 @@ const AccountSettings = () => {
   const location = useLocation()
   return (
     <>
-       <div className="flex space-x-4 px-20 mt-16">
+       <div className="flex flex-col lg:flex-row space-x-4 px-20 mt-16">
       {/* Personal Info */}
       <div className="flex flex-col items-center">
         <Link to="/dashboard/accountsettings" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
@@ -51,7 +51,7 @@ const AccountSettings = () => {
       </div>
       </div>
       
-      {location.pathname === "/dashboard/accountsettings" ?
+      {location.pathnme === "/dashboard/accountsettings" ?
         <form>
       <div className="flex items-center space-x-2">
           <label htmlFor="fileInput" className="w-24 ml-20 mt-4 mb-0 h-24 flex items-center justify-center rounded-full bg-gray-300">

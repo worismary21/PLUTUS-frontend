@@ -39,11 +39,10 @@ const Checking = () => {
 
   }
   return (
-    <div className="flex">
-    <div className=" flex flex-col items-center 
-    lg:w-[340px] w-[270px] h-[340px] rounded-lg md:w-[300px]">
-      <h3 className="mb-5 font-bold text-lg">Select Payer</h3>
-     <div className="relative">
+    <div className="flex ml-[15%] md:ml-[7%] lg:ml-[5%] pr-[5%]">
+    <div className=" flex flex-col items-center md:w-[340px] ">
+      <h3 className="mb-5 font-bold text-lg ">Select Payer</h3>
+     <div className="relative ">
       <button
         onClick={() => setIsOpen((prev) => !prev)}
         className="bg-slate-900 p-4 w-full items-center flex 
@@ -79,7 +78,7 @@ const Checking = () => {
         </div>
       )}
       </div>
-      <div className="bg-slate-900 mt-7">
+      <div className="bg-slate-900 mt-7  ">
         <div className="m-5">
           <h3 className="text-white font-bold">Checking Account</h3>
           <p className="text-white text-xs mt-7">Balance</p>
@@ -222,7 +221,7 @@ const Checking = () => {
 
     </div>
     </div>
-    <div className="ml-10 lg:w-[680px] md:w-[200px] hidden lg:block md:block">
+    <div className="ml-10 lg:w-[680px]  hidden lg:block md:block">
       <h3 className="mb-5 font-bold text-lg">Transfer to</h3>
         <span className="text-sm">Own account</span>
         <span className="text-sm ml-5">Other account</span>
