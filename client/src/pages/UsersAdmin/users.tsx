@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import data from "./users.json"
 import { Link } from 'react-router-dom';
 import { apiGet } from '../../utils/axios';
+import Pagination from '../AdminPageTransactions/Pagination';
 
 // interface users {
 //      id:string,
@@ -11,46 +12,25 @@ import { apiGet } from '../../utils/axios';
 
 function UsersAdmin() {
 
-     const [userDetails, setUserDetails] = useState([])
      const [currentPage, setCurrentPage] = useState(1)
+     const [userPerPage, setUserPerPage] = useState(10)
+     const [userDetails, setUserDetails] = useState([])
      const [searchInput, setSearchInput] = useState("")
 
 
-     const recordsPerPage = 10;
-     const lastIndex = currentPage * recordsPerPage
-     const firstIndex = lastIndex - recordsPerPage
-     const records = data.slice(firstIndex, lastIndex)
-     const npage = Math.ceil(data.length / recordsPerPage)
-     const numbers = [...Array(npage + 1).keys()].slice(1)
+     const search = () => {
+          return data.filter((item) => 
+          item.email.toLowerCase().includes(searchInput) 
+          // item.id.toLowerCase().includes(searchInput) } 
+          )
+     }
 
      const handleChange = (e) => {
           e.preventDefault()
           setSearchInput(e.target.value)
      }
 
-     if (searchInput.length > 0){
-          userDetails.filter((userDetail) => {
-               return userDetail.id.match(searchInput)
-          })
-     }
-
-
-     function nextPage(){
-          if(currentPage !== firstIndex){
-               setCurrentPage(currentPage + 1)
-          }
-     }
-
-
-     function prePage(){
-          if(currentPage !== firstIndex){
-               setCurrentPage(currentPage - 1)
-          }
-     }
-
-     function changeCPage(id){
-          setCurrentPage(id)
-     }
+   
 
      const getUsers = async () => {
           const response = await apiGet("/transactions/getUserDetails")
@@ -68,8 +48,8 @@ function UsersAdmin() {
      <>
           <div className='pl-6'>
 
-               <div className='mx-auto p-'> 
-                    <input type='search' placeholder='Search here' onChange={handleChange} value={searchInput} className='w-full h-10 rounded-lg m-auto'/>
+               <div className='m-5 w-96 '> 
+                    <input type='search' placeholder='Search...' onChange={handleChange} value={searchInput} className='w-full h-10 rounded-lg align-end'/>
                 </div>
                <table className='ml-10'>    
                     <thead className='shadow-lg sticky top-0 bg-blue-500 text-white-50'>
@@ -84,7 +64,7 @@ function UsersAdmin() {
                     </thead>
 
                     <tbody>
-                         {records.map((val) => (
+                         {search(data).map((val) => (
                               <tr key={val.id} className='h-20 shadow-sm hover:bg-blue-300 bg-blue-100'>
                                    <td className='text-center w-4'>{val.id}</td>
                                    <td className='text-center w-4'>{val.firstName}</td>
@@ -101,27 +81,9 @@ function UsersAdmin() {
                          ))}
                     </tbody>
                </table>
-               <nav className='ml-40 '>
-                    <ul className='flex flex-row'>
-                         <li>
-                              <Link  to="#" onClick={prePage}>Prev</Link>
-                         </li>
-                         {
-                              numbers.map((n,i) => (
-                                   <li className={`${currentPage === n ? 'active' : ""} w-10`} key={i}>
-                                        <Link to="#" className='' onClick={()=>changeCPage(n)} >
-                                             {n} </Link>
-                                   </li>
-                              ))
-                         }
-                         <li>
-                              <Link to="#" onClick={nextPage}>Next</Link>
-                         </li>
-
-                    </ul>
-
-               </nav>
-
+                <div className = "mx-auto w-10 border-16 py-10">
+                <Pagination totalTransactions = {data.length} postsPerPage = {userPerPage} setCurrentPage = {setCurrentPage} currentPage = {currentPage} />
+            </div>
                
           </div>
      </>

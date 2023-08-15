@@ -116,7 +116,6 @@ export const changePassword = createAsyncThunk(
   }
 );
 
-
   /**==============Upload Photos=======  **/
 export const uploadPhotos = createAsyncThunk(
   "uploadPhotos",
@@ -164,6 +163,7 @@ export const saveImages = createAsyncThunk(
       }
     }
   );
+
 
   export const getCompanies= createAsyncThunk(
     "getCompanies",
