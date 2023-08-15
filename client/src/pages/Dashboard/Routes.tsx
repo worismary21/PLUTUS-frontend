@@ -161,7 +161,7 @@ const userDetails = {
                 <Route path="/transactions" element={<Transactions userTransactions={transactions} userDetails ={userDetails}/>}/>
 
 
-          <Route path="/dashboardHome" element={<DashboardHome />} />
+          <Route path="/dashboardHome" element={<DashboardHome userTransactions={transactions} />} />
           <Route path="/transfer" element={<Transfer />} />
           <Route path="/investment" element={<Investment />} />
           <Route path="/transfer" element={<Transfer />} />

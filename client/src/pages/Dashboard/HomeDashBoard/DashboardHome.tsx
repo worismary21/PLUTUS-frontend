@@ -1,7 +1,3 @@
-
-// import TransactionChart from "./TransactionChart";
-// import TransactionsHome from "./TransactionsHome";
-// import graph from "../../assets/graph.png"
 import ProgressBar from './ProgressBar';
 import {
   BsFillArrowUpCircleFill, 
@@ -17,16 +13,16 @@ import Karen from "../../../assets/Karen Potter.jpeg"
 import Leonard from "../../../assets/Leonard Smith.jpeg"
 import Maria from "../../../assets/Maria Purple.jpeg"
 import Oscar from "../../../assets/Oscar Wild.jpeg"
-import TransactionsHome from '../TransactionsHome';
+// import TransactionsHome from '../TransactionsHome';
 import TransactionChart from '../TransactionChart';
 import TransactionsList from '../Transactions/mainCode/TransactionsList';
+// import { Colors } from 'chart.js';
 
 
 
 
 
 const DashboardHome = () => {
-  
 
   return (
     <>
@@ -255,43 +251,43 @@ const DashboardHome = () => {
        </div>
             </div> */}
 
-<div className="bg-gray-800 px-10 mt-7">
+<div className="bg-gray-800 px-10 mt-10 ml-2">
         <div className="flex w-full justify-between items-center mt-7">
-              <h3 className="ml-4 font-white text-sm">Quick Transfer</h3>
+              <h3 className="ml-4 font-white text-gray-100 text-sm">Quick Transfer</h3>
               <div className="flex flex-column pl-10 justify-end ">
-                  <div className="ml-11 mt-1 ">
+                  <div className="ml-2 mt-1 ">
                   <FaLessThan style={{ width: '1rem', height: '1rem' }} />
                   </div>
-                  <div className="mr-10 mt-1 ">   
+                  <div className="mr-2 mt-1 ">   
                     <FaGreaterThan style={{ width: '1rem', height: '1rem' }}/>
                   </div>
                 </div>
         </div>
-        <div className="flex mb-5 justify-evenly p-2" >
+        <div className="flex mb-5  p-2" >
             <div className="mt-3 items-center text-center" >
-                <img className="h-12 w-12 rounded-full bg-white bg-cover bg-no-repeat bg-center ml-6" src={Add} alt="icon" />
-                <p className="text-xs mt-2 text-white">Add</p>
-                <p className="text-xs text-white">New</p>
+                <img className="h-12 w-12 rounded-full bg-white bg-cover bg-no-repeat bg-center " src={Add} alt="icon" />
+                <p className="text-xs mt-2 text-white pr-10">Add</p>
+                <p className="text-xs text-white pr-10">New</p>
             </div>
             <div className="mt-3 items-center text-center">
-                <img className="h-12 w-12 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center ml-6" src={Maria} alt="icon" />
-                <p className="text-xs mt-2 text-white">Maria</p>
-                <p className="text-xs text-white">Purple</p>
+                <img className="h-12 w-12 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center " src={Maria} alt="icon" />
+                <p className="text-xs mt-2 text-white pr-10">Maria</p>
+                <p className="text-xs text-white pr-10">Purple</p>
             </div>
             <div className="mt-3 items-center text-center">
-                <img className="h-12 w-12 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center ml-6" src={Leonard} alt="icon" />
-                <p className="text-xs mt-2 text-white">Leonard</p>
-                <p className="text-xs text-white">Smith</p>
+                <img className="h-12 w-12 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center" src={Leonard} alt="icon" />
+                <p className="text-xs mt-2 text-white pr-10">Leonard</p>
+                <p className="text-xs text-white pr-10">Smith</p>
             </div>
             <div className="mt-3 items-center text-center">
-                <img className="h-12 w-12 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center ml-6" src={Oscar} alt="icon" />
-                <p className="text-xs mt-2 text-white">Oscar</p>
-                <p className="text-xs text-white">Wild</p>
+                <img className="h-12 w-12 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center" src={Oscar} alt="icon" />
+                <p className="text-xs mt-2 text-white pr-10">Oscar</p>
+                <p className="text-xs text-white pr-10">Wild</p>
               </div>
               <div className="mt-3 items-center text-center">
-                <img className="h-12 w-12 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center ml-6" src={Karen} alt="icon" />
-                <p className="text-xs mt-2 text-white">Karen</p>
-                <p className="text-xs text-white">Potter</p>
+                <img className="h-12 w-12 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center" src={Karen} alt="icon" />
+                <p className="text-xs mt-2 text-white pr-10">Karen</p>
+                <p className="text-xs text-white pr-10">Potter</p>
             </div>
         </div>
         
