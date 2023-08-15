@@ -12,7 +12,7 @@ import "./dashboard.css";
 
 const Sidebar = () => {
   const menus = [
-    { name: "Dashboard", link: "/dashboard/dashboard", icon: AiFillHome },
+    { name: "Dashboard", link: "/dashboard", icon: AiFillHome },
     { name: "Transfer", link: "/dashboard/transfer", icon: MdOutlineDashboard },
     { name: "Transactions", link: "/dashboard/transactions", icon: BiTransfer },
     {

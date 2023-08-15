@@ -73,7 +73,7 @@ function changePass() {
     <>
       <div className={change.changePassword}>
         <div className={change.leftside}>
-          <img src={picture} />
+          <img src={picture}  alt=""/>
           <h5>Plutus is personal finance, made simple.</h5>
           <p>All your accounts, cards, savings, and investments in one place</p>
         </div>

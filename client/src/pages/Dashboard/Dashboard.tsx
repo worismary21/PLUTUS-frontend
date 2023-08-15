@@ -15,18 +15,18 @@ const Dashboard = () => {
       <div>
         <Navbar />
         <Routes>
-          <Route path="/dashboardHome" element={<DashboardHome />} />
-          <Route path="" element={<DashboardHome />} />
+          <Route path="/" element={<DashboardHome />} />
+          {/* <Route path="" element={<DashboardHome />} /> */}
           <Route path="/transfer" element={<Transfer />} />
           <Route path="/investment" element={<Investment />} />
-          <Route path="" element={<DashboardHome />} />
+          {/* <Route path="" element={<DashboardHome />} /> */}
           <Route path="/transfer" element={<Transfer />} />
           <Route path="/transfer/savings" element={<Savings />} />
           <Route path="/accountSettings" element={<AccountSettings />} />
           <Route path="/notifications" element={<AccountSettings />} />
           <Route path="/password-and-security" element={<AccountSettings />} />
-          <Route path="/choose-plan" element={<AccountSettings />} />
-        </Routes>
+            <Route path="/choose-plan" element={<AccountSettings />} />
+          </Routes>
       </div>
     </div>
   );
