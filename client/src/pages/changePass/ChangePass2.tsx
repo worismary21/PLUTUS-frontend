@@ -52,7 +52,7 @@ console.log("data", changePasswordDataValue )
                          <input type='password' placeholder='Old Password' name='oldPassword' required onChange={handleInputChange}  className={change.inputEmail} ></input>
                          <input type='password' placeholder='New Password' name='newPassword'  required onChange={handleInputChange} className={change.inputEmail}></input>
                          <input type='password' placeholder='Confirm Password' name='confirmPassword' required onChange={handleInputChange}  className={change.inputEmail}></input>
-                         <Link to="/changePassword">
+                         <Link to="/dashBoard/accountSettings">
                               <button className={change.button} >Submit</button>
                               {/* <ToastContainer /> */}
                          </Link>

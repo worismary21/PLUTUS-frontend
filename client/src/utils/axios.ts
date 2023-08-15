@@ -2,6 +2,7 @@ import axios from "axios";
 import { setData } from "../features/dataSlice";
 
 const baseUrl = "http://localhost:5420";
+// export const baseUrl = "http://localhost:4500";
 
 export const apiGet = (path:string) => {
   const config = {
@@ -13,7 +14,7 @@ export const apiGet = (path:string) => {
   return axios.get(`${baseUrl}${path}`, config); // axios.get('http://localhost:4500/user/get-user', config)
 };
 
-export const apiPost = async (path:string, data:any) => {
+export const apiPost = async (path:string, data:unknown) => {
   const config = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -22,7 +23,7 @@ export const apiPost = async (path:string, data:any) => {
   return await axios.post(`${baseUrl}${path}`, data, config); // axios.post('http://localhost:4500/user/signup', formdata config)
 };
 
-export const FormDataPost = async (path:string, data:any) => {
+export const FormDataPost = async (path:string, data:unknown) => {
   const config = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,

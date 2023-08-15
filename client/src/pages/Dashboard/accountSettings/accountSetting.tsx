@@ -22,7 +22,7 @@ const AccountSettings = () => {
 
       {/* Password and Security */}
       <div className="flex flex-col items-center">
-        <Link to="/dashboard/password-and-security"  className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
+        <Link to="/changePassword"  className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
           <div className="flex items-center text-left space-x-4">
             <BiSolidLockOpen className="h-6 w-6 ml-4 text-black" />
             <span className="text-black justify-start">Password and Security</span>
