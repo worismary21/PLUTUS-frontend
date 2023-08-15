@@ -110,6 +110,8 @@ const DashboardHome = () => {
 
           <div className="p-2">
           <TransactionChart/>
+          <div className="h-96 mb-2">
+            {/* <img src={graph} alt="graph" /> */}
           </div>
 
           <div className="rounded-sm p-4 flex-1 flex items-center gap-4"> 
@@ -293,7 +295,7 @@ const DashboardHome = () => {
         
         </div>
         </div>
-        
+        </div>
       </div>
     </>
   )

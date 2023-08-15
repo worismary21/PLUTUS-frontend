@@ -6,26 +6,21 @@ import share from "./assets/share.svg";
 import transaction from "./assets/transaction.svg";
 import profile from "./assets/profile.png"
 import icons from "./assets/icons8.png"
-import { transferFunds } from "../../../redux/action";
+import { transferInvestment  } from "../../../redux/action";
 import { getInfo } from "../../../redux/action";
 import { getBeneficiary } from "../../../redux/action";
 
+
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-// import { list } from "postcss";
 
-const Checking = () => {
+const Investment = () => {
  const [formData, setFormData] = useState({
-    accountNumber:"",
-    amount:"",
-    transfer_purpose:"",
-    beneficiary_name:"",
-    beneficiary_email:"",
-    payer_reference:"",
-    information_for_beneficiary:""
+    company_account_number:"",
+    amount:""
   })
 
-//   const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
   const dispatch = useDispatch() as unknown as any
 
@@ -50,7 +45,7 @@ const Checking = () => {
   const handleSubmit = async(e:any) => {
     e.preventDefault()
     console.log(formData)
-    dispatch(transferFunds(formData))
+    dispatch(transferInvestment(formData))
   }
 
   const users = useSelector((state:any) => state.user)
@@ -73,7 +68,7 @@ const Checking = () => {
 
   return (
     <div className="flex">
-    <div className=" flex flex-col items-center 
+    <div className=" flex flex-col items-center ml-[6%]  h-[100vh] 
     lg:w-[340px] w-[270px] h-[340px] rounded-lg md:w-[300px]">
       <h3 className="mb-5 font-bold text-lg">Select Payer</h3>
      <div className="relative">
@@ -139,18 +134,15 @@ const Checking = () => {
         </div>
         
       </div>
-
-
       <div className="bg-slate-200 mt-7">
         <div className="flex w-full justify-between items-center mt-7">
         <h3 className="ml-7 font-bold text-sm">Saved Beneficiares</h3>
         <Link to="/dashboard/transfer/addbeneficiary" className="ml-20 lg:ml-28 md:ml-28 text-xs">View all</Link>
         </div>
         <div className="flex mb-5" >
-            <div className="mt-3 items-center " >
-            <Link to="/dashboard/transfer/addbeneficiary"><img className="w-[38px] h-[38px] ml-6" src={icons} alt="icon" /></Link>
+            <div className="mt-3 items-center" >
+                <Link to="/dashboard/transfer/addbeneficiary"><img className="w-[38px] h-[38px] ml-6" src={icons} alt="icon" /></Link>
                 <Link to="/dashboard/transfer/addbeneficiary" className="text-xs mt-2 ml-4">Add New</Link>
-
             </div>
 
             <div className="flex">
@@ -160,38 +152,39 @@ const Checking = () => {
                 <img className="w-[38px] h-[38px]" src={profile} alt="icon" />
                 <p className="text-xs mt-2">{e.beneficiaryName}</p> 
                 </div>
-               </li>))  }
+               </li>))}
             </div>
-     
+      
         </div>
         
         </div>
         <div className="mt-10 lg:hidden md:hidden">
       <h3 className="mb-5 font-bold text-lg">Transfer to</h3>
-      <Link to="/dashboard/transfer/savings" className="text-sm">Savings</Link><br />
+      <Link to="/dashboard/transfer/savings" className="text-sm">Savings Wallet</Link><br />
       <Link to="/dashboard/transfer/investment" className="text-sm ml-5">Investment</Link><br />
         <Link to="/dashboard/transfer" className="text-sm ml-5">Other account</Link>
-
         <div className="border-solid border-2 border-gray-100 mt-7"></div>
 
 
    
         <form action="" onSubmit={handleSubmit} className="flex flex-col mt-7">
             
-            <p className="text-sm">Beneficiary</p>
+            <p className="text-sm">Company</p>
             
-          <input 
+
+            <input 
             className="mt-6 w-full"
-            type="text"
-            name={"accountNumber"}
-            onChange={handleChange}
-            value={formData.accountNumber}
-            required
-            placeholder="IBAN *"
-          />
+              type="text"
+              name={"company_account_number"}
+              onChange={handleChange}
+              value={formData.company_account_number}
+              required
+              placeholder="Company Account Number *"
+            />
+
           <input
           className="mt-6 w-full"
-            type="text"
+            type="number"
             name={"amount"}
             onChange={handleChange}
             value={formData.amount}
@@ -199,49 +192,6 @@ const Checking = () => {
             placeholder="Amount *"
           />
 
-<p className="text-sm mt-14">Other data</p>
-
-        <input
-          className="mt-6 w-full lg:hidden"
-            type="text"
-            name={"transfer_purpose"}
-            onChange={handleChange}
-            value={formData.transfer_purpose}
-            placeholder="Transfer purpose"
-          />
-           <input
-          className="mt-6 w-full lg:hidden"
-            type="text"
-            name={"beneficiary_name"}
-            onChange={handleChange}
-            value={formData.beneficiary_name}
-            placeholder="Beneficiary's name"
-          />
-           <input
-          className="mt-6 w-full lg:hidden"
-            type="text"
-            name={"beneficiary_email"}
-            onChange={handleChange}
-            value={formData.beneficiary_email}
-            placeholder="Beneficiary's email"
-          />
-           <input
-          className="mt-6 w-full lg:hidden"
-            type="text"
-            name={"payer_reference"}
-            onChange={handleChange}
-            value={formData.payer_reference}
-            placeholder="Payer's reference"
-          />
-
-          <input
-          className="mt-6 w-full"
-            type="text"
-            name={"information_for_beneficiary"}
-            onChange={handleChange}
-            value={formData.information_for_beneficiary}
-            placeholder="Information for beneficiary"
-          />
           <button type="submit" className=" block bg-gray-950 mt-8 text-white text-xs 
           h-[50px] rounded-md" >
             {" "}
@@ -257,25 +207,26 @@ const Checking = () => {
     </div>
     <div className="ml-10 lg:w-[680px] md:w-[200px] hidden lg:block md:block">
       <h3 className="mb-5 font-bold text-lg">Transfer to</h3>
-        <Link to="/dashboard/transfer/savings" className="text-sm">Savings</Link>
-        <Link to="/dashboard/transfer/investment" className="text-sm ml-5 break-after-all">Investment</Link>
+      <Link to="/dashboard/transfer/savings" className="text-sm">Savings</Link>
+      <Link to="/dashboard/transfer/investment" className="text-sm ml-5">Investment</Link>
         <Link to="/dashboard/transfer" className="text-sm ml-5">Other account</Link>
-
         <div className="border-solid border-2 border-gray-100 mt-3"></div>
 
         <form action="" onSubmit={handleSubmit} className="flex flex-col mt-7">
             
-              <p className="text-sm">Beneficiary</p>
+              <p className="text-sm">Company</p>
               
-            <input 
+
+              <input 
             className="mt-6 w-full"
               type="text"
-              name={"accountNumber"}
+              name={"company_account_number"}
               onChange={handleChange}
-              value={formData.accountNumber}
+              value={formData.company_account_number}
               required
-              placeholder="IBAN *"
+              placeholder="Company Account Number *"
             />
+
             <input
             className="mt-6 w-full"
               type="number"
@@ -285,90 +236,8 @@ const Checking = () => {
               required
               placeholder="Amount *"
             />
-         
-
-<p className="text-sm mt-14">Other data</p>
-
-          <input
-            className="mt-6 w-full lg:hidden"
-              type="text"
-              name={"transfer_purpose"}
-              onChange={handleChange}
-              value={formData.transfer_purpose}
-              placeholder="Transfer purpose"
-            />
-             <input
-            className="mt-6 w-full lg:hidden"
-              type="text"
-              name={"beneficiary_name"}
-              onChange={handleChange}
-              value={formData.beneficiary_name}
-              placeholder="Beneficiary's name"
-            />
-             <input
-            className="mt-6 w-full lg:hidden"
-              type="text"
-              name={"beneficiary_email"}
-              onChange={handleChange}
-              value={formData.beneficiary_email}
-              placeholder="Beneficiary's email"
-            />
-             <input
-            className="mt-6 w-full lg:hidden"
-              type="text"
-              name={"payer_reference"}
-              onChange={handleChange}
-              value={formData.payer_reference}
-              placeholder="Payer's reference"
-            />
-
-
-
-           <div className="md:hidden lg:block">
-            <input
-            className="mt-5 w-[322px]"
-              type="text"
-              name={"transfer_purpose"}
-              onChange={handleChange}
-              value={formData.transfer_purpose}
-              placeholder="Transfer purpose"
-            />
-       
-            <input
-            className="w-[322px] ml-5"
-              type="text"
-              name={"beneficiary_name"}
-              onChange={handleChange}
-              value={formData.beneficiary_name}
-              placeholder="Beneficiary's name"
-            />
-            </div>
-            <div className="md:hidden lg:block">
-            <input
-            className="mt-5 w-[322px]"
-              type="text"
-              name={"beneficiary_email"}
-              onChange={handleChange}
-              value={formData.beneficiary_email}
-              placeholder="Beneficiary's email"
-            />
-            <input
-            className="w-[322px] ml-5"
-              type="text"
-              name={"payer_reference"}
-              onChange={handleChange}
-              value={formData.payer_reference}
-              placeholder="Payer's reference"
-            />
-            </div>
-            <input
-            className="mt-6 w-full"
-              type="text"
-              name={"information_for_beneficiary"}
-              onChange={handleChange}
-              value={formData.information_for_beneficiary}
-              placeholder="Information for beneficiary"
-            />
+    
+          
             <button type="submit" className=" block bg-gray-950 mt-8 text-white text-xs 
             h-[50px] rounded-md" >
               {" "}
@@ -387,4 +256,4 @@ const Checking = () => {
   );
 };
 
-export default Checking;
+export default Investment;

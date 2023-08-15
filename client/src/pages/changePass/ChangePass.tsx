@@ -34,7 +34,7 @@ function changePass() {
     // console.log("changpasword", changePasswordResponse)
   };
 
-  const handleVerify = async (e: any) => {
+  const handleVerify = async () => {
 //     e.preventDefault();
     // const otpResponse = await changePassword(otp)
     // console.log("otp", otpResponse)
