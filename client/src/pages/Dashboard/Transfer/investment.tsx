@@ -1,13 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import { AiOutlineCaretUp, AiOutlineCaretDown } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import share from "./assets/share.svg";
 import transaction from "./assets/transaction.svg";
-import png from "./assets/Png.png"
+import profile from "./assets/profile.png"
 import icons from "./assets/icons8.png"
 import { transferInvestment  } from "../../../redux/action";
+import { getInfo } from "../../../redux/action";
+import { getBeneficiary } from "../../../redux/action";
+
+
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Investment = () => {
  const [formData, setFormData] = useState({
@@ -41,8 +46,26 @@ const Investment = () => {
     e.preventDefault()
     console.log(formData)
     dispatch(transferInvestment(formData))
-
   }
+
+  const users = useSelector((state:any) => state.user)
+
+  console.log(users.account_name)
+
+  useEffect(() => {
+    dispatch(getInfo())
+  }, [])
+
+  const beneficiaries = useSelector((state:any) => state.beneficiary)
+
+  console.log(beneficiaries[0])
+
+  console.log(users.account_name)
+
+  useEffect(() => {
+    dispatch(getBeneficiary())
+  }, [])
+
   return (
     <div className="flex">
     <div className=" flex flex-col items-center ml-[6%]  h-[100vh] 
@@ -88,14 +111,14 @@ const Investment = () => {
         <div className="m-5">
           <h3 className="text-white font-bold">Checking Account</h3>
           <p className="text-white text-xs mt-7">Balance</p>
-          <h1 className="text-teal-200 text-3xl mt-3">USD 10,000.00</h1>
+          <h1 className="text-teal-200 text-3xl mt-3">USD {users.account_balance}.00</h1>
         </div>
         <div className="border-solid hidden lg:block border-2 border-gray-600 w-[300px] m-5 mt-7"></div>
         <div className="m-5">
           <p className="text-white text-xs  mt-7">IBAN</p>
-          <h3 className="text-white mt-2">AB11 0000 0000 1111 1111</h3>
+          <h3 className="text-white mt-2">{users.account_number}</h3>
           <p className="text-white text-xs  mt-5">Account Owner</p>
-          <h3 className="text-white mt-2">Nicola Rich</h3>
+          <h3 className="text-white mt-2">{users.account_name}</h3>
         </div>
         <div className="bg-purple-300 flex h-[50px] items-center justify-center">
           <img className="w-[20px] h-[20px] ml-24" src={share} alt="share" />
@@ -114,29 +137,24 @@ const Investment = () => {
       <div className="bg-slate-200 mt-7">
         <div className="flex w-full justify-between items-center mt-7">
         <h3 className="ml-7 font-bold text-sm">Saved Beneficiares</h3>
-        <p className="ml-20 lg:ml-28 md:ml-28 text-xs">View all</p>
+        <Link to="/dashboard/transfer/addbeneficiary" className="ml-20 lg:ml-28 md:ml-28 text-xs">View all</Link>
         </div>
         <div className="flex mb-5" >
-            <div className="mt-3 items-center text-center" >
-                <img className="w-[38px] h-[38px] ml-6" src={icons} alt="icon" />
-                <p className="text-xs mt-2">Add</p>
-                <p className="text-xs">New</p>
+            <div className="mt-3 items-center" >
+                <Link to="/dashboard/transfer/addbeneficiary"><img className="w-[38px] h-[38px] ml-6" src={icons} alt="icon" /></Link>
+                <Link to="/dashboard/transfer/addbeneficiary" className="text-xs mt-2 ml-4">Add New</Link>
             </div>
-            <div className="mt-3 items-center text-center">
-                <img className="w-[38px] h-[38px] ml-6" src={png} alt="icon" />
-                <p className="text-xs mt-2">Maria</p>
-                <p className="text-xs">Purple</p>
+
+            <div className="flex">
+               {beneficiaries?.map((e:any)=> (<li key = {e.accountNumber} className="list-none">
+                
+                <div className="mt-3  ">
+                <img className="w-[38px] h-[38px]" src={profile} alt="icon" />
+                <p className="text-xs mt-2">{e.beneficiaryName}</p> 
+                </div>
+               </li>))}
             </div>
-            <div className="mt-3 items-center text-center">
-                <img className="w-[38px] h-[38px] ml-6" src={png} alt="icon" />
-                <p className="text-xs mt-2">Maria</p>
-                <p className="text-xs">Purple</p>
-            </div>
-            <div className="mt-3 items-center text-center">
-                <img className="w-[38px] h-[38px] ml-6" src={png} alt="icon" />
-                <p className="text-xs mt-2">Maria</p>
-                <p className="text-xs">Purple</p>
-            </div>
+      
         </div>
         
         </div>
