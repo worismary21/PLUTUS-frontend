@@ -11,9 +11,8 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Loggin from './pages/onboarding/Loggin';
 import Signupp from './pages/onboarding/Signupp';
 import Homepage from './pages/homepage/Homepage';
+import Transactions from './pages/AdminPageTransactions/Transactions'
 // import React from 'react';
-
-
 
 function App() {
 
@@ -35,6 +34,7 @@ function App() {
        <Route path="/changePassword" element={<ChangePass />}/>
        <Route path="/login" element={<Login />} />
        <Route path="/loggin" element={<Loggin />} />
+       <Route path="/alltransactions" element={<Transactions />} />
        <Route path="/signupp" element={<Signupp />} />
      <Route path='*' element={<Error404 />}/>
      <Route path='/changePasswordConfirm' element={<ChangePass2 />}/>  

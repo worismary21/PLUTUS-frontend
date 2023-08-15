@@ -93,7 +93,7 @@ function Login() {
             <button
             type = "submit" 
             className={log.btn1}>
-                {loading ? 'Loading...' : 'Login' }
+                Login
                 </button>
                 {error &&(
                     <div>{error}</div>

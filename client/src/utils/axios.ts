@@ -1,6 +1,7 @@
 import axios from "axios";
+import { setData } from "../features/dataSlice";
 
-const baseUrl = "http://localhost:4500";
+const baseUrl = "http://localhost:5420";
 
 export const apiGet = (path:string) => {
   const config = {
@@ -73,3 +74,4 @@ export const apiDelete = (path:string) => {
 
   return axios.delete(`${baseUrl}${path}`, config);
 };
+
