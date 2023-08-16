@@ -80,29 +80,30 @@ function Login() {
             <p> Online Banking</p>
           </div> */}
           <div className={log.logo}>
-          <h1 className={log.logo_one}>Plutus</h1>
-          <p className={log.logo_two}>Online Banking </p>
+            <h1 className={log.logo_one}>Plutus</h1>
+            <p className={log.logo_two}>Online Banking </p>
           </div>
 
           <form action="" onSubmit={handleSubmit} className={log.right_form}>
-             
-             <h3> Log in</h3>
-
-            <div  className={log.mb}>
-            <label className={log.form1}>Email</label>
-             <br></br>
-             <input
-              type="text"
-              name={"firstName"}
-              required
-              value={formData.email}
-              onChange={handleChange}
-              placeholder=" FirstName"
-            />
+          <div className="heading">
+              <h2>Login</h2>
             </div>
 
             <div className={log.mb}>
-            <label className={log.form3}>Password</label>
+              <label className={log.form1}>Email</label>
+              <br></br>
+              <input
+                type="text"
+                name={"firstName"}
+                required
+                value={formData.email}
+                onChange={handleChange}
+                placeholder=" FirstName"
+              />
+            </div>
+
+            <div className={log.mb}>
+              <label className={log.form3}>Password</label>
               <br></br>
               <input
                 className={log.form4}
@@ -112,20 +113,17 @@ function Login() {
                 value={formData.password}
                 onChange={handleChange}
               />
-            </div >
+            </div>
             <button
               type="submit"
-              className="btnn bg-black ext-[#fff] w-80 h-10 justify-center mt-5 " 
+              className="btnn bg-black ext-[#fff] w-80 h-10 justify-center mt-5 "
             >
               {loading ? "Loading..." : "Login"}
-             
             </button>
 
             {error && <div>{error}</div>}
             <p className={log.text8}>Forgot your password?</p>
           </form>
-
-        
         </div>
       </div>
     </>
