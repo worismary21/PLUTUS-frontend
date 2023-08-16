@@ -166,7 +166,7 @@ senderId: "string"
 
 ]
 
-const userDetails = {
+export const userDetails = {
 fullName: "tolu bands",
 cardNumber: "4444 4444 4444 4444",
 accountBalance: 10000,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import ProgressBar from './ProgressBar';
 import {
   BsFillArrowUpCircleFill, 
@@ -9,13 +10,19 @@ import {FaGreaterThan, FaLessThan, FaPlane} from 'react-icons/fa'
 import "../../../App.css";
 import Add from "../../../assets/Add new.svg"
 import Karen from "../../../assets/Karen Potter.jpeg"
-import Leonard from "../../../assets/Leonard Smith.jpeg"
-import Maria from "../../../assets/Maria Purple.jpeg"
-import Oscar from "../../../assets/Oscar Wild.jpeg"
+// import Leonard from "../../../assets/Leonard Smith.jpeg"
+// import Maria from "../../../assets/Maria Purple.jpeg"
+// import Oscar from "../../../assets/Oscar Wild.jpeg"
 // import TransactionsHome from '../TransactionsHome';
 import TransactionChart from '../TransactionChart';
-import TransactionsList from '../Transactions/mainCode/TransactionsList';
+import TransactionsList from '../Transactions/TransactionsList';
+// import TransactionsList from '../Transactions/mainCode/TransactionsList';
 import { transactions } from '../Routes';
+import { getInfo } from '../../../redux/action'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import {getBeneficiary} from '../../../redux/action'
 // import { Colors } from 'chart.js';
 
 
@@ -24,15 +31,31 @@ import { transactions } from '../Routes';
 
 const DashboardHome = () => {
 
+  const dispatch = useDispatch() as unknown as any;
+
+  const users = useSelector((state: any) => state.user)
+  
+console.log(users.account_name)
+
+  useEffect(() => {
+    dispatch(getInfo())
+  }, [])
+
+  const beneficiaries = useSelector((state: any) => state.beneficiary)
+  
+  useEffect(() => {
+    dispatch(getBeneficiary())
+  }, [])
+
   return (
     <>
-      <div className="flex lg:flex-row flex-col w-[100%] h-full ml-[15%] md:ml-[7%] lg:ml-[5%] pr-[5%]">
-        <div className="flex flex-col px-[5%] md:p-5">
-          <div className="flex md:flex-row flex-col mb-5">
+      <div className="flex lg:flex-row flex-col w-auto gap-20 h-full ml-[15%] md:ml-[7%] lg:ml-[5%] pr-[5%] mt-10">
+        <div className="flex flex-col w-[100vh]  px-[5%] md:p-5">
+          <div className="flex md:flex-row flex-col mb-5 gap-5">
 
             {/* Total Balance Card */}
             
-            <div className="content w-full h-48 p-4 mr-5">
+            <div className="content w-[70vh] h-48 p-4 mr-30">
               <div className="flex items-center justify-between">
                 <span className="font-semibold sm:text-sm">Total Balance</span>
                 <div>
@@ -46,24 +69,7 @@ const DashboardHome = () => {
           
                 </div>
               </div>
-              <h1 className="font-semibold ml-0 text-3xl leading-9 p-2">USD 10,000.00</h1>
-              {/* <div className="flex flex-row-reverse justify-between items-center">                
-                  <div className="">                    
-                    <div className="  ml-11 mt-1 text-teal-500">
-                        <BsFillCaretUpFill />
-                        <p className="text-xs font-normal">Income</p>
-                    </div>
-                    <h4 className="font-bold">USD 30,000.00</h4>
-                    </div>             
-              
-                <div className="">
-                  <div>
-                  <BsCaretDownFill/>
-                  <p className="text-xs font-normal">Expenses</p>
-                  </div>            
-                  <h4 className="font-bold">USD 20,000.00</h4>
-                </div>
-              </div> */}
+              <h1 className="font-semibold ml-0 text-3xl leading-9 p-2">USD {users.account_balance }.00</h1>
               <div className="flex justify-between items-center gap-10 ml-1"> 
                 <div >
                   <div className="flex items-center justify-center">
@@ -84,7 +90,7 @@ const DashboardHome = () => {
               </div>
             </div>
 
-            <div className="content w-full h-48 p-4 my-[5%] md:my-[0%]">
+            <div className="content w-1/2 h-48 p-4 my-[5%] md:my-[0%]">
             <div className="flex flex-column justify-between">
                 <h3 className="font-semibold sm:text-sm">Total savings</h3>
                 <div className="flex flex-column justify-end ">
@@ -94,7 +100,7 @@ const DashboardHome = () => {
                 <span  className="mr-10 text-teal-500">2.36%</span>
                 </div>
               </div>
-              <h1 className="text-3xl ml-[-4%] mt-1 font-semibold leading-9 p-4">USD 5,000.00</h1>
+              <h1 className="text-3xl ml-[-4%] mt-1 font-semibold leading-9 p-4">USD {users.savings_wallet}.00</h1>
               <div className="flex flex-row  text-teal-500 p-6">
                 <BsFillBarChartFill/>
               </div>
@@ -113,8 +119,8 @@ const DashboardHome = () => {
             {/* <img src={graph} alt="graph" /> */}
           </div>
 
-          <div className="flex flex-col md:flex-row md:my-[3%] lg:my-[5%]"> 
-            <div className="goals h-40 p-4 mr-5 md:w-1/2">
+          <div className="flex flex-col md:flex-row transform -translate-y-[160%]"> 
+            <div className="goals p-4 mr-5 md:w-1/2 h-[25vh] pt-10">
             <div className="flex flex-column justify-between">
                <h3 className="font-black">Goals</h3>
                 <div className="flex flex-column pl-10 justify-end ">
@@ -144,7 +150,7 @@ const DashboardHome = () => {
                 </div>
               </div>
             </div>
-            <div className="spendingOverview flex flex-column p-4 h-40 md:w-1/2 my-[5%] md:my-[0%]"> 
+            <div className="spendingOverview flex flex-column p-4 md:w-1/2 my-[5%] md:my-[0%] h-[25vh] pt-10"> 
               <div className=" h-20">
                 <h4 className="font-black">Spending Overview</h4>
                 <div>
@@ -190,16 +196,21 @@ const DashboardHome = () => {
         
           </div>
         </div>
+          
+        </div>
 
-
-        <div className=" lg:w-3/5">
+        
+        <div className="lg:w-3/5 ">
+          <div>
+            <TransactionsList userTransactions={transactions} />
+          </div>
           {/* <div className="flex flex-row  p-5 pr-10">
             <TransactionsList userTransactions={transactions} userDetails={undefined}/>
             </div> */}
             
         
 
-<div className="bg-gray-800 px-10 mt-10 ml-2">
+<div className="bg-gray-800 px-10  ml-2 ">
         <div className="flex w-full justify-between items-center mt-7">
               <h3 className="ml-4 font-white text-gray-100 text-sm">Quick Transfer</h3>
               <div className="flex flex-column pl-10 justify-end ">
@@ -211,13 +222,22 @@ const DashboardHome = () => {
                   </div>
                 </div>
         </div>
-        <div className="flex mb-5  p-2" >
-            <div className="mt-3 items-center text-center" >
+        <div className="flex mb-5 p-2" >
+            <div className="mt-3 items-center" >
                 <img className="h-12 w-12 rounded-full bg-white bg-cover bg-no-repeat bg-center " src={Add} alt="icon" />
-                <p className="text-xs mt-2 text-white pr-10">Add</p>
-                <p className="text-xs text-white pr-10">New</p>
+                <p className="text-xs mt-2 text-white pr-10">Add New</p>
+  
+              </div>
+              <div className="flex">
+               {beneficiaries?.map((e:any)=> (<li key = {e.accountNumber} className="list-none">
+                
+                <div className="mt-3  ">
+                <img className="w-[38px] h-[38px] rounded-full bg-cover bg-no-repeat bg-center" src={Karen} alt="icon" />
+                <p className="text-xs text-white mt-2">{e.beneficiaryName}</p> 
+                </div>
+               </li>))  }
             </div>
-            <div className="mt-3 items-center text-center">
+            {/* <div className="mt-3 items-center text-center">
                 <img className="h-12 w-12 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center " src={Maria} alt="icon" />
                 <p className="text-xs mt-2 text-white pr-10">Maria</p>
                 <p className="text-xs text-white pr-10">Purple</p>
@@ -236,13 +256,11 @@ const DashboardHome = () => {
                 <img className="h-12 w-12 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center" src={Karen} alt="icon" />
                 <p className="text-xs mt-2 text-white pr-10">Karen</p>
                 <p className="text-xs text-white pr-10">Potter</p>
-            </div>
+            </div> */}
         </div>
         
         </div>
           </div>
-          
-        </div>
       </div>
     </>
   )
