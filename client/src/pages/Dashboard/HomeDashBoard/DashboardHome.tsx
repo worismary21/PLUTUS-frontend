@@ -16,6 +16,7 @@ import Oscar from "../../../assets/Oscar Wild.jpeg"
 // import TransactionsHome from '../TransactionsHome';
 import TransactionChart from '../TransactionChart';
 import TransactionsList from '../Transactions/mainCode/TransactionsList';
+import { transactions} from '../Routes';
 // import { Colors } from 'chart.js';
 
 
@@ -195,63 +196,10 @@ const DashboardHome = () => {
 
         <div className=" w-3/5 h-3/4">
           <div className="h-3/4">
-              {/* <div className="flex flex-row w-44 pl-5">
-              <p className="mr-3">All</p>
-              <p className="mr-3">Expenses</p>
-              <p>Income</p>
-              </div> */}
-            <TransactionsList userTransactions={[]} userDetails={undefined}/>
+            <TransactionsList userTransactions={transactions} userDetails={undefined}/>
             </div>
             
-          {/* <div className=" bg-gray-800  px-20 mt-7"> 
-         <div className="flex w-full justify-between items-center mt-7 ">
-        <h3 className="ml-7 font-bold text-sm text-white">Quick Transfer</h3>
-                <div className="flex flex-column pl-10 text-white justify-between">
-                  <div className="ml-11 mt-1 ">
-                  <FaLessThan style={{ width: '1rem', height: '1rem' }} />
-                  </div>
-                  <div className="mr-10 mt-1">   
-                    <FaGreaterThan style={{ width: '1rem', height: '1rem' }}/>
-                  </div>
-                </div>
-        </div>
-      <div className="flex mb-5" >
-              <div className="mt-3 items-center text-center" >
-                <div 
-                  style={{
-                    width: '60px', height: "60px",
-                    backgroundColor: "white", borderRadius: "50%", display: "flex",
-                    justifyContent:"center"
-                  }}>
-                <img style={{display: "flex",
-                    justifySelf:"center", alignSelf : "center", width:"30px", height:"30px"}}  src={Add} alt="icon" /> 
-              </div>
-             
-             <p className="text-xs mt-5">Add</p>
-              <p className="text-xs">New</p>
-         </div>
-        <div className="mt-3 items-center text-center">
-              <img className="h-14 w-14 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center ml-6" src={Maria} alt="icon" />
-              <p className="text-xs mt-2">Maria</p>
-               <p className="text-xs">Purple</p>
-           </div>
-          <div className="mt-3 items-center text-center">
-             <img className="h-14 w-14 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center ml-6" src={Leonard} alt="icon" />
-             <p className="text-xs mt-2">Leonard</p>
-              <p className="text-xs">Smith</p>
-          </div>
-          <div className="mt-3 items-center text-center">
-              <img className="h-14 w-14 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center ml-6" src={Oscar} alt="icon" />
-             <p className="text-xs mt-2">Oscar</p>
-              <p className="text-xs">Wild</p>
-               </div>
-             <div className="mt-3 items-center text-center">
-               <img className="h-14 w-14 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center ml-6" src={Karen} alt="icon" />
-               <p className="text-xs mt-2">Karen</p>
-              <p className="text-xs">Potter</p>
-          </div>
-       </div>
-            </div> */}
+        
 
 <div className="bg-gray-800 px-10 mt-10 ml-2">
         <div className="flex w-full justify-between items-center mt-7">
