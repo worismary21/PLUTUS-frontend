@@ -1,5 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
+import foodIcon from "./logos/foodIcon.svg";
+import entertainmentIcon from "./logos/entertainment.svg";
+import transferIcon from "./logos/QuickTransferIcon.svg";
+import travelIcon from "./logos/travelIcon.svg";
+import drinkIcon from "./logos/drinkIcon.svg"
 export interface transaction {
   id: string;
   accountNumber: number;
@@ -58,13 +63,22 @@ export default function TransactionsList({ userTransactions }: Props) {
       />
       <ul className="list-none">
         <div className="flex justify-start">
-          <button className="hover:border-gray-100 border-transparent border-2 rounded-lg p-2" onClick={() => allClick()}>
+          <button
+            className="hover:border-gray-100 border-transparent border-2 rounded-lg p-2"
+            onClick={() => allClick()}
+          >
             All
           </button>
-          <button className="hover:border-gray-100 border-transparent border-2 rounded-lg p-2" onClick={() => expensesClick()}>
+          <button
+            className="hover:border-gray-100 border-transparent border-2 rounded-lg p-2"
+            onClick={() => expensesClick()}
+          >
             Expenses
           </button>
-          <button className="hover:border-gray-100 border-transparent border-2 rounded-lg p-2" onClick={() => incomeClick()}>
+          <button
+            className="hover:border-gray-100 border-transparent border-2 rounded-lg p-2"
+            onClick={() => incomeClick()}
+          >
             Income
           </button>
         </div>
@@ -84,11 +98,28 @@ export default function TransactionsList({ userTransactions }: Props) {
               // }}
             >
               <div className="flex p-2 justify-between">
-                <div className="text-left">
-                  <h4 className="pb-1.5">{transaction.beneficiary_name}</h4>
-                  <p className="text-xs text-slate-400">
-                    {transaction.transfer_purpose}
-                  </p>
+                <div className="flex">
+                  {(transaction.transfer_purpose == "food" && (
+                    <img src={foodIcon} alt="" className="w-3/12 mr-2 rounded-full bg-purple-400" />
+                  )) ||
+                    (transaction.transfer_purpose == "entertainment" && (
+                      <img src={entertainmentIcon} alt="" className="w-3/12 mr-2" />
+                    )) ||
+                    (transaction.transfer_purpose == "revenue" && (
+                      <img src={transferIcon} alt="" className="w-3/12 mr-2 rounded-full bg-sky-200" />
+                    )) ||
+                    (transaction.transfer_purpose == "vacation" && (
+                      <img src={travelIcon} alt="" className="w-3/12 mr-2 rounded-full bg-cyan-100" />
+                    )) || 
+                    (transaction.transfer_purpose == "drinks" && (
+                      <img src={drinkIcon} alt="" className="w-3/12 mr-2 rounded-full bg-orange-200" />))
+                    }
+                  <div className="text-left">
+                    <h4 className="pb-1.5">{transaction.beneficiary_name}</h4>
+                    <p className="text-xs text-slate-400">
+                      {transaction.transfer_purpose}
+                    </p>
+                  </div>
                 </div>
                 <div className="text-right">
                   <h4

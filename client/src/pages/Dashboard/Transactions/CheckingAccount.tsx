@@ -12,10 +12,10 @@ export default function CheckingAccount({userDetails}: Props) {
       </div>
 
       <div className="flex-col p-2">
-        <h6 className="text-white text-xs">Balance</h6>
-        <h2 className="text-blue-300">USD {userDetails.accountBalance}</h2>
-        <h6 className="text-white text-xs">Available</h6>
-        <h4 className="text-blue-300">USD {userDetails.accountBalance}</h4>
+        <h6 className="text-white text-xs pb-1">Balance</h6>
+        <h2 className="text-blue-300">USD <span className="pl-2">{userDetails.accountBalance}</span></h2>
+        <h6 className="text-white text-xs pb-2">Available</h6>
+        <h4 className="text-blue-300">USD <span className="pl-2">{userDetails.accountBalance}</span></h4>
       </div>
 
       <div className="flex p-2 justify-between">

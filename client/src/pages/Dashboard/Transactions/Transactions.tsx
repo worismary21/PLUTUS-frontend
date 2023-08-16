@@ -40,8 +40,7 @@ export default function Transactions({ userTransactions ,userDetails}: Props) {
           <YBarChart userTransactions={userTransactions}></YBarChart>
         </div>
         <div className="chart-purple mt-10">
-        <XBarChart userTransactions={userTransactions}></XBarChart>
-        
+          <XBarChart userTransactions={userTransactions}></XBarChart>
         </div>
         </div>
       </div>
