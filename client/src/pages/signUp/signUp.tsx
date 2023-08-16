@@ -34,31 +34,29 @@ const SignUp = () => {
   };
   console.log(formData);
 
-  const dispatch = useDispatch() as unknown as any
+  const dispatch = useDispatch() as unknown as any;
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formData.password !== cPassword) {
       toast.error("Invalid Password");
     } else {
-
-      dispatch(registerUser(formData))
+      dispatch(registerUser(formData));
     }
   };
 
   return (
-   
     <div className="container">
       <div className="left-side">
         <div className="slide">
-          <img src={logo} alt="SignUp"  />
+          <img src={logo} alt="SignUp" />
           <div className="left-text">
             <h3>
               Plutus is personal <br /> finance, made simple.
             </h3>
             <p>
-              All your account, cards, savings, and investments in <br />{" "}
-              one place{" "}
+              All your account, cards, savings, and investments in <br /> one
+              place{" "}
             </p>
           </div>
         </div>
@@ -68,69 +66,65 @@ const SignUp = () => {
           <h3 className="logo-one">Plutus</h3>
           <p className="logo-two">Online Banking </p>
         </div>
-     
-          
-          <form action="" onSubmit={handleSubmit} className="right-form">
-            <div className="heading">
-              <h2>Sign Up</h2>
-              <p>Sign up and enjoy the services</p>
-            </div>
-            <input
-              type="text"
-              name={"firstName"}
-              required
-              value={formData.firstName}
-              onChange={handleChange}
-              placeholder=" FirstName"
-            />
-            <input
-              type="text"
-              name={"lastName"}
-              required
-              value={formData.lastName}
-              onChange={handleChange}
-              placeholder=" LastName"
-            />
-            <input
-              type="email"
-              name={"email"}
-              required
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email"
-            />
-            <input
-              type="password"
-              name={"password"}
-              required
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Password"
-            />
-            <input
-              type="password"
-              name={"cPassword"}
-              required
-              placeholder="Confirm Password"
-              value={cPassword}
-              onChange={(e) => setCPassword(e.target.value)}
-            />
-            <Link to="/dashBoard//dashboardHome">
-               <button type="submit" className="btnn" >
-               {" "}
-               Register
-               </button>
-            </Link>
-            <div className="register">
-            <p className="already">Already have an account?</p>
-            <Link to="/login" className="alreadyLogin">Login</Link>
-          </div>
-          </form>
 
-          
-        </div>
+        <form action="" onSubmit={handleSubmit} className="right-form">
+          <div className="heading">
+            <h2>Sign Up</h2>
+            <p>Sign up and enjoy the services</p>
+          </div>
+          <input
+            type="text"
+            name={"firstName"}
+            required
+            value={formData.firstName}
+            onChange={handleChange}
+            placeholder=" FirstName"
+          />
+          <input
+            type="text"
+            name={"lastName"}
+            required
+            value={formData.lastName}
+            onChange={handleChange}
+            placeholder=" LastName"
+          />
+          <input
+            type="email"
+            name={"email"}
+            required
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email"
+          />
+          <input
+            type="password"
+            name={"password"}
+            required
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Password"
+          />
+          <input
+            type="password"
+            name={"cPassword"}
+            required
+            placeholder="Confirm Password"
+            value={cPassword}
+            onChange={(e) => setCPassword(e.target.value)}
+          />
+          <button type="submit" className="btnn">
+            {" "}
+            Register
+          </button>
+          <div className="register">
+            <p className="already">Already have an account?</p>
+            <Link to="/login" className="alreadyLogin">
+              Login
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
-    
   );
 };
 
