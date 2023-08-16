@@ -5,7 +5,7 @@ import log from "./login.module.css";
 import Plutosimage1 from "./imagesforlogin/Plutosimage1.png";
 import { loginUser } from "../../redux/action";
 import { useDispatch } from "react-redux";
-import { Link } from 'react-router-dom'
+
 // import { useDispatch } from "react-redux";
 // import axios from "axios";
 
@@ -58,7 +58,7 @@ function Login() {
          </div>
     
         </div>
-        <div className={log.form}>
+        <div className="">
             <div className={log.logo}>
                 <h1 > Plutus </h1>
                 <p > Online Banking</p>
@@ -91,13 +91,14 @@ function Login() {
                 onChange={handleChange}
               />
             </div>
-            <Link to="/dashBoard">
+        
             <button
             type = "submit" 
-            className={log.btn1}>
+            className="bg-[#000] text-[#fff] w-80 h-10 justify-center mt-5 ml-44">
                 {loading ? 'Loading...' : 'Login' }
+                Login
                 </button>
-            </Link>
+  
                 {error &&(
                     <div>{error}</div>
                 )}
