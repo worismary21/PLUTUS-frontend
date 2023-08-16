@@ -9,11 +9,14 @@ import { Link } from 'react-router-dom'
 
 function ChangePass2() {
 
-const [changePasswordDataValue, setChangePasswordDataValue] = useState({})
+const [changePasswordDataValue, setChangePasswordDataValue] = useState<{
+      oldPassword?: string;
+      newPassword?: string;
+      confirmPassword?: string;}>({})
 // const notify = () => toast("Wow so easy!");
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const handleInputChange = (e: any) => {
+const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
      e.preventDefault()
      setChangePasswordDataValue({
           ...changePasswordDataValue,
@@ -21,9 +24,9 @@ const handleInputChange = (e: any) => {
      })
 }
 
-const handleRegister = async (e: any) => {
+const handleRegister = async (e:  React.FormEvent<HTMLFormElement>) => {
      e.preventDefault()
-     if( e.target.newPassword !== e.target.changePassword){
+     if( changePasswordDataValue.newPassword !== changePasswordDataValue.confirmPassword){
           alert("Passwords do not match")
      }     
      // else{

@@ -1,5 +1,5 @@
 
-// import graph from "../../assets/graph.png"
+import graph from "../../../assets/graph.png"
 import ProgressBar from './ProgressBar';
 import {
   BsFillArrowUpCircleFill, 
@@ -19,9 +19,9 @@ const DashboardHome = () => {
 
   return (
     <>
-      <div className="flex flex-row w-full h-full ml-[4%]">
-        <div className="flex flex-col p-10">
-          <div className="  flex flex-row mb-5">
+      <div className="flex lg:flex-row flex-col w-[100%] h-full ml-[15%] md:ml-[7%] lg:ml-[5%] pr-[5%]">
+        <div className="flex flex-col px-[5%] md:p-5  ">
+          <div className="  flex md:flex-row flex-col mb-5 ">
             <div className="content w-full h-48 p-4 mr-5">
               <div className="flex flex-column justify-between">
                 <h3>Total balance</h3>
@@ -53,7 +53,7 @@ const DashboardHome = () => {
               </div>
             </div>
 
-            <div className="content w-full h-48 p-4 ">
+            <div className="content w-full h-48 p-4 my-[5%] md:my-[0%]">
             <div className="flex flex-column justify-between">
                 <h3>Total savings</h3>
                 <div className="flex flex-column justify-end ">
@@ -68,11 +68,11 @@ const DashboardHome = () => {
               </div>
             </div>
           </div>
-          <div className="h-96 mb-2">
+          <div className="md:h-96 md:mb-2 mb-[5%]">
             <img src={graph} alt="graph" />
           </div>
-          <div className="flex flex-row"> 
-            <div className="goals h-40 p-4 mr-5 w-1/2">
+          <div className="flex flex-col md:flex-row md:my-[3%] lg:my-[5%]"> 
+            <div className="goals h-40 p-4 mr-5 md:w-1/2">
             <div className="flex flex-column justify-between">
                <h3 className="font-black ">Goals</h3>
                 <div className="flex flex-column pl-10 justify-end ">
@@ -102,7 +102,7 @@ const DashboardHome = () => {
                 </div>
               </div>
             </div>
-            <div className="spendingOverview flex flex-column p-4 h-40 w-1/2"> 
+            <div className="spendingOverview flex flex-column p-4 h-40 md:w-1/2 my-[5%] md:my-[0%]"> 
               <div className=" h-20">
                 <h4 className="font-black">Spending Overview</h4>
                 <div>
@@ -148,7 +148,7 @@ const DashboardHome = () => {
             </div>
           </div>
         </div>
-        <div className=" w-3/5">
+        <div className=" lg:w-3/5">
           <div className="flex flex-row  p-5 pr-10 " >
             <h4 className="text-xl font-medium leading-7">Transactions</h4>
             <p className="text-end"> View all</p>

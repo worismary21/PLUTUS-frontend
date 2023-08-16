@@ -5,7 +5,7 @@ interface Props {
 export default function CheckingAccount({userDetails}: Props) {
   return (
     
-    <div className="text-left bg-slate-900 w-7/12 p-5">
+    <div className="text-left bg-slate-900 lg:w-7/12 p-5">
       <div className="flex p-2 justify-between">
       <h6 className="text-white">Checking Account</h6>
       <h6 className="text-blue-300">^2.36%</h6>
