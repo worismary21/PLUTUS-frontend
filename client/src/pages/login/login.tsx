@@ -91,6 +91,7 @@ function Login() {
                 onChange={handleChange}
               />
             </div>
+            {/* <Link to="/dashBoard"> */}
         
             <button
             type = "submit" 
@@ -98,6 +99,7 @@ function Login() {
                 {loading ? 'Loading...' : 'Login' }
                 
                 </button>
+            {/* </Link> */}
   
                 {error &&(
                     <div>{error}</div>
