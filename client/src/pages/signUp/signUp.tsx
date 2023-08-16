@@ -63,10 +63,11 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <div className="right-side">
+      
+      <div className="right_side">
         <div className="logo">
-          <h3 className="logo-one">Plutus</h3>
-          <p className="logo-two">Online Banking </p>
+          <h3 className="logo_one">Plutus</h3>
+          <p className="logo_two">Online Banking </p>
         </div>
      
           
@@ -115,12 +116,12 @@ const SignUp = () => {
               value={cPassword}
               onChange={(e) => setCPassword(e.target.value)}
             />
-            <Link to="/dashBoard//dashboardHome">
-               <button type="submit" className="btnn" >
+          
+               <button type="submit" className="btnn bg-black" >
                {" "}
                Register
                </button>
-            </Link>
+           
             <div className="register">
             <p className="already">Already have an account?</p>
             <Link to="/login" className="alreadyLogin">Login</Link>
