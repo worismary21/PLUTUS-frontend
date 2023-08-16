@@ -1,12 +1,12 @@
 // import React from 'react'
-import {BiSolidInstitution,} from 'react-icons/bi'
-import {BsSave} from 'react-icons/bs'
-import {FiSettings, FiUsers} from 'react-icons/fi'
-import { FaUserCircle } from 'react-icons/fa';
+// import {BiSolidInstitution,} from 'react-icons/bi'
+import { BsSave } from "react-icons/bs";
+import { FiSettings } from "react-icons/fi";
+// import { FaUserCircle } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { BiTransfer } from "react-icons/bi";
-import { IoIosCard } from "react-icons/io";
+// import { IoIosCard } from "react-icons/io";
 import { AiFillHome } from "react-icons/ai";
 import { MdOutlineDashboard, MdLogout } from "react-icons/md";
 import React, { useState } from "react";
@@ -17,7 +17,7 @@ const Sidebar = () => {
     { name: "Dashboard", link: "/dashboard", icon: AiFillHome },
     { name: "Transfer", link: "/dashboard/transfer", icon: MdOutlineDashboard },
     { name: "Transactions", link: "/dashboard/transactions", icon: BiTransfer },
-    
+
     { name: "Investment", link: "/dashboard/investment", icon: BsSave },
     {
       name: "Settings",
@@ -29,39 +29,57 @@ const Sidebar = () => {
   ];
 
   const adminmenus = [
-    {name: "Users", link:'/dashboard', icon: AiFillHome},
-    {name: "companies", link:'/dashboard/companies', icon: BiTransfer},
-    {name: "Transactions", link:'/dashboard/transactions', icon: MdOutlineDashboard},
-
+    { name: "Users", link: "/dashboard", icon: AiFillHome },
+    { name: "companies", link: "/dashboard/companies", icon: BiTransfer },
+    {
+      name: "Transactions",
+      link: "/dashboard/transactions",
+      icon: MdOutlineDashboard,
+    },
   ];
   const companymenus = [
-    {name: "Home", link:'/dashboard', icon: AiFillHome},
-    {name: "transactions", link:'/dashboard/companies', icon: BiTransfer},
-    {name: "profile", link:'/dashboard/transactions', icon: MdOutlineDashboard},
-
+    { name: "Home", link: "/dashboard", icon: AiFillHome },
+    { name: "transactions", link: "/dashboard/companies", icon: BiTransfer },
+    {
+      name: "profile",
+      link: "/dashboard/transactions",
+      icon: MdOutlineDashboard,
+    },
   ];
   const [open, setOpen] = useState(true);
 
-  const role = localStorage.getItem("role")
+  const role = localStorage.getItem("role");
   return (
     // <section className='flex gap-6'>
-    <div className={`${open ? 'w-72': 'w-16'} duration-500 h-[120vh] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4`}>
-        <div className='py-3 flex justify-end'>
-          <HiMenuAlt3 size={26} className='cursor-pointer float-right' onClick={()=>setOpen(!open)}/>
-        </div>
-        <div>
-          <h1 className='text-center text-black'>Plutus</h1>
-        </div>
-        <div className='decoration mt-4 flex-col gap-4 relative  '>
-{(role === "user" ? menus : role === "admin" ? adminmenus : companymenus)?.map((menu, i)=>(
-
-             <Link to={menu?.link} key={i} className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md`}>
-
-              
-              <div>
-                {React.createElement(menu?.icon, {size: '20'})}
-              </div>
-              <h2 
+    <div
+      className={`${
+        open ? "w-72" : "w-16"
+      } duration-500 h-[120vh] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4`}
+    >
+      <div className="py-3 flex justify-end">
+        <HiMenuAlt3
+          size={26}
+          className="cursor-pointer float-right"
+          onClick={() => setOpen(!open)}
+        />
+      </div>
+      <div>
+        <h1 className="text-center text-black">Plutus</h1>
+      </div>
+      <div className="decoration mt-4 flex-col gap-4 relative  ">
+        {(role === "user"
+          ? menus
+          : role === "admin"
+          ? adminmenus
+          : companymenus
+        )?.map((menu, i) => (
+          <Link
+            to={menu?.link}
+            key={i}
+            className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md`}
+          >
+            <div>{React.createElement(menu?.icon, { size: "20" })}</div>
+            <h2
               style={{
                 transitionDelay: `${i + 3}00ms`,
               }}
@@ -87,10 +105,6 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
-
-
-
 
 // import { Link } from 'react-router-dom'
 // import {HiMenuAlt3 } from 'react-icons/hi'
@@ -164,9 +178,6 @@ export default Sidebar;
 // };
 
 // export default sidebar;
-
-
-
 
 // const Sidebar = ({ role }: any) => {
 //   const [open, setOpen] = useState(true);
