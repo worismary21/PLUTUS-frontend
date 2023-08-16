@@ -7,12 +7,13 @@ import Verify from "./pages/verify/Verify";
 import "./App.css"
 import SignUp from './pages/signUp/signUp';
 import Login from './pages/login/login'
-import RoutesDashBoard from './pages/Dashboard/Routes';
+import { RoutesDashBoard } from './pages/Dashboard/Routes';
 import Loggin from './pages/onboarding/Loggin';
 import Signupp from './pages/onboarding/Signupp';
 import Homepage from './pages/homepage/Homepage';
 import Transactions from './pages/AdminPageTransactions/Transactions'
 // import Transactions from './pages/Transactions/Transactions';
+import DashboardHome from './pages/Dashboard/HomeDashBoard/DashboardHome';
 
 import CompanyTable from './pages/companytable/CompanyTable';
 // import React from 'react';
@@ -45,6 +46,7 @@ function App() {
      {/* <Route path="/transactions" element={<Transactions/>}/> */}
      <Route path='/dashboard/*' element={<RoutesDashBoard />} />
      <Route path='/companytable' element={<CompanyTable />} />
+     <Route path='/dashboardhome' element={<DashboardHome />} />
 
       </Routes>
      </BrowserRouter> 
