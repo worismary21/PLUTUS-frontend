@@ -66,7 +66,7 @@ function Login() {
             </div>
            
           <form onSubmit={handleSubmit}>
-          <p className={log.text7}> Log in </p>
+          <p className={log.text7}> Login </p>
             <div className={log.mb_1}>
               <label className={log.form1}>Email</label>
               <br></br>
@@ -94,9 +94,9 @@ function Login() {
         
             <button
             type = "submit" 
-            className="bg-[#000] text-[#fff] w-80 h-10 justify-center mt-5 ml-44">
+            className="bg-[#000] text-[#fff] w-2/4 h-10 justify-center mt-10 ml-40 rounded">
                 {loading ? 'Loading...' : 'Login' }
-                Login
+                
                 </button>
   
                 {error &&(

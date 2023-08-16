@@ -115,7 +115,7 @@ const SignUp = () => {
               value={cPassword}
               onChange={(e) => setCPassword(e.target.value)}
             />
-               <button type="submit" className="btnn" >
+               <button type="submit" className="btnn bg-black" >
                {" "}
                Register
                </button>

@@ -29,15 +29,17 @@ const Sidebar = () => {
   ];
 
   const adminmenus = [
-    {name: "Users", link:'/dashboard', icon: AiFillHome},
+    {name: "Users", link:'/dashboard/admin', icon: AiFillHome},
     {name: "companies", link:'/dashboard/companies', icon: BiTransfer},
     {name: "Transactions", link:'/dashboard/transactions', icon: MdOutlineDashboard},
+    { name: "Log out", link: "/", icon: MdLogout },
 
   ];
   const companymenus = [
     {name: "Home", link:'/dashboard', icon: AiFillHome},
     {name: "transactions", link:'/dashboard/companies', icon: BiTransfer},
     {name: "profile", link:'/dashboard/transactions', icon: MdOutlineDashboard},
+    { name: "Log out", link: "/", icon: MdLogout },
 
   ];
   const [open, setOpen] = useState(true);
