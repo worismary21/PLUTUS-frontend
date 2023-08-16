@@ -53,11 +53,11 @@ const Investment = () => {
   );
 
   return (
-    <div className=" h-auto px-[5%] md:px-[0%] ml-[10%] md:ml-[0%]">
+    <div className=" h-auto px-[5%] md:px-[0%] ml-[10%] lg:ml-[0%]">
       <div>
         <h3>Investment</h3>
         <div className=" px-[5%] flex flex-col justify-between my-[5%] md:my-[0%] md:flex-row  ">
-          <div className="bg-[#f8f9fa] md:w-[30%] flex justify-center py-[3%] rounded-md">
+          <div className="bg-[#f8f9fa] md:w-[30%] flex  justify-center py-[3%] rounded-md">
             <div className="bg-[#b5dcf2] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px]">
               <TbCurrencyNaira />
             </div>
@@ -91,10 +91,10 @@ const Investment = () => {
 
       <div className={invest.secondline}></div>
 
-      <div className="flex flex-col px-[5%] md:flex-row justify-between w-[100%] overflow-x-scroll">
+      <div className="flex flex-col  px-[5%] items-center lg:flex-row lg:justify-between w-[100%] overflow-x-scroll">
         <div>
           <p className="text-[23px]">Yearly total investment</p>
-          <div className="w-[550px] bg-[#ebf3f9] my-[5%] md:my-[0%]">
+          <div className="lg:w-[550px] bg-[#ebf3f9] my-[5%] md:my-[0%]">
             {renderInvBarChart}
             Graph 1
           </div>
@@ -102,15 +102,15 @@ const Investment = () => {
 
         <div>
           <p className="text-[23px]">Yearly total revenue</p>
-          <div className="w-[550px] bg-[#dfd8f2] my-[5%] md:my-[0%]">
+          <div className="lg:w-[550px] bg-[#dfd8f2] my-[5%] md:my-[0%]">
             {renderRevBarChart}
             Graph 2
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between px-[5%] h-[20vh] w-[100%] ">
-        <div className="w-[50%] pt-[2%]">
+      <div className="flex flex-col lg:flex-row justify-between px-[5%] h-[20vh] w-[100%] ">
+        <div className="lg:w-[50%] pt-[2%]">
           <p className="text-[23px]">My investment</p>
           <Table striped>
             <Table.Body className="divide-y ">
@@ -152,7 +152,7 @@ const Investment = () => {
             </Table.Body>
           </Table>
         </div>
-        <div className="w-[40%] pt-[30px]">
+        <div className="lg:w-[40%] pt-[30px]">
           <p className="text-[23px]">Trending stock</p>
           <Table className="bg-[#000] text-[#fff] pt-[70px]">
             <Table.Body>

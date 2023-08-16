@@ -9,7 +9,7 @@ const AccountSettings = () => {
   const location = useLocation()
   return (
     <>
-       <div className="flex space-x-4 px-20 mt-16">
+       <div className="flex flex-col lg:flex-row space-x-4 px-20 mt-16">
       {/* Personal Info */}
       <div className="flex flex-col items-center">
         <Link to="/dashboard/accountsettings" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
