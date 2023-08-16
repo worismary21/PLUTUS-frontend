@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { apiGet } from '../../utils/axios';
+import { apiDelete, apiGet } from '../../utils/axios';
 import Pagination from '../AdminPageTransactions/Pagination';
 
 // interface users {
@@ -15,6 +15,7 @@ interface User {
      accountNumber: string;
      savingsWallet: string;
      accountBalance: number;
+     amount: number;
   }
   
 
@@ -34,6 +35,8 @@ function UsersAdmin() {
      } 
      
      const searchedUsers = search(userDetails)
+
+
      
 
      const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,25 +44,33 @@ function UsersAdmin() {
           setSearchInput(e.target.value)
      }
 
-     // const handleDelete = async () => {
-     //      try {
-     //           await axios.delete(`/user/deleteUser/${userId}`)
-     //      } catch (error) {
-     //           console.error(error)
-     //      }
-     // }
+     const handleDelete = async (id: string) => {
+          try {
+               const response = await apiDelete(`/user/deleteUser/${id}`)
+
+               if(response){
+                    const newUserArray = userDetails.filter((list) => list.id !== id)
+                    setUserDetails(newUserArray)
+
+               }
+          } catch (error) {
+               console.error(error)
+          }
+     }
 
    
 
      const getUsers = async () => {
           try {
                const response = await apiGet("/user/get")
-          console.log(response.data.data)
+               console.log(response.data.data)
           setUserDetails(response.data.data)
           } catch (error) {
                console.error(error)
           }
      }
+
+
 
      useEffect(()=>{
           getUsers()
@@ -88,21 +99,20 @@ function UsersAdmin() {
                     </thead>
 
                     <tbody>
-                         {searchedUsers.map((user) => (
-                              <tr key={user.id} className='h-20 shadow-sm hover:bg-blue-300 bg-blue-100'>
-                                   <td className='text-center w-4'>{user.id}</td>
-                                   <td className='text-center w-4'>{user.firstName}</td>
-                                   <td className='text-center w-4'>{user.lastName}</td>
-                                   <td className='text-center w-4'>{user.email}</td>
-                                   <td className='text-center w-4'>{user.accountNumber}</td>
-                                   <td className='text-center w-4'>{user.savingsWallet}</td>
-                                   <td className='text-center w-4'>{user.accountBalance}</td>
-                                   <td className='text-center w-1'>
-                                        <button className='border bg-red-400 hover:bg-red-600 w-40 h-10 text-white rounded' >Delete</button>
-                                   </td>
-
-                              </tr>
-                         ))}
+                         {searchedUsers.map((user) => {
+                              return <tr key={user.id} className='h-20 shadow-sm hover:bg-blue-300 bg-blue-100 ml-5'>
+                                        <td className='text-center w-4'>{user.id}</td>
+                                        <td className='text-center w-4'>{user.firstName}</td>
+                                        <td className='text-center w-4'>{user.lastName}</td>
+                                        <td className='text-center w-4'>{user.email}</td>
+                                        <td className='text-center w-4'>{user.accountNumber}</td>
+                                        <td className='text-center w-4'>{user.savingsWallet.amount}</td>
+                                        <td className='text-center w-4'>{user.accountBalance}</td>
+                                        <td className='text-center w-1'>
+                                             <button className='border bg-red-400 hover:bg-red-600 w-40 h-10 text-white rounded' onClick={() => handleDelete(user.id)}>Delete</button>
+                                        </td>
+                                   </tr>
+                         })}
                     </tbody>
                </table>
                <div className = "mx-auto w-10 border-16 py-10">
