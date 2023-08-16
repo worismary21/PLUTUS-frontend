@@ -27,17 +27,27 @@ function UsersAdmin() {
      const [searchInput, setSearchInput] = useState<string>("")
 
 
-     // const search = (userDetails: any[]) => {
-     //      return userDetails.filter((item) => 
-     //      item.email.toLowerCase().includes(searchInput) 
-     //      // item.id.toLowerCase().includes(searchInput) } 
-     //      )
-     // }
+     const search = (userDetails: User[]) => {
+          return userDetails.filter((user) => 
+          user.email.toLowerCase().includes(searchInput) ||
+          user.id.toLowerCase().includes(searchInput) )
+     } 
+     
+     const searchedUsers = search(userDetails)
+     
 
      const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
           e.preventDefault()
           setSearchInput(e.target.value)
      }
+
+     // const handleDelete = async () => {
+     //      try {
+     //           await axios.delete(`/user/deleteUser/${userId}`)
+     //      } catch (error) {
+     //           console.error(error)
+     //      }
+     // }
 
    
 
@@ -53,7 +63,7 @@ function UsersAdmin() {
 
      useEffect(()=>{
           getUsers()
-     }, [])
+     }, [userDetails])
 
   return (
      <>
@@ -78,7 +88,7 @@ function UsersAdmin() {
                     </thead>
 
                     <tbody>
-                         {userDetails.map((user) => (
+                         {searchedUsers.map((user) => (
                               <tr key={user.id} className='h-20 shadow-sm hover:bg-blue-300 bg-blue-100'>
                                    <td className='text-center w-4'>{user.id}</td>
                                    <td className='text-center w-4'>{user.firstName}</td>
@@ -96,7 +106,7 @@ function UsersAdmin() {
                     </tbody>
                </table>
                <div className = "mx-auto w-10 border-16 py-10">
-                    <Pagination totalTransactions = {userDetails.length} postsPerPage = {userPerPage} setCurrentPage = {setCurrentPage} currentPage = {currentPage} />
+                    <Pagination totalTransactions = {searchedUsers.length} postsPerPage = {userPerPage} setCurrentPage = {setCurrentPage} currentPage = {currentPage} />
                </div>
                
           </div>

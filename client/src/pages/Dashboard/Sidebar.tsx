@@ -45,15 +45,15 @@ const Sidebar = () => {
   const role = localStorage.getItem("role")
   return (
     // <section className='flex gap-6'>
-    <div className={`${open ? 'w-72': 'w-16'} duration-500 h-[120vh] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4`}>
+    <div className={`${open ? 'w-72': 'w-20'} duration-500 h-[120vh] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4 shadow-xl`}>
         <div className='py-3 flex justify-end'>
-          <HiMenuAlt3 size={26} className='cursor-pointer float-right' onClick={()=>setOpen(!open)}/>
+          <HiMenuAlt3 size={26} className='cursor-pointer float-right shadow' onClick={()=>setOpen(!open)}/>
         </div>
         <div>
-          <h1 className='text-center text-black'>Plutus</h1>
+          <h1 className='text-center text-gray-500'>Plutus</h1>
         </div>
         <div className='decoration mt-4 flex-col gap-4 relative  '>
-{(role === "user" ? menus : role === "admin" ? adminmenus : companymenus)?.map((menu, i)=>(
+          {(role === "user" ? menus : role === "admin" ? adminmenus : companymenus)?.map((menu, i)=>(
 
              <Link to={menu?.link} key={i} className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md`}>
 
@@ -74,7 +74,7 @@ const Sidebar = () => {
             <h2
               className={`${
                 open && "hidden"
-              } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit `}
+              } absolute left-48 bg-white font-semibold whitespace-pre text-gray-500 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit `}
             >
               {menu?.name}
             </h2>

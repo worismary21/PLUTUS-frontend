@@ -115,12 +115,11 @@ const SignUp = () => {
               value={cPassword}
               onChange={(e) => setCPassword(e.target.value)}
             />
-            <Link to="/dashBoard//dashboardHome">
                <button type="submit" className="btnn" >
                {" "}
                Register
                </button>
-            </Link>
+            
             <div className="register">
             <p className="already">Already have an account?</p>
             <Link to="/login" className="alreadyLogin">Login</Link>
