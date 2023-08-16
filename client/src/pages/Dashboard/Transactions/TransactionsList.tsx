@@ -17,34 +17,62 @@ export interface Props {
   userTransactions: transaction[];
 }
 
-export default function TransactionsList({ userTransactions}: Props) {
-
+export default function TransactionsList({ userTransactions }: Props) {
   const [transactions, setTransactions] = useState(userTransactions);
-  const expensesClick =()=>{
-    setTransactions(userTransactions.filter(transaction=> transaction.amount < 0))
-  }
-  const incomeClick =()=>{
-    setTransactions(userTransactions.filter(transaction=> transaction.amount > 0))
-  }
-  const allClick =()=>{
-    setTransactions(userTransactions)
-  }
- 
+  const expensesClick = () => {
+    setTransactions(
+      userTransactions.filter((transaction) => transaction.amount < 0)
+    );
+  };
+  const incomeClick = () => {
+    setTransactions(
+      userTransactions.filter((transaction) => transaction.amount > 0)
+    );
+  };
+  const allClick = () => {
+    setTransactions(userTransactions);
+  };
 
   return (
     <>
       <h1 className="text-2xl text-left p-2">Transactions</h1>
-      <input type="text" placeholder="Search" className="w-full p-2" onChange={(e)=>{setTransactions(userTransactions.filter(transaction=> transaction.beneficiary_name.toLowerCase().includes(e.target.value.toLowerCase())))}}/>
+      <input
+        type="text"
+        placeholder="Search"
+        className="w-full p-2 active:border-gray-700 "
+        onChange={(e) => {
+          setTransactions(
+            userTransactions.filter((transaction) => {
+              if (e.target.value.length == 1) {
+                const firstLetter =
+                  transaction.beneficiary_name[0].toLowerCase();
+                return firstLetter === e.target.value.toLowerCase();
+              }
+              return transaction.beneficiary_name
+                .toLowerCase()
+                .includes(e.target.value.toLowerCase());
+            })
+            // .sort((a,b)=> a.beneficiary_name.localeCompare(b.beneficiary_name))
+          );
+        }}
+      />
       <ul className="list-none">
-      <div className="flex justify-start">
-          <button className="p-2" onClick={()=> allClick()}>All</button>
-          <button className="p-2" onClick={()=> expensesClick()}>Expenses</button>
-          <button className="p-2" onClick={()=> incomeClick()}>Income</button>
+        <div className="flex justify-start">
+          <button className="hover:border-gray-100 border-transparent border-2 rounded-lg p-2" onClick={() => allClick()}>
+            All
+          </button>
+          <button className="hover:border-gray-100 border-transparent border-2 rounded-lg p-2" onClick={() => expensesClick()}>
+            Expenses
+          </button>
+          <button className="hover:border-gray-100 border-transparent border-2 rounded-lg p-2" onClick={() => incomeClick()}>
+            Income
+          </button>
         </div>
         <div>
           {transactions?.map((transaction) => (
             <li
               key={transaction.id}
+              className="hover:border-gray-100 border-transparent border-2 rounded-lg"
               // className={
               //   selectedIndex === index
               //     ? "list-group-item active"
@@ -56,12 +84,22 @@ export default function TransactionsList({ userTransactions}: Props) {
               // }}
             >
               <div className="flex p-2 justify-between">
-              <div className="text-left">
-              <h4 className="pb-1.5">{transaction.beneficiary_name}</h4>
-                  <p className="text-xs text-slate-400">{transaction.transfer_purpose}</p>
+                <div className="text-left">
+                  <h4 className="pb-1.5">{transaction.beneficiary_name}</h4>
+                  <p className="text-xs text-slate-400">
+                    {transaction.transfer_purpose}
+                  </p>
                 </div>
                 <div className="text-right">
-                <h4 className={transaction.amount > 0  ? "text-green-600 pb-1.5": "text-red-600 pb-1.5"}>{transaction.amount}</h4>
+                  <h4
+                    className={
+                      transaction.amount > 0
+                        ? "text-green-600 pb-1.5"
+                        : "text-red-600 pb-1.5"
+                    }
+                  >
+                    {transaction.amount}
+                  </h4>
                   <p className="text-xs text-slate-400">{transaction.amount}</p>
                 </div>
               </div>

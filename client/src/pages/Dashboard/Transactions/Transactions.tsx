@@ -10,6 +10,7 @@ import MasterCard from "./MasterCard";
 // import { apiGet } from '../../../utils/axios';
 // import axios from 'axios';
 import "./style.css"
+import XBarChart from "./XBarChart";
 
 interface Props {
   userTransactions: transaction[];
@@ -33,12 +34,14 @@ export default function Transactions({ userTransactions ,userDetails}: Props) {
           <CheckingAccount userDetails={userDetails}/>
           <MasterCard userDetails={userDetails}/>
         </div >
-        <div className="w-full flex flex-col" >
-        <div className="">
+        <h1 className="pt-10">Spending Overview</h1>
+        <div className="w-full flex flex-col pt-10" >
+        <div className="chart-blue">
           <YBarChart userTransactions={userTransactions}></YBarChart>
         </div>
-        <div className="">
-        <YBarChart userTransactions={userTransactions}></YBarChart>
+        <div className="chart-purple mt-10">
+        <XBarChart userTransactions={userTransactions}></XBarChart>
+        
         </div>
         </div>
       </div>
