@@ -6,16 +6,17 @@ import share from "./assets/share.svg";
 import transaction from "./assets/transaction.svg";
 import profile from "./assets/profile.png"
 import icons from "./assets/icons8.png"
-import { savingswallet } from "../../../redux/action";
-import { useDispatch } from "react-redux";
+import { transferInvestment  } from "../../../redux/action";
 import { getInfo } from "../../../redux/action";
-import { useSelector } from "react-redux";
 import { getBeneficiary } from "../../../redux/action";
 
 
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-const Savings = () => {
+const Investment = () => {
  const [formData, setFormData] = useState({
+    company_account_number:"",
     amount:""
   })
 
@@ -44,7 +45,7 @@ const Savings = () => {
   const handleSubmit = async(e:any) => {
     e.preventDefault()
     console.log(formData)
-    dispatch(savingswallet(formData))
+    dispatch(transferInvestment(formData))
   }
 
   const users = useSelector((state:any) => state.user)
@@ -168,11 +169,22 @@ const Savings = () => {
    
         <form action="" onSubmit={handleSubmit} className="flex flex-col mt-7">
             
-            <p className="text-sm">Savings Wallet</p>
+            <p className="text-sm">Company</p>
             
+
+            <input 
+            className="mt-6 w-full"
+              type="text"
+              name={"company_account_number"}
+              onChange={handleChange}
+              value={formData.company_account_number}
+              required
+              placeholder="Company Account Number *"
+            />
+
           <input
           className="mt-6 w-full"
-            type="text"
+            type="number"
             name={"amount"}
             onChange={handleChange}
             value={formData.amount}
@@ -202,8 +214,19 @@ const Savings = () => {
 
         <form action="" onSubmit={handleSubmit} className="flex flex-col mt-7">
             
-              <p className="text-sm">Savings Wallet</p>
+              <p className="text-sm">Company</p>
               
+
+              <input 
+            className="mt-6 w-full"
+              type="text"
+              name={"company_account_number"}
+              onChange={handleChange}
+              value={formData.company_account_number}
+              required
+              placeholder="Company Account Number *"
+            />
+
             <input
             className="mt-6 w-full"
               type="number"
@@ -233,4 +256,4 @@ const Savings = () => {
   );
 };
 
-export default Savings;
+export default Investment;

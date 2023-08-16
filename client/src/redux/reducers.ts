@@ -7,6 +7,7 @@ export interface State {
   company: any[];
   transactions: any[];
   transfer:any[];
+  beneficiary:any[];
   loading: boolean;
   error: string | null;
 }
@@ -16,6 +17,7 @@ const initialState: State = {
   company: [],
   transactions:[],
   transfer:[],
+  beneficiary:[],
   loading: false,
   error: null,
 };
@@ -38,6 +40,11 @@ const dataSlice = createSlice({
       console.log(action)
       state.company = action.payload;
     },
+    fetchDataBeneficiary: (state, action: PayloadAction<any[]>) => {
+      state.loading = false;
+      console.log(action)
+      state.beneficiary = action.payload;
+    },
 
  
     fetchDataFailure: (state, action: PayloadAction<string>) => {
@@ -47,6 +54,6 @@ const dataSlice = createSlice({
   },
 });
 
-export const { fetchDataStart,  fetchDataUser,  fetchDataFailure, fetchDataCompany} = dataSlice.actions;
+export const { fetchDataStart,  fetchDataUser,  fetchDataFailure, fetchDataCompany, fetchDataBeneficiary} = dataSlice.actions;
 
 export default dataSlice.reducer;

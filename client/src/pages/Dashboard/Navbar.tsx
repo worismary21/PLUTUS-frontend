@@ -1,10 +1,10 @@
-import React from "react";
-import { BsBellFill } from "react-icons/bs";
-import { FaUserCircle } from "react-icons/fa";
+import React from 'react';
+import { BsBellFill } from 'react-icons/bs';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Navbar = () => {
   return (
-    <nav className=" p-4 flex justify-between ml-[15%] md:ml-[5%] w-[100%] pr-[15%] md:pr-[8%]">
+    <nav className=" p-4 flex justify-between  w-[100%]  md:pr-[8%] ml-[15%] md:ml-[7%] lg:ml-[5%] pr-[5%]">
       {/* Dashboard Name */}
       <div className="flex justify-between">
         <p className="text-black text-lg font-semibold">Dashboard</p>

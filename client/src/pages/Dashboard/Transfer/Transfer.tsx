@@ -3,7 +3,7 @@ import Checking from "./Checking";
 
 const Transfer = () => {
   return (
-    <div className="ml-[6%]  ">
+    <div className="ml-[6%]  h-[100vh]">
       <Checking />
     </div>
   );
