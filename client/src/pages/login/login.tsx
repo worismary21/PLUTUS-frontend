@@ -91,13 +91,13 @@ function Login() {
                 onChange={handleChange}
               />
             </div>
-            <Link to="/dashBoard">
+            {/* <Link to="/dashBoard"> */}
             <button
             type = "submit" 
             className={log.btn1}>
                 Login
                 </button>
-            </Link>
+            {/* </Link> */}
                 {error &&(
                     <div>{error}</div>
                 )}
