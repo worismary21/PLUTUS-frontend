@@ -3,10 +3,12 @@
 import { TbCurrencyNaira } from "react-icons/tb";
 import { FaCoins } from "react-icons/fa";
 import { GiAnticlockwiseRotation } from "react-icons/gi";
-// import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 import TableWithIcons from "./TableWithIcons";
 import TrendingStock from "./TrendingStock";
+import { BASE_URL } from "../../../api/axios";
+import axios from "axios";
 
 interface StockData {
   name: string;
@@ -14,6 +16,19 @@ interface StockData {
   return: number;
 }
 const Investment = () => {
+  const [invest, setInvest] = useState<any[]>([]);
+
+  const getInvestments = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/investor/getinvestment/`);
+      console.log("RESPONSE", response);
+    } catch (error) {
+      return error;
+    }
+  };
+  useEffect(() => {
+    getInvestments();
+  }, []);
   const ror = "+4.75%";
   const ti = "#10,000";
   const noi = "1600";
