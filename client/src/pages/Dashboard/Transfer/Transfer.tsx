@@ -1,18 +1,12 @@
 // import React from 'react'
-import Checking from "./Checking"
-
-
-
-
+import Checking from "./Checking";
 
 const Transfer = () => {
-
   return (
-    <div className="m-2 lg:m-10 md:m-5 mt-2">
+    <div className="ml-[6%]  ">
       <Checking />
-
     </div>
-  )
-}
+  );
+};
 
-export default Transfer
+export default Transfer;

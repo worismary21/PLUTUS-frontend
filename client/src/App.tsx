@@ -7,12 +7,12 @@ import Verify from "./pages/verify/Verify";
 import "./App.css"
 import SignUp from './pages/signUp/signUp';
 import Login from './pages/login/login'
-import Dashboard from './pages/Dashboard/Dashboard';
 import Loggin from './pages/onboarding/Loggin';
 import Signupp from './pages/onboarding/Signupp';
 import Homepage from './pages/homepage/Homepage';
-// import React from 'react';
+import RoutesDashBoard from './pages/Dashboard/Routes';
 
+// import React from 'react';
 
 
 function App() {
@@ -27,7 +27,6 @@ function App() {
           closeOnClick     
           pauseOnHover={false}      
         />
-   
       <Routes>
         <Route path='/' element={<Homepage />} />
        <Route path='/signup' element={<SignUp />}/>
@@ -38,8 +37,11 @@ function App() {
        <Route path="/signupp" element={<Signupp />} />
      <Route path='*' element={<Error404 />}/>
      <Route path='/changePasswordConfirm' element={<ChangePass2 />}/>  
-     <Route path='/dashboard/*' element={<Dashboard />} />
+     <Route path='/dashboard/*' element={<RoutesDashBoard />} />
 
+
+
+     
       </Routes>
      </BrowserRouter> 
      </>
