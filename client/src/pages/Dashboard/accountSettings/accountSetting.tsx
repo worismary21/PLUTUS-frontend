@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from 'react-toastify';
 import React, { useState } from 'react';
 //import axios from 'axios';
-import { apiPatch, apiPut } from '../../../utils/axios';
+import { apiPut } from '../../../utils/axios';
 import axios from '../../../api/axios';
 
 
@@ -23,6 +23,7 @@ const AccountSettings: React.FC = () => {
   };
   console.log('Data', formData);
   console.log("formData")
+  
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -35,14 +36,13 @@ const AccountSettings: React.FC = () => {
     }
   };
 
-  const [successMessage, setSuccessMessage] = useState<string>('');
+  const [successMessage, setSuccessMessage] = useState<string | null>('null');
   
   const handleSubmit = async (e: React.FormEvent) => {
     try {
         e.preventDefault();
       // ...existing code to make API request
-      await apiPut('/user/updateAccount', formData);
-      console.log()
+      await axios.put('/user/updateAccount', formData);
       setSuccessMessage('Account settings updated successfully!');
       toast.success('Account settings updated successfully!');
     } catch (error) {
