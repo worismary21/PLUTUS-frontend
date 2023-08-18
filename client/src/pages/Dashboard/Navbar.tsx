@@ -11,9 +11,11 @@ const Navbar = () => {
 
         {/* User Circle Icon */}
         <div className="flex   justify-end">
-          <BsBellFill className="h-4 w-4 text-grey-500 mr-2" />
-          <FaUserCircle className="h-6 w-6 text-grey-500" />
-          <span className="text-grey-500 w-[auto]">Obiora Kingsley</span>
+          <BsBellFill className="h-4 w-4 my-auto text-black mr-2" />
+          <FaUserCircle className="h-6 w-6 my-auto text-black" />
+          <span className="text-black my-auto ml-4 w-[auto]">
+            Obiora Kingsley
+          </span>
         </div>
       </div>
     </nav>

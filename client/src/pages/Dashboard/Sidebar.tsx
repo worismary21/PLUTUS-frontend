@@ -30,7 +30,7 @@ const Sidebar = () => {
 
   const adminmenus = [
     {name: "Users", link:'/dashboard/admin', icon: AiFillHome},
-    {name: "companies", link:'/dashboard/companyDashboard', icon: BiTransfer},
+    {name: "companies", link:'/dashboard/allTransactions', icon: BiTransfer},
     {name: "Transactions", link:'/dashboard/transactions', icon: MdOutlineDashboard},
     { name: "Log out", link: "/", icon: MdLogout },
 
@@ -47,20 +47,20 @@ const Sidebar = () => {
   const role = localStorage.getItem("role")
   return (
     // <section className='flex gap-6'>
-    <div className={`${open ? 'w-72': 'w-20'} duration-500 h-[120vh] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4 shadow-xl`}>
+    <div className={`${open ? 'w-48': 'w-20'} duration-500 h-[120vh] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4 shadow-xl w`}>
         <div className='py-3 flex justify-end'>
           <HiMenuAlt3 size={26} className='cursor-pointer float-right shadow' onClick={()=>setOpen(!open)}/>
         </div>
         <div>
           <h1 className='text-center text-gray-500'>Plutus</h1>
         </div>
-        <div className='decoration mt-4 flex-col gap-4 relative  '>
+        <div className='decoration mt-4 flex-col gap-4 relative'>
           {(role === "user" ? menus : role === "admin" ? adminmenus : companymenus)?.map((menu, i)=>(
 
-             <Link to={menu?.link} key={i} className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md`}>
+             <Link to={menu?.link} key={i} className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md w-30 m-0`}>
 
               
-              <div>
+              <div className='w-16'>
                 {React.createElement(menu?.icon, {size: '20'})}
               </div>
               <h2 
@@ -68,7 +68,7 @@ const Sidebar = () => {
                 transitionDelay: `${i + 3}00ms`,
               }}
               className={`whitespace-pre duration-500 ${
-                !open && "opacity-0 translate-x-28 overflow-hidden m-0     "
+                !open && "opacity-0 translate-x-28 overflow-hidden m-0"
               }`}
             >
               {menu?.name}

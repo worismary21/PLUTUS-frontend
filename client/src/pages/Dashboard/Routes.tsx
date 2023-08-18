@@ -12,6 +12,7 @@ import AccountSettings from "./accountSettings/accountSetting";
 import UsersAdmin from "../UsersAdmin/users";
 import Transactions from "./Transactions/Transactions";
 import CompanyDashboard from "../companydashboard/CompanyDashboard";
+import AllTransactions from "../AdminPageTransactions/AllTransactions"
 
 export interface transaction {
   id: string;
@@ -203,6 +204,7 @@ export const RoutesDashBoard = () => {
               />
             }
           />
+          <Route path="/allTransactions" element={<AllTransactions />} />
           <Route path="/admin" element={<UsersAdmin />} />
           <Route path="/transfer/investment" element={<Invest />} />
           <Route path="/transfer/addbeneficiary" element={<AddBeneficiary />} />
