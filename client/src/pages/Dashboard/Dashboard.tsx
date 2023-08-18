@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Savings from "./Transfer/Savings";
 import AccountSettings from "./accountSettings/accountSetting";
+import CompanyTable from "../companytable/CompanyTable"
 
 const Dashboard = () => {
   return (
@@ -24,6 +25,7 @@ const Dashboard = () => {
           <Route path="/notifications" element={<AccountSettings />} />
           <Route path="/password-and-security" element={<AccountSettings />} />
             <Route path="/choose-plan" element={<AccountSettings />} />
+            <Route path='/companytable' element={<CompanyTable />} />
           </Routes>
       </div>
     </div>

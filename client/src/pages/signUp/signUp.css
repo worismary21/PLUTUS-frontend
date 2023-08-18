@@ -37,52 +37,77 @@
 
 }
 .left-text h3{
-    font-family: Roboto, Gelion, Helvetica, "Helvetica Neue", Arial;
+
     font-size: 32px;
     font-weight: 700;
     line-height: 38px;
     color: rgb(249, 250, 254);
 }
 .left-text p{
-    font-family: roboto, Gelion, Helvetica, "Helvetica Neue", Arial;
+
     font-size: 16px;
     font-weight: 400;
-    padding-top: -100px;
+    padding-top: 20px;
     line-height: 18px;
     color: rgb(249, 250, 254)
 }
 
-.right-side .logo{
+
+.right_side .logo{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    color: blue;
+    align-items: flex-end ;
+    color: #476FFB;
+    font-size: 16px;
     text-align: right;
-    padding: 5% 3%;
+    padding-left: 100px;
+  
 }
 
+.right_side .logo h1{
+    margin-top: 49px;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 38px;
+    font-family: 'Roboto', sans-serif;
+    color: #476FFB;
+}
+
+.right_side .logo p{
+    margin-top: 2px;
+    font-size: 16px;
+    line-height: 18px;
+    font-family: 'Robotosmall', sans-serif;
+    color: #476FFB;
+} 
+
 .right-form{
-    display: flex;
-    flex-direction: column;
+   
     padding: 5% 20%;
-    margin-top: 40px;
+    padding-top: 150px;
+    margin-left: 20px;
     
 }
+
+ /*  */
 
 .right-form input{
     width: 100%;
     margin: 2% 0% 2% 0;
     border-radius: 8px;
+    height: 40px;
 }
 .heading h2{
     margin-bottom: 5px;
+    font-size: 2rem;
+    font-weight: 600;
 }
 .heading p{
     margin-bottom: 10px;
+
 }
 
 .btnn{
-    display: block;
     font-size: 1rem;
     font-weight: 300;
     padding: 0.7rem;
@@ -91,7 +116,7 @@
     border: none;
     border-radius: 8px;
     outline: none;
-    background: #000;
+    background-color: #000;
     color: #fff;
 } 
 
@@ -174,14 +199,16 @@
         display: block;
     }
     .logo{
-        transform: translateY(-10%);
+        transform: translateY(-43rem);
         
     }
-    .logo-one{
+    .logo_one{
         color: #fff;
+        margin-right: 10px;
     }
-    .logo-two{
+    .logo_two{
         color: #fff;
+        margin-right: 10px;
     }
     
 }

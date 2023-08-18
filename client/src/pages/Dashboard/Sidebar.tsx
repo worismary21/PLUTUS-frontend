@@ -30,7 +30,7 @@ const Sidebar = () => {
 
   const adminmenus = [
     {name: "Users", link:'/dashboard/admin', icon: AiFillHome},
-    {name: "companies", link:'/dashboard/companies', icon: BiTransfer},
+    {name: "companies", link:'/dashboard/companyDashboard', icon: BiTransfer},
     {name: "Transactions", link:'/dashboard/transactions', icon: MdOutlineDashboard},
     { name: "Log out", link: "/", icon: MdLogout },
 
@@ -91,6 +91,9 @@ const Sidebar = () => {
 export default Sidebar;
 
 
+
+
+///////////////
 
 
 
