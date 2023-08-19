@@ -10,7 +10,7 @@ interface Props {
 
 export default function MasterCard({ userDetails }: Props) {
   return (
-    <div className=" flex-col bg-orange-500 rounded-l-3xl rounded-r-3xl w-2/5 text-left p-10">
+    <div className=" flex flex-col bg-orange-500 rounded-l-3xl rounded-r-3xl lg:w-2/5 text-left p-10 sm:max-lg:w-fit" >
       <div className="flex justify-between">
         <img
           src={mastercardlogo}

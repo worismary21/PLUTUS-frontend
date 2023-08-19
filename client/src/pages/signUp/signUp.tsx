@@ -43,6 +43,7 @@ const SignUp = () => {
     } else {
 
       dispatch(registerUser(formData))
+      
     }
   };
 
