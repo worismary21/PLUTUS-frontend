@@ -16,7 +16,7 @@ function changePass() {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
@@ -26,8 +26,8 @@ function changePass() {
     setModal(!modal);
   };
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+     e.preventDefault()
     toggleModal();
     sendOTP();
     // const changePasswordResponse = await changePassword(email)
@@ -35,7 +35,6 @@ function changePass() {
   };
 
   const handleVerify = async () => {
-//     e.preventDefault();
     // const otpResponse = await changePassword(otp)
     // console.log("otp", otpResponse)
   };
@@ -59,6 +58,7 @@ function changePass() {
     return () => {
       clearInterval(interval);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seconds]);
 
   const sendOTP = () => {

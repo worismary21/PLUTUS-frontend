@@ -9,6 +9,13 @@ export default function Verify() {
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
 
+
+//   const handleChange = (e) =>{
+     // e.preventDefault()
+//      setOtp(e.target.value)
+//   }
+//   console.log("otp", otp)
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (seconds > 0) {
