@@ -75,10 +75,6 @@ function Login() {
         </div>
 
         <div className={log.right_side}>
-          {/* <div className={log.logo}>
-            <h1> Plutus </h1>
-            <p> Online Banking</p>
-          </div> */}
           <div className={log.logo}>
             <h1 className={log.logo_one}>Plutus</h1>
             <p className={log.logo_two}>Online Banking </p>

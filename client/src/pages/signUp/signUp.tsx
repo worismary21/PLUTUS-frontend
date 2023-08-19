@@ -118,7 +118,6 @@ const SignUp = () => {
             />
           
                <button type="submit" className="btnn bg-black" >
-               {" "}
                Register
                </button>
            
