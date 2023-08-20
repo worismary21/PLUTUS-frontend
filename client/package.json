@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "licenses": "MIT",
   "scripts": {
     "dev": "vite",
     "compile": "tsc -w",
@@ -23,6 +24,7 @@
     "flowbite-react": "^0.5.0",
     "postcss": "^8.4.27",
     "react": "^18.2.0",
+    "react-apexcharts": "^1.4.1",
     "react-chartjs": "^1.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-data-table-component": "^7.5.3",

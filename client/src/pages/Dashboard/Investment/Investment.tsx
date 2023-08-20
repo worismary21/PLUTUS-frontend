@@ -1,14 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 ("use client");
 
 import { TbCurrencyNaira } from "react-icons/tb";
 import { FaCoins } from "react-icons/fa";
 import { GiAnticlockwiseRotation } from "react-icons/gi";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 import TableWithIcons from "./TableWithIcons";
 import TrendingStock from "./TrendingStock";
-import { BASE_URL } from "../../../api/axios";
-import axios from "axios";
+// import axios, { BASE_URL } from "../../../api/axios";
+import { getInvestor } from "../../../redux/action";
+import { useDispatch, useSelector } from "react-redux";
 
 interface StockData {
   name: string;
@@ -16,22 +18,31 @@ interface StockData {
   return: number;
 }
 const Investment = () => {
-  const [invest, setInvest] = useState<any[]>([]);
+  const dispatch = useDispatch() as unknown as any;
+  const investors = useSelector((state: any) => state.investor);
+  console.log(investors.totalInvestedCapital);
+  console.log(investors.totalInvestments);
+  console.log(investors.data);
 
-  const getInvestments = async () => {
-    try {
-      const response = await axios.get(`${BASE_URL}/investor/getinvestment/`);
-      console.log("RESPONSE", response);
-    } catch (error) {
-      return error;
-    }
-  };
   useEffect(() => {
-    getInvestments();
+    dispatch(getInvestor());
   }, []);
+
+  // const [invest, setInvest] = useState<any[]>([]);
+
+  // const getInvestment = async () => {
+  //   try {
+  //     const response = await axios.get(`${BASE_URL}/investor/getinvestment/`);
+  //     console.log("RESPONSE", response.data.totalInvestedCapital);
+  //     setInvest(response.data);
+  //   } catch (error) {
+  //     return error;
+  //   }
+  // };
+  // useEffect(() => {
+  //   getInvestment();
+  // }, []);
   const ror = "+4.75%";
-  const ti = "#10,000";
-  const noi = "1600";
 
   const Idata = [
     { name: "2017", value: 3.0 },
@@ -86,13 +97,13 @@ const Investment = () => {
   return (
     <div className=" lg:pl-[40px] md:pl-[55px] w-[auto] sm:w-[auto] md:w-[auto] h-auto px-[5%] md:px-[0%] ml-[12%] md:ml-[0%]">
       <div>
-        <h3 className="pl-[5%] text-[23px] ">Investment</h3>
+        <h3 className="pl-[5%] text-[23px] mb-[20px] ">Investment</h3>
         <div className=" px-[5%] flex flex-col justify-between my-[5%] md:my-[0%] md:flex-row  ">
           <div className="bg-[#f8f9fa] md:w-[30%] flex justify-center py-[3%] rounded-md">
             <TbCurrencyNaira className="bg-[#b5dcf2] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px]" />
             <div className="w-[auto]">
-              <p>Total Invested</p>
-              <p>{ti}</p>
+              <p className="text-[15px]">Total Invested</p>
+              <p className="text-[15px]">{investors.totalInvestedCapital}</p>
             </div>
           </div>
 
@@ -102,8 +113,8 @@ const Investment = () => {
             </div>
 
             <div className="w-[auto]">
-              <p>No. of investments</p>
-              <p>{noi}</p>
+              <p className="text-[15px]">No. of investments</p>
+              <p className="text-[15px]">{investors.totalInvestments}</p>
             </div>
           </div>
           <div className="bg-[#f8f9fa] md:w-[30%] flex justify-center py-[3%] rounded-md">
@@ -112,37 +123,37 @@ const Investment = () => {
             </div>
 
             <div className="w-[auto]">
-              <p>Rate of return</p>
-              <p>{ror}</p>
+              <p className="text-[15px]">Rate of return</p>
+              <p className="text-[15px]">{ror}</p>
             </div>
           </div>
         </div>
       </div>
 
       <div className="lg:flex-row  flex flex-col px-[5%] md:flex-col md:justify-around justify-between w-[100%] overflow-x-scroll">
-        <div className="mt-[20px]">
-          <p className="text-[23px] ">Yearly total investment</p>
+        <div className="mt-[30px]">
+          <p className="text-[23px] mb-[30px] ">Yearly total investment</p>
           <div className="w-[600px] h-[250px] bg-[#ebf3f9] my-[5%] md:my-[0%]">
             {renderInvBarChart}
           </div>
         </div>
 
-        <div className="lg:ml-[60px] mt-[20px]">
-          <p className="text-[23px]">Yearly total revenue</p>
-          <div className="w-[600px] h-[250px] bg-[#dfd8f2] my-[5%] md:my-[0%]">
+        <div className="lg:ml-[60px] mt-[30px]">
+          <p className="text-[23px] mb-[30px] ">Yearly total revenue</p>
+          <div className="w-[600px]  h-[250px] bg-[#dfd8f2] my-[5%] md:my-[0%]">
             {renderRevBarChart}
           </div>
         </div>
       </div>
 
-      <div className="flex  flex-col md:flex-col lg:flex-row justify-between px-[5%] mb-[60px] w-[100%]">
-        <div className="pt-[2%] w-[auto] lg:w-[55%] sm:w-[auto]">
-          <p className="text-[23px]">My investment</p>
+      <div className="flex mt-[30px] flex-col md:flex-col lg:flex-row justify-between px-[5%] mb-[60px] w-[100%]">
+        <div className=" w-[auto] lg:w-[55%] mt-[20px] sm:w-[auto]">
+          <p className="text-[23px] mb-[20px]">My investment</p>
 
           <TableWithIcons />
         </div>
-        <div className=" pt-[30px] w-[auto] lg:w-[40%]  sm:w-[auto]">
-          <p className="text-[23px]">Trending stock</p>
+        <div className="  w-[auto] lg:w-[40%] mt-[20px] sm:w-[auto]">
+          <p className="text-[23px] mb-[20px] ">Trending stock</p>
 
           <TrendingStock data={stockData} />
         </div>

@@ -37,15 +37,21 @@ export default function YGraph({ userTransactions }: Props) {
     expensesCountValueArr.push(expensesCountObj[key]);
   }
 
+
+
   const data = {
     labels: expensesCountKeyArr,
     datasets: [
       {
-        label: "spending overview",
+        label: "frequency",
         data: expensesCountValueArr,
-        backgroundColor: "aqua",
+        backgroundColor: "#b5dcf2",
         borderColor: "black",
         borderWidth: 1,
+        barThickness: 50,
+        maxThickness: 50,
+        barPercentage: 0.9,
+        categoryPercentage: 1
       },
     ],
   };
@@ -64,7 +70,7 @@ export default function YGraph({ userTransactions }: Props) {
 
   return (
     <>
-      <Bar height="100%" data={data} options={options}></Bar>
+      <Bar height="100%" className="pl-10 pr-40 " data={data} options={options}></Bar>
     </>
   );
 }

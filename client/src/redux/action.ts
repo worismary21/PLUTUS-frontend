@@ -14,6 +14,7 @@ import {
   fetchDataStart,
   fetchDataUser,
   fetchDataBeneficiary,
+  fetchDataInvestor,
 } from "./reducers";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -59,6 +60,8 @@ export const registerUser = createAsyncThunk(
       const response = await apiPost("/user/signup", formData);
       console.log("resp", response);
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("role", response.data.role);
+      localStorage.setItem("email", response.data.email);
       dispatch(fetchDataUser(response.data));
       //  localStorage.setItem("role", response.data.role);
       setTimeout(() => {
@@ -298,6 +301,26 @@ export const getCompanies = createAsyncThunk(
       console.log(response.data);
 
       dispatch(fetchDataCompany(response.data.company));
+    } catch (error: any) {
+      console.log(error);
+    }
+  }
+);
+
+/**============== Get Investor Info =======  **/
+
+export const getInvestor = createAsyncThunk(
+  "getInvestor",
+  async (_, { dispatch }: any) => {
+    try {
+      //set loader true
+      dispatch(fetchDataStart(true));
+
+      //axios call
+      const response = await apiGet("/investor/getinvestment");
+      console.log(response.data);
+
+      dispatch(fetchDataInvestor(response.data));
     } catch (error: any) {
       console.log(error);
     }

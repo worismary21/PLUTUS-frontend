@@ -61,10 +61,11 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <div className="right-side">
+
+      <div className="right_side">
         <div className="logo">
-          <h3 className="logo-one">Plutus</h3>
-          <p className="logo-two">Online Banking </p>
+          <h3 className="logo_one">Plutus</h3>
+          <p className="logo_two">Online Banking </p>
         </div>
 
         <form action="" onSubmit={handleSubmit} className="right-form">

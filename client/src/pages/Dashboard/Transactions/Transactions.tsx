@@ -10,6 +10,7 @@ import MasterCard from "./MasterCard";
 // import { apiGet } from '../../../utils/axios';
 // import axios from 'axios';
 import "./style.css"
+import XBarChart from "./XBarChart";
 
 interface Props {
   userTransactions: transaction[];
@@ -25,7 +26,7 @@ export default function Transactions({ userTransactions ,userDetails}: Props) {
   
 
   return (
-    <div className="pr-[7%] lg:pr-[0%]">
+    <div className="pr-[7%] lg:pr-[2%]">
     <h6 className="bg-slate-900 ml-20 mb-5 mt-5 p-2  w-fit text-white">Checking Account</h6>
     <div className='flex flex-col lg:flex-row justify-between'>
       <div className="ml-20 h-full">
@@ -33,16 +34,17 @@ export default function Transactions({ userTransactions ,userDetails}: Props) {
           <CheckingAccount userDetails={userDetails}/>
           <MasterCard userDetails={userDetails}/>
         </div >
-        <div className="w-full flex flex-col" >
-        <div className="">
+        <h1 className="pt-10">Spending Overview</h1>
+        <div className="sm:max-lg:w-screen flex flex-col pt-10" >
+        <div className="chart-blue sm:max-lg:w-screen">
           <YBarChart userTransactions={userTransactions}></YBarChart>
         </div>
-        <div className="">
-        <YBarChart userTransactions={userTransactions}></YBarChart>
+        <div className="sm:max-lg:w-screen chart-purple mt-10 mb-5">
+          <XBarChart userTransactions={userTransactions}></XBarChart>
         </div>
         </div>
       </div>
-    <div className="lg:w-2/5 pl-5 pr-5 ml-[10%] lg:ml-[0%]">
+    <div className="lg:w-2/5 pl-5  ml-[14%] lg:ml-[0%] lg:mr-[0%]">
     <TransactionsList userTransactions={userTransactions}/>
     </div>
     </div>
