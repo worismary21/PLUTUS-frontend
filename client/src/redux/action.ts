@@ -18,6 +18,12 @@ interface signUpData{
 
 }
 
+interface changePasswordData {
+     oldPassword: string,
+     newPassword: string,
+     confirm_password: string;
+   }
+
 
 export const loginUser = createAsyncThunk(
   "loginUser",
@@ -33,6 +39,8 @@ export const loginUser = createAsyncThunk(
       //response check
       localStorage.setItem('token', response.data.token)
       localStorage.setItem('role', response.data.role)
+      localStorage.setItem('email', response.data.email)
+      localStorage.setItem('id', response.data.id)
       toast.success("user login successful");
 
       //redirect
@@ -41,7 +49,7 @@ export const loginUser = createAsyncThunk(
       }, 2000);
     } catch (error: any) {
       //error check
-      toast.error('error loggin In');
+      toast.error(error.response.data.message);
       dispatch(fetchDataFailure(error.response.data.message));
     }
   }
@@ -57,13 +65,16 @@ export const registerUser = createAsyncThunk(
       console.log('resp', response)
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
+      localStorage.setItem('email', response.data.email)
+      localStorage.setItem('id', response.data.id)
       dispatch(fetchDataUser(response.data));
       setTimeout(() => {
         window.location.href = "/verify";
       },1000);
     } catch (error: any) {
-      toast.error(error.response.data.message);
       dispatch(fetchDataFailure(error.response.data.message));
+      const errorMessage = error.response ? error.response.data.message : "An error occurred";
+      toast.error(errorMessage);
     }
   }
 );
@@ -149,10 +160,7 @@ export const transferFunds = createAsyncThunk(
        //axios call
        const response = await apiGet('/user/info')
        console.log(response.data)
-       
-       localStorage.setItem("role", response.data.role)
-       localStorage.setItem("token", response.data.token)
-       localStorage.setItem("email", response.data.email)
+     
        dispatch(fetchDataUser(response.data.data))
       } catch (error: any) {
        console.log(error)
@@ -208,14 +216,16 @@ export const verifyUser = createAsyncThunk(
   async (otp: string, { dispatch }:any) => {
     try {
       dispatch(fetchDataStart(true));
-      await apiPatch(`/user/verify-user`, {otp});
+      const response = await apiPatch(`/user/verify-user`, {otp});
+      console.log(response)
+      toast.success("user verified")
       setTimeout(() => {
         window.location.href = "/login";
       }, 2000);
     } catch (error: any) {
       toast.error(error.response.data.message);
       dispatch(fetchDataFailure(error.response.data.message));
-      window.location.href = "/expired";
+      window.location.href = "/verify";
     }
   }
 );
@@ -302,3 +312,93 @@ export const saveImages = createAsyncThunk(
        console.log(error)
     }
   });
+
+   /**==============For password change=======  **/
+
+  export const emailVerification = createAsyncThunk(
+     "changePasswordEmailVerification",
+     async (email: string, { dispatch }:any) => {
+       try {
+
+         dispatch(fetchDataStart(true));
+         const userEmail = localStorage.getItem("email")
+
+         if(userEmail){
+        
+               const response = await apiPut(`/user/change-password-email`, {email});
+               console.log("response", response)
+               if(response){
+                    toast.success("OTP sent!!");
+               }
+         }else{
+          toast.error("Incorrect email");
+          // window.location.reload()
+         }
+
+       } catch (error: any) {
+          // window.location.reload()
+          toast.error(error.response.data.message);
+          dispatch(fetchDataFailure(error.response.data.message));
+       }
+     }
+   );
+
+
+   /**==============For password change=======  **/
+
+   export const otpVerification = createAsyncThunk(
+     "changePasswordOtpVerification",
+     async (otp: string, { dispatch }:any) => {
+       try {
+
+         dispatch(fetchDataStart(true));
+         const id = localStorage.getItem("id")
+
+         if(id){
+               const response = await apiPut(`/user/change-password-otp/${id}`, {otp});
+               console.log("response", otp)
+               if(response){
+                    toast.success("Verified");
+                    window.location.href="/changePasswordConfirm"
+               }toast.error("Invalid OTP")
+         }else{
+          toast.error("Login and try again");
+          // window.location.reload()
+         }
+
+       } catch (error: any) {
+          // window.location.reload()
+          toast.error(error.response.data.message);
+          dispatch(fetchDataFailure(error.response.data.message));
+       }
+     }
+   );
+
+   /**==============For password change=======  **/
+
+export const passwordChangeConfirmation = createAsyncThunk(
+     "changePasswordConfirmation",
+     async (formData: changePasswordData , { dispatch }:any) => {
+       try {
+
+         dispatch(fetchDataStart(true));
+         const id = localStorage.getItem("id")
+
+         if(id){
+               const response = await apiPut(`/user/change-password/${id}`, formData);
+               
+               if(response){
+                    toast.success("Verified");
+                    window.location.href="/dashboard/accountsettings"
+               }toast.error("Internal server error")
+         }else{
+          toast.error("Login and try again");
+         }
+
+       } catch (error: any) {
+          // window.location.reload()
+          toast.error(error.response.data.message);
+          dispatch(fetchDataFailure(error.response.data.message));
+       }
+     }
+   );

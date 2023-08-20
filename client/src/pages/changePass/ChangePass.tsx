@@ -7,6 +7,9 @@ import picture from "./images/logo.png";
 // import { changePassword } from '../../api/api'
 import { Link } from "react-router-dom";
 import OtpInput from "react-otp-input";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { emailVerification, otpVerification } from "../../redux/action"
 
 function changePass() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -15,6 +18,12 @@ function changePass() {
   const [modal, setModal] = useState(false);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
+  const dispatch = useDispatch() as unknown as any;
+
+//   const { id } = useParams()
+ 
+
+  
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -27,15 +36,20 @@ function changePass() {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-     e.preventDefault()
-    toggleModal();
-    sendOTP();
-    // const changePasswordResponse = await changePassword(email)
-    // console.log("changpasword", changePasswordResponse)
+     try {
+          dispatch(emailVerification(email))
+          e.preventDefault()
+          toggleModal();
+          sendOTP();
+          
+     } catch (error) {
+          console.error(error)
+     }
   };
 
-  const handleVerify = async () => {
-    // const otpResponse = await changePassword(otp)
+  const handleVerify = async (e: React.FormEvent) => {
+    dispatch(otpVerification(otp))
+    e.preventDefault()
     // console.log("otp", otpResponse)
   };
 
@@ -75,13 +89,13 @@ function changePass() {
       <div className={change.changePassword}>
         <div className={change.leftside}>
           <img src={picture}  alt=""/>
-          <h5>Plutus is personal finance, made simple.</h5>
+          <h5>Plutus is personal finance made simple.</h5>
           <p>All your accounts, cards, savings, and investments in one place</p>
         </div>
         <div className={change.rightSide}>
-          <div className={change.logo}>
-            <h2>Plutus</h2>
-            <p>Online Bankin</p>
+          <div className="mb-36 pr-10 text-blue-600 text-end">
+            <h2 className="text-3xl font-bold">Plutus</h2>
+            <p>Online Banking</p>
           </div>
           {!modal && (
             <div className={change.content}>
@@ -109,13 +123,13 @@ function changePass() {
           )}
           {modal && (
             <div className={change.content1}>
-              <h2> Verify your identity</h2>
-              <p id="first">
+              <h2 className="text-3xl font-semibold my-2"> Verify your identity</h2>
+              <p id="first" className="w-96 text-[13px] sm:w-10">
                 We've just sent an email with your security code to the email
                 ogo_b*********.com
               </p>
-              <p>Please enter the code in other to continue</p>
-              <form>
+              <p className="text-[13px]">Please enter the code in other to continue</p>
+              <form className="mt-12">
                 <div className={change.otpinput}>
                   <OtpInput
                     onChange={setOtp}
@@ -135,11 +149,12 @@ function changePass() {
                     <p>Didn't recieve code?</p>
                   )}
                 </div>
-                <Link to="/changePasswordConfirm">
-                  <button onClick={handleVerify} className={change.button}>
+                
+                  <button onClick={handleVerify} className={change.button}
+                  disabled={!otp}>
                     Verify
                   </button>
-                </Link>
+          
 
                 <button
                   id="otp_resend"

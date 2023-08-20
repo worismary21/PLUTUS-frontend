@@ -3,38 +3,54 @@
 import { useState} from 'react'
 import change from "./ChangePass.module.css"
 import picture from "./images/logo.png"
-// import { changePasswordConfirm } from "../../api/api"
-import { Link } from 'react-router-dom'
-// import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import { useDispatch } from "react-redux";
+import { changePassword, passwordChangeConfirmation } from "../../redux/action";
+
+
+interface ChangePassword {
+     oldPassword: string,
+     newPassword: string,
+     confirm_password: string;
+
+   }
+
 
 function ChangePass2() {
 
-const [changePasswordDataValue, setChangePasswordDataValue] = useState<{
-      oldPassword?: string;
-      newPassword?: string;
-      confirmPassword?: string;}>({})
-// const notify = () => toast("Wow so easy!");
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-     e.preventDefault()
-     setChangePasswordDataValue({
-          ...changePasswordDataValue,
-          [e.target.name]: e.target.value
+const [formData, setFormData] = useState<ChangePassword>({
+     oldPassword: "",
+     newPassword:"",
+     confirm_password:""
      })
+
+const dispatch = useDispatch() as unknown as any;
+const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+     const { name, value } = e.target;
+     e.preventDefault()
+     setFormData({
+       ...formData,
+       [name]: value,
+     });
 }
+
+console.log(formData.newPassword)
+console.log(formData.confirm_password)
+
 
 const handleRegister = async (e:  React.FormEvent<HTMLFormElement>) => {
      e.preventDefault()
-     if( changePasswordDataValue.newPassword !== changePasswordDataValue.confirmPassword){
-          alert("Passwords do not match")
-     }     
-     // else{
-     //      const changePasswordResponse = await changePasswordConfirm(passwords)
-     //      console.log("changpasword", changePasswordResponse)
-     // }
+     if( formData.newPassword !== formData.confirm_password ){
+          toast.error("Passwords do not match")
+     }
+     else if(formData.newPassword === formData.oldPassword){
+          toast.error("old password & new password must be different")
+     }   
+     else{
+          dispatch(passwordChangeConfirmation(formData))
+     }
 }
-console.log("data", changePasswordDataValue )
+console.log("data", formData )
   return (
     <>
           <div className={change.changePassword}>
@@ -52,13 +68,12 @@ console.log("data", changePasswordDataValue )
                     <h2>Change Password</h2>
                     <h5>Enter your details</h5>
                     <form className={change.form} onSubmit={handleRegister}>
-                         <input type='password' placeholder='Old Password' name='oldPassword' required onChange={handleInputChange}  className={change.inputEmail} ></input>
-                         <input type='password' placeholder='New Password' name='newPassword'  required onChange={handleInputChange} className={change.inputEmail}></input>
-                         <input type='password' placeholder='Confirm Password' name='confirmPassword' required onChange={handleInputChange}  className={change.inputEmail}></input>
-                         <Link to="/dashBoard/accountSettings">
+                         <input type='password' placeholder='Old Password' name='oldPassword' value={formData.oldPassword} required onChange={handleInputChange}  className={change.inputEmail} ></input>
+                         <input type='password' placeholder='New Password' name='newPassword' value={formData.newPassword} required onChange={handleInputChange} className={change.inputEmail}></input>
+                         <input type='password' placeholder='Confirm Password' name='confirm_password' value={formData.confirm_password} required onChange={handleInputChange}  className={change.inputEmail}></input>
+                         
                               <button className={change.button} >Submit</button>
                               {/* <ToastContainer /> */}
-                         </Link>
                     </form>
                </div>
           </div>
