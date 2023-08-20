@@ -4,10 +4,7 @@
 import { useEffect, useState } from "react";
 import change from "./changePass.module.css";
 import picture from "./images/logo.png";
-// import { changePassword } from '../../api/api'
-import { Link } from "react-router-dom";
 import OtpInput from "react-otp-input";
-import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { emailVerification, otpVerification } from "../../redux/action"
 
@@ -19,8 +16,6 @@ function changePass() {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const dispatch = useDispatch() as unknown as any;
-
-//   const { id } = useParams()
  
 
   
@@ -29,7 +24,6 @@ function changePass() {
     setEmail(e.target.value);
   };
 
-  console.log("otp", otp);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -50,7 +44,7 @@ function changePass() {
   const handleVerify = async (e: React.FormEvent) => {
     dispatch(otpVerification(otp))
     e.preventDefault()
-    // console.log("otp", otpResponse)
+  
   };
 
   useEffect(() => {

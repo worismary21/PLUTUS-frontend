@@ -5,7 +5,7 @@ import change from "./ChangePass.module.css"
 import picture from "./images/logo.png"
 import { toast } from 'react-toastify';
 import { useDispatch } from "react-redux";
-import { changePassword, passwordChangeConfirmation } from "../../redux/action";
+import { passwordChangeConfirmation } from "../../redux/action";
 
 
 interface ChangePassword {
@@ -33,9 +33,6 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
        [name]: value,
      });
 }
-
-console.log(formData.newPassword)
-console.log(formData.confirm_password)
 
 
 const handleRegister = async (e:  React.FormEvent<HTMLFormElement>) => {
