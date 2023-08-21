@@ -5,6 +5,7 @@ import emptyProduct from './CompanyData';
 import { getCompanies } from '../../redux/action';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import CreateCompany from '../Dashboard/Company/CreateCompany.tsx'
 
 interface Company {
   id: number;
@@ -54,13 +55,15 @@ console.log(companies)
   };
 
   const handleDelete = (id: number) => {
-    const updatedCompanyData = companyData.filter(company => company.id !== id);
+    const updatedCompanyData = companyData?.filter(company => company.id !== id);
     setCompanyData(updatedCompanyData);
   };
 
   const startIndex = (currentPage - 1) * companiesPerPage;
   const endIndex = startIndex + companiesPerPage;
-  const companiesToDisplay = companies.slice(startIndex, endIndex);
+  const companiesToDisplay = companies?.slice(startIndex, endIndex);
+
+  const [modal, setModal] = useState(false)
 
   return (
     <div className='p-4 md:p-8 lg:p-16'>
@@ -112,6 +115,8 @@ console.log(companies)
           Next &raquo;
         </button>
       </div>
+      <button onClick={() => setModal(!modal)}> Add Company </button>
+      {modal ? <CreateCompany /> : null}
     </div>
   );
 };
