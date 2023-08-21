@@ -10,6 +10,14 @@ interface LoginData{
      password:string
 }
 
+interface signUpData{
+     email:string,
+     firstName:string,
+     lastName:string,
+     password:string
+
+}
+
 
 export const loginUser = createAsyncThunk(
   "loginUser",
@@ -23,8 +31,9 @@ export const loginUser = createAsyncThunk(
 
 
       //response check
-      localStorage.setItem('token', response.data.token)
+      localStorage.setItem('token', response.data.user_token)
       localStorage.setItem('role', response.data.role)
+      localStorage.setItem('email', response.data.email)
       toast.success("user login successful");
 
       //redirect
@@ -41,17 +50,18 @@ export const loginUser = createAsyncThunk(
 
 export const registerUser = createAsyncThunk(
   "registerUser",
-  async (formData: LoginData, { dispatch }:any) => {
+  async (formData: signUpData, { dispatch }:any) => {
     try {
       dispatch(fetchDataStart(true));
       const response = await apiPost("/user/signup", formData);
+      toast.success("user created")
       console.log('resp', response)
-      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", response.data.user_token);
+      localStorage.setItem("role", response.data.role);
       dispatch(fetchDataUser(response.data));
-     //  localStorage.setItem("role", response.data.role);
       setTimeout(() => {
         window.location.href = "/verify";
-      }, 2000);
+      },1000);
     } catch (error: any) {
       toast.error(error.response.data.message);
       dispatch(fetchDataFailure(error.response.data.message));
@@ -141,6 +151,7 @@ export const transferFunds = createAsyncThunk(
        const response = await apiGet('/user/info')
        console.log(response.data)
        
+
        dispatch(fetchDataUser(response.data.data))
       } catch (error: any) {
        console.log(error)
@@ -196,7 +207,7 @@ export const verifyUser = createAsyncThunk(
   async (otp: string, { dispatch }:any) => {
     try {
       dispatch(fetchDataStart(true));
-      await apiPatch(`/user/verify`, {otp});
+      await apiPatch(`/user/verify-user`, {otp});
       setTimeout(() => {
         window.location.href = "/login";
       }, 2000);
@@ -285,8 +296,36 @@ export const saveImages = createAsyncThunk(
        const response = await apiGet('/company/get-companies')
        console.log(response.data)
        
-       dispatch(fetchDataCompany(response.data.company))
+       dispatch(fetchDataCompany(response.data.data))
       } catch (error: any) {
        console.log(error)
     }
   });
+
+
+  //CREATE COMPANY
+
+  export const createCompany = createAsyncThunk(
+    "createCompany",
+    async (formData: any, { dispatch }:any) => {
+      try {
+        dispatch(fetchDataStart(true));
+        const response = await apiPost("/company/create", formData);
+        console.log('resp', response)
+
+  
+       //redirect
+      setTimeout(() => {
+        window.location.href = "/dashboard/companies";
+      }, 1000);
+      toast.success("Company created successfully");
+
+      } catch (error: any) {
+        console.log(error)
+        toast.error(error.response.data.message);
+        dispatch(fetchDataFailure(error.response.data.message));
+      }
+    }
+  );
+
+

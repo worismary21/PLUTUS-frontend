@@ -3,7 +3,7 @@ import axios from '../../api/axios';
 import { apiDelete, apiGet } from '../../utils/axios';
 import Pagination from './Pagination';
  
-function Transactions (){
+function AllTransactions (){
     const [transactionDetails, setTransactionsDetails] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [transactionsPerPage, setTransactionsPerPage] = useState(5)
@@ -114,7 +114,7 @@ function Transactions (){
     )
 }
 
-export default Transactions
+export default AllTransactions
 
 
 
