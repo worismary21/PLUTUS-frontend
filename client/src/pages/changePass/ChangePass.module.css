@@ -29,6 +29,7 @@ input {
      border: 1px solid black;;
      padding-left: 30px;
      color: rgb(99, 99, 99);
+     box-shadow: 0 0 11px rgba(33,33,33,.1);
      
 }
 
@@ -115,7 +116,7 @@ input:hover{
 }
 .rightSide{
      width: 50%;
-     height: 100vh;
+     height: 100%;
      display: flex;
      flex-direction: column;
      justify-content: center;
@@ -128,7 +129,7 @@ input:hover{
 }
 
 .content{
-     margin-top: 150px;
+     
 
      @media only screen and (max-width: 780px) {
           margin: 0px;
@@ -176,7 +177,7 @@ input:hover{
    
    .leftside {  
      /* This section calls the slideInFromLeft animation we defined above */
-     animation: 1.2s ease-out 0s 1 slideInFromLeft; 
+     animation: 1.5s ease-out 0s 1 slideInFromLeft; 
      padding: 30px;
    }
 
@@ -194,7 +195,7 @@ input:hover{
      /* This section calls the slideInFromLeft animation we defined above */
      animation: 1.3s ease-out 0s 1 slideInFromLeft;
      
-     padding: 30px;
+     padding: 50px;
    }
 
 
@@ -208,16 +209,28 @@ input:hover{
 
 
 
+
+
 .otpinput input{
      width: 100px;
      height: 70px;
-     margin-right: 20px;
+     margin-right: 40px;
+     margin-bottom: 30px;
      text-align: center;
+     align-items: center;
      border-radius: 5px;
      border: 1px solid black;
      font-size: 40px;
      box-sizing: border-box;
      padding: 0px;
+     @media only screen and (max-width: 480px) {
+
+          margin: auto;
+     }
+}
+
+.countdowntext{
+     margin-bottom: 30px;
 }
 
 #otp_resend{
@@ -226,6 +239,10 @@ input:hover{
 
 .content1{
      width: 35rem;
+     @media only screen and (max-width: 480px) {
+          width: 20rem;
+          padding: 20px;
+     }
 }
 
 #first{
@@ -235,9 +252,8 @@ input:hover{
 .content1 {
      display: flex;
      flex-direction: column;
-     justify-content: space-between;
      margin-left: 15%;
-     height: 45vh;
+     height: 100%;
      animation: fadeInAnimation ease 4s;
      animation-iteration-count: 1;
      animation-fill-mode: forwards;
@@ -251,9 +267,11 @@ input:hover{
 }
 
 .otpStyle{
+     
      @media only screen and (max-width: 780px) {
      display: flex;
      justify-content: center;
+     text-align: center;
    }
 }
  
