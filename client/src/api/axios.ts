@@ -22,4 +22,9 @@ customAxios.interceptors.request.use(
   (error: AxiosError) => Promise.reject(error)
 );
 
-export default customAxios;
+// export default customAxios;
+// const BASE_URL = "http://localhost:4500";
+
+// export default axios.create({
+//     baseURL: BASE_URL
+// })

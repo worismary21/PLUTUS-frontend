@@ -11,7 +11,7 @@ import { RoutesDashBoard } from "./pages/Dashboard/Routes";
 import Loggin from "./pages/onboarding/Loggin";
 import Signupp from "./pages/onboarding/Signupp";
 import Homepage from "./pages/homepage/Homepage";
-import Transactions from "./pages/AdminPageTransactions/Transactions";
+import Transactions from "./pages/AdminPageTransactions/AllTransactions";
 // import Transactions from './pages/Transactions/Transactions';
 import DashboardHome from "./pages/Dashboard/HomeDashBoard/DashboardHome";
 import CompanyTable from "./pages/companytable/CompanyTable";

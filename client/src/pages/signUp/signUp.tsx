@@ -42,6 +42,7 @@ const SignUp = () => {
       toast.error("Invalid Password");
     } else {
       dispatch(registerUser(formData));
+      toast.success("User created successfully");
     }
   };
 
