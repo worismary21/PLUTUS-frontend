@@ -12,7 +12,9 @@ import AccountSettings from "./accountSettings/accountSetting";
 import UsersAdmin from "../UsersAdmin/users";
 import Transactions from "./Transactions/Transactions";
 import CompanyDashboard from "../companydashboard/CompanyDashboard";
-import AllTransactions from "../AdminPageTransactions/AllTransactions"
+import AllTransactions from "../AdminPageTransactions/AllTransactions";
+import CreateCompany from "./Company/CreateCompany";
+import CompanyTable from "../companytable/CompanyTable";
 
 export interface transaction {
   id: string;
@@ -209,10 +211,10 @@ export const RoutesDashBoard = () => {
           <Route path="/transfer/investment" element={<Invest />} />
           <Route path="/transfer/addbeneficiary" element={<AddBeneficiary />} />
           <Route path="/companyDashboard" element={<CompanyDashboard />} />
+          <Route path="/createCompany" element={<CreateCompany />} />
+          <Route path="/companies" element={<CompanyTable />} />
         </Routes>
       </div>
     </div>
   );
 };
-
-

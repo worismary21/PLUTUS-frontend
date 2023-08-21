@@ -37,7 +37,7 @@ export const loginUser = createAsyncThunk(
 
 
       //response check
-      localStorage.setItem('token', response.data.token)
+      localStorage.setItem('token', response.data.user_token)
       localStorage.setItem('role', response.data.role)
       localStorage.setItem('email', response.data.email)
       localStorage.setItem('id', response.data.id)
@@ -63,7 +63,7 @@ export const registerUser = createAsyncThunk(
       const response = await apiPost("/user/signup", formData);
       toast.success("user created")
       console.log('resp', response)
-      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", response.data.user_token);
       localStorage.setItem("role", response.data.role);
       localStorage.setItem('email', response.data.email)
       localStorage.setItem('id', response.data.id)
@@ -160,7 +160,7 @@ export const transferFunds = createAsyncThunk(
        //axios call
        const response = await apiGet('/user/info')
        console.log(response.data)
-     
+    
        dispatch(fetchDataUser(response.data.data))
       } catch (error: any) {
        console.log(error)
@@ -307,11 +307,38 @@ export const saveImages = createAsyncThunk(
        const response = await apiGet('/company/get-companies')
        console.log(response.data)
        
-       dispatch(fetchDataCompany(response.data.company))
+       dispatch(fetchDataCompany(response.data.data))
       } catch (error: any) {
        console.log(error)
     }
   });
+
+
+  //CREATE COMPANY
+
+  export const createCompany = createAsyncThunk(
+    "createCompany",
+    async (formData: any, { dispatch }:any) => {
+      try {
+        dispatch(fetchDataStart(true));
+        const response = await apiPost("/company/create", formData);
+        console.log('resp', response)
+
+  
+       //redirect
+      setTimeout(() => {
+        window.location.href = "/dashboard/companies";
+      }, 1000);
+      toast.success("Company created successfully");
+
+      } catch (error: any) {
+        console.log(error)
+        toast.error(error.response.data.message);
+        dispatch(fetchDataFailure(error.response.data.message));
+      }
+    }
+  );
+
 
    /**==============For password change=======  **/
 
