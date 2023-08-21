@@ -47,7 +47,7 @@ const handleRegister = async (e:  React.FormEvent<HTMLFormElement>) => {
           dispatch(passwordChangeConfirmation(formData))
      }
 }
-console.log("data", formData )
+
   return (
     <>
           <div className={change.changePassword}>

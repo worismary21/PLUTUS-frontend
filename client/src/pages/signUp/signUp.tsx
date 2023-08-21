@@ -39,7 +39,7 @@ const SignUp = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formData.password !== cPassword) {
-      toast.error("Invalid Password");
+      toast.error("Passwords don't match");
     } else {
       dispatch(registerUser(formData))
       toast.success("User created successfully")

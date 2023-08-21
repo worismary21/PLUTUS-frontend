@@ -62,7 +62,6 @@ export const registerUser = createAsyncThunk(
       dispatch(fetchDataStart(true));
       const response = await apiPost("/user/signup", formData);
       toast.success("user created")
-      console.log('resp', response)
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
       localStorage.setItem('email', response.data.email)

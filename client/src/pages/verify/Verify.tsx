@@ -47,6 +47,12 @@ export default function Verify() {
      }
    };
 
+   useEffect(() => {
+     sendOTP()
+   })
+
+
+
   const sendOTP = () => {
     setMinutes(4);
     setSeconds(59);

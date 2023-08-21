@@ -49,7 +49,7 @@ console.log(users.account_name)
 
   return (
     <>
-      <div className="flex lg:flex-row flex-col w-auto gap-20 h-full ml-[15%] md:ml-[7%] lg:ml-[5%] pr-[5%] mt-10">
+      <div className="flex flex-row">
         <div className="flex flex-col w-[100vh]  px-[5%] md:p-5">
           <div className="flex md:flex-row flex-col mb-5 gap-5">
 
@@ -114,7 +114,9 @@ console.log(users.account_name)
           </div> */}
 
           <div className="p-2 md:h-96 md:mb-2 mb-[5%]">
-          <TransactionChart/>
+               <div className='w-full'>
+                    <TransactionChart/>
+               </div>
           <div className="h-96 mb-2">
             {/* <img src={graph} alt="graph" /> */}
           </div>
@@ -200,44 +202,53 @@ console.log(users.account_name)
         </div>
 
         
-        <div className="lg:w-3/5 ">
-          <div>
-            <TransactionsList userTransactions={transactions} />
+               <div className="lg:w-3/5 ">
+                    <div>
+                    <TransactionsList userTransactions={transactions} />
+                    </div>
+                    {/* <div className="flex flex-row  p-5 pr-10">
+                    <TransactionsList userTransactions={transactions} userDetails={undefined}/>
+                    </div> */}
+                    <div className="bg-gray-800 px-10  ml-2 ">
+                         <div className="flex w-full justify-between items-center mt-7">
+                              <h3 className="ml-4 font-white text-gray-100 text-sm">Quick Transfer</h3>
+                              <div className="flex flex-column pl-10 justify-end ">
+                                   <div className="ml-2 mt-1 ">
+                                   <FaLessThan style={{ width: '1rem', height: '1rem' }} />
+                                   </div>
+                                   <div className="mr-2 mt-1 ">   
+                                        <FaGreaterThan style={{ width: '1rem', height: '1rem' }}/>
+                                   </div>
+                                   </div>
+                         </div>
+                         <div className="flex mb-5 p-2" >
+                                   <div className="mt-3 items-center" >
+                                        <img className="h-12 w-12 rounded-full bg-white bg-cover bg-no-repeat bg-center " src={Add} alt="icon" />
+                                        <p className="text-xs mt-2 text-white pr-10">Add New</p>
+                                   </div>
+                              <div className="flex">
+                              {beneficiaries?.map((e:any)=> (
+                              <li key = {e.accountNumber} className="list-none">
+                                   <div className="mt-3  ">
+                                   <img className="w-[38px] h-[38px] rounded-full bg-cover bg-no-repeat bg-center" src={Karen} alt="icon" />
+                                   <p className="text-xs text-white mt-2">{e.beneficiaryName}</p> 
+                                   </div>
+                              </li>))  }
+                         </div>
+                    </div>
+               </div>
           </div>
-          {/* <div className="flex flex-row  p-5 pr-10">
-            <TransactionsList userTransactions={transactions} userDetails={undefined}/>
-            </div> */}
-            
-        
+      </div>
+    </>
+  )
+}
 
-<div className="bg-gray-800 px-10  ml-2 ">
-        <div className="flex w-full justify-between items-center mt-7">
-              <h3 className="ml-4 font-white text-gray-100 text-sm">Quick Transfer</h3>
-              <div className="flex flex-column pl-10 justify-end ">
-                  <div className="ml-2 mt-1 ">
-                  <FaLessThan style={{ width: '1rem', height: '1rem' }} />
-                  </div>
-                  <div className="mr-2 mt-1 ">   
-                    <FaGreaterThan style={{ width: '1rem', height: '1rem' }}/>
-                  </div>
-                </div>
-        </div>
-        <div className="flex mb-5 p-2" >
-            <div className="mt-3 items-center" >
-                <img className="h-12 w-12 rounded-full bg-white bg-cover bg-no-repeat bg-center " src={Add} alt="icon" />
-                <p className="text-xs mt-2 text-white pr-10">Add New</p>
-  
-              </div>
-              <div className="flex">
-               {beneficiaries?.map((e:any)=> (<li key = {e.accountNumber} className="list-none">
-                
-                <div className="mt-3  ">
-                <img className="w-[38px] h-[38px] rounded-full bg-cover bg-no-repeat bg-center" src={Karen} alt="icon" />
-                <p className="text-xs text-white mt-2">{e.beneficiaryName}</p> 
-                </div>
-               </li>))  }
-            </div>
-            {/* <div className="mt-3 items-center text-center">
+export default DashboardHome
+
+
+
+
+{/* <div className="mt-3 items-center text-center">
                 <img className="h-12 w-12 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center " src={Maria} alt="icon" />
                 <p className="text-xs mt-2 text-white pr-10">Maria</p>
                 <p className="text-xs text-white pr-10">Purple</p>
@@ -257,13 +268,3 @@ console.log(users.account_name)
                 <p className="text-xs mt-2 text-white pr-10">Karen</p>
                 <p className="text-xs text-white pr-10">Potter</p>
             </div> */}
-        </div>
-        
-        </div>
-          </div>
-      </div>
-    </>
-  )
-}
-
-export default DashboardHome
