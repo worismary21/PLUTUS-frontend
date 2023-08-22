@@ -11,14 +11,23 @@ import { RoutesDashBoard } from './pages/Dashboard/Routes';
 import Loggin from './pages/onboarding/Loggin';
 import Signupp from './pages/onboarding/Signupp';
 import Homepage from './pages/homepage/Homepage';
-import Transactions from './pages/AdminPageTransactions/AllTransactions'
-// import Transactions from './pages/Transactions/Transactions';
+import { useEffect, useState } from 'react';
 import DashboardHome from './pages/Dashboard/HomeDashBoard/DashboardHome';
+import Protected from './components/PrivateRoute';
 
-import CompanyTable from './pages/companytable/CompanyTable';
-// import React from 'react';
+function App() {    
+     const [isSignedIn, setIsSignedIn] = useState(false)
+     const verify = localStorage.getItem("verify")
 
-function App() {
+  const signin = () => {
+     if(verify === "true"){
+          setIsSignedIn(true)
+     }setIsSignedIn(false)
+  }
+
+  useEffect (()=>{
+     signin()
+  },[])
 
   return (
     <>
@@ -32,21 +41,21 @@ function App() {
         />
    
       <Routes>
-        <Route path='/' element={<Homepage />} />
+        <Route path='/' element={<Homepage /> } />
        <Route path='/signup' element={<SignUp />}/>
-       <Route path="/verify" element={<Verify />} />
-       <Route path="/changePassword" element={<ChangePass />}/>
-       <Route path="/login" element={<Login />} />
+       <Route path="/verify" element={<Protected isSignedIn={isSignedIn}> <Verify /> </Protected>} />
+       <Route path="/changePassword" element={<Protected isSignedIn={isSignedIn}><ChangePass /> </Protected>}/>
+       <Route path="/login" element={<Login /> } />
        <Route path="/loggin" element={<Loggin />} />
        
        <Route path="/signupp" element={<Signupp />} />
      <Route path='*' element={<Error404 />}/>
-     <Route path='/changePasswordConfirm' element={<ChangePass2 />}/>  
+     <Route path='/changePasswordConfirm' element={<Protected isSignedIn={isSignedIn}> <ChangePass2 /> </Protected>}/>  
      {/* <Route path='/dashboard/*' element={<Dashboard />} /> */}
      {/* <Route path="/transactions" element={<Transactions/>}/> */}
-     <Route path='/dashboard/*' element={<RoutesDashBoard />} />
+     <Route path='/dashboard/*' element={<Protected isSignedIn={isSignedIn}> <RoutesDashBoard /> </Protected>} />
      
-     <Route path='/dashboardhome' element={<DashboardHome />} />
+     <Route path='/dashboardhome' element={<Protected isSignedIn={isSignedIn}> <DashboardHome /> </Protected>} />
 
       </Routes>
      </BrowserRouter> 

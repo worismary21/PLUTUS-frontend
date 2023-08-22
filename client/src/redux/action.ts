@@ -37,10 +37,13 @@ export const loginUser = createAsyncThunk(
 
 
       //response check
-      localStorage.setItem('token', response.data.token)
+      localStorage.setItem('token', response.data.user_token)
       localStorage.setItem('role', response.data.role)
       localStorage.setItem('email', response.data.email)
       localStorage.setItem('id', response.data.id)
+      localStorage.setItem('verify', response.data.verify)
+      localStorage.setItem('firstName', response.data.firstName)
+      localStorage.setItem('lastName', response.data.lastName)
       toast.success("user login successful");
 
       //redirect
@@ -61,11 +64,12 @@ export const registerUser = createAsyncThunk(
     try {
       dispatch(fetchDataStart(true));
       const response = await apiPost("/user/signup", formData);
+      console.log(response)
       toast.success("user created")
-      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", response.data.user_token);
       localStorage.setItem("role", response.data.role);
       localStorage.setItem('email', response.data.email)
-      localStorage.setItem('id', response.data.id)
+
       dispatch(fetchDataUser(response.data));
       setTimeout(() => {
         window.location.href = "/verify";
@@ -312,6 +316,29 @@ export const saveImages = createAsyncThunk(
     }
   });
 
+
+ /**==============to get a signle user=======  **/
+
+
+  export const getUSer= createAsyncThunk(
+     "getUser",
+     async (_, {dispatch}:any) => {
+       try {
+         //set loader true
+        dispatch(fetchDataStart(true))
+ 
+        //axios call
+        const response = await apiGet('/user/info')
+        console.log(response.data)
+        
+        dispatch(fetchDataCompany(response.data.company))
+       } catch (error: any) {
+        console.log(error)
+     }
+   });
+
+
+
    /**==============For password change=======  **/
 
   export const emailVerification = createAsyncThunk(
@@ -401,3 +428,5 @@ export const passwordChangeConfirmation = createAsyncThunk(
        }
      }
    );
+
+

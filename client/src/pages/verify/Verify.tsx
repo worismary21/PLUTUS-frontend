@@ -49,7 +49,7 @@ export default function Verify() {
 
    useEffect(() => {
      sendOTP()
-   })
+   },[])
 
 
 
@@ -105,7 +105,7 @@ export default function Verify() {
           <div className={veriffy.countdowntext}>
             {seconds > 0 || minutes > 0 ? (
               <p>
-                Time Remaining: {minutes < 10 ? `0${minutes}` : minutes};
+                Time Remaining: {minutes < 10 ? `0${minutes}` : minutes}:
                 {seconds < 10 ? `0${seconds}` : seconds}
               </p>
             ) : (
@@ -113,7 +113,7 @@ export default function Verify() {
             )}
           </div>
           <div className={veriffy.btncont}>
-              <button className={veriffy.button} onClick={handleClick} disabled={!otp || seconds > 0 || minutes > 0}>Verify</button>
+              <button className={veriffy.button} onClick={handleClick} disabled={!otp}>Verify</button>
             <button
             className={veriffy.button}
               disabled={seconds > 0 || minutes > 0}

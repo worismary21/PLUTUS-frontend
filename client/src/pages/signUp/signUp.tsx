@@ -42,7 +42,6 @@ const SignUp = () => {
       toast.error("Passwords don't match");
     } else {
       dispatch(registerUser(formData))
-      toast.success("User created successfully")
     }
   };
 

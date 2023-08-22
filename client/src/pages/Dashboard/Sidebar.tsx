@@ -6,7 +6,8 @@ import { FaUserCircle } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { BiTransfer } from "react-icons/bi";
-import { IoIosCard } from "react-icons/io";
+import { MdOutlineAssuredWorkload } from "react-icons/md";
+import { IoIosCard } from "react-icons/hi";
 import { AiFillHome } from "react-icons/ai";
 import { MdOutlineDashboard, MdLogout } from "react-icons/md";
 import React, { useState } from "react";
@@ -25,21 +26,22 @@ const Sidebar = () => {
       icon: FiSettings,
       margin: true,
     },
-    { name: "Log out", link: "/", icon: MdLogout },
+    { name: "Log out", link: "/dashboard/logOut", icon: MdLogout },
   ];
 
   const adminmenus = [
-    {name: "Users", link:'/dashboard/admin', icon: AiFillHome},
-    {name: "companies", link:'/dashboard/allTransactions', icon: BiTransfer},
-    {name: "Transactions", link:'/dashboard/transactions', icon: MdOutlineDashboard},
-    { name: "Log out", link: "/", icon: MdLogout },
+    {name: "Home", link:'/dashboard/home', icon: AiFillHome},
+    {name: "Users", link:'/dashboard/admin', icon: MdOutlineAssuredWorkload},
+    {name: "Companies", link:'/dashboard/transactions', icon: MdOutlineDashboard},
+    {name: "Transactions", link:'/dashboard/allTransactions', icon: MdOutlineDashboard},
+    { name: "Log out", link: "/dashboard/logOut", icon: MdLogout },
 
   ];
   const companymenus = [
     {name: "Home", link:'/dashboard', icon: AiFillHome},
-    {name: "transactions", link:'/dashboard/companies', icon: BiTransfer},
-    {name: "profile", link:'/dashboard/transactions', icon: MdOutlineDashboard},
-    { name: "Log out", link: "/", icon: MdLogout },
+    {name: "Company", link:'/dashboard/companies', icon: MdOutlineAssuredWorkload},
+    {name: "Transactions", link:'/dashboard/transactions', icon: MdOutlineAssuredWorkload},
+    { name: "Log out", link: "/dashboard/logOut", icon: MdLogout },
 
   ];
   const [open, setOpen] = useState(true);
