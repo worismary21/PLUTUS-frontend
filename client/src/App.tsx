@@ -11,17 +11,19 @@ import { RoutesDashBoard } from './pages/Dashboard/Routes';
 import Loggin from './pages/onboarding/Loggin';
 import Signupp from './pages/onboarding/Signupp';
 import Homepage from './pages/homepage/Homepage';
-import Transactions from './pages/AdminPageTransactions/AllTransactions'
+// import Transactions from './pages/AdminPageTransactions/AllTransactions'
 // import Transactions from './pages/Transactions/Transactions';
 import DashboardHome from './pages/Dashboard/HomeDashBoard/DashboardHome';
-
-import CompanyTable from './pages/companytable/CompanyTable';
+// import CompanyTable from './pages/companytable/CompanyTable';
+import { AuthProvider } from "./pages/auth/Protectedroute";
+import Privaterouter from './pages/auth/Privaterouter';
 // import React from 'react';
 
 function App() {
 
   return (
     <>
+    <AuthProvider>
      <BrowserRouter>
           <ToastContainer
           theme="dark"
@@ -44,12 +46,12 @@ function App() {
      <Route path='/changePasswordConfirm' element={<ChangePass2 />}/>  
      {/* <Route path='/dashboard/*' element={<Dashboard />} /> */}
      {/* <Route path="/transactions" element={<Transactions/>}/> */}
-     <Route path='/dashboard/*' element={<RoutesDashBoard />} />
-     
-     <Route path='/dashboardhome' element={<DashboardHome />} />
 
-      </Routes>
+     <Privaterouter path='/dashboard/*' element={<RoutesDashBoard />} />
+     <Route path='/dashboardhome' element={<DashboardHome />} />
+     </Routes>
      </BrowserRouter> 
+     </AuthProvider>
      </>
 
 )}

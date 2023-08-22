@@ -27,7 +27,7 @@ export const loginUser = createAsyncThunk(
 
       //axios call
       const response = await apiPost("/user/login", formData);
-      console.log(response)
+      console.log(response.data, "***")
 
 
       //response check

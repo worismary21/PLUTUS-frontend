@@ -8,10 +8,12 @@ import Sidebar from "./Sidebar";
 import Savings from "./Transfer/Savings";
 import AccountSettings from "./accountSettings/accountSetting";
 import CompanyTable from "../companytable/CompanyTable"
+import Protectedroute from "../auth/Protectedroute";
 
 const Dashboard = () => {
   return (
-    <div style={{ display: "flex", overflowX: "hidden" }}>
+   
+         <div style={{ display: "flex", overflowX: "hidden" }}>
       <Sidebar />
       <div>
         <Navbar />
@@ -28,7 +30,7 @@ const Dashboard = () => {
             <Route path='/companytable' element={<CompanyTable />} />
           </Routes>
       </div>
-    </div>
+    </div>           
   );
 };
 
