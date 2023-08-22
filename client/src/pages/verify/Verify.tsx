@@ -1,20 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
 import verify from "./verifyImage/verify-image.png";
 import veriffy from "./Verify.module.css";
 import OtpInput from "react-otp-input";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { verifyUser } from "../../redux/action"
+
 
 export default function Verify() {
   const [otp, setOtp] = useState("");
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
+  const dispatch = useDispatch() as unknown as any;
+  
 
-
-//   const handleChange = (e) =>{
-     // e.preventDefault()
-//      setOtp(e.target.value)
-//   }
-//   console.log("otp", otp)
+  console.log("otp", otp)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,7 +37,15 @@ export default function Verify() {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [seconds]);
+
+  const handleClick = () => {
+     if (otp) {
+       dispatch(verifyUser(otp)); // Dispatch the action with the entered OTP
+     } else {
+       console.error(Error);
+     }
+   };
 
   const sendOTP = () => {
     setMinutes(4);
@@ -97,9 +107,7 @@ export default function Verify() {
             )}
           </div>
           <div className={veriffy.btncont}>
-            <Link to="/dashboard">
-              <button className={veriffy.button} onClick={sendOTP}>Verify</button>
-            </Link>
+              <button className={veriffy.button} onClick={handleClick} disabled={!otp || seconds > 0 || minutes > 0}>Verify</button>
             <button
             className={veriffy.button}
               disabled={seconds > 0 || minutes > 0}
