@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { BsPersonFillGear } from 'react-icons/bs';
 import { BiSolidLockOpen } from 'react-icons/bi';
@@ -6,12 +7,9 @@ import { BsFillCreditCard2FrontFill } from 'react-icons/bs';
 import { Link, useLocation } from 'react-router-dom';
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from 'react-toastify';
-import React, { useState } from 'react';
-import { useDispatch } from "react-redux";
-import { verifyUser } from "../../redux/action"
-import { apiPut } from '../../../utils/axios';
-import axios from '../../../api/axios';
-import { accountSettings, updateLogo } from '../../../redux/action';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { accountSettings, getInfo, updateLogo } from '../../../redux/action';
 
 
 const AccountSettings: React.FC = () => {
@@ -25,7 +23,6 @@ const AccountSettings: React.FC = () => {
    lastName:"",
    address:"",
    email:"",
-   password:"",
    city:"",
    state:"",
    zipCode:"",
@@ -33,15 +30,21 @@ const AccountSettings: React.FC = () => {
  });
   
   const [fileData, setFileData] = useState({}) 
+
+  const [file, setFile] = useState('') 
   
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "file") {
+
       setFileData({
         image: e.target.files[0]
       })
+
+      setFile(URL.createObjectURL(e.target.files[0]))
       console.log('file', fileData)
     } else {
+      console.log(formData)
       setFormData({
         ...formData,
         [name]: value,
@@ -54,7 +57,6 @@ const AccountSettings: React.FC = () => {
     dispatch(updateLogo(fileData))
   }
 
-
  
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -66,6 +68,15 @@ const AccountSettings: React.FC = () => {
     }
   };
 
+  const users = useSelector((state:any) => state.user.user)
+
+
+
+  useEffect(() => {
+    dispatch(getInfo())
+  }, [])
+
+  console.log("users", users)
   // const [successMessage, setSuccessMessage] = useState<string | null>('null');
   
   // const handleSubmit = async (e: React.FormEvent) => {
@@ -144,27 +155,28 @@ const AccountSettings: React.FC = () => {
             <div className="space-y-4 w-8/12">
               {/* Personal Info Fields */}
               <div className="flex items-center space-x-2">
-              <label htmlFor="fileInput" className="w-24 ml-2 mb-0 h-24 flex items-center justify-center rounded-full bg-gray-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 text-white"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3.293 12.293a1 1 0 011.414 0L10 17.586l5.293-5.293a1 1 0 111.414 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                  <path
-                    fillRule="evenodd"
-                    d="M10 3a1 1 0 011 1v9a1 1 0 11-2 0V4a1 1 0 011-1z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                </label>
-              <button onClick={updateImage}>Click Me</button>
+                {!file ? <label htmlFor="fileInput" className="w-24 ml-2 mb-0 h-24 flex items-center justify-center rounded-full bg-gray-300">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 text-white"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M3.293 12.293a1 1 0 011.414 0L10 17.586l5.293-5.293a1 1 0 111.414 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      d="M10 3a1 1 0 011 1v9a1 1 0 11-2 0V4a1 1 0 011-1z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </label> :
+                  <img src={file} alt="hsdjh" className='h-[100px] w-[100px] rounded-[50%] object-cover object-top' />}
+                {file ? <button className='w-fit bg-black text-white py-2 rounded-md' onClick={updateImage}>Upload Image</button> : null}
                 <input type="file" name="file" id="fileInput" className="hidden" onChange={handleInputChange} />
             </div>
 
@@ -261,7 +273,7 @@ const AccountSettings: React.FC = () => {
                 <button
                   className="w-full bg-black text-white py-2 rounded-md"
                 type="submit" onClick={handleFormSubmit}>
-                  Save
+                  Update
                 </button>
             </div>  
           </>
@@ -272,46 +284,49 @@ const AccountSettings: React.FC = () => {
             <div className="space-y-4 w-8/12">
               {/* Personal Info Fields */}
               <div className="flex items-center space-x-2">
-              <label htmlFor="fileInput" className="w-24 ml-2 mb-0 h-24 flex items-center justify-center rounded-full bg-gray-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 text-white"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3.293 12.293a1 1 0 011.414 0L10 17.586l5.293-5.293a1 1 0 111.414 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                  <path
-                    fillRule="evenodd"
-                    d="M10 3a1 1 0 011 1v9a1 1 0 11-2 0V4a1 1 0 011-1z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                </label>
-              <button onClick={updateImage}>Click Me</button>
+              {!users?.imageUrl ? <label htmlFor="fileInput" className="w-24 ml-2 mb-0 h-24 flex items-center justify-center rounded-full bg-gray-300">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 text-white"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M3.293 12.293a1 1 0 011.414 0L10 17.586l5.293-5.293a1 1 0 111.414 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      d="M10 3a1 1 0 011 1v9a1 1 0 11-2 0V4a1 1 0 011-1z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </label> :
+                  <img src={users?.imageUrl} alt="hsdjh" className='h-[100px] w-[100px] rounded-[50%] object-cover object-top' />}
+              {/* <button onClick={updateImage}>Click Me</button> */}
                 <input type="file" name="file" id="fileInput" className="hidden" onChange={handleInputChange} />
             </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label className="flex flex-col">
                   First Name
-                  <input onChange={handleInputChange}
+                  <input 
                     className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                    placeholder="First Name"
+                    placeholder={users?.firstName}
                     name="firstName"
+                    readOnly
                   />
                 </label>
 
                 <label className="flex flex-col">
                   Last Name
-                  <input onChange={handleInputChange}
+                  <input 
                     className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                    placeholder="Last Name"
+                    placeholder={users?.lastName}
                     name="lastName"
+                    readOnly
                   />
                 </label>
 
@@ -320,47 +335,52 @@ const AccountSettings: React.FC = () => {
 
               <label className="flex flex-col">
                 Email
-                <input onChange={handleInputChange}
+                <input 
                   className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                  placeholder="mail@email.com"
+                  placeholder={users?.email}
                   name="email"
+                  readOnly
                 />
               </label>
 
               <label className="flex flex-col">
                 Phone Number
-                <input onChange={handleInputChange}
+                <input 
                   className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                  placeholder="+000-12345678"
+                  placeholder={users?.phoneNumber}
                   name="phoneNumber"
+                  readOnly
                 />
               </label>
 
               <label className="flex flex-col">
                 Street Address
-                <input onChange={handleInputChange}
+                <input 
                   className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                  placeholder="2 MainLand, Lagos"
+                  placeholder={users?.address}
                   name="address"
+                  readOnly
                 />
               </label>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label className="flex flex-col">
                   ZIP
-                  <input onChange={handleInputChange}
+                  <input 
                     className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                    placeholder="0000"
+                    placeholder={users?.zipCode}
                     name="zipCode"
+                    readOnly
                   />
                 </label>
 
                 <label className="flex flex-col">
                   City
-                  <input onChange={handleInputChange}
+                  <input 
                     className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                    placeholder="Lagos"
+                    placeholder={users?.city}
                     name="city"
+                    readOnly
                   />
                 </label>
               </div>
@@ -368,29 +388,31 @@ const AccountSettings: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label className="flex flex-col">
                   State
-                  <input onChange={handleInputChange}
+                  <input 
                     className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                    placeholder="Abuja"
+                    placeholder={users?.state}
                     name="state"
+                    readOnly
                   />
                 </label>
 
                 <label className="flex flex-col">
                   Country
-                  <input onChange={handleInputChange}
+                  <input 
                     className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                    placeholder="Nigeria"
+                    placeholder={users?.country}
                     name="country"
+                    readOnly
                   />
                 </label>
               </div>
 
               
-                <button
+                {/* <button
                   className="w-full bg-black text-white py-2 rounded-md"
                 type="submit" onClick={handleFormSubmit}>
-                  Save
-                </button>
+                  Update
+                </button> */}
             </div>  
           </>
         )}
