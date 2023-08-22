@@ -1,7 +1,7 @@
 
 
 
-export const Onboarding = ({form}:any) => {
+export const Onboarding = ({form}:never) => {
     
     return (
       <div style={{display:"flex"}}>
