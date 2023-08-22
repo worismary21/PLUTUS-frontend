@@ -42,8 +42,7 @@ const Checking = () => {
             ...formData,
             [name]: value,
           });
-    }
-    
+    }   
   };
 //   console.log(formData);
 

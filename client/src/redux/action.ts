@@ -37,7 +37,7 @@ export const loginUser = createAsyncThunk(
 
 
       //response check
-      localStorage.setItem('token', response.data.token)
+      localStorage.setItem('token', response.data.user_token)
       localStorage.setItem('role', response.data.role)
       localStorage.setItem('email', response.data.email)
       localStorage.setItem('id', response.data.id)
@@ -186,6 +186,24 @@ export const transferFunds = createAsyncThunk(
     }
   });
 
+      /**============== Get Company Info =======  **/
+
+      export const getCompanyInfo= createAsyncThunk(
+        "getCompanyInfo",
+        async (_, {dispatch}:any) => {
+          try {
+            //set loader true
+           dispatch(fetchDataStart(true))
+    
+           //axios call
+           const response = await apiGet('/company/getCompanyInfo')
+         
+           dispatch(fetchDataCompany(response.data.company))
+          } catch (error: any) {
+           console.log(error)
+        }
+      });
+
       /**============== Create Beneficiary  =======  **/
 
   export const createBeneficiary = createAsyncThunk(
@@ -209,6 +227,27 @@ export const transferFunds = createAsyncThunk(
       }
     }
   );
+
+    /**============== Update Company Info=======  **/
+    export const updateCompany = createAsyncThunk(
+      "updateCompany",
+      async (formData:any, { dispatch }:any) => {
+        try {
+          dispatch(fetchDataStart(true));
+          const response = await apiPut(`/company/updateProfile`, formData);
+          toast.success(response.data.message);
+    
+            //redirect
+            // setTimeout(() => {
+            //   window.location.href = "/dashboard/transfer/savings";
+            // }, 2000);
+    
+        } catch (error: any) {
+          toast.error(error.response.data.message);
+          dispatch(fetchDataFailure(error.response.data.message));
+        }
+      }
+    );
 
 
 export const verifyUser = createAsyncThunk(
