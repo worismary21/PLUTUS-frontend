@@ -61,7 +61,7 @@ const companies = useSelector((state:any) => state.company)
       <div className='overflow-x-auto'>
         <table className='w-full table-fixed'>
           <thead>
-            <tr className='bg-gray-200'>
+            <tr className='bg-blue-600 text-white'>
               <th className='w-1/6 py-2 px-4 text-left'>ID</th>
               <th className='w-2/6 py-2 px-4 text-left'>Company Name</th>
               <th className='w-2/6 py-2 px-4 text-left'>Duration</th>
