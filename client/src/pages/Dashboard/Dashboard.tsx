@@ -7,12 +7,12 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Savings from "./Transfer/Savings";
 import AccountSettings from "./accountSettings/accountSetting";
-import CompanyTable from "../companytable/CompanyTable"
+// import CreateCompany from "./Company/CreateCompany";
 
 const Dashboard = () => {
   return (
     <div style={{ display: "flex", overflowX: "hidden" }}>
-      <Sidebar />
+      <Sidebar /> 
       <div>
         <Navbar />
         <Routes>
@@ -24,9 +24,10 @@ const Dashboard = () => {
           <Route path="/accountSettings" element={<AccountSettings />} />
           <Route path="/notifications" element={<AccountSettings />} />
           <Route path="/password-and-security" element={<AccountSettings />} />
-            <Route path="/choose-plan" element={<AccountSettings />} />
-            <Route path='/companytable' element={<CompanyTable />} />
-          </Routes>
+          <Route path="/choose-plan" element={<AccountSettings />} />
+
+          
+        </Routes>
       </div>
     </div>
   );

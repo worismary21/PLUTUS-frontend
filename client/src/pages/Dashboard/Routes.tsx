@@ -16,6 +16,9 @@ import AllTransactions from "../AdminPageTransactions/AllTransactions"
 import CompanyAccountSettings from "./accountSettings/CompanyAccountSettings"
 
 
+import CreateCompany from "./Company/CreateCompany";
+import CompanyTable from "../companytable/CompanyTable";
+
 export interface transaction {
   id: string;
   accountNumber: number;
@@ -29,6 +32,7 @@ export interface transaction {
   senderId: string;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const transactions: transaction[] = [
   {
     id: "1",
@@ -174,6 +178,7 @@ export const transactions: transaction[] = [
   },
 ];
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const userDetails = {
   fullName: "tolu bands",
   cardNumber: "4444 4444 4444 4444",
@@ -200,10 +205,7 @@ export const RoutesDashBoard = () => {
           <Route
             path="/transactions"
             element={
-              <Transactions
-                userTransactions={transactions}
-                userDetails={userDetails}
-              />
+              <Transactions />
             }
           />
           <Route path="/allTransactions" element={<AllTransactions />} />
@@ -214,10 +216,10 @@ export const RoutesDashBoard = () => {
           <Route path="/companyaccountsettings" element={<CompanyAccountSettings />} />
           <Route path="/companyupdate-profile" element={<CompanyAccountSettings />} />
 
+          <Route path="/createCompany" element={<CreateCompany />} />
+          <Route path="/companies" element={<CompanyTable />} />
         </Routes>
       </div>
     </div>
   );
 };
-
-

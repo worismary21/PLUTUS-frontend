@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
+import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState, useEffect } from "react";
 import foodIcon from "./logos/foodIcon.svg";
 import entertainmentIcon from "./logos/entertainment.svg";
 import transferIcon from "./logos/QuickTransferIcon.svg";
 import travelIcon from "./logos/travelIcon.svg";
 import drinkIcon from "./logos/drinkIcon.svg"
+// import { userDetails } from '../Routes';
 export interface transaction {
   id: string;
   accountNumber: number;
@@ -19,24 +20,31 @@ export interface transaction {
 }
 
 export interface Props {
-  userTransactions: transaction[];
+  userTransactions: any;
+  userDetails: any;
 }
 
-export default function TransactionsList({ userTransactions }: Props) {
+export default function TransactionsList({ userTransactions, userDetails }: Props) {
   const [transactions, setTransactions] = useState(userTransactions);
   const expensesClick = () => {
     setTransactions(
-      userTransactions.filter((transaction) => transaction.amount < 0)
-    );
+      userTransactions?.filter(((transaction: { senderId: string; })=>
+      transaction.senderId === userDetails.id)
+    ));
   };
   const incomeClick = () => {
     setTransactions(
-      userTransactions.filter((transaction) => transaction.amount > 0)
-    );
+      userTransactions?.filter(((transaction: { accountNumber: string; })=>
+      transaction.accountNumber === userDetails.accountNumber)
+    ));
   };
   const allClick = () => {
     setTransactions(userTransactions);
   };
+
+  useEffect(()=>{
+    setTransactions(userTransactions);
+  },[userTransactions])
 
   return (
     <>
@@ -47,7 +55,7 @@ export default function TransactionsList({ userTransactions }: Props) {
         className="w-full p-2 active:border-gray-700 "
         onChange={(e) => {
           setTransactions(
-            userTransactions.filter((transaction) => {
+            userTransactions?.filter((transaction: { beneficiary_name: string ; }) => {
               if (e.target.value.length == 1) {
                 const firstLetter =
                   transaction.beneficiary_name[0].toLowerCase();
@@ -83,7 +91,9 @@ export default function TransactionsList({ userTransactions }: Props) {
           </button>
         </div>
         <div>
-          {transactions?.map((transaction) => (
+          {transactions?.map((transaction: {
+            accountNumber: any; id: Key | null | undefined; transfer_purpose: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined; beneficiary_name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; amount: number  
+}) => (
             <li
               key={transaction.id}
               className="hover:border-gray-100 border-transparent border-2 rounded-lg"
@@ -124,14 +134,14 @@ export default function TransactionsList({ userTransactions }: Props) {
                 <div className="text-right">
                   <h4
                     className={
-                      transaction.amount > 0
+                      transaction.accountNumber === userDetails.accountNumber
                         ? "text-green-600 pb-1.5"
                         : "text-red-600 pb-1.5"
                     }
                   >
                     {transaction.amount}
                   </h4>
-                  <p className="text-xs text-slate-400">{transaction.amount}</p>
+                  <p className="text-xs text-slate-400">{userDetails.accountBalance}</p>
                 </div>
               </div>
             </li>
