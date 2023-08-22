@@ -12,7 +12,14 @@ import AccountSettings from "./accountSettings/accountSetting";
 import UsersAdmin from "../UsersAdmin/users";
 import Transactions from "./Transactions/Transactions";
 import CompanyDashboard from "../companydashboard/CompanyDashboard";
+<<<<<<< HEAD
+import AllTransactions from "../AdminPageTransactions/AllTransactions"
+import CompanyAccountSettings from "./accountSettings/CompanyAccountSettings"
+
+
+=======
 import AllTransactions from "../AdminPageTransactions/AllTransactions";
+>>>>>>> 43cae3c1bdaa19ecf2b764ed2d3d337888cf0583
 import CreateCompany from "./Company/CreateCompany";
 import CompanyTable from "../companytable/CompanyTable";
 
@@ -202,10 +209,7 @@ export const RoutesDashBoard = () => {
           <Route
             path="/transactions"
             element={
-              <Transactions
-                userTransactions={transactions}
-                userDetails={userDetails}
-              />
+              <Transactions />
             }
           />
           <Route path="/allTransactions" element={<AllTransactions />} />
@@ -213,6 +217,9 @@ export const RoutesDashBoard = () => {
           <Route path="/transfer/investment" element={<Invest />} />
           <Route path="/transfer/addbeneficiary" element={<AddBeneficiary />} />
           <Route path="/companyDashboard" element={<CompanyDashboard />} />
+          <Route path="/companyaccountsettings" element={<CompanyAccountSettings />} />
+          <Route path="/companyupdate-profile" element={<CompanyAccountSettings />} />
+
           <Route path="/createCompany" element={<CreateCompany />} />
           <Route path="/companies" element={<CompanyTable />} />
         </Routes>
