@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {  apiDelete, apiGet, apiPatch, apiPost, apiPut, formDataPatch } from "../utils/axios";
+import {  apiDelete, apiGet, apiPatch, apiPost, apiPut, formDataPatch, formDataPut } from "../utils/axios";
 import {  fetchDataCompany, fetchDataFailure, fetchDataStart,  fetchDataUser, fetchDataBeneficiary} from "./reducers";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -485,6 +485,36 @@ export const passwordChangeConfirmation = createAsyncThunk(
           dispatch(fetchDataFailure(error.response.data.message));
        }
      }
-   );
+);
+   
+   
+   
 
+export const accountSettings = createAsyncThunk(
+  "accountSettings",
+  async (formData:any, { dispatch }:any) => {
+    try {
+      dispatch(fetchDataStart(true));
+      const response = await apiPut(`/user/updateAccount`, formData);
+      toast.success(response.data.message);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+      dispatch(fetchDataFailure(error.response.data.message));
+    }
+  }
+);
 
+/**============== IMAGE UPDATE=======  **/
+  export const updateLogo =  createAsyncThunk(
+    "updateLogo",
+    async (formData: any, { dispatch }: any) => {
+      try {
+        dispatch(fetchDataStart(true));
+      const response = await formDataPut(`/user/profileImage`, formData);
+
+        console.log(response)
+      } catch (error: any) {
+        console.log(error)
+      }
+
+     })
