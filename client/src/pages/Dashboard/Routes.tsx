@@ -9,8 +9,12 @@ import Savings from "./Transfer/Savings";
 import Invest from "./Transfer/investment";
 import AddBeneficiary from "./Transfer/AddBeneficiary";
 import AccountSettings from "./accountSettings/accountSetting";
+import UsersAdmin from "../UsersAdmin/users";
 import Transactions from "./Transactions/Transactions";
 import CompanyDashboard from "../companydashboard/CompanyDashboard";
+import AllTransactions from "../AdminPageTransactions/AllTransactions";
+import CreateCompany from "./Company/CreateCompany";
+import CompanyTable from "../companytable/CompanyTable";
 
 export interface transaction {
   id: string;
@@ -192,7 +196,7 @@ export const RoutesDashBoard = () => {
           <Route path="/accountsettings" element={<AccountSettings />} />
           <Route path="/notifications" element={<AccountSettings />} />
           <Route path="/password-and-security" element={<AccountSettings />} />
-          <Route path="/choose-plan" element={<AccountSettings />} />
+          <Route path="/update-profile" element={<AccountSettings />} />
           <Route
             path="/transactions"
             element={
@@ -202,9 +206,13 @@ export const RoutesDashBoard = () => {
               />
             }
           />
+          <Route path="/allTransactions" element={<AllTransactions />} />
+          <Route path="/admin" element={<UsersAdmin />} />
           <Route path="/transfer/investment" element={<Invest />} />
           <Route path="/transfer/addbeneficiary" element={<AddBeneficiary />} />
           <Route path="/companyDashboard" element={<CompanyDashboard />} />
+          <Route path="/createCompany" element={<CreateCompany />} />
+          <Route path="/companies" element={<CompanyTable />} />
         </Routes>
       </div>
     </div>

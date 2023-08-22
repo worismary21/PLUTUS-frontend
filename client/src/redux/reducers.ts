@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { useDispatch  } from 'react-redux';
 
 export interface State {
   user: any[];
@@ -45,8 +46,6 @@ const dataSlice = createSlice({
       console.log(action)
       state.beneficiary = action.payload;
     },
-
- 
     fetchDataFailure: (state, action: PayloadAction<string>) => {
       state.loading = false;
       state.error = action.payload;
