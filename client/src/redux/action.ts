@@ -295,6 +295,24 @@ export const saveImages = createAsyncThunk(
     }
   );
 
+  /**==============Delete Company======= **/
+  export const deleteCompany = createAsyncThunk(
+    "deleteCompany",
+    async (id:any, { dispatch }) => {
+      try {
+        dispatch(fetchDataStart(true));
+        const response = await apiDelete(`/company/delete/${id}`);
+        toast.success(response.data.message);
+        dispatch(fetchDataCompany(response.data));
+        window.location.reload()
+      } catch (error: any) {
+
+        toast.error(error.response.data.message);
+        dispatch(fetchDataFailure(error.response.data.message));
+      }
+    }
+  );
+
 
   export const getCompanies= createAsyncThunk(
     "getCompanies",
@@ -429,3 +447,5 @@ export const passwordChangeConfirmation = createAsyncThunk(
        }
      }
    );
+
+

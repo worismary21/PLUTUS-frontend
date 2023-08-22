@@ -2,51 +2,34 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import emptyProduct from './CompanyData';
-import { getCompanies } from '../../redux/action';
+import { deleteCompany, getCompanies } from '../../redux/action';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import DeleteModal from '../../components/DeleteModal.tsx';
 import CreateCompany from '../Dashboard/Company/CreateCompany.tsx'
 
 interface Company {
   id: number;
   companyName: string;
-  investment: number;
+  investment_category: string;
   businessType: string;
+  duration: number;
+  roi: number;
 }
 
 const CompanyTable: React.FC = () => {
   const companiesPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
-  const [companyData, setCompanyData] = useState<Company[]>(emptyProduct);
+  const [companyData] = useState<Company[]>(emptyProduct);
 
-  // const [comp, setComp] = useState<any[]>([])
-
-  // const getCompanies = async() => {
-  //   try{
-  //     const response = await axios.get(`${baseUrl}/company/get-companies`)
-  //     console.log('resppp ++++++', response)
-  //     setComp(response.data.company)
-  //   }catch(error){
-  //     console.log(error)
-  //   }
-  
-  // }
-
-  // console.log("company", comp)
-
-  // useEffect(() => {
-  //   getCompanies()
-  // }, [])
 const dispatch = useDispatch() as unknown as any
 
 const companies = useSelector((state:any) => state.company)
 
 
-console.log(companies)
-
   useEffect(() => {
     dispatch(getCompanies())
-  }, [])
+  }, [dispatch])
 
 
 
@@ -55,8 +38,7 @@ console.log(companies)
   };
 
   const handleDelete = (id: number) => {
-    const updatedCompanyData = companyData?.filter(company => company.id !== id);
-    setCompanyData(updatedCompanyData);
+    dispatch(deleteCompany(id))
   };
 
   const startIndex = (currentPage - 1) * companiesPerPage;
@@ -64,6 +46,14 @@ console.log(companies)
   const companiesToDisplay = companies?.slice(startIndex, endIndex);
 
   const [modal, setModal] = useState(false)
+  const [delModal, setDelModal] = useState(false)
+
+  const openModal = (id: any) => {
+    localStorage.setItem('compId', id)
+    setDelModal(!delModal)
+  }
+
+  const companyId = localStorage.getItem("compId") as unknown as number
 
   return (
     <div className='p-4 md:p-8 lg:p-16'>
@@ -74,22 +64,26 @@ console.log(companies)
             <tr className='bg-gray-200'>
               <th className='w-1/6 py-2 px-4 text-left'>ID</th>
               <th className='w-2/6 py-2 px-4 text-left'>Company Name</th>
-              <th className='w-1/6 py-2 px-4 text-left'>Investment</th>
+              <th className='w-2/6 py-2 px-4 text-left'>Duration</th>
+              <th className='w-2/6 py-2 px-4 text-left'>ROI</th>
+              <th className='w-1/6 py-2 px-4 text-left'>Investment Category</th>
               <th className='w-1/6 py-2 px-4 text-left'>Business Type</th>
               <th className='w-1/6 py-2 px-4 text-right'>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {companiesToDisplay?.map((company:any) => (
+            {companiesToDisplay?.map((company:any, i: number) => (
               <tr key={company.id} className='border-b hover:bg-gray-100'>
-                <td className='py-2 px-4'>{company.id}</td>
+                <td className='py-2 px-4'>{i+1}</td>
                 <td className='py-2 px-4'>{company.companyName}</td>
-                <td className='py-2 px-4'>{company.investment}</td>
+                <td className='py-2 px-4'>{company.duration}</td>
+                <td className='py-2 px-4'>{company.roi}</td>
+                <td className='py-2 px-4'>{company.investment_category}</td>
                 <td className='py-2 px-4'>{company.businessType}</td>
                 <td className='py-2 px-4 text-right'>
                   <button
                     className='bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded'
-                    onClick={() => handleDelete(company.id)}
+                    onClick={() => openModal(company.id)}
                   >
                     Delete
                   </button>
@@ -117,6 +111,7 @@ console.log(companies)
       </div>
       <button onClick={() => setModal(!modal)}> Add Company </button>
       {modal ? <CreateCompany /> : null}
+      {delModal ? <DeleteModal onCancel={() =>setDelModal(!delModal) } onDelete={() => handleDelete(companyId)} /> : null}
     </div>
   );
 };
