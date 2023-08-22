@@ -13,16 +13,17 @@ import Signupp from './pages/onboarding/Signupp';
 import Homepage from './pages/homepage/Homepage';
 import { useEffect, useState } from 'react';
 import DashboardHome from './pages/Dashboard/HomeDashBoard/DashboardHome';
-import Protected from './components/PrivateRoute';
+import Protected from './components/Protected';
 
 function App() {    
      const [isSignedIn, setIsSignedIn] = useState(false)
      const verify = localStorage.getItem("verify")
+     console.log( typeof isSignedIn)
 
   const signin = () => {
-     if(verify === "true"){
+     if(verify ){
           setIsSignedIn(true)
-     }setIsSignedIn(false)
+     }else setIsSignedIn(false)
   }
 
   useEffect (()=>{
@@ -38,26 +39,18 @@ function App() {
           autoClose={3000}
           closeOnClick     
           pauseOnHover={false}      
-        />
-   
-      <Routes>
-        <Route path='/' element={<Homepage /> } />
-       <Route path='/signup' element={<SignUp />}/>
-       <Route path="/verify" element={<Protected isSignedIn={isSignedIn}> <Verify /> </Protected>} />
-       <Route path="/changePassword" element={<Protected isSignedIn={isSignedIn}><ChangePass /> </Protected>}/>
-       <Route path="/login" element={<Login /> } />
-       <Route path="/loggin" element={<Loggin />} />
-       
-       <Route path="/signupp" element={<Signupp />} />
-     <Route path='*' element={<Error404 />}/>
-     <Route path='/changePasswordConfirm' element={<Protected isSignedIn={isSignedIn}> <ChangePass2 /> </Protected>}/>  
-     {/* <Route path='/dashboard/*' element={<Dashboard />} /> */}
-     {/* <Route path="/transactions" element={<Transactions/>}/> */}
-     <Route path='/dashboard/*' element={<Protected isSignedIn={isSignedIn}> <RoutesDashBoard /> </Protected>} />
-     
-     <Route path='/dashboardhome' element={<Protected isSignedIn={isSignedIn}> <DashboardHome /> </Protected>} />
-
-      </Routes>
+          />
+          <Routes>
+               <Route path='*' element={<Error404 />}/>
+               <Route path='/' element={<Homepage /> } />
+               <Route path='/signup' element={<SignUp />}/>
+               <Route path="/login" element={<Login /> } />
+               <Route path='/changePasswordConfirm' element={<ChangePass2 /> }/>  
+               <Route path="/verify" element={<Protected isSignedIn={isSignedIn}> <Verify /> </Protected>} />
+               <Route path="/changePassword" element={<Protected isSignedIn={isSignedIn}><ChangePass /> </Protected>}/>
+               <Route path='/dashboard/*' element={<Protected isSignedIn={isSignedIn}> <RoutesDashBoard /> </Protected>} />
+               <Route path='/dashboardhome' element={<Protected isSignedIn={isSignedIn}> <DashboardHome /> </Protected>} />
+          </Routes>
      </BrowserRouter> 
      </>
 

@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom'
 
 function Protected({ isSignedIn, children }) {
-  if (!isSignedIn) {
+  if (isSignedIn === "false") {
     return <Navigate to="/" replace />
   }
   return children

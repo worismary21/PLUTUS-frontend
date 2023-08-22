@@ -16,7 +16,6 @@ function changePass() {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const dispatch = useDispatch() as unknown as any;
- 
 
   
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

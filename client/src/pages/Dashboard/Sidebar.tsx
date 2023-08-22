@@ -1,15 +1,13 @@
-// import React from 'react'
-import {BiSolidInstitution,} from 'react-icons/bi'
-import {BsSave} from 'react-icons/bs'
-import {FiSettings, FiUsers} from 'react-icons/fi'
-import { FaUserCircle } from 'react-icons/fa';
+import { BsSave } from "react-icons/bs";
+import { FiSettings } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { BiTransfer } from "react-icons/bi";
-import { MdOutlineAssuredWorkload } from "react-icons/md";
-import { IoIosCard } from "react-icons/hi";
 import { AiFillHome } from "react-icons/ai";
-import { MdOutlineDashboard, MdLogout } from "react-icons/md";
+import { FaMoneyBillTransfer } from "react-icons/fa";
+
+
+import { MdOutlineDashboard, MdLogout, MdOutlineAssuredWorkload } from "react-icons/md";
 import React, { useState } from "react";
 import "./dashboard.css";
 
@@ -18,7 +16,7 @@ const Sidebar = () => {
     { name: "Dashboard", link: "/dashboard", icon: AiFillHome },
     { name: "Transfer", link: "/dashboard/transfer", icon: MdOutlineDashboard },
     { name: "Transactions", link: "/dashboard/transactions", icon: BiTransfer },
-    
+
     { name: "Investment", link: "/dashboard/investment", icon: BsSave },
     {
       name: "Settings",
@@ -26,27 +24,35 @@ const Sidebar = () => {
       icon: FiSettings,
       margin: true,
     },
-    { name: "Log out", link: "/dashboard/logOut", icon: MdLogout },
+    { name: "Log out", link: "/", icon: MdLogout },
   ];
 
   const adminmenus = [
-    {name: "Home", link:'/dashboard/home', icon: AiFillHome},
-    {name: "Users", link:'/dashboard/admin', icon: MdOutlineAssuredWorkload},
-    {name: "Companies", link:'/dashboard/transactions', icon: MdOutlineDashboard},
-    {name: "Transactions", link:'/dashboard/allTransactions', icon: MdOutlineDashboard},
-    { name: "Log out", link: "/dashboard/logOut", icon: MdLogout },
+    {name: "Users", link:'/dashboard/admin', icon: AiFillHome},
+    {name: "companies", link:'/dashboard/companies', icon: BiTransfer},
+    {name: "Transactions", link:'/dashboard/transactions', icon: MdOutlineDashboard},
+    { name: "Log out", link: "/", icon: MdLogout },
 
   ];
   const companymenus = [
     {name: "Home", link:'/dashboard', icon: AiFillHome},
     {name: "Company", link:'/dashboard/companies', icon: MdOutlineAssuredWorkload},
-    {name: "Transactions", link:'/dashboard/transactions', icon: MdOutlineAssuredWorkload},
-    { name: "Log out", link: "/dashboard/logOut", icon: MdLogout },
+    {name: "Transactions", link:'/dashboard/transactions', icon: FaMoneyBillTransfer},
+    { name: "Log out", link: "/", icon: MdLogout },
 
   ];
   const [open, setOpen] = useState(true);
 
-  const role = localStorage.getItem("role")
+  const role = localStorage.getItem("role");
+
+  const  LogOut  = (name:string) => {
+    if (name === "Log out"){
+      localStorage.clear()
+      setTimeout(() => {
+      window.location.href = '/'
+      }, 3000)
+    }
+  }
   return (
     // <section className='flex gap-6'>
     <div className={`${open ? 'w-48': 'w-20'} duration-500 h-[120vh] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4 shadow-xl w`}>
@@ -59,7 +65,7 @@ const Sidebar = () => {
         <div className='decoration mt-4 flex-col gap-4 relative'>
           {(role === "user" ? menus : role === "admin" ? adminmenus : companymenus)?.map((menu, i)=>(
 
-             <Link to={menu?.link} key={i} className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md w-30 m-0`}>
+             <Link to={menu?.link} key={i} className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md w-30 m-0`} onClick={() => LogOut(menu?.name)}>
 
               
               <div className='w-16'>
@@ -171,9 +177,6 @@ export default Sidebar;
 // };
 
 // export default sidebar;
-
-
-
 
 // const Sidebar = ({ role }: any) => {
 //   const [open, setOpen] = useState(true);
