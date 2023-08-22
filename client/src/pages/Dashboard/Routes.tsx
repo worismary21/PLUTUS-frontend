@@ -29,6 +29,7 @@ export interface transaction {
   senderId: string;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const transactions: transaction[] = [
   {
     id: "1",
@@ -174,6 +175,7 @@ export const transactions: transaction[] = [
   },
 ];
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const userDetails = {
   fullName: "tolu bands",
   cardNumber: "4444 4444 4444 4444",

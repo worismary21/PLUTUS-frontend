@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState, useEffect } from "react";
 import {
   Chart as ChartJS,
   BarElement,
@@ -8,24 +10,39 @@ import {
 } from "chart.js";
 
 import { Bar } from "react-chartjs-2";
-import { transaction } from "./TransactionsList";
+// import { transaction } from "./TransactionsList";
 import "./style.css"
+
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 interface Props {
-  userTransactions: transaction[];
+  userTransactions: any;
+  userDetails: any;
 }
 
-export default function YGraph({ userTransactions }: Props) {
+export default function YGraph({ userTransactions, userDetails }: Props) {
+
+  const [expenses, setExpenses] = useState<any>();
+  useEffect(()=>{
+    setExpenses(userTransactions?.filter((transaction: { senderId: string; })=>{
+    return transaction.senderId === userDetails.id 
+  }))
+
+    
+  }, [userTransactions, userDetails])
+
   const expensesCountObj: Record<string, number> = {};
   const expensesCountKeyArr: string[] = [];
   const expensesCountValueArr: number[] = [];
 
-  const expenses: transaction[] = userTransactions.filter(
-    (transaction) => transaction.amount < 0
-  );
-  expenses.forEach((expense) => {
+
+
+  // const expenses: transaction[] = userTransactions?.filter(
+  //   (transaction: { amount: number; }) => transaction.amount < 0
+  // );
+
+  expenses?.forEach((expense: { transfer_purpose: string | number; }) => {
     if (!expensesCountObj[expense.transfer_purpose]) {
       expensesCountObj[expense.transfer_purpose] = 0;
     }
