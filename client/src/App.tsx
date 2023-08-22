@@ -7,13 +7,16 @@ import Verify from "./pages/verify/Verify";
 import "./App.css"
 import SignUp from './pages/signUp/signUp';
 import Login from './pages/login/login'
+import { RoutesDashBoard } from './pages/Dashboard/Routes';
 import Loggin from './pages/onboarding/Loggin';
 import Signupp from './pages/onboarding/Signupp';
 import Homepage from './pages/homepage/Homepage';
-import RoutesDashBoard from './pages/Dashboard/Routes';
+import Transactions from './pages/AdminPageTransactions/Transactions'
+// import Transactions from './pages/Transactions/Transactions';
+import DashboardHome from './pages/Dashboard/HomeDashBoard/DashboardHome';
 
+import CompanyTable from './pages/companytable/CompanyTable';
 // import React from 'react';
-
 
 function App() {
 
@@ -34,14 +37,16 @@ function App() {
        <Route path="/changePassword" element={<ChangePass />}/>
        <Route path="/login" element={<Login />} />
        <Route path="/loggin" element={<Loggin />} />
+       <Route path="/alltransactions" element={<Transactions />} />
        <Route path="/signupp" element={<Signupp />} />
      <Route path='*' element={<Error404 />}/>
      <Route path='/changePasswordConfirm' element={<ChangePass2 />}/>  
+     {/* <Route path='/dashboard/*' element={<Dashboard />} /> */}
+     {/* <Route path="/transactions" element={<Transactions/>}/> */}
      <Route path='/dashboard/*' element={<RoutesDashBoard />} />
+     <Route path='/companytable' element={<CompanyTable />} />
+     <Route path='/dashboardhome' element={<DashboardHome />} />
 
-
-
-     
       </Routes>
      </BrowserRouter> 
      </>

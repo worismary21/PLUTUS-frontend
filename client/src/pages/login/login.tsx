@@ -1,44 +1,45 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import  { useState } from "react";
+import { useState } from "react";
 import log from "./login.module.css";
-import Plutosimage1 from "./imagesforlogin/Plutosimage1.png";
+import logo from "../../assets/logo.png";
 import { loginUser } from "../../redux/action";
 import { useDispatch } from "react-redux";
-import { Link } from 'react-router-dom'
+
 // import { useDispatch } from "react-redux";
 // import axios from "axios";
 
-interface LoginData{
-  email:'',
-  password:''
+interface LoginData {
+  email: "";
+  password: "";
 }
 
 function Login() {
   const [formData, setFormData] = useState<LoginData>({
-    email:'',
-    password:''
-  })
+    email: "",
+    password: "",
+  });
 
-  const [error] = useState('')
+  const [error] = useState("");
 
-  const [loading] = useState(false)
+  const [loading] = useState(false);
 
-  const handleChange = (e:any) => {
-    const {name, value} = e.target
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
     setFormData({
-      ...formData, [name]:value
-    })
-  }
+      ...formData,
+      [name]: value,
+    });
+  };
 
-  console.log('form',formData)
+  console.log("form", formData);
 
-  const dispatch = useDispatch() as unknown as any
+  const dispatch = useDispatch() as unknown as any;
 
-  const handleSubmit = (e:any) => {
-    e.preventDefault()
-    dispatch(loginUser(formData))
-  }
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    dispatch(loginUser(formData));
+  };
 
   return (
     <>
@@ -47,9 +48,9 @@ function Login() {
           
         </Link> */}
       </>
-      <div className={log.main1} >
-        <div className={log.c1}>
-          <img src={Plutosimage1} className={log.pluto} alt="Plutos image" />
+      <div className={log.main1}>
+        {/* <div className={log.c1}>
+          <img src={logo} className={log.pluto} alt="Plutos image" />
          <div className={log.left_text}>
          <h3 >Plutus is personal <br/> finance, made simple.</h3>
           <p>
@@ -57,29 +58,51 @@ function Login() {
           </p>
          </div>
     
-        </div>
-        <div className={log.form}>
-            <div className={log.logo}>
-                <h1 > Plutus </h1>
-                <p > Online Banking</p>
-              
+        </div> */}
+        <div className={log.left_side}>
+          <div className="slide">
+            <img src={logo} alt="SignUp" />
+            <div className={log.left_text}>
+              <h3>
+                Plutus is personal <br /> finance, made simple.
+              </h3>
+              <p>
+                All your account, cards, savings, and investments in <br /> one
+                place{" "}
+              </p>
             </div>
-           
-          <form onSubmit={handleSubmit}>
-          <p className={log.text7}> Log in </p>
-            <div className={log.mb_1}>
+          </div>
+        </div>
+
+        <div className={log.right_side}>
+          {/* <div className={log.logo}>
+            <h1> Plutus </h1>
+            <p> Online Banking</p>
+          </div> */}
+          <div className={log.logo}>
+            <h1 className={log.logo_one}>Plutus</h1>
+            <p className={log.logo_two}>Online Banking </p>
+          </div>
+
+          <form action="" onSubmit={handleSubmit} className={log.right_form}>
+          <div className="heading">
+              <h2>Login</h2>
+            </div>
+
+            <div className={log.mb}>
               <label className={log.form1}>Email</label>
               <br></br>
               <input
-                className={log.form2}
-                type="email"
-                name="email"
-                placeholder="plutus@gmail.com"
+                type="text"
+                name={"firstName"}
+                required
                 value={formData.email}
                 onChange={handleChange}
+                placeholder=" FirstName"
               />
             </div>
-            <div className={log.mb_2}>
+
+            <div className={log.mb}>
               <label className={log.form3}>Password</label>
               <br></br>
               <input
@@ -91,16 +114,14 @@ function Login() {
                 onChange={handleChange}
               />
             </div>
-            <Link to="/dashBoard">
             <button
-            type = "submit" 
-            className={log.btn1}>
-                {loading ? 'Loading...' : 'Login' }
-                </button>
-            </Link>
-                {error &&(
-                    <div>{error}</div>
-                )}
+              type="submit"
+              className="btnn bg-black ext-[#fff] w-80 h-10 justify-center mt-5 "
+            >
+              {loading ? "Loading..." : "Login"}
+            </button>
+
+            {error && <div>{error}</div>}
             <p className={log.text8}>Forgot your password?</p>
           </form>
         </div>
@@ -111,8 +132,7 @@ function Login() {
 
 export default Login;
 
-
-  //this below with the dispatch variable means i want to input some data into some reducer or slice
+//this below with the dispatch variable means i want to input some data into some reducer or slice
 //   const dispatch = useDispatch();
 //   const navigate = useNavigate();
 //   const payload = {

@@ -34,7 +34,7 @@ function changePass() {
     // console.log("changpasword", changePasswordResponse)
   };
 
-  const handleVerify = async (e: any) => {
+  const handleVerify = async () => {
 //     e.preventDefault();
     // const otpResponse = await changePassword(otp)
     // console.log("otp", otpResponse)
@@ -74,7 +74,7 @@ function changePass() {
     <>
       <div className={change.changePassword}>
         <div className={change.leftside}>
-          <img src={picture} />
+          <img src={picture}  alt=""/>
           <h5>Plutus is personal finance, made simple.</h5>
           <p>All your accounts, cards, savings, and investments in one place</p>
         </div>

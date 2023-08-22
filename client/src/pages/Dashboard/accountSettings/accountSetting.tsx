@@ -21,9 +21,7 @@ const AccountSettings: React.FC = () => {
       [e.target.name]: e.target.value,
     });
   };
-  console.log('Data', formData);
-  console.log("formData")
-  
+ 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -50,22 +48,40 @@ const AccountSettings: React.FC = () => {
     }
   };
 
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [previewImage, setPreviewImage] = useState<string | null>(null);
+  
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files && e.target.files[0];
+      if (file) {
+        setSelectedFile(file);
+  
+        const reader = new FileReader();
+        reader.onload = () => {
+          if (typeof reader.result === 'string') {
+            setPreviewImage(reader.result);
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+
   return (
     <div className="p-4 md:p-8 lg:p-16 ml-[15%]">
       <form>
         {/* Navigation Links */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 overflow-x-auto w-10/12">
-          <Link to="/dashboard/accountsettings" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
+          <Link to="/Dashboard/accountSettings" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
             <div className="flex items-center text-left space-x-2 md:space-x-4">
               <BsPersonFillGear className="h-6 w-6 ml-2 md:ml-4 text-black" />
-              <span className="text-black justify-start text-sm md:text-base">Personal Info</span>
+              <span className="text-black justify-content: flex-start text-sm md:text-base">Personal Info</span>
             </div>
           </Link>
 
           <Link to="/dashboard/notifications" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
               <div className="flex items-center text-left space-x-4">
                 <BiSolidBellRing className="h-6 w-6 ml-4 text-black" />
-                <span className="text-black justify-start">Notifications</span>
+                <span className="text-black justify-content: flex-start">Notifications</span>
               </div>
           </Link>
 
@@ -73,7 +89,7 @@ const AccountSettings: React.FC = () => {
           <Link to="/dashboard/choose-plan" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
             <div className="flex items-center text-left space-x-4">
                 <BsFillCreditCard2FrontFill className="h-6 w-6 ml-4 text-black" />
-                <span className="text-black justify-start">Choose Plan</span>
+                <span className="text-black justify-content: flex-start">Choose Plan</span>
               </div>
           </Link>
         {/* Password and Security */}
@@ -81,7 +97,7 @@ const AccountSettings: React.FC = () => {
           <Link to="/changePassword"  className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
             <div className="flex items-center text-left space-x-4">
               <BiSolidLockOpen className="h-6 w-6 ml-4 text-black" />
-              <span className="text-black justify-start">Password and Security</span>
+              <span className="text-black justify-content: flex-start">Password and Security</span>
             </div>
           </Link >
         </div>
@@ -91,7 +107,7 @@ const AccountSettings: React.FC = () => {
         </div>
 
         {/* Form Section */}
-          {location.pathname === "/dashboard/accountsettings" && (
+          {location.pathname === "/Dashboard/accountSettings" && (
             <>
             <div className="space-y-4 w-8/12">
               {/* Personal Info Fields */}
@@ -237,7 +253,3 @@ const AccountSettings: React.FC = () => {
 
 
 export default AccountSettings;
-
-
-
-
