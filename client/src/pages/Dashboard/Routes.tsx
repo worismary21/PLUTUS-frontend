@@ -198,7 +198,7 @@ export const RoutesDashBoard = () => {
           <Route path="/accountsettings" element={<AccountSettings />} />
           <Route path="/notifications" element={<AccountSettings />} />
           <Route path="/password-and-security" element={<AccountSettings />} />
-          <Route path="/choose-plan" element={<AccountSettings />} />
+          <Route path="/update-profile" element={<AccountSettings />} />
           <Route
             path="/transactions"
             element={

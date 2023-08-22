@@ -30,7 +30,6 @@ function App() {
           closeOnClick     
           pauseOnHover={false}      
         />
-   
       <Routes>
         <Route path='/' element={<Homepage />} />
        <Route path='/signup' element={<SignUp />}/>
