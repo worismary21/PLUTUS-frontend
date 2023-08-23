@@ -21,7 +21,7 @@ function App() {
      console.log( typeof isSignedIn)
 
   const signin = () => {
-     if(verify ){
+     if(verify === "true"){
           setIsSignedIn(true)
      }else setIsSignedIn(false)
   }

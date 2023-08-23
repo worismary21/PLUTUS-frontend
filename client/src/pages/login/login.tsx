@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import log from "./login.module.css";
 import logo from "../../assets/logo.png";
 import { loginUser } from "../../redux/action";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-
+import {ThreeCircles} from "react-loader-spinner"
+import LoadingSpinner from "../../components/spinner";
 // import { useDispatch } from "react-redux";
 // import axios from "axios";
 
@@ -16,14 +16,17 @@ interface LoginData {
 }
 
 function Login() {
-  const [formData, setFormData] = useState<LoginData>({
-    email: "",
-    password: "",
-  });
+     const [error] = useState("");
+     const [loading] = useState(false);
+     const [isLoading, setIsLoading] = useState(false);
+     const [formData, setFormData] = useState<LoginData>({
+          email: "",
+          password: "",
+     });
 
-  const [error] = useState("");
+    
 
-  const [loading] = useState(false);
+
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -39,8 +42,17 @@ function Login() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    setIsLoading(true)
     dispatch(loginUser(formData));
+
+
+    setTimeout(() => {
+     setIsLoading(false)
+   }, 7000);
+
   };
+
+ 
 
   return (
     <>
@@ -89,7 +101,7 @@ function Login() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder=" FirstName"
+                placeholder=" Email"
               />
             </div>
 
@@ -105,6 +117,8 @@ function Login() {
                 onChange={handleChange}
               />
             </div>
+
+            {isLoading ? <LoadingSpinner /> : ""}
          
             <button
               type="submit"
@@ -113,6 +127,7 @@ function Login() {
             >
               {loading ? "Loading..." : "Login"}
             </button>
+            
 
             {error && <div>{error}</div>}
             <p className={log.text8}>Forgot your password?</p>

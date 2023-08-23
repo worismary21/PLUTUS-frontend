@@ -19,7 +19,7 @@ const Navbar = () => {
           <BsBellFill className="h-4 w-4 my-auto text-gray-800 mr-2" />
           <FaUserCircle className="h-6 w-6 my-auto text-gray-800" />
           <span className="text-black my-auto ml-4 w-[auto]">
-            {firstName} { lastName }
+            <p> {firstName} { lastName } </p>
           </span>
         </div>
       </div>

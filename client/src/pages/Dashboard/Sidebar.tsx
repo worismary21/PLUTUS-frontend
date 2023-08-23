@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { BiTransfer } from "react-icons/bi";
 import { AiFillHome } from "react-icons/ai";
-import { FaMoneyBillTransfer } from "react-icons/fa";
+// import { FaMoneyBillTransfer } from "react-icons/fa";
 
 
 import { MdOutlineDashboard, MdLogout, MdOutlineAssuredWorkload } from "react-icons/md";
@@ -37,7 +37,7 @@ const Sidebar = () => {
   const companymenus = [
     {name: "Home", link:'/dashboard', icon: AiFillHome},
     {name: "Company", link:'/dashboard/companies', icon: MdOutlineAssuredWorkload},
-    {name: "Transactions", link:'/dashboard/transactions', icon: FaMoneyBillTransfer},
+//     {name: "Transactions", link:'/dashboard/transactions', icon: FaMoneyBillTransfer},
     { name: "Log out", link: "/", icon: MdLogout },
 
   ];
@@ -55,7 +55,7 @@ const Sidebar = () => {
   }
   return (
     // <section className='flex gap-6'>
-    <div className={`${open ? 'w-48': 'w-20'} duration-500 h-[120vh] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4 shadow-xl w`}>
+    <div className={`${open ? 'w-48': 'w-20'}  sm duration-500 h-[100%] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4 shadow-xl `}>
         <div className='py-3 flex justify-end'>
           <HiMenuAlt3 size={26} className='cursor-pointer float-right shadow' onClick={()=>setOpen(!open)}/>
         </div>
