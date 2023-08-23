@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import mastercardlogo from './logos/mastercard.svg'
 import mastercardchip from './logos/chip.png'
+// import { userDetails } from '../Routes';
 
 
 interface Props {
@@ -26,14 +27,14 @@ export default function MasterCard({ userDetails }: Props) {
       <div className=''>
         <h6 className="p-2 text-xs">Available Balance</h6>
         <h2 className="p-2">
-          USD <span className="pl-2">{userDetails.accountBalance}</span>
+          USD <span className="pl-2">{userDetails?.accountBalance || ''}</span>
         </h2>
       </div>
-      <div className="p-2">{userDetails.cardNumber}</div>
+      <div className="p-2">{userDetails?.cardNumber || 'XXXX XXXX XXXX XXXX'}</div>
 
       <div className="flex p-2 justify-between">
-        <h6>{userDetails.fullName}</h6>
-        <h6>{userDetails.cardexp}</h6>
+        <h6>{`${userDetails?.firstName} ${userDetails?.lastName}`|| ''}`</h6>
+        <h6>{userDetails?.cardexp || 'exp-date'}</h6>
       </div>
     </div>
   );

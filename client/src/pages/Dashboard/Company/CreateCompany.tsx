@@ -140,7 +140,7 @@ const CreateCompany = () => {
               value={formData.roi}
               onChange={handleChange}
               required
-              placeholder="R.O.I"
+              placeholder="ROI"
               className="w-[20%] rounded-lg mt-5 text-lg"
             />
             <input

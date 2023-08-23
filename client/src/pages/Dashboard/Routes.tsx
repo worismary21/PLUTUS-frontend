@@ -12,6 +12,10 @@ import AccountSettings from "./accountSettings/accountSetting";
 import UsersAdmin from "../UsersAdmin/users";
 import Transactions from "./Transactions/Transactions";
 import CompanyDashboard from "../companydashboard/CompanyDashboard";
+// import AllTransactions from "../AdminPageTransactions/AllTransactions"
+import CompanyAccountSettings from "./accountSettings/CompanyAccountSettings"
+
+
 import AllTransactions from "../AdminPageTransactions/AllTransactions";
 import CreateCompany from "./Company/CreateCompany";
 import CompanyTable from "../companytable/CompanyTable";
@@ -29,6 +33,7 @@ export interface transaction {
   senderId: string;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const transactions: transaction[] = [
   {
     id: "1",
@@ -174,6 +179,7 @@ export const transactions: transaction[] = [
   },
 ];
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const userDetails = {
   fullName: "tolu bands",
   cardNumber: "4444 4444 4444 4444",
@@ -196,14 +202,11 @@ export const RoutesDashBoard = () => {
           <Route path="/accountsettings" element={<AccountSettings />} />
           <Route path="/notifications" element={<AccountSettings />} />
           <Route path="/password-and-security" element={<AccountSettings />} />
-          <Route path="/choose-plan" element={<AccountSettings />} />
+          <Route path="/update-profile" element={<AccountSettings />} />
           <Route
             path="/transactions"
             element={
-              <Transactions
-                userTransactions={transactions}
-                userDetails={userDetails}
-              />
+              <Transactions />
             }
           />
           <Route path="/allTransactions" element={<AllTransactions />} />
@@ -211,6 +214,9 @@ export const RoutesDashBoard = () => {
           <Route path="/transfer/investment" element={<Invest />} />
           <Route path="/transfer/addbeneficiary" element={<AddBeneficiary />} />
           <Route path="/companyDashboard" element={<CompanyDashboard />} />
+          <Route path="/companyaccountsettings" element={<CompanyAccountSettings />} />
+          <Route path="/companyupdate-profile" element={<CompanyAccountSettings />} />
+
           <Route path="/createCompany" element={<CreateCompany />} />
           <Route path="/companies" element={<CompanyTable />} />
         </Routes>

@@ -46,8 +46,6 @@ const dataSlice = createSlice({
       console.log(action)
       state.beneficiary = action.payload;
     },
-
- 
     fetchDataFailure: (state, action: PayloadAction<string>) => {
       state.loading = false;
       state.error = action.payload;
