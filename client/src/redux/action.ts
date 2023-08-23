@@ -16,6 +16,7 @@ import {
   fetchDataBeneficiary,
   fetchDataInvestment,
   fetchDataUserInvestment,
+  fetchInvestors,
 } from "./reducers";
 import { formDataPut } from "../utils/axios";
 import { toast } from "react-toastify";
@@ -562,6 +563,26 @@ export const updateLogo = createAsyncThunk(
       const response = await formDataPut(`/user/profileImage`, formData);
 
       console.log(response);
+    } catch (error: any) {
+      console.log(error);
+    }
+  }
+);
+
+/********GET INVESTORS****************/
+
+export const getInvestors = createAsyncThunk(
+  "getInvestors",
+  async (_, { dispatch }: any) => {
+    try {
+      //set loader true
+      dispatch(fetchInvestors(true));
+
+      //axios call
+      const response = await apiGet("/investor/get");
+      console.log(response.data);
+
+      dispatch(fetchInvestors(response.data));
     } catch (error: any) {
       console.log(error);
     }

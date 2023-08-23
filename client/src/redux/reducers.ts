@@ -13,6 +13,7 @@ export interface State {
   beneficiary: any[];
   loading: boolean;
   error: string | null;
+  investor: any;
 }
 
 const initialState: State = {
@@ -25,6 +26,7 @@ const initialState: State = {
   beneficiary: [],
   loading: false,
   error: null,
+  investor: [],
 };
 
 const dataSlice = createSlice({
@@ -70,6 +72,11 @@ const dataSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    fetchInvestors: (state, action: PayloadAction<any>) => {
+      state.loading = false;
+      console.log(action);
+      state.investor = action.payload;
+    },
   },
 });
 
@@ -82,6 +89,7 @@ export const {
   fetchDataInvestment,
   fetchDataCompanyByUser,
   fetchDataUserInvestment,
+  fetchInvestors,
 } = dataSlice.actions;
 
 export default dataSlice.reducer;

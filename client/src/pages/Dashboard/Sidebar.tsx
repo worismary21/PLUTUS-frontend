@@ -8,7 +8,7 @@ import { HiMenuAlt3 } from "react-icons/hi";
 import { BiTransfer } from "react-icons/bi";
 // import { IoIosCard } from "react-icons/io";
 import { AiFillHome } from "react-icons/ai";
-import { MdOutlineDashboard, MdLogout } from "react-icons/md";
+import { MdOutlineDashboard, MdLogout, MdTableChart } from "react-icons/md";
 import React, { useState } from "react";
 import "./dashboard.css";
 
@@ -29,16 +29,28 @@ const Sidebar = () => {
   ];
 
   const adminmenus = [
-    {name: "Users", link:'/dashboard/admin', icon: AiFillHome},
-    {name: "companies", link:'/dashboard/companies', icon: BiTransfer},
-    {name: "Transactions", link:'/dashboard/transactions', icon: MdOutlineDashboard},
+    { name: "Users", link: "/dashboard/admin", icon: AiFillHome },
+    { name: "companies", link: "/dashboard/companies", icon: BiTransfer },
+    {
+      name: "Transactions",
+      link: "/dashboard/transactions",
+      icon: MdOutlineDashboard,
+    },
     { name: "Log out", link: "/", icon: MdLogout },
-
   ];
   const companymenus = [
-    {name: "Home", link:'/dashboard', icon: AiFillHome},
-    {name: "transactions", link:'/dashboard/companies', icon: BiTransfer},
-    {name: "profile", link:'/dashboard/transactions', icon: MdOutlineDashboard},
+    { name: "Home", link: "/dashboard", icon: AiFillHome },
+    { name: "transactions", link: "/dashboard/companies", icon: BiTransfer },
+    {
+      name: "profile",
+      link: "/dashboard/transactions",
+      icon: MdOutlineDashboard,
+    },
+    {
+      name: "Investor Table",
+      link: "/dashboard/investors",
+      icon: MdTableChart,
+    },
     { name: "Log out", link: "/", icon: MdLogout },
     {
       name: "Settings",
@@ -46,53 +58,63 @@ const Sidebar = () => {
       icon: FiSettings,
       margin: true,
     },
-
   ];
   const [open, setOpen] = useState(true);
 
   const role = localStorage.getItem("role");
 
-  const  LogOut  = (name:string) => {
-    if (name === "Log out"){
-      localStorage.clear()
+  const LogOut = (name: string) => {
+    if (name === "Log out") {
+      localStorage.clear();
       setTimeout(() => {
-      window.location.href = '/'
-      }, 2000)
+        window.location.href = "/";
+      }, 2000);
     }
-  }
+  };
   return (
     // <section className='flex gap-6'>
-    <div className={`${open ? 'w-48': 'w-20'} duration-500 h-[120vh] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4 shadow-xl w`}>
-        <div className='py-3 flex justify-end'>
-          <HiMenuAlt3 size={26} className='cursor-pointer float-right shadow' onClick={()=>setOpen(!open)}/>
-        </div>
-        <div>
-          <h1 className='text-center text-gray-500'>Plutus</h1>
-        </div>
-        <div className='decoration mt-4 flex-col gap-4 relative'>
-          {(role === "user" ? menus : role === "admin" ? adminmenus : companymenus)?.map((menu, i)=>(
-
-             <Link to={menu?.link} key={i} className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md w-30 m-0`} onClick={() => LogOut(menu?.name)}>
-
-              
-              <div className='w-16'>
-                {React.createElement(menu?.icon, {size: '20'})}
-              </div>
-              <h2 
+    <div
+      className={`${
+        open ? "w-48" : "w-20"
+      } duration-500 h-[120vh] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4 shadow-xl w`}>
+      <div className="py-3 flex justify-end">
+        <HiMenuAlt3
+          size={26}
+          className="cursor-pointer float-right shadow"
+          onClick={() => setOpen(!open)}
+        />
+      </div>
+      <div>
+        <h1 className="text-center text-gray-500">Plutus</h1>
+      </div>
+      <div className="decoration mt-4 flex-col gap-4 relative">
+        {(role === "user"
+          ? menus
+          : role === "admin"
+          ? adminmenus
+          : companymenus
+        )?.map((menu, i) => (
+          <Link
+            to={menu?.link}
+            key={i}
+            className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md w-30 m-0`}
+            onClick={() => LogOut(menu?.name)}>
+            <div className="w-16">
+              {React.createElement(menu?.icon, { size: "20" })}
+            </div>
+            <h2
               style={{
                 transitionDelay: `${i + 3}00ms`,
               }}
               className={`whitespace-pre duration-500 ${
                 !open && "opacity-0 translate-x-28 overflow-hidden m-0"
-              }`}
-            >
+              }`}>
               {menu?.name}
             </h2>
             <h2
               className={`${
                 open && "hidden"
-              } absolute left-48 bg-white font-semibold whitespace-pre text-gray-500 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit `}
-            >
+              } absolute left-48 bg-white font-semibold whitespace-pre text-gray-500 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit `}>
               {menu?.name}
             </h2>
           </Link>
@@ -105,12 +127,7 @@ const Sidebar = () => {
 
 export default Sidebar;
 
-
-
-
 ///////////////
-
-
 
 // import { Link } from 'react-router-dom'
 // import {HiMenuAlt3 } from 'react-icons/hi'
