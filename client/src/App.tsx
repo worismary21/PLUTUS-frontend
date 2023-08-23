@@ -13,8 +13,6 @@ import Signupp from './pages/onboarding/Signupp';
 import Homepage from './pages/homepage/Homepage';
 import { useEffect, useState } from 'react';
 import DashboardHome from './pages/Dashboard/HomeDashBoard/DashboardHome';
-import Protected from './components/Protected';
-import Dashboard from "./pages/Dashboard/Dashboard";
 import ProtectedRoute from "./pages/auth/Protectedroute";
 
 function App() {    
@@ -77,7 +75,6 @@ function App() {
           <Route path="/dashboardhome" element={<DashboardHome />} />
         </Routes>
       </BrowserRouter>
-      
     </>
   );
 }

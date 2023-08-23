@@ -5,11 +5,9 @@ import log from "./login.module.css";
 import logo from "../../assets/logo.png";
 import { loginUser } from "../../redux/action";
 import { useDispatch } from "react-redux";
-import {ThreeCircles} from "react-loader-spinner"
 import LoadingSpinner from "../../components/spinner";
-import { Link } from "react-router-dom";
-// import { useDispatch } from "react-redux";
-// import axios from "axios";
+
+
 
 interface LoginData {
   email: "";
@@ -62,18 +60,17 @@ function Login() {
         </Link> */}
       </>
       <div className={log.main1}>
-       
         <div className={log.left_side}>
           <div className="slide">
             <img src={logo} alt="SignUp" />
             <div className={log.left_text}>
-               <h3>
-                    Plutus is personal <br /> finance, made simple.
-               </h3>
-               <p>
-                    All your account, cards, savings, and investments in <br /> one
-                    place{" "}
-               </p>
+              <h3>
+                Plutus is personal <br /> finance, made simple.
+              </h3>
+              <p>
+                All your account, cards, savings, and investments in <br /> one
+                place{" "}
+              </p>
             </div>
           </div>
         </div>
@@ -85,7 +82,7 @@ function Login() {
           </div>
 
           <form action="" onSubmit={handleSubmit} className={log.right_form}>
-          <div className="heading">
+            <div className="heading">
               <h2>Login</h2>
             </div>
 
@@ -94,6 +91,7 @@ function Login() {
               <br></br>
               <input
                 type="text"
+                required
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
