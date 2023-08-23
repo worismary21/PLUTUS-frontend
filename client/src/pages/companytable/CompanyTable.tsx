@@ -45,8 +45,6 @@ const CompanyTable: React.FC = () => {
 
   const companies = useSelector((state: any) => state.company);
 
-  console.log(companies);
-
   useEffect(() => {
     dispatch(getCompanies());
   }, []);
@@ -65,6 +63,7 @@ const CompanyTable: React.FC = () => {
 
   const [modal, setModal] = useState(false)
   const [delModal, setDelModal] = useState(false)
+  
 
   const openModal = (id: any) => {
     localStorage.setItem('compId', id)

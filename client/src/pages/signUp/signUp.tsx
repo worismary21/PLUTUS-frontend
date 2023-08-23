@@ -48,7 +48,7 @@ const SignUp = () => {
 
       setTimeout(() => {
      setIsLoading(false)
-   }, 5000);
+   }, 7000);
     }
   };
 

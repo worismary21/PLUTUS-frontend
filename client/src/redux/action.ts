@@ -364,7 +364,7 @@ export const getCompanies = createAsyncThunk(
       const response = await apiGet("/company/get-companies");
       console.log(response.data.company);
 
-      dispatch(fetchDataCompany(response.data.company));
+      dispatch(fetchDataCompany(response.data.data));
     } catch (error: any) {
       console.log(error);
     }

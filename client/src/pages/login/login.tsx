@@ -40,8 +40,8 @@ function Login() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    setIsLoading(true)
     dispatch(loginUser(formData));
+    setIsLoading(true)
 
 
     setTimeout(() => {
