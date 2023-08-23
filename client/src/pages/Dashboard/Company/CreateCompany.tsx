@@ -3,6 +3,8 @@ import React, { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { createCompany } from "../../../redux/action";
+// import { Link } from "react-router-dom";
+// import CompanyTable from "../../companytable/CompanyTable";
 
 interface RegisterComponent {
   companyName: string;
@@ -33,6 +35,7 @@ const CreateCompany = () => {
   });
 
   const [cPassword, setCPassword] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -55,9 +58,17 @@ const CreateCompany = () => {
     }
   };
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  if (!isModalOpen) {
+    return null;
+  }
+
   return (
-    <div className="text-center bg-[#000000A5] fixed left-[0%] top-[0%] w-[100%] z-[25] flex justify-center items-start ">
-      <div className="bg-[#fff] w-[60%] rounded-3xl ">
+    <div className="text-center bg-[#000000A5] fixed left-[0%] top-[0%] w-[100%] z-[25] flex justify-center items-start py-5">
+      <div className="bg-[#fff] w-[60%] rounded-3xl overscroll-auto h-full overflow-visible">
         <div>
           <h1 className="text-blue-500 text-4xl mt-10 font-bold">
             Company Registration
@@ -129,7 +140,7 @@ const CreateCompany = () => {
               value={formData.roi}
               onChange={handleChange}
               required
-              placeholder="R.O.I"
+              placeholder="ROI"
               className="w-[20%] rounded-lg mt-5 text-lg"
             />
             <input
@@ -150,7 +161,7 @@ const CreateCompany = () => {
               placeholder="Investment Description"
               className="w-[40%] rounded-lg mt-5 text-lg"
             />{" "}
-            <input
+            {/* <input
               type="text"
               name={"duration"}
               value={formData.duration}
@@ -158,7 +169,19 @@ const CreateCompany = () => {
               required
               placeholder="Duration"
               className="w-[40%] rounded-lg mt-5 text-lg"
-            />{" "}
+            />{" "} */}
+            <select
+              name={"duration"}
+              value={formData.duration}
+              onChange={handleChange}
+              required
+              className="w-[40%] rounded-lg mt-5 text-lg"
+            >
+              <option value="">Select duration</option>
+              <option value="6-months">6 months</option>
+              <option value="1-year">1 year</option>
+              <option value="2-years">2 years</option>
+            </select>
             <input
               type="text"
               name={"min_investment_amount"}
@@ -178,12 +201,19 @@ const CreateCompany = () => {
               className="w-[40%] rounded-lg mt-5 text-lg"
             />{" "}
           </div>
-          <div>
+          <div className="pb-5">
             <button
               type="submit"
-              className="w-[40%] rounded-lg mt-5 bg-black h-[8vh] text-white hover:bg-blue-500 text-lg"
+              className="w-[40%] rounded-full mt-5 bg-black h-[6vh] text-white hover:bg-blue-500 text-lg mr-5"
             >
               Register
+            </button>
+            <button
+              onClick={closeModal}
+              type="submit"
+              className="w-[20%] rounded-full mt-5 bg-red-700 h-[6vh] text-white hover:bg-blue-500 text-lg"
+            >
+              Cancel
             </button>
           </div>
         </form>

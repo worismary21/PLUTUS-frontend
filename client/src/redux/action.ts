@@ -17,6 +17,7 @@ import {
   fetchDataInvestment,
   fetchDataUserInvestment,
 } from "./reducers";
+import { formDataPut } from "../utils/axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -46,7 +47,7 @@ export const loginUser = createAsyncThunk(
 
       //axios call
       const response = await apiPost("/user/login", formData);
-      console.log(response);
+      console.log(response.data, "***");
 
       //response check
       localStorage.setItem("token", response.data.user_token);
@@ -199,6 +200,25 @@ export const getBeneficiary = createAsyncThunk(
   }
 );
 
+/**============== Get Company Info =======  **/
+
+export const getCompanyInfo = createAsyncThunk(
+  "getCompanyInfo",
+  async (_, { dispatch }: any) => {
+    try {
+      //set loader true
+      dispatch(fetchDataStart(true));
+
+      //axios call
+      const response = await apiGet("/company/getCompanyInfo");
+
+      dispatch(fetchDataCompany(response.data.company));
+    } catch (error: any) {
+      console.log(error);
+    }
+  }
+);
+
 /**============== Create Beneficiary  =======  **/
 
 export const createBeneficiary = createAsyncThunk(
@@ -216,6 +236,26 @@ export const createBeneficiary = createAsyncThunk(
       }, 2000);
     } catch (error: any) {
       console.log(error);
+      toast.error(error.response.data.message);
+      dispatch(fetchDataFailure(error.response.data.message));
+    }
+  }
+);
+
+/**============== Update Company Info=======  **/
+export const updateCompany = createAsyncThunk(
+  "updateCompany",
+  async (formData: any, { dispatch }: any) => {
+    try {
+      dispatch(fetchDataStart(true));
+      const response = await apiPut(`/company/updateProfile`, formData);
+      toast.success(response.data.message);
+
+      //redirect
+      // setTimeout(() => {
+      //   window.location.href = "/dashboard/transfer/savings";
+      // }, 2000);
+    } catch (error: any) {
       toast.error(error.response.data.message);
       dispatch(fetchDataFailure(error.response.data.message));
     }
@@ -393,7 +433,22 @@ export const emailVerification = createAsyncThunk(
   }
 );
 
-/**==============For password change=======  **/
+/**==============Delete Company======= **/
+export const deleteCompany = createAsyncThunk(
+  "deleteCompany",
+  async (id: any, { dispatch }) => {
+    try {
+      dispatch(fetchDataStart(true));
+      const response = await apiDelete(`/company/delete/${id}`);
+      toast.success(response.data.message);
+      dispatch(fetchDataCompany(response.data));
+      window.location.reload();
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+      dispatch(fetchDataFailure(error.response.data.message));
+    }
+  }
+);
 
 export const otpVerification = createAsyncThunk(
   "changePasswordOtpVerification",
@@ -478,6 +533,35 @@ export const getInvestmentsByUser = createAsyncThunk(
       console.log(response.data);
 
       dispatch(fetchDataUserInvestment(response.data));
+    } catch (error: any) {
+      console.log(error);
+    }
+  }
+);
+
+export const accountSettings = createAsyncThunk(
+  "accountSettings",
+  async (formData: any, { dispatch }: any) => {
+    try {
+      dispatch(fetchDataStart(true));
+      const response = await apiPut(`/user/updateAccount`, formData);
+      toast.success(response.data.message);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+      dispatch(fetchDataFailure(error.response.data.message));
+    }
+  }
+);
+
+/**============== IMAGE UPDATE=======  **/
+export const updateLogo = createAsyncThunk(
+  "updateLogo",
+  async (formData: any, { dispatch }: any) => {
+    try {
+      dispatch(fetchDataStart(true));
+      const response = await formDataPut(`/user/profileImage`, formData);
+
+      console.log(response);
     } catch (error: any) {
       console.log(error);
     }
