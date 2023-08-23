@@ -5,7 +5,6 @@ import log from "./login.module.css";
 import logo from "../../assets/logo.png";
 import { loginUser } from "../../redux/action";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 
 // import { useDispatch } from "react-redux";
 // import axios from "axios";

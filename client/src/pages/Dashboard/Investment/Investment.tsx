@@ -5,43 +5,23 @@ import { TbCurrencyNaira } from "react-icons/tb";
 import { FaCoins } from "react-icons/fa";
 import { GiAnticlockwiseRotation } from "react-icons/gi";
 import { useEffect } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip } from "recharts";
 import TableWithIcons from "./TableWithIcons";
 import TrendingStock from "./TrendingStock";
-// import axios, { BASE_URL } from "../../../api/axios";
-import { getInvestor } from "../../../redux/action";
+import { getInvestment } from "../../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 
-interface StockData {
-  name: string;
-  price: number;
-  return: number;
-}
 const Investment = () => {
   const dispatch = useDispatch() as unknown as any;
-  const investors = useSelector((state: any) => state.investor);
+  const investors = useSelector((state: any) => state.investment);
   console.log(investors.totalInvestedCapital);
   console.log(investors.totalInvestments);
   console.log(investors.data);
 
   useEffect(() => {
-    dispatch(getInvestor());
+    dispatch(getInvestment());
   }, []);
 
-  // const [invest, setInvest] = useState<any[]>([]);
-
-  // const getInvestment = async () => {
-  //   try {
-  //     const response = await axios.get(`${BASE_URL}/investor/getinvestment/`);
-  //     console.log("RESPONSE", response.data.totalInvestedCapital);
-  //     setInvest(response.data);
-  //   } catch (error) {
-  //     return error;
-  //   }
-  // };
-  // useEffect(() => {
-  //   getInvestment();
-  // }, []);
   const ror = "+4.75%";
 
   const Idata = [
@@ -58,7 +38,7 @@ const Investment = () => {
       <XAxis dataKey="name" stroke="#8884d8" angle={-45} textAnchor="end" />
       <YAxis />
       <Tooltip />
-      <CartesianGrid stroke="#ccc" strokeDasharray="5 " />
+      {/* <CartesianGrid stroke="#ccc" strokeDasharray="5 " /> */}
       <Bar dataKey="value" fill="#b5dcf2" barSize={23} />
     </BarChart>
   );
@@ -77,25 +57,13 @@ const Investment = () => {
       <XAxis dataKey="name" stroke="#8884d8" angle={-45} textAnchor="end" />
       <YAxis />
       <Tooltip />
-      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+      {/* <CartesianGrid stroke="#ccc" strokeDasharray="5 5" /> */}
       <Bar dataKey="value" fill="#c6b5f2" barSize={23} />
     </BarChart>
   );
 
-  const stockData: StockData[] = [
-    { name: "Stock A", price: 100, return: 10 },
-    { name: "Stock B", price: 150, return: -5 },
-    { name: "Stock C", price: 200, return: 0 },
-    { name: "Stock F", price: 180, return: 2 },
-    { name: "Stock G", price: 300, return: 6 },
-    { name: "Stock H", price: 190, return: -7 },
-    { name: "Stock I", price: 220, return: 4 },
-    { name: "Stock J", price: 280, return: -1 },
-  ];
-
-  // const handleInputChange
   return (
-    <div className=" lg:pl-[40px] md:pl-[55px] w-[auto] sm:w-[auto] md:w-[auto] h-auto px-[5%] md:px-[0%] ml-[12%] md:ml-[0%]">
+    <div className=" lg:pl-[40px] md:pl-[55px] w-[auto] sm:w-[auto] md:w-[auto] h-auto px-[5%] md:px-[0%] ml-[15%] md:ml-[0%]">
       <div>
         <h3 className="pl-[5%] text-[23px] mb-[20px] ">Investment</h3>
         <div className=" px-[5%] flex flex-col justify-between my-[5%] md:my-[0%] md:flex-row  ">
@@ -155,7 +123,7 @@ const Investment = () => {
         <div className="  w-[auto] lg:w-[40%] mt-[20px] sm:w-[auto]">
           <p className="text-[23px] mb-[20px] ">Trending stock</p>
 
-          <TrendingStock data={stockData} />
+          <TrendingStock />
         </div>
       </div>
     </div>

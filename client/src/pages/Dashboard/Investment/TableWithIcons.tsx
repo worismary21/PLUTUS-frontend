@@ -1,32 +1,17 @@
-import React, { useState, useEffect } from "react";
-// import axios, { BASE_URL } from "../../../api/axios";
-import { getInvestor } from "../../../redux/action";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useEffect } from "react";
+import { getInvestment } from "../../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 
 const InvestmentTable: React.FC = () => {
-  // const [invest, setInvest] = useState<any[]>([]);
-  // console.log({ invest });
-  // const getInvestments = async () => {
-  //   try {
-  //     const response = await axios.get(`${BASE_URL}/investor/getinvestment/`);
-  //     console.log("RESPONSE", response.data.totalInvestedCapital);
-  //     setInvest(response.data.data);
-  //   } catch (error) {
-  //     return error;
-  //   }
-  // };
-  // useEffect(() => {
-  //   getInvestments();
-  // }, []);
-
   const dispatch = useDispatch() as unknown as any;
-  const investors = useSelector((state: any) => state.investor);
+  const investors = useSelector((state: any) => state.investment);
   console.log(investors.totalInvestedCapital);
   console.log(investors.totalInvestments);
   console.log(investors.data);
 
   useEffect(() => {
-    dispatch(getInvestor());
+    dispatch(getInvestment());
   }, []);
   const result = investors.data;
 
@@ -41,7 +26,7 @@ const InvestmentTable: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {result?.map((item, index) => (
+          {result?.map((item: any, index: number) => (
             <tr
               key={index}
               className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
@@ -53,23 +38,25 @@ const InvestmentTable: React.FC = () => {
                     alt={`${item.company} Logo`}
                     className="w-8 h-8 mr-2"
                   /> */}
-                  {item.companyName}
+                  {item?.companyName}
                 </div>
               </td>
-              {console.log({ item, value: item.investedCapital })}
-              {console.log({ item, value: item.rateOfReturn })}
+              {/* {console.log({ item, value: item.investedCapital })}
+              {console.log({ item, value: item.rateOfReturn })} */}
 
-              <td className="px-4 py-2">${item?.investedCapital.toFixed(2)}</td>
+              <td className="px-4 py-2">
+                ${item?.investedCapital?.toFixed(2)}
+              </td>
               <td
                 className={`px-4 py-2 ${
-                  item.rateOfReturn < 0
+                  item?.rateOfReturn < 0
                     ? "text-red-500"
-                    : item.rateOfReturn > 0
+                    : item?.rateOfReturn > 0
                     ? "text-green-500"
                     : "text-black"
                 }`}
               >
-                {item.rateOfReturn.toFixed(2)}%
+                {item?.rateOfReturn?.toFixed(2)}%
               </td>
             </tr>
           ))}

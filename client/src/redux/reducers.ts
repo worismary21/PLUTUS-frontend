@@ -8,7 +8,8 @@ export interface State {
   company: any[];
   transactions: any[];
   transfer: any[];
-  investor: any[];
+  investment: any[];
+  userInvestment: any[];
   beneficiary: any[];
   loading: boolean;
   error: string | null;
@@ -18,7 +19,8 @@ const initialState: State = {
   user: [],
   company: [],
   transactions: [],
-  investor: [],
+  investment: [],
+  userInvestment: [],
   transfer: [],
   beneficiary: [],
   loading: false,
@@ -43,15 +45,25 @@ const dataSlice = createSlice({
       console.log(action);
       state.company = action.payload;
     },
+    fetchDataCompanyByUser: (state, action: PayloadAction<any[]>) => {
+      state.loading = false;
+      console.log(action);
+      state.company = action.payload;
+    },
     fetchDataBeneficiary: (state, action: PayloadAction<any[]>) => {
       state.loading = false;
       console.log(action);
       state.beneficiary = action.payload;
     },
-    fetchDataInvestor: (state, action: PayloadAction<any[]>) => {
+    fetchDataInvestment: (state, action: PayloadAction<any[]>) => {
       state.loading = false;
       console.log(action);
-      state.investor = action.payload;
+      state.investment = action.payload;
+    },
+    fetchDataUserInvestment: (state, action: PayloadAction<any[]>) => {
+      state.loading = false;
+      console.log(action);
+      state.userInvestment = action.payload;
     },
 
     fetchDataFailure: (state, action: PayloadAction<string>) => {
@@ -67,7 +79,9 @@ export const {
   fetchDataFailure,
   fetchDataCompany,
   fetchDataBeneficiary,
-  fetchDataInvestor,
+  fetchDataInvestment,
+  fetchDataCompanyByUser,
+  fetchDataUserInvestment,
 } = dataSlice.actions;
 
 export default dataSlice.reducer;

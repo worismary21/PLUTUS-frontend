@@ -14,7 +14,8 @@ import {
   fetchDataStart,
   fetchDataUser,
   fetchDataBeneficiary,
-  fetchDataInvestor,
+  fetchDataInvestment,
+  fetchDataUserInvestment,
 } from "./reducers";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -48,7 +49,7 @@ export const loginUser = createAsyncThunk(
       console.log(response);
 
       //response check
-      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", response.data.user_token);
       localStorage.setItem("role", response.data.role);
       localStorage.setItem("email", response.data.email);
       localStorage.setItem("id", response.data.id);
@@ -74,7 +75,7 @@ export const registerUser = createAsyncThunk(
       const response = await apiPost("/user/signup", formData);
       toast.success("user created");
       console.log("resp", response);
-      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", response.data.user_token);
       localStorage.setItem("role", response.data.role);
       localStorage.setItem("email", response.data.email);
       localStorage.setItem("id", response.data.id);
@@ -318,7 +319,25 @@ export const getCompanies = createAsyncThunk(
 
       //axios call
       const response = await apiGet("/company/get-companies");
-      console.log(response.data);
+      console.log(response.data.company);
+
+      dispatch(fetchDataCompany(response.data.company));
+    } catch (error: any) {
+      console.log(error);
+    }
+  }
+);
+
+export const getCompaniesByUser = createAsyncThunk(
+  "getCompanies",
+  async (_, { dispatch }: any) => {
+    try {
+      //set loader true
+      dispatch(fetchDataStart(true));
+
+      //axios call
+      const response = await apiGet("/company/get-companies");
+      console.log(response.data.company);
 
       dispatch(fetchDataCompany(response.data.company));
     } catch (error: any) {
@@ -329,8 +348,8 @@ export const getCompanies = createAsyncThunk(
 
 /**============== Get Investor Info =======  **/
 
-export const getInvestor = createAsyncThunk(
-  "getInvestor",
+export const getInvestment = createAsyncThunk(
+  "getInvestment",
   async (_, { dispatch }: any) => {
     try {
       //set loader true
@@ -340,7 +359,7 @@ export const getInvestor = createAsyncThunk(
       const response = await apiGet("/investor/getinvestment");
       console.log(response.data);
 
-      dispatch(fetchDataInvestor(response.data));
+      dispatch(fetchDataInvestment(response.data));
     } catch (error: any) {
       console.log(error);
     }
@@ -381,24 +400,36 @@ export const otpVerification = createAsyncThunk(
   async (otp: string, { dispatch }: any) => {
     try {
       dispatch(fetchDataStart(true));
-      const id = localStorage.getItem("id");
+      // const id = localStorage.getItem("id");
 
-      if (id) {
-        const response = await apiPut(`/user/change-password-otp/${id}`, {
-          otp,
-        });
-        console.log("response", otp);
-        if (response) {
-          toast.success("Verified");
-          window.location.href = "/changePasswordConfirm";
-        }
-        toast.error("Invalid OTP");
-      } else {
-        toast.error("Login and try again");
-        // window.location.reload()
-      }
+      //axios call
+      const response = await apiGet("/company/get-companies");
+      console.log(response.data);
+
+      dispatch(fetchDataCompany(response.data.data));
     } catch (error: any) {
-      // window.location.reload()
+      console.log(error);
+    }
+  }
+);
+
+//CREATE COMPANY
+
+export const createCompany = createAsyncThunk(
+  "createCompany",
+  async (formData: any, { dispatch }: any) => {
+    try {
+      dispatch(fetchDataStart(true));
+      const response = await apiPost("/company/create", formData);
+      console.log("resp", response);
+
+      //redirect
+      setTimeout(() => {
+        window.location.href = "/dashboard/companies";
+      }, 1000);
+      toast.success("Company created successfully");
+    } catch (error: any) {
+      console.log(error);
       toast.error(error.response.data.message);
       dispatch(fetchDataFailure(error.response.data.message));
     }
@@ -429,6 +460,26 @@ export const passwordChangeConfirmation = createAsyncThunk(
       // window.location.reload()
       toast.error(error.response.data.message);
       dispatch(fetchDataFailure(error.response.data.message));
+    }
+  }
+);
+
+/**============== Get Trending Investments ===========  **/
+
+export const getInvestmentsByUser = createAsyncThunk(
+  "getInvestmentsByUser",
+  async (_, { dispatch }: any) => {
+    try {
+      //set loader true
+      dispatch(fetchDataStart(true));
+
+      //axios call
+      const response = await apiGet("/investor/getInvestmentsByUser");
+      console.log(response.data);
+
+      dispatch(fetchDataUserInvestment(response.data));
+    } catch (error: any) {
+      console.log(error);
     }
   }
 );
