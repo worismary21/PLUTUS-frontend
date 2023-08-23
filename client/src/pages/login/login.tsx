@@ -7,6 +7,7 @@ import { loginUser } from "../../redux/action";
 import { useDispatch } from "react-redux";
 import {ThreeCircles} from "react-loader-spinner"
 import LoadingSpinner from "../../components/spinner";
+import { Link } from "react-router-dom";
 // import { useDispatch } from "react-redux";
 // import axios from "axios";
 
@@ -17,7 +18,6 @@ interface LoginData {
 
 function Login() {
      const [error] = useState("");
-     const [loading] = useState(false);
      const [isLoading, setIsLoading] = useState(false);
      const [formData, setFormData] = useState<LoginData>({
           email: "",
@@ -48,7 +48,7 @@ function Login() {
 
     setTimeout(() => {
      setIsLoading(false)
-   }, 7000);
+   }, 5000);
 
   };
 
@@ -79,10 +79,6 @@ function Login() {
         </div>
 
         <div className={log.right_side}>
-          {/* <div className={log.logo}>
-            <h1> Plutus </h1>
-            <p> Online Banking</p>
-          </div> */}
           <div className={log.logo}>
             <h1 className={log.logo_one}>Plutus</h1>
             <p className={log.logo_two}>Online Banking </p>
@@ -118,19 +114,20 @@ function Login() {
               />
             </div>
 
-            {isLoading ? <LoadingSpinner /> : ""}
+            
          
             <button
               type="submit"
-              className="w-[340px] h-[50px] bg-black my-7 text-white rounded-lg
-               hover:bg-blue-700 hover:text-black"
+              className={log.loginButton}
             >
-              {loading ? "Loading..." : "Login"}
+              {isLoading ? <LoadingSpinner /> :"Login"}
             </button>
             
 
             {error && <div>{error}</div>}
-            <p className={log.text8}>Forgot your password?</p>
+            
+            <p className={log.text8} >Forgot your password?</p>
+          
           </form>
         </div>
       </div>

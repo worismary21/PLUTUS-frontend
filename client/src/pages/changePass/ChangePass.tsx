@@ -77,6 +77,7 @@ function changePass() {
     setSeconds(59);
   };
 
+  const userEmail = localStorage.getItem("email")
   return (
     <>
       <div className={change.changePassword}>
@@ -86,14 +87,14 @@ function changePass() {
           <p>All your accounts, cards, savings, and investments in one place</p>
         </div>
         <div className={change.rightSide}>
-          <div className="mb-36 pr-10 text-blue-600 text-end">
+          <div className=" pr-10 text-blue-600 text-end h-[200px] mt-12">
             <h2 className="text-3xl font-bold">Plutus</h2>
             <p>Online Banking</p>
           </div>
           {!modal && (
             <div className={change.content}>
               <h2>Change Password</h2>
-              <p>Enter you email address</p>
+              <p >Enter you email address</p>
               <form action="" className={change.form}>
                 <input
                   className={change.inputEmail}
@@ -116,13 +117,13 @@ function changePass() {
           )}
           {modal && (
             <div className={change.content1}>
-              <h2 className="text-3xl font-semibold my-2"> Verify your identity</h2>
-              <p id="first" className="w-96 text-[13px] sm:w-10">
+              <h2 className="text-[20px] font-bold my-2"> Verify your identity</h2>
+              <p id="first" className="w-80 text-[15px] font-light ">
                 We've just sent an email with your security code to the email
-                ogo_b*********.com
+                {userEmail}
               </p>
-              <p className="text-[13px]">Please enter the code in other to continue</p>
-              <form className="mt-12">
+              <p className="text-[15px] mt-6 font-light">Please enter the code in other to continue</p>
+              <form className="mt-8 w-[80%] lg:- h-[100%]">
                 <div className={change.otpinput}>
                   <OtpInput
                     onChange={setOtp}
@@ -143,23 +144,26 @@ function changePass() {
                   )}
                 </div>
                 
-                  <button onClick={handleVerify} className={change.button}
-                  disabled={!otp}>
-                    Verify
-                  </button>
-          
+                <div className={change.btnEnd}>
+                    <button onClick={handleVerify} className={change.button}
+                    disabled={!otp}>
+                         Verify
+                    </button>
+               
 
-                <button
-                  id="otp_resend"
-                  disabled={seconds > 0 || minutes > 5}
-                  style={{
-                    color: seconds > 0 || minutes > 0 ? "#fff" : "#FF5630",
-                  }}
-                  onClick={resendOTP}
-                  className={change.button}
-                >
-                  I didn't get the code
-                </button>
+                    <button
+                    id="otp_resend"
+                    disabled={seconds > 0 || minutes > 5}
+                    style={{
+                         color: seconds > 0 || minutes > 0 ? "#fff" : "#FF5630",
+                    }}
+                    onClick={resendOTP}
+                    className={change.button}
+                    >
+                    I didn't get the code
+                    </button>
+                </div>
+                  
               </form>
             </div>
           )}

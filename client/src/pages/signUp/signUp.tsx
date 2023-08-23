@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../redux/action";
+import LoadingSpinner from "../../components/spinner";
 
 interface SignupComponent {
   firstName: string;
@@ -23,6 +24,7 @@ const SignUp = () => {
     password: "",
   });
 
+  const [isLoading, setIsLoading] = useState(false);
   const [cPassword, setCPassword] = useState("");
 
   const handleChange = (e: any) => {
@@ -42,6 +44,11 @@ const SignUp = () => {
       toast.error("Passwords don't match");
     } else {
       dispatch(registerUser(formData))
+      setIsLoading(true)
+
+      setTimeout(() => {
+     setIsLoading(false)
+   }, 5000);
     }
   };
 
@@ -117,8 +124,7 @@ const SignUp = () => {
             />
           
                <button type="submit" className="btnn bg-black" >
-               {" "}
-               Register
+               {isLoading ? <LoadingSpinner /> :"Register"}
                </button>
            
             <div className="register">

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { BiTransfer } from "react-icons/bi";
 import { AiFillHome } from "react-icons/ai";
+import { PiUserListFill } from "react-icons/pi";
+import { ImOffice } from "react-icons/im"
 // import { FaMoneyBillTransfer } from "react-icons/fa";
 
 
@@ -28,9 +30,10 @@ const Sidebar = () => {
   ];
 
   const adminmenus = [
-    {name: "Users", link:'/dashboard/admin', icon: AiFillHome},
-    {name: "companies", link:'/dashboard/companies', icon: BiTransfer},
-    {name: "Transactions", link:'/dashboard/transactions', icon: MdOutlineDashboard},
+     {name: "Home", link:'/dashboard/adminHome', icon: AiFillHome},
+    {name: "Users", link:'/dashboard/admin', icon: PiUserListFill},
+    {name: "companies", link:'/dashboard/companies', icon: ImOffice},
+    {name: "Transactions", link:'/dashboard/allTransactions', icon: BiTransfer},
     { name: "Log out", link: "/", icon: MdLogout },
 
   ];
@@ -39,6 +42,12 @@ const Sidebar = () => {
     {name: "Company", link:'/dashboard/companies', icon: MdOutlineAssuredWorkload},
 //     {name: "Transactions", link:'/dashboard/transactions', icon: FaMoneyBillTransfer},
     { name: "Log out", link: "/", icon: MdLogout },
+    {
+      name: "Settings",
+      link: "/dashboard/companyaccountsettings",
+      icon: FiSettings,
+      margin: true,
+    },
 
   ];
   const [open, setOpen] = useState(true);

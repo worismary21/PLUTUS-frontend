@@ -19,6 +19,7 @@ interface ChangePassword {
 function ChangePass2() {
 
      const [passwordType, setPasswordType] = useState("")
+     const [isLoading, setIsLoading] = useState(false);
 
      const togglePassword =()=>{
           if(passwordType==="password")
@@ -56,40 +57,45 @@ const handleRegister = async (e:  React.FormEvent<HTMLFormElement>) => {
      }   
      else{
           dispatch(passwordChangeConfirmation(formData))
+          setIsLoading(true)
+
+          setTimeout(() => {
+         setIsLoading(false)
+       }, 5000);
      }
 }
 
   return (
     <>
           <div className={change.changePassword}>
-          <div className={change.leftside}> 
-          <img src={picture}/>
-          <h5>Plutus is personal finance, made simple.</h5>
-          <p>All your accounts, cards, savings, and investments in one place</p>
-          </div>
-          <div className={change.rightSide}>
-               <div className='logo'>
-                    <h2>Plutus</h2>
-                    <p>Online Banking</p>
+               <div className={change.leftside}> 
+                    <img src={picture}/>
+                    <h5>Plutus is personal finance, made simple.</h5>
+                    <p>All your accounts, cards, savings, and investments in one place</p>
+                    </div>
+               <div className={change.rightSide}>
+                    <div className='logo'>
+                         <h2>Plutus</h2>
+                         <p>Online Banking</p>
+                    </div>
+                    <div className={change.content}>
+                         <h2>Change Password</h2>
+                         <h5>Enter your details</h5>
+                         <form className={change.form} onSubmit={handleRegister}>
+                              <input type='password' placeholder='Old Password' name='oldPassword' value={formData.oldPassword} required onChange={handleInputChange}  className={change.inputEmail} ></input>
+                              <input type='password' placeholder='New Password' name='newPassword' value={formData.newPassword} required onChange={handleInputChange} className={change.inputEmail}>
+                              <div className="input-group-btn">
+                                   /
+                              </div>
+                              </input>
+                              <input type='password' placeholder='Confirm Password' name='confirm_password' value={formData.confirm_password} required onChange={handleInputChange}  className={change.inputEmail}></input>
+                              <div className={change.btnnn}>
+                                   <button className={change.button} >Submit</button>
+                              </div>
+                         </form>
+                    </div>
                </div>
-               <div className={change.content}>
-                    <h2>Change Password</h2>
-                    <h5>Enter your details</h5>
-                    <form className={change.form} onSubmit={handleRegister}>
-                         <input type='password' placeholder='Old Password' name='oldPassword' value={formData.oldPassword} required onChange={handleInputChange}  className={change.inputEmail} ></input>
-                         <input type='password' placeholder='New Password' name='newPassword' value={formData.newPassword} required onChange={handleInputChange} className={change.inputEmail}><div className="input-group-btn">
-                     <button className="btn btn-outline-primary" onClick={togglePassword}>
-                     { passwordType==="password"? <i className="bi bi-eye-slash"></i> :<i className="bi bi-eye"></i> }
-                     </button>
-                    </div></input>
-                         <input type='password' placeholder='Confirm Password' name='confirm_password' value={formData.confirm_password} required onChange={handleInputChange}  className={change.inputEmail}></input>
-                         
-                              <button className={change.button} >Submit</button>
-                              {/* <ToastContainer /> */}
-                    </form>
-               </div>
           </div>
-     </div>
     </>
   )
 }

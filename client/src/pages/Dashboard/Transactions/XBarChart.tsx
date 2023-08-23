@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {useState, useEffect} from "react";
+
 import {
     Chart as ChartJS,
     BarElement,
@@ -10,28 +13,41 @@ import {
   import { Bar } from "react-chartjs-2";
   import { transaction } from "./TransactionsList";
   import "./style.css"
+// import { userDetails } from '../Routes';
   
   ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
   
   interface Props {
-    userTransactions: transaction[];
+    userTransactions: any;
+    userDetails: any;
   }
   
-  export default function YGraph({ userTransactions }: Props) {
+  export default function XGraph({ userTransactions, userDetails }: Props) {
+    // const [userTransactions, setUserTransactions] = useState(transactions);
+    const [expenses, setExpenses] = useState<any>();
+    useEffect(()=>{
+      setExpenses(userTransactions?.filter((transaction: { senderId: string; })=>
+         transaction.senderId === userDetails.id 
+    ))
+
+      
+    }, [userTransactions, userDetails])
+    
     const expensesCountObj: Record<string, number> = {};
     const expensesCountKeyArr: string[] = [];
     const expensesCountValueArr: number[] = [];
     
     const toSort: [string, number][] = [];
   
-    const expenses: transaction[] = userTransactions.filter(
-      (transaction) => transaction.amount < 0
-    );
-    expenses.forEach((expense) => {
+    // const expenses: transaction[] = userTransactions?.filter(
+    //   (transaction: { accountNumber: string; }) => userDetails.accountNumber == transaction.accountNumber
+    // );
+  
+    expenses?.forEach((expense: { transfer_purpose: string | number; amount: number; }) => {
       if (!expensesCountObj[expense.transfer_purpose]) {
         expensesCountObj[expense.transfer_purpose] = 0;
       }
-      expensesCountObj[expense.transfer_purpose] += -1 * expense.amount;
+      expensesCountObj[expense.transfer_purpose] +=  expense.amount;
     });
   
     for (const key in expensesCountObj) {

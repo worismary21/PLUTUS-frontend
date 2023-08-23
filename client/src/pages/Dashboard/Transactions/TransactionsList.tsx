@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
+import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState, useEffect } from "react";
 import foodIcon from "./logos/foodIcon.svg";
 import entertainmentIcon from "./logos/entertainment.svg";
 import transferIcon from "./logos/QuickTransferIcon.svg";
 import travelIcon from "./logos/travelIcon.svg";
 import drinkIcon from "./logos/drinkIcon.svg"
+// import { userDetails } from '../Routes';
 export interface transaction {
   id: string;
   accountNumber: number;
@@ -19,24 +20,31 @@ export interface transaction {
 }
 
 export interface Props {
-  userTransactions: transaction[];
+  userTransactions: any;
+  userDetails: any;
 }
 
-export default function TransactionsList({ userTransactions }: Props) {
+export default function TransactionsList({ userTransactions, userDetails }: Props) {
   const [transactions, setTransactions] = useState(userTransactions);
   const expensesClick = () => {
     setTransactions(
-      userTransactions.filter((transaction) => transaction.amount < 0)
-    );
+      userTransactions?.filter(((transaction: { senderId: string; })=>
+      transaction.senderId === userDetails.id)
+    ));
   };
   const incomeClick = () => {
     setTransactions(
-      userTransactions.filter((transaction) => transaction.amount > 0)
-    );
+      userTransactions?.filter(((transaction: { accountNumber: string; })=>
+      transaction.accountNumber === userDetails.accountNumber)
+    ));
   };
   const allClick = () => {
     setTransactions(userTransactions);
   };
+
+  useEffect(()=>{
+    setTransactions(userTransactions);
+  },[userTransactions])
 
   return (
     <>
@@ -47,7 +55,7 @@ export default function TransactionsList({ userTransactions }: Props) {
         className="w-full p-2 active:border-gray-700 "
         onChange={(e) => {
           setTransactions(
-            userTransactions.filter((transaction) => {
+            userTransactions?.filter((transaction: { beneficiary_name: string ; }) => {
               if (e.target.value.length == 1) {
                 const firstLetter =
                   transaction.beneficiary_name[0].toLowerCase();
@@ -83,7 +91,9 @@ export default function TransactionsList({ userTransactions }: Props) {
           </button>
         </div>
         <div>
-          {transactions?.map((transaction) => (
+          {transactions?.map((transaction: {
+            accountNumber: any; id: Key | null | undefined; transfer_purpose: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined; beneficiary_name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; amount: number  
+}) => (
             <li
               key={transaction.id}
               className="hover:border-gray-100 border-transparent border-2 rounded-lg"
@@ -99,39 +109,39 @@ export default function TransactionsList({ userTransactions }: Props) {
             >
               <div className="flex p-2 justify-between">
                 <div className="flex">
-                  {(transaction.transfer_purpose == "food" && (
+                  {(transaction?.transfer_purpose == "food" && (
                     <img src={foodIcon} alt="" className="w-3/12 mr-2 rounded-full bg-purple-400" />
                   )) ||
-                    (transaction.transfer_purpose == "entertainment" && (
+                    (transaction?.transfer_purpose == "entertainment" && (
                       <img src={entertainmentIcon} alt="" className="w-3/12 mr-2" />
                     )) ||
-                    (transaction.transfer_purpose == "revenue" && (
+                    (transaction?.transfer_purpose == "revenue" && (
                       <img src={transferIcon} alt="" className="w-3/12 mr-2 rounded-full bg-sky-200" />
                     )) ||
-                    (transaction.transfer_purpose == "vacation" && (
+                    (transaction?.transfer_purpose == "vacation" && (
                       <img src={travelIcon} alt="" className="w-3/12 mr-2 rounded-full bg-cyan-100" />
                     )) || 
-                    (transaction.transfer_purpose == "drinks" && (
+                    (transaction?.transfer_purpose == "drinks" && (
                       <img src={drinkIcon} alt="" className="w-3/12 mr-2 rounded-full bg-orange-200" />))
                     }
                   <div className="text-left">
-                    <h4 className="pb-1.5">{transaction.beneficiary_name}</h4>
+                    <h4 className="pb-1.5">{transaction?.beneficiary_name}</h4>
                     <p className="text-xs text-slate-400">
-                      {transaction.transfer_purpose}
+                      {transaction?.transfer_purpose}
                     </p>
                   </div>
                 </div>
                 <div className="text-right">
                   <h4
                     className={
-                      transaction.amount > 0
+                      transaction?.accountNumber === userDetails?.accountNumber
                         ? "text-green-600 pb-1.5"
                         : "text-red-600 pb-1.5"
                     }
                   >
-                    {transaction.amount}
+                    {transaction?.amount}
                   </h4>
-                  <p className="text-xs text-slate-400">{transaction.amount}</p>
+                  <p className="text-xs text-slate-400">{userDetails?.accountBalance}</p>
                 </div>
               </div>
             </li>

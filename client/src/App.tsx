@@ -1,8 +1,8 @@
-import ChangePass from './pages/changePass/ChangePass'
-import ChangePass2 from './pages/changePass/ChangePass2'
-import Error404 from './pages/error404/Error404'
-import {BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import ChangePass from "./pages/changePass/ChangePass";
+import ChangePass2 from "./pages/changePass/ChangePass2";
+import Error404 from "./pages/error404/Error404";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Verify from "./pages/verify/Verify";
 import "./App.css"
 import SignUp from './pages/signUp/signUp';
@@ -14,6 +14,8 @@ import Homepage from './pages/homepage/Homepage';
 import { useEffect, useState } from 'react';
 import DashboardHome from './pages/Dashboard/HomeDashBoard/DashboardHome';
 import Protected from './components/Protected';
+import Dashboard from "./pages/Dashboard/Dashboard";
+import ProtectedRoute from "./pages/auth/Protectedroute";
 
 function App() {    
      const [isSignedIn, setIsSignedIn] = useState(false)
@@ -30,31 +32,56 @@ function App() {
      signin()
   },[])
 
+
+
+
+// import Privaterouter from './pages/auth/Privaterouter';
+// import React from 'react';
+
+
   return (
     <>
-     <BrowserRouter>
-          <ToastContainer
+      {/* <AuthProvider> */}
+      <BrowserRouter>
+        <ToastContainer
           theme="dark"
           position="top-right"
           autoClose={3000}
-          closeOnClick     
-          pauseOnHover={false}      
+          closeOnClick
+          pauseOnHover={false}
+        />
+
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/verify" element={<Verify />} />
+          <Route path="/changePassword" element={<ChangePass />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/loggin" element={<Loggin />} />
+
+          <Route path="/signupp" element={<Signupp />} />
+          <Route path="*" element={<Error404 />} />
+          <Route path="/changePasswordConfirm" element={<ChangePass2 />} />
+          {/* <Route path="/dashboard/*" element={<Dashboard />} /> */}
+          {/* <Route path="/transactions" element={<Transactions/>}/> */}
+
+          <Route
+            path="/dashboard/*"
+            element={
+              <ProtectedRoute>
+                {" "}
+                <RoutesDashBoard />
+              </ProtectedRoute>
+            }
           />
-          <Routes>
-               <Route path='*' element={<Error404 />}/>
-               <Route path='/' element={<Homepage /> } />
-               <Route path='/signup' element={<SignUp />}/>
-               <Route path="/login" element={<Login /> } />
-               <Route path='/changePasswordConfirm' element={<ChangePass2 /> }/>  
-               <Route path="/verify" element={<Protected isSignedIn={isSignedIn}> <Verify /> </Protected>} />
-               <Route path="/changePassword" element={<Protected isSignedIn={isSignedIn}><ChangePass /> </Protected>}/>
-               <Route path='/dashboard/*' element={<Protected isSignedIn={isSignedIn}> <RoutesDashBoard /> </Protected>} />
-               <Route path='/dashboardhome' element={<Protected isSignedIn={isSignedIn}> <DashboardHome /> </Protected>} />
-          </Routes>
-     </BrowserRouter> 
-     </>
+          <Route path="/dashboardhome" element={<DashboardHome />} />
+        </Routes>
+      </BrowserRouter>
+      
+    </>
+  );
+}
 
-)}
 
-export default App
 
+export default App;

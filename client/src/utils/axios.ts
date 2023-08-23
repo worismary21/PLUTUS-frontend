@@ -46,6 +46,17 @@ export const apiPut = (path:string, data:object) => {
   return axios.put(`${baseUrl}${path}`, data, config);
 };
 
+export const formDataPut = (path:string, data:object) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "multipart/form-data"
+    },
+  };
+
+  return axios.put(`${baseUrl}${path}`, data, config);
+};
+
 export const apiPatch = (path:string, data:object) => {
   const config = {
     headers: {
