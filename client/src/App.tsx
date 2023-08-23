@@ -18,7 +18,8 @@ import DashboardHome from "./pages/Dashboard/HomeDashBoard/DashboardHome";
 // import { AuthProvider } from "./pages/auth/Protectedroute";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import { RoutesDashBoard } from "./pages/Dashboard/Routes";
-import ProtectedRoute from "./pages/auth/ProtectedRoute";
+import ProtectedRoute from "./pages/auth/Protectedroute";
+
 // import Privaterouter from './pages/auth/Privaterouter';
 // import React from 'react';
 
@@ -61,7 +62,7 @@ function App() {
           <Route path="/dashboardhome" element={<DashboardHome />} />
         </Routes>
       </BrowserRouter>
-      {/* </AuthProvider> */}
+      
     </>
   );
 }

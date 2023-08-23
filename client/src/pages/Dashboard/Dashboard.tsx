@@ -13,7 +13,6 @@ import AccountSettings from "./accountSettings/accountSetting";
 
 const Dashboard = () => {
   return (
-
       <div style={{ display: "flex", overflowX: "hidden" }}>
         <Sidebar />
         <div>
@@ -31,6 +30,7 @@ const Dashboard = () => {
               element={<AccountSettings />}
             />
             <Route path="/choose-plan" element={<AccountSettings />} />
+            <Route path="/update-profile" element={<AccountSettings />} />
           </Routes>
         </div>
       </div>
