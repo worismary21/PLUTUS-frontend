@@ -57,7 +57,7 @@ const Footer = () => {
         <input
           type="text"
           placeholder="Enter your email"
-          className="text-gray-800 w-[20%] rounded-full h-10 p-3"
+          className="text-gray-800 w-[90%] md:w-[20%] ml-4 md:ml-0 rounded-full h-10 p-3"
         />
         <button className="bg-teal-100 hover:scale-110 hover:bg-teal-200 rounded-full text-black w-40">
           Subscribe
@@ -97,7 +97,7 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-wrap text-start">
-          <h1>Help</h1>
+          <h1 className="text-xl">Help</h1>
           <div className="text-gray-400 flex flex-wrap text-start">
             <Link to={"#"}>FAQ</Link>
             <Link to={"#"}>Customer Service</Link>
@@ -105,8 +105,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap text-start">
-          <h1>Other</h1>
+        <div className="flex flex-wrap text-start mt-5 md:mt-0">
+          <h1 className="text-xl">Other</h1>
           <div className="text-gray-400 flex flex-wrap text-start">
             <Link to={"#"}>Privacy Policy</Link>
             <Link to={"#"}>Sitemap</Link>
@@ -114,8 +114,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap text-start">
-          <h1>Contact us</h1>
+        <div className="flex flex-wrap text-start mt-5 md:mt-0">
+          <h1 className="text-xl">Contact us</h1>
           <div className="text-gray-400 flex flex-wrap text-start">
             <p>plutus@gmail.com</p>
             <p>+234 111 222 333</p>
