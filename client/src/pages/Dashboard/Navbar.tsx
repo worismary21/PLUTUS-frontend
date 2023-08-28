@@ -1,6 +1,5 @@
-import { BsBellFill } from 'react-icons/bs';
-import { FaUserCircle } from 'react-icons/fa';
-
+import { BsBellFill } from "react-icons/bs";
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
   return (
