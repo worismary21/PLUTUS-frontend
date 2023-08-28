@@ -12,14 +12,10 @@ import AccountSettings from "./accountSettings/accountSetting";
 import UsersAdmin from "../UsersAdmin/users";
 import Transactions from "./Transactions/Transactions";
 import CompanyDashboard from "../companydashboard/CompanyDashboard";
-<<<<<<< HEAD
 import AllTransactions from "../AdminPageTransactions/AllTransactions"
 import CompanyAccountSettings from "./accountSettings/CompanyAccountSettings"
 
 
-=======
-import AllTransactions from "../AdminPageTransactions/AllTransactions";
->>>>>>> 43cae3c1bdaa19ecf2b764ed2d3d337888cf0583
 import CreateCompany from "./Company/CreateCompany";
 import CompanyTable from "../companytable/CompanyTable";
 
@@ -194,10 +190,10 @@ export const RoutesDashBoard = () => {
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
-      <div>
+      <div className="lg:ml-[9%]">
         <Navbar />
         <Routes>
-          <Route path="" element={<DashboardHome />} />
+          <Route path="/" element={<DashboardHome />} />
           <Route path="/transfer" element={<Transfer />} />
           <Route path="/investment" element={<Investment />} />
           <Route path="/transfer" element={<Transfer />} />
