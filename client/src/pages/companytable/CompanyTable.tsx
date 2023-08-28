@@ -22,16 +22,34 @@ const CompanyTable: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [companyData] = useState<Company[]>(emptyProduct);
 
-const dispatch = useDispatch() as unknown as any
+  // const [comp, setComp] = useState<any[]>([])
 
-const companies = useSelector((state:any) => state.company)
+  // const getCompanies = async() => {
+  //   try{
+  //     const response = await axios.get(`${baseUrl}/company/get-companies`)
+  //     console.log('resppp ++++++', response)
+  //     setComp(response.data.company)
+  //   }catch(error){
+  //     console.log(error)
+  //   }
 
+  // }
+
+  // console.log("company", comp)
+
+  // useEffect(() => {
+  //   getCompanies()
+  // }, [])
+  const dispatch = useDispatch() as unknown as any;
+
+
+  const companies = useSelector((state: any) => state.company);
+
+  console.log(companies);
 
   useEffect(() => {
-    dispatch(getCompanies())
-  }, [dispatch])
-
-
+    dispatch(getCompanies());
+  }, []);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -56,10 +74,12 @@ const companies = useSelector((state:any) => state.company)
   const companyId = localStorage.getItem("compId") as unknown as number
 
   return (
-    <div className='p-4 md:p-8 lg:p-16'>
-      <h1 className='text-2xl md:text-3xl font-semibold text-center pb-4'>List of Companies</h1>
-      <div className='overflow-x-auto'>
-        <table className='w-full table-fixed'>
+    <div className="p-4 md:p-8 lg:p-16">
+      <h1 className="text-2xl md:text-3xl font-semibold text-center pb-4">
+        List of Companies
+      </h1>
+      <div className="overflow-x-auto">
+        <table className="w-full table-fixed">
           <thead>
             <tr className='bg-blue-600 text-white'>
               <th className='w-1/6 py-2 px-4 text-left'>ID</th>
@@ -93,23 +113,31 @@ const companies = useSelector((state:any) => state.company)
           </tbody>
         </table>
       </div>
-      <div className='flex justify-center mt-4'>
+      <div className="flex justify-center mt-4">
         <button
-          className='mr-2 hover:underline'
+          className="mr-2 hover:underline"
           disabled={currentPage === 1}
           onClick={() => handlePageChange(currentPage - 1)}
         >
           &laquo; Previous
         </button>
         <button
-          className='hover:underline'
-          disabled={currentPage === Math.ceil(companyData.length / companiesPerPage)}
+          className="hover:underline"
+          disabled={
+            currentPage === Math.ceil(companyData.length / companiesPerPage)
+          }
           onClick={() => handlePageChange(currentPage + 1)}
         >
           Next &raquo;
         </button>
       </div>
-      <button onClick={() => setModal(!modal)}> Add Company </button>
+      <button
+        onClick={() => setModal(!modal)}
+        className="bg-black w-[20%] text-white ml-[40%] h-[6vh] rounded-full hover:bg-blue-600 transform -translate-y-5 "
+      >
+        {" "}
+        Add Company{" "}
+      </button>
       {modal ? <CreateCompany /> : null}
       {delModal ? <DeleteModal onCancel={() =>setDelModal(!delModal) } onDelete={() => handleDelete(companyId)} /> : null}
     </div>

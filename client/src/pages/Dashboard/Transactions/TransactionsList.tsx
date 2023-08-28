@@ -109,39 +109,39 @@ export default function TransactionsList({ userTransactions, userDetails }: Prop
             >
               <div className="flex p-2 justify-between">
                 <div className="flex">
-                  {(transaction.transfer_purpose == "food" && (
+                  {(transaction?.transfer_purpose == "food" && (
                     <img src={foodIcon} alt="" className="w-3/12 mr-2 rounded-full bg-purple-400" />
                   )) ||
-                    (transaction.transfer_purpose == "entertainment" && (
+                    (transaction?.transfer_purpose == "entertainment" && (
                       <img src={entertainmentIcon} alt="" className="w-3/12 mr-2" />
                     )) ||
-                    (transaction.transfer_purpose == "revenue" && (
+                    (transaction?.transfer_purpose == "revenue" && (
                       <img src={transferIcon} alt="" className="w-3/12 mr-2 rounded-full bg-sky-200" />
                     )) ||
-                    (transaction.transfer_purpose == "vacation" && (
+                    (transaction?.transfer_purpose == "vacation" && (
                       <img src={travelIcon} alt="" className="w-3/12 mr-2 rounded-full bg-cyan-100" />
                     )) || 
-                    (transaction.transfer_purpose == "drinks" && (
+                    (transaction?.transfer_purpose == "drinks" && (
                       <img src={drinkIcon} alt="" className="w-3/12 mr-2 rounded-full bg-orange-200" />))
                     }
                   <div className="text-left">
-                    <h4 className="pb-1.5">{transaction.beneficiary_name}</h4>
+                    <h4 className="pb-1.5">{transaction?.beneficiary_name}</h4>
                     <p className="text-xs text-slate-400">
-                      {transaction.transfer_purpose}
+                      {transaction?.transfer_purpose}
                     </p>
                   </div>
                 </div>
                 <div className="text-right">
                   <h4
                     className={
-                      transaction.accountNumber === userDetails.accountNumber
+                      transaction?.accountNumber === userDetails?.accountNumber
                         ? "text-green-600 pb-1.5"
                         : "text-red-600 pb-1.5"
                     }
                   >
-                    {transaction.amount}
+                    {transaction?.amount}
                   </h4>
-                  <p className="text-xs text-slate-400">{userDetails.accountBalance}</p>
+                  <p className="text-xs text-slate-400">{userDetails?.accountBalance}</p>
                 </div>
               </div>
             </li>

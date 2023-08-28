@@ -5,7 +5,6 @@ import log from "./login.module.css";
 import logo from "../../assets/logo.png";
 import { loginUser } from "../../redux/action";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 
 // import { useDispatch } from "react-redux";
 // import axios from "axios";
@@ -50,34 +49,29 @@ function Login() {
         </Link> */}
       </>
       <div className={log.main1}>
-       
         <div className={log.left_side}>
           <div className="slide">
             <img src={logo} alt="SignUp" />
             <div className={log.left_text}>
-               <h3>
-                    Plutus is personal <br /> finance, made simple.
-               </h3>
-               <p>
-                    All your account, cards, savings, and investments in <br /> one
-                    place{" "}
-               </p>
+              <h3>
+                Plutus is personal <br /> finance, made simple.
+              </h3>
+              <p>
+                All your account, cards, savings, and investments in <br /> one
+                place{" "}
+              </p>
             </div>
           </div>
         </div>
 
         <div className={log.right_side}>
-          {/* <div className={log.logo}>
-            <h1> Plutus </h1>
-            <p> Online Banking</p>
-          </div> */}
           <div className={log.logo}>
             <h1 className={log.logo_one}>Plutus</h1>
             <p className={log.logo_two}>Online Banking </p>
           </div>
 
           <form action="" onSubmit={handleSubmit} className={log.right_form}>
-          <div className="heading">
+            <div className="heading">
               <h2>Login</h2>
             </div>
 
@@ -86,6 +80,7 @@ function Login() {
               <br></br>
               <input
                 type="text"
+                required
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
@@ -105,7 +100,7 @@ function Login() {
                 onChange={handleChange}
               />
             </div>
-         
+
             <button
               type="submit"
               className="w-[340px] h-[50px] bg-black my-7 text-white rounded-lg

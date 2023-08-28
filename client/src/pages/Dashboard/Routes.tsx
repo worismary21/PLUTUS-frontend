@@ -12,10 +12,11 @@ import AccountSettings from "./accountSettings/accountSetting";
 import UsersAdmin from "../UsersAdmin/users";
 import Transactions from "./Transactions/Transactions";
 import CompanyDashboard from "../companydashboard/CompanyDashboard";
-import AllTransactions from "../AdminPageTransactions/AllTransactions"
+// import AllTransactions from "../AdminPageTransactions/AllTransactions"
 import CompanyAccountSettings from "./accountSettings/CompanyAccountSettings"
 
 
+import AllTransactions from "../AdminPageTransactions/AllTransactions";
 import CreateCompany from "./Company/CreateCompany";
 import CompanyTable from "../companytable/CompanyTable";
 

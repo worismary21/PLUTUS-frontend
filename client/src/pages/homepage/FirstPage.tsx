@@ -9,9 +9,9 @@ const FirstPage = () => {
     <>
       <div>
         <nav>
-          <div className="flex flex-col lg:flex-row lg:mx-40 pt-10 mb-3 hidden lg:flex">
+          <div className="flex flex-col lg:flex-row lg:mx-40 pt-10 mb-3 lg:flex">
             <div>
-              <h1 className="w-full text-3xl font-bold text-white z-10 w-0">
+              <h1 className="w-full text-3xl font-bold text-white z-10">
                 Plutus.
               </h1>
               <p className="text-white z-40 font-bold">Online Banking</p>

@@ -1,18 +1,29 @@
-import invest from "./Investment.module.css";
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 ("use client");
 
-import { Table } from "flowbite-react";
 import { TbCurrencyNaira } from "react-icons/tb";
 import { FaCoins } from "react-icons/fa";
 import { GiAnticlockwiseRotation } from "react-icons/gi";
-// import Plot from "@observablehq/plot";
-// import { useEffect, useRef, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import { useEffect } from "react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip } from "recharts";
+import TableWithIcons from "./TableWithIcons";
+import TrendingStock from "./TrendingStock";
+import { getInvestment } from "../../../redux/action";
+import { useDispatch, useSelector } from "react-redux";
 
 const Investment = () => {
+  const dispatch = useDispatch() as unknown as any;
+  const investors = useSelector((state: any) => state.investment);
+  console.log(investors.totalInvestedCapital);
+  console.log(investors.totalInvestments);
+  console.log(investors.data);
+
+  useEffect(() => {
+    dispatch(getInvestment());
+  }, []);
+
   const ror = "+4.75%";
-  const ti = "#10,000";
-  const noi = "1600";
 
   const Idata = [
     { name: "2017", value: 3.0 },
@@ -24,11 +35,11 @@ const Investment = () => {
   ];
 
   const renderInvBarChart = (
-    <BarChart width={550} height={200} data={Idata}>
-      <XAxis dataKey="name" stroke="#8884d8" />
+    <BarChart width={550} height={230} data={Idata}>
+      <XAxis dataKey="name" stroke="#8884d8" angle={-45} textAnchor="end" />
       <YAxis />
       <Tooltip />
-      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+      {/* <CartesianGrid stroke="#ccc" strokeDasharray="5 " /> */}
       <Bar dataKey="value" fill="#b5dcf2" barSize={23} />
     </BarChart>
   );
@@ -43,37 +54,40 @@ const Investment = () => {
   ];
 
   const renderRevBarChart = (
-    <BarChart width={550} height={200} data={Irevenue}>
-      <XAxis dataKey="name" stroke="#8884d8" />
+    <BarChart width={550} height={230} data={Irevenue}>
+      <XAxis dataKey="name" stroke="#8884d8" angle={-45} textAnchor="end" />
       <YAxis />
       <Tooltip />
-      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+      {/* <CartesianGrid stroke="#ccc" strokeDasharray="5 5" /> */}
       <Bar dataKey="value" fill="#c6b5f2" barSize={23} />
     </BarChart>
   );
 
   return (
-    <div className=" h-auto px-[5%] md:px-[0%] ml-[10%] lg:ml-[0%]">
+    <div className=" lg:pl-[40px] md:pl-[55px] w-[auto] sm:w-[auto] md:w-[auto] h-auto px-[5%] md:px-[0%] ml-[15%] md:ml-[0%]">
       <div>
-        <h3>Investment</h3>
+        <h3 className="pl-[5%] text-[23px] mb-[20px] ">Investment</h3>
         <div className=" px-[5%] flex flex-col justify-between my-[5%] md:my-[0%] md:flex-row  ">
-          <div className="bg-[#f8f9fa] md:w-[30%] flex  justify-center py-[3%] rounded-md">
-            <div className="bg-[#b5dcf2] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px]">
-              <TbCurrencyNaira />
-            </div>
+          <div className="bg-[#f8f9fa] md:w-[30%] flex justify-center py-[3%] rounded-md">
+            <TbCurrencyNaira className="bg-[#b5dcf2] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px]" />
             <div className="w-[auto]">
-              <p>Total Invested</p>
-              <p>{ti}</p>
+              <p className="text-[15px]">Total Invested</p>
+              {investors.totalInvestedCapital
+                ? investors.totalInvestedCapital
+                : 0}
             </div>
           </div>
+
           <div className="bg-[#f8f9fa] md:w-[30%] flex justify-center py-[3%] rounded-md my-[5%] md:my-[0%]">
             <div className="bg-[#c6b5f2] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px] ">
               <FaCoins />
             </div>
 
             <div className="w-[auto]">
-              <p>No. of investments</p>
-              <p>{noi}</p>
+              <p className="text-[15px]">No. of investments</p>
+              <p className="text-[15px]">
+                {investors.totalInvestments ? investors.totalInvestments : 0}
+              </p>
             </div>
           </div>
           <div className="bg-[#f8f9fa] md:w-[30%] flex justify-center py-[3%] rounded-md">
@@ -82,114 +96,39 @@ const Investment = () => {
             </div>
 
             <div className="w-[auto]">
-              <p>Rate of return</p>
-              <p>{ror}</p>
+              <p className="text-[15px]">Rate of return</p>
+              <p className="text-[15px]">{ror}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className={invest.secondline}></div>
-
-      <div className="flex flex-col  px-[5%] items-center lg:flex-row lg:justify-between w-[100%] overflow-x-scroll">
-        <div>
-          <p className="text-[23px]">Yearly total investment</p>
-          <div className="lg:w-[550px] bg-[#ebf3f9] my-[5%] md:my-[0%]">
+      <div className="lg:flex-row  flex flex-col px-[5%] md:flex-col md:justify-around justify-between w-[100%] overflow-x-scroll">
+        <div className="mt-[30px]">
+          <p className="text-[23px] mb-[30px] ">Yearly total investment</p>
+          <div className="w-[600px] h-[250px] bg-[#ebf3f9] my-[5%] md:my-[0%]">
             {renderInvBarChart}
-            Graph 1
           </div>
         </div>
 
-        <div>
-          <p className="text-[23px]">Yearly total revenue</p>
-          <div className="lg:w-[550px] bg-[#dfd8f2] my-[5%] md:my-[0%]">
+        <div className="lg:ml-[60px] mt-[30px]">
+          <p className="text-[23px] mb-[30px] ">Yearly total revenue</p>
+          <div className="w-[600px]  h-[250px] bg-[#dfd8f2] my-[5%] md:my-[0%]">
             {renderRevBarChart}
-            Graph 2
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row justify-between px-[5%] h-[20vh] w-[100%] ">
-        <div className="lg:w-[50%] pt-[2%]">
-          <p className="text-[23px]">My investment</p>
-          <Table striped>
-            <Table.Body className="divide-y ">
-              <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  Apple Market
-                </Table.Cell>
-                <Table.Cell>$200</Table.Cell>
-                <Table.Cell>-23%</Table.Cell>
-              </Table.Row>
-              <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  <p>Greenery</p>
-                </Table.Cell>
-                <Table.Cell>$200</Table.Cell>
-                <Table.Cell>0%</Table.Cell>
-              </Table.Row>
-              <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  T Motors
-                </Table.Cell>
-                <Table.Cell>$200</Table.Cell>
-                <Table.Cell>+16</Table.Cell>
-              </Table.Row>
-              <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  T Motors
-                </Table.Cell>
-                <Table.Cell>$200</Table.Cell>
-                <Table.Cell>+16</Table.Cell>
-              </Table.Row>
-              <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  T Motors
-                </Table.Cell>
-                <Table.Cell>$200</Table.Cell>
-                <Table.Cell>+16</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
+      <div className="flex mt-[30px] flex-col md:flex-col lg:flex-row justify-between px-[5%] mb-[60px] w-[100%]">
+        <div className=" w-[auto] lg:w-[55%] mt-[20px] sm:w-[auto]">
+          <p className="text-[23px] mb-[20px]">My investment</p>
+
+          <TableWithIcons />
         </div>
-        <div className="lg:w-[40%] pt-[30px]">
-          <p className="text-[23px]">Trending stock</p>
-          <Table className="bg-[#000] text-[#fff] pt-[70px]">
-            <Table.Body>
-              <Table.Cell>Name</Table.Cell>
-              <Table.Cell>Price</Table.Cell>
-              <Table.Cell>Return</Table.Cell>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>Coinspace</Table.Cell>
-                <Table.Cell>$100</Table.Cell>
-                <Table.Cell>{"+10%"}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <p>DocSign</p>
-                </Table.Cell>
-                <Table.Cell>$100</Table.Cell>
-                <Table.Cell>{"-8%"}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Target & Co.</Table.Cell>
-                <Table.Cell>$100</Table.Cell>
-                <Table.Cell>{"+10%"}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>HNL Bank</Table.Cell>
-                <Table.Cell>$100</Table.Cell>
-                <Table.Cell>{"+10%"}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Average Motors</Table.Cell>
-                <Table.Cell>$100</Table.Cell>
-                <Table.Cell>{"0%"}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
+        <div className="  w-[auto] lg:w-[40%] mt-[20px] sm:w-[auto]">
+          <p className="text-[23px] mb-[20px] ">Trending stock</p>
+
+          <TrendingStock />
         </div>
       </div>
     </div>
