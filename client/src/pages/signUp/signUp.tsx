@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../redux/action";
+import LoadingSpinner from "../../components/spinner";
 
 interface SignupComponent {
   firstName: string;
@@ -23,6 +24,7 @@ const SignUp = () => {
     password: "",
   });
 
+  const [isLoading, setIsLoading] = useState(false);
   const [cPassword, setCPassword] = useState("");
 
   const handleChange = (e: any) => {
@@ -39,9 +41,14 @@ const SignUp = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formData.password !== cPassword) {
-      toast.error("Invalid Password");
+      toast.error("Passwords don't match");
     } else {
-      dispatch(registerUser(formData));
+      dispatch(registerUser(formData))
+      setIsLoading(true)
+
+      setTimeout(() => {
+     setIsLoading(false)
+   }, 5000);
     }
   };
 
@@ -64,61 +71,63 @@ const SignUp = () => {
 
       <div className="right_side">
         <div className="logo">
+        <Link to="/">
           <h3 className="logo_one">Plutus</h3>
           <p className="logo_two">Online Banking </p>
+          </Link>
         </div>
-
-        <form action="" onSubmit={handleSubmit} className="right-form">
-          <div className="heading">
-            <h2>Sign Up</h2>
-            <p>Sign up and enjoy the services</p>
-          </div>
-          <input
-            type="text"
-            name={"firstName"}
-            required
-            value={formData.firstName}
-            onChange={handleChange}
-            placeholder=" FirstName"
-          />
-          <input
-            type="text"
-            name={"lastName"}
-            required
-            value={formData.lastName}
-            onChange={handleChange}
-            placeholder=" LastName"
-          />
-          <input
-            type="email"
-            name={"email"}
-            required
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email"
-          />
-          <input
-            type="password"
-            name={"password"}
-            required
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Password"
-          />
-          <input
-            type="password"
-            name={"cPassword"}
-            required
-            placeholder="Confirm Password"
-            value={cPassword}
-            onChange={(e) => setCPassword(e.target.value)}
-          />
-
-          <button type="submit" className="btnn bg-black">
-            Register
-          </button>
-
-          <div className="register">
+          
+          <form action="" onSubmit={handleSubmit} className="right-form">
+            <div className="heading">
+              <h2>Sign Up</h2>
+              <p>Sign up and enjoy the services</p>
+            </div>
+            <input
+              type="text"
+              name={"firstName"}
+              required
+              value={formData.firstName}
+              onChange={handleChange}
+              placeholder=" FirstName"
+            />
+            <input
+              type="text"
+              name={"lastName"}
+              required
+              value={formData.lastName}
+              onChange={handleChange}
+              placeholder=" LastName"
+            />
+            <input
+              type="email"
+              name={"email"}
+              required
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email"
+            />
+            <input
+              type="password"
+              name={"password"}
+              required
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Password"
+            />
+            <input
+              type="password"
+              name={"cPassword"}
+              required
+              placeholder="Confirm Password"
+              value={cPassword}
+              onChange={(e) => setCPassword(e.target.value)}
+            />
+          
+               <button type="submit" disabled={isLoading} className= {isLoading ? "disable btnn bg-black" : "btnn bg-black"} >
+               {isLoading ? <LoadingSpinner /> :"Register"}
+               </button>
+           
+            <div className="register">
             <p className="already">Already have an account?</p>
             <Link to="/login" className="alreadyLogin">
               Login

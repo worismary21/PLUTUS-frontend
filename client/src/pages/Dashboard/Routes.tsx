@@ -9,7 +9,7 @@ import Savings from "./Transfer/Savings";
 import Invest from "./Transfer/investment";
 import AddBeneficiary from "./Transfer/AddBeneficiary";
 import AccountSettings from "./accountSettings/accountSetting";
-import UsersAdmin from "../UsersAdmin/users";
+import UsersAdmin from "../AdminPageUser/users";
 import Transactions from "./Transactions/Transactions";
 import CompanyDashboard from "../companydashboard/CompanyDashboard";
 // import AllTransactions from "../AdminPageTransactions/AllTransactions"
