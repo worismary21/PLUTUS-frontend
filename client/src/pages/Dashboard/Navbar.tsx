@@ -1,6 +1,6 @@
 import { BsBellFill } from 'react-icons/bs';
 import { useSelector } from 'react-redux';
-
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
 

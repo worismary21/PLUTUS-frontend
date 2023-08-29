@@ -72,79 +72,42 @@ const Sidebar = () => {
   };
   return (
     // <section className='flex gap-6'>
-    <>
-          <div className={`${open ? 'w-48': 'w-20'}  sm duration-500 h-[100%] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4 shadow-xl max-[600px]:hidden`}>
-               <div className='py-3 flex justify-end'>
-                    <HiMenuAlt3 size={26} className='cursor-pointer float-right shadow' onClick={()=>setOpen(!open)}/>
-               </div>
-               <div>
-                    <h1 className='text-center text-gray-500'>Plutus</h1>
-               </div>
-               <div className='decoration mt-4 flex-col gap-4 relative'>
-                    {(role === "user" ? menus : role === "admin" ? adminmenus : companymenus)?.map((menu, i)=>(
-     
-                    <Link to={menu?.link} key={i} className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md w-30 m-0`} onClick={() => LogOut(menu?.name)}>
-                    
-                         <div className='w-16'>
-                              {React.createElement(menu?.icon, {size: '20'})}
-                         </div>
-                         <h2 style={{transitionDelay: `${i + 3}00ms`,}}className={`whitespace-pre duration-500 ${
-                         !open && "opacity-0 translate-x-28 overflow-hidden m-0"
-                         }`}>
-                         {menu?.name}
-                         </h2>
-                         <h2
-                         className={`${
-                         open && "hidden"
-                         } absolute left-48 bg-white font-semibold whitespace-pre text-gray-500 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit `}>
-                         {menu?.name}
-                         </h2>
-                    </Link>
-                    ))}
-               </div>
-                    
-          </div>
+    <div className={`md:${open ? 'w-48': 'w-20'} ${open ? 'w-20': 'w-20'} duration-500 fixed lg:h-[100vh] h-[200vh] z-[5] bg-[#f7fafc]  text-gray-500 px-4 shadow-xl} `}>
+        <div className='py-3 flex justify-end'>
+          <HiMenuAlt3 size={26} className='cursor-pointer float-right shadow' onClick={()=>setOpen(!open)}/>
+        </div>
+        <div>
+          <h1 className='text-center text-gray-500'>Plutus</h1>
+        </div>
+        <div className='decoration mt-4 flex-col gap-4 relative'>
+          {(role === "user" ? menus : role === "admin" ? adminmenus : companymenus)?.map((menu, i)=>(
 
-          {/* <div className="flex flex-col h-full min-[600px]:hidden z-[5] align-center bg-[#f7fafc]">
-               <div className='align-center  h-12 flex justify-center w-6 mt-4 ml-4' >
-                    <HiMenuAlt3 size={26} className='w-6 h-6 cursor-pointer float-right shadow' onClick={()=>setOpen(!open)}/>
-               </div>
-               <div style={{display: open ? 'block': 'none',
-                         background: open ? 'white': '',
-                         color: "gray",
-                         height: '100vh',
-                         width: "150px",
-                         position: "relative"}}>
+             <Link to={menu?.link} key={i} className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md w-30 m-0`} onClick={() => LogOut(menu?.name)}>
 
-                    <h1 className='text-center text-gray-500'>Plutus</h1>
-                    
-                    <div className='decoration mt-4 flex-col gap-4 relative'>
-                         {(role === "user" ? menus : role === "admin" ? adminmenus : companymenus)?.map((menu, i)=>(
-          
-                         <Link to={menu?.link} key={i} className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md w-30 m-0`} onClick={() => LogOut(menu?.name)}>
-                         
-                              <div className='w-16'>
-                                   {React.createElement(menu?.icon, {size: '20'})}
-                              </div>
-                              <h2 style={{transitionDelay: `${i + 3}00ms`,}}className={`whitespace-pre duration-500 ${
-                              !open && "opacity-0 translate-x-28 overflow-hidden m-0"
-                              }`}>
-                              {menu?.name}
-                              </h2>
-                              <h2
-                              className={`${
-                              open && "hidden"
-                              } absolute left-48 bg-white font-semibold whitespace-pre text-gray-500 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit `}>
-                              {menu?.name}
-                              </h2>
-                         </Link>
-                         ))}
-                    </div>
-               </div> 
-          </div> */}
-               
-     </>
-   
+              
+              <div className='w-16'>
+                {React.createElement(menu?.icon, {size: '20'})}
+              </div>
+              <h2 
+              style={{
+                transitionDelay: `${i + 3}00ms`,
+              }}
+              className={`whitespace-pre hidden md:block duration-500 ${
+                !open && "opacity-0 translate-x-28 overflow-hidden m-0"
+              } `}
+            >
+              {menu?.name}
+            </h2>
+            <h2
+              className={`${
+                open && "hidden"
+              } absolute left-48 bg-white font-semibold whitespace-pre text-gray-500 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit `}>
+              {menu?.name}
+            </h2>
+          </Link>
+        ))}
+      </div>
+    </div>
     // </section>
   );
 };

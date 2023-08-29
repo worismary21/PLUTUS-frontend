@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="text-white w-full">
       <div className="max-w-[800px] mt-[-150px] w-full h-screen mx-auto text-center flex flex-col justify-center">
-        <h1 className="text-5xl font-bold text-white z-10 hover:none">
+        <h1 className="text-3xl md:text-5xl font-bold text-white z-10 hover:none">
           Simple and Safe Banking
         </h1>
         <p className="text-white z-10 mt-5">
