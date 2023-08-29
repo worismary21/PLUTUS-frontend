@@ -16,6 +16,7 @@ import {
   fetchDataBeneficiary,
   fetchDataInvestment,
   fetchDataUserInvestment,
+  fetchInvestors,
 } from "./reducers";
 import { formDataPut } from "../utils/axios";
 import { toast } from "react-toastify";
@@ -416,21 +417,15 @@ export const emailVerification = createAsyncThunk(
   async (email: string, { dispatch }: any) => {
     try {
       dispatch(fetchDataStart(true));
-      const userEmail = localStorage.getItem("email");
-
-      if (userEmail) {
         const response = await apiPut(`/user/change-password-email`, { email });
         console.log("response", response);
         if (response) {
           toast.success("OTP sent!!");
-        }
-      } else {
-        toast.error("Incorrect email");
-        // window.location.reload()
-      }
-    } catch (error: any) {
+          }
+     } 
+     catch (error: any) {
       // window.location.reload()
-      toast.error(error.response.data.message);
+     //  toast.error(error.response.data.message);
       dispatch(fetchDataFailure(error.response.data.message));
     }
   }
@@ -458,10 +453,10 @@ export const otpVerification = createAsyncThunk(
   async (otp: string, { dispatch }: any) => {
     try {
       dispatch(fetchDataStart(true));
-      // const id = localStorage.getItem("id");
+      const id = localStorage.getItem("id");
 
       //axios call
-      const response = await apiGet("/company/get-companies");
+      const response = await apiPut(`/change-password-otp/${id}`, {otp});
       console.log(response.data);
 
       dispatch(fetchDataCompany(response.data.data));
@@ -559,12 +554,33 @@ export const accountSettings = createAsyncThunk(
 /**============== IMAGE UPDATE=======  **/
 export const updateLogo = createAsyncThunk(
   "updateLogo",
-  async (formData: any, { dispatch }: any) => {
+  async (fileData: any, { dispatch }: any) => {
     try {
       dispatch(fetchDataStart(true));
-      const response = await formDataPut(`/user/profileImage`, formData);
+      const response = await formDataPut(`/user/profileImage`, fileData);
+     localStorage.setItem("image", fileData)
 
       console.log(response);
+    } catch (error: any) {
+      console.log(error);
+    }
+  }
+);
+
+/********GET INVESTORS****************/
+
+export const getInvestors = createAsyncThunk(
+  "getInvestors",
+  async (_, { dispatch }: any) => {
+    try {
+      //set loader true
+      dispatch(fetchInvestors(true));
+
+      //axios call
+      const response = await apiGet("/investor/get");
+      console.log(response.data);
+
+      dispatch(fetchInvestors(response.data));
     } catch (error: any) {
       console.log(error);
     }

@@ -6,10 +6,10 @@ import { BiTransfer } from "react-icons/bi";
 import { AiFillHome } from "react-icons/ai";
 import { PiUserListFill } from "react-icons/pi";
 import { ImOffice } from "react-icons/im"
-// import { FaMoneyBillTransfer } from "react-icons/fa";
+// import { FaMoneyBillTransfer } from "react-icons/fa"
 
+import { MdOutlineDashboard, MdLogout, MdOutlineAssuredWorkload, MdTableChart } from "react-icons/md";
 
-import { MdOutlineDashboard, MdLogout, MdOutlineAssuredWorkload } from "react-icons/md";
 import React, { useState } from "react";
 import "./dashboard.css";
 
@@ -35,12 +35,20 @@ const Sidebar = () => {
     {name: "companies", link:'/dashboard/companies', icon: ImOffice},
     {name: "Transactions", link:'/dashboard/allTransactions', icon: BiTransfer},
     { name: "Log out", link: "/", icon: MdLogout },
-
   ];
   const companymenus = [
-    {name: "Home", link:'/dashboard', icon: AiFillHome},
-    {name: "Company", link:'/dashboard/companies', icon: MdOutlineAssuredWorkload},
-//     {name: "Transactions", link:'/dashboard/transactions', icon: FaMoneyBillTransfer},
+    { name: "Home", link: "/dashboard", icon: AiFillHome },
+    { name: "transactions", link: "/dashboard/companies", icon: BiTransfer },
+    {
+      name: "profile",
+      link: "/dashboard/transactions",
+      icon: MdOutlineDashboard,
+    },
+    {
+      name: "Investor Table",
+      link: "/dashboard/investors",
+      icon: MdTableChart,
+    },
     { name: "Log out", link: "/", icon: MdLogout },
     {
       name: "Settings",
@@ -48,71 +56,102 @@ const Sidebar = () => {
       icon: FiSettings,
       margin: true,
     },
-
   ];
   const [open, setOpen] = useState(true);
 
   const role = localStorage.getItem("role");
 
-  const  LogOut  = (name:string) => {
-    if (name === "Log out"){
-      localStorage.clear()
+
+  const LogOut = (name: string) => {
+    if (name === "Log out") {
+      localStorage.clear();
       setTimeout(() => {
       window.location.href = '/'
-      }, 1000)
+      }, 500)
     }
-  }
+  };
   return (
     // <section className='flex gap-6'>
-    <div className={`${open ? 'w-48': 'w-20'}  sm duration-500 h-[100%] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4 shadow-xl `}>
-        <div className='py-3 flex justify-end'>
-          <HiMenuAlt3 size={26} className='cursor-pointer float-right shadow' onClick={()=>setOpen(!open)}/>
-        </div>
-        <div>
-          <h1 className='text-center text-gray-500'>Plutus</h1>
-        </div>
-        <div className='decoration mt-4 flex-col gap-4 relative'>
-          {(role === "user" ? menus : role === "admin" ? adminmenus : companymenus)?.map((menu, i)=>(
+    <>
+          <div className={`${open ? 'w-48': 'w-20'}  sm duration-500 h-[100%] fixed z-[5] bg-[#f7fafc]  text-gray-500 px-4 shadow-xl max-[600px]:hidden`}>
+               <div className='py-3 flex justify-end'>
+                    <HiMenuAlt3 size={26} className='cursor-pointer float-right shadow' onClick={()=>setOpen(!open)}/>
+               </div>
+               <div>
+                    <h1 className='text-center text-gray-500'>Plutus</h1>
+               </div>
+               <div className='decoration mt-4 flex-col gap-4 relative'>
+                    {(role === "user" ? menus : role === "admin" ? adminmenus : companymenus)?.map((menu, i)=>(
+     
+                    <Link to={menu?.link} key={i} className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md w-30 m-0`} onClick={() => LogOut(menu?.name)}>
+                    
+                         <div className='w-16'>
+                              {React.createElement(menu?.icon, {size: '20'})}
+                         </div>
+                         <h2 style={{transitionDelay: `${i + 3}00ms`,}}className={`whitespace-pre duration-500 ${
+                         !open && "opacity-0 translate-x-28 overflow-hidden m-0"
+                         }`}>
+                         {menu?.name}
+                         </h2>
+                         <h2
+                         className={`${
+                         open && "hidden"
+                         } absolute left-48 bg-white font-semibold whitespace-pre text-gray-500 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit `}>
+                         {menu?.name}
+                         </h2>
+                    </Link>
+                    ))}
+               </div>
+                    
+          </div>
 
-             <Link to={menu?.link} key={i} className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md w-30 m-0`} onClick={() => LogOut(menu?.name)}>
+          {/* <div className="flex flex-col h-full min-[600px]:hidden z-[5] align-center bg-[#f7fafc]">
+               <div className='align-center  h-12 flex justify-center w-6 mt-4 ml-4' >
+                    <HiMenuAlt3 size={26} className='w-6 h-6 cursor-pointer float-right shadow' onClick={()=>setOpen(!open)}/>
+               </div>
+               <div style={{display: open ? 'block': 'none',
+                         background: open ? 'white': '',
+                         color: "gray",
+                         height: '100vh',
+                         width: "150px",
+                         position: "relative"}}>
 
-              
-              <div className='w-16'>
-                {React.createElement(menu?.icon, {size: '20'})}
-              </div>
-              <h2 
-              style={{
-                transitionDelay: `${i + 3}00ms`,
-              }}
-              className={`whitespace-pre duration-500 ${
-                !open && "opacity-0 translate-x-28 overflow-hidden m-0"
-              }`}
-            >
-              {menu?.name}
-            </h2>
-            <h2
-              className={`${
-                open && "hidden"
-              } absolute left-48 bg-white font-semibold whitespace-pre text-gray-500 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit `}
-            >
-              {menu?.name}
-            </h2>
-          </Link>
-        ))}
-      </div>
-    </div>
+                    <h1 className='text-center text-gray-500'>Plutus</h1>
+                    
+                    <div className='decoration mt-4 flex-col gap-4 relative'>
+                         {(role === "user" ? menus : role === "admin" ? adminmenus : companymenus)?.map((menu, i)=>(
+          
+                         <Link to={menu?.link} key={i} className={` group flex items-center text-sm text-left font-medium p-2 hover:text-black rounded-md w-30 m-0`} onClick={() => LogOut(menu?.name)}>
+                         
+                              <div className='w-16'>
+                                   {React.createElement(menu?.icon, {size: '20'})}
+                              </div>
+                              <h2 style={{transitionDelay: `${i + 3}00ms`,}}className={`whitespace-pre duration-500 ${
+                              !open && "opacity-0 translate-x-28 overflow-hidden m-0"
+                              }`}>
+                              {menu?.name}
+                              </h2>
+                              <h2
+                              className={`${
+                              open && "hidden"
+                              } absolute left-48 bg-white font-semibold whitespace-pre text-gray-500 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit `}>
+                              {menu?.name}
+                              </h2>
+                         </Link>
+                         ))}
+                    </div>
+               </div> 
+          </div> */}
+               
+     </>
+   
     // </section>
   );
 };
 
 export default Sidebar;
 
-
-
-
 ///////////////
-
-
 
 // import { Link } from 'react-router-dom'
 // import {HiMenuAlt3 } from 'react-icons/hi'

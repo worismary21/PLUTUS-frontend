@@ -6,6 +6,7 @@ import logo from "../../assets/logo.png";
 import { loginUser } from "../../redux/action";
 import { useDispatch } from "react-redux";
 import LoadingSpinner from "../../components/spinner";
+import { Link } from "react-router-dom";
 
 
 
@@ -43,7 +44,6 @@ function Login() {
     dispatch(loginUser(formData));
     setIsLoading(true)
 
-
     setTimeout(() => {
      setIsLoading(false)
    }, 5000);
@@ -77,8 +77,10 @@ function Login() {
 
         <div className={log.right_side}>
           <div className={log.logo}>
-            <h1 className={log.logo_one}>Plutus</h1>
-            <p className={log.logo_two}>Online Banking </p>
+               <Link to="/">
+               <h1 className={log.logo_one}>Plutus</h1>
+               <p className={log.logo_two}>Online Banking </p>
+               </Link>
           </div>
 
           <form action="" onSubmit={handleSubmit} className={log.right_form}>
@@ -116,6 +118,7 @@ function Login() {
          
             <button
               type="submit"
+              disabled={isLoading}
               className={log.loginButton}
             >
               {isLoading ? <LoadingSpinner /> :"Login"}
@@ -123,9 +126,10 @@ function Login() {
             
 
             {error && <div>{error}</div>}
-            
+
+            <Link to="/changePassword">
             <p className={log.text8} >Forgot your password?</p>
-          
+            </Link>
           </form>
         </div>
       </div>

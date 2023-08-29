@@ -189,10 +189,10 @@ export const userDetails = {
 
 export const RoutesDashBoard = () => {
   return (
-    <div style={{ display: "flex" }}>
-      <Sidebar />
-      <div>
-        <Navbar />
+    <div className="flex flex-row">
+     <Sidebar />
+      <div className="flex flex-col">
+      <Navbar /> 
         <Routes>
           <Route path="" element={<DashboardHome />} />
           <Route path="/transfer" element={<Transfer />} />

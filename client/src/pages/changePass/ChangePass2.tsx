@@ -6,6 +6,7 @@ import picture from "./images/logo.png"
 import { toast } from 'react-toastify';
 import { useDispatch } from "react-redux";
 import { passwordChangeConfirmation } from "../../redux/action";
+import LoadingSpinner from '../../components/spinner';
 
 
 interface ChangePassword {
@@ -46,6 +47,8 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
      });
 }
 
+const email = localStorage.getItem("email")
+
 
 const handleRegister = async (e:  React.FormEvent<HTMLFormElement>) => {
      e.preventDefault()
@@ -81,21 +84,40 @@ const handleRegister = async (e:  React.FormEvent<HTMLFormElement>) => {
                     <div className={change.content}>
                          <h2>Change Password</h2>
                          <h5>Enter your details</h5>
-                         <form className={change.form} onSubmit={handleRegister}>
-                              <input type='password' placeholder='Old Password' name='oldPassword' value={formData.oldPassword} required onChange={handleInputChange}  className={change.inputEmail} ></input>
-                              <input type='password' placeholder='New Password' name='newPassword' value={formData.newPassword} required onChange={handleInputChange} className={change.inputEmail}>
+                         {email && (<form className={change.form} onSubmit={handleRegister}>
+                              <input type={passwordType} placeholder='Old Password' name='oldPassword' value={formData.oldPassword} required onChange={handleInputChange}  className={change.inputEmail} ></input>
+                              <input type={passwordType} placeholder='New Password' name='newPassword' value={formData.newPassword} required onChange={handleInputChange} className={change.inputEmail}>
                               <div className="input-group-btn">
                                    /
                               </div>
                               </input>
                               <input type='password' placeholder='Confirm Password' name='confirm_password' value={formData.confirm_password} required onChange={handleInputChange}  className={change.inputEmail}></input>
-                              <div className={change.btnnn}>
-                                   <button className={change.button} >Submit</button>
+                              <div className={change.btnnn} >
+                                   <button className={change.button} disabled={isLoading}>
+                                        {isLoading ? <LoadingSpinner />: "Submit"}
+                                   </button>
                               </div>
-                         </form>
+                         </form>)}
+
+
+                         {!email && (<form className={change.form} onSubmit={handleRegister}>
+                         <input type={passwordType} placeholder='Old Password' name='oldPassword' value={formData.oldPassword} required onChange={handleInputChange}  className={change.inputEmail} ></input>
+                         <input type={passwordType} placeholder='New Password' name='newPassword' value={formData.newPassword} required onChange={handleInputChange} className={change.inputEmail}>
+                         <div className="input-group-btn">
+                              /
+                         </div>
+                         </input>
+                         <input type='password' placeholder='Confirm Password' name='confirm_password' value={formData.confirm_password} required onChange={handleInputChange}  className={change.inputEmail}></input>
+                         <div className={change.btnnn} >
+                              <button className={change.button} disabled={isLoading}>
+                                   {isLoading ? <LoadingSpinner />: "Submit"}
+                              </button>
+                         </div>
+                    </form>)}
                     </div>
                </div>
           </div>
+
     </>
   )
 }

@@ -48,7 +48,7 @@ const SignUp = () => {
 
       setTimeout(() => {
      setIsLoading(false)
-   }, 7000);
+   }, 5000);
     }
   };
 
@@ -71,8 +71,10 @@ const SignUp = () => {
 
       <div className="right_side">
         <div className="logo">
+        <Link to="/">
           <h3 className="logo_one">Plutus</h3>
           <p className="logo_two">Online Banking </p>
+          </Link>
         </div>
           
           <form action="" onSubmit={handleSubmit} className="right-form">
@@ -121,7 +123,7 @@ const SignUp = () => {
               onChange={(e) => setCPassword(e.target.value)}
             />
           
-               <button type="submit" className="btnn bg-black" >
+               <button type="submit" disabled={isLoading} className= {isLoading ? "disable btnn bg-black" : "btnn bg-black"} >
                {isLoading ? <LoadingSpinner /> :"Register"}
                </button>
            
