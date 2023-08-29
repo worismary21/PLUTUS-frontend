@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 ("use client");
 
@@ -71,7 +72,9 @@ const Investment = () => {
             <TbCurrencyNaira className="bg-[#b5dcf2] w-[30px] h-[30px] rounded-[50%] flex items-center m-[10px]" />
             <div className="w-[auto]">
               <p className="text-[15px]">Total Invested</p>
-              <p className="text-[15px]">{investors.totalInvestedCapital}</p>
+              {investors.totalInvestedCapital
+                ? investors.totalInvestedCapital
+                : 0}
             </div>
           </div>
 
@@ -82,7 +85,9 @@ const Investment = () => {
 
             <div className="w-[auto]">
               <p className="text-[15px]">No. of investments</p>
-              <p className="text-[15px]">{investors.totalInvestments}</p>
+              <p className="text-[15px]">
+                {investors.totalInvestments ? investors.totalInvestments : 0}
+              </p>
             </div>
           </div>
           <div className="bg-[#f8f9fa] md:w-[30%] flex justify-center py-[3%] rounded-md">
