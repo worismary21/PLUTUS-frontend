@@ -7,6 +7,7 @@ const Navbar = () => {
      const firstName = localStorage.getItem("firstName")
      const lastName = localStorage.getItem("lastName")
 
+     // eslint-disable-next-line @typescript-eslint/no-explicit-any
      const users = useSelector((state:any) => state.user.user)
 
 
