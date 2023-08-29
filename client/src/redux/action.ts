@@ -220,6 +220,25 @@ export const getCompanyInfo = createAsyncThunk(
   }
 );
 
+  /**============== Get All Companys =======  **/
+
+  export const getAllCompanys= createAsyncThunk(
+    "getAllCompanys",
+    async (_, {dispatch}:any) => {
+      try {
+        //set loader true
+       dispatch(fetchDataStart(true))
+
+       //axios call
+       const response = await apiGet('/company/allCompanyInfo')
+     
+       dispatch(fetchDataCompany(response.data.data))
+      } catch (error: any) {
+       console.log(error)
+    }
+  });
+
+
 /**============== Create Beneficiary  =======  **/
 
 export const createBeneficiary = createAsyncThunk(
