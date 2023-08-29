@@ -51,10 +51,13 @@ export const loginUser = createAsyncThunk(
       console.log(response.data, "***");
 
       //response check
-      localStorage.setItem("token", response.data.user_token);
-      localStorage.setItem("role", response.data.role);
-      localStorage.setItem("email", response.data.email);
-      localStorage.setItem("id", response.data.id);
+      localStorage.setItem('token', response.data.user_token)
+      localStorage.setItem('role', response.data.role)
+      localStorage.setItem('email', response.data.email)
+      localStorage.setItem('id', response.data.id)
+      localStorage.setItem('verify', response.data.verify)
+      localStorage.setItem('firstName', response.data.firstName)
+      localStorage.setItem('lastName', response.data.lastName)
       toast.success("user login successful");
 
       //redirect
@@ -381,7 +384,7 @@ export const getCompanies = createAsyncThunk(
       const response = await apiGet("/company/get-companies");
       console.log(response.data.company);
 
-      dispatch(fetchDataCompany(response.data.company));
+      dispatch(fetchDataCompany(response.data.data));
     } catch (error: any) {
       console.log(error);
     }
@@ -433,21 +436,15 @@ export const emailVerification = createAsyncThunk(
   async (email: string, { dispatch }: any) => {
     try {
       dispatch(fetchDataStart(true));
-      const userEmail = localStorage.getItem("email");
-
-      if (userEmail) {
         const response = await apiPut(`/user/change-password-email`, { email });
         console.log("response", response);
         if (response) {
           toast.success("OTP sent!!");
-        }
-      } else {
-        toast.error("Incorrect email");
-        // window.location.reload()
-      }
-    } catch (error: any) {
+          }
+     } 
+     catch (error: any) {
       // window.location.reload()
-      toast.error(error.response.data.message);
+     //  toast.error(error.response.data.message);
       dispatch(fetchDataFailure(error.response.data.message));
     }
   }
@@ -475,15 +472,19 @@ export const otpVerification = createAsyncThunk(
   async (otp: string, { dispatch }: any) => {
     try {
       dispatch(fetchDataStart(true));
-      // const id = localStorage.getItem("id");
+      const id = localStorage.getItem("id");
 
       //axios call
-      const response = await apiGet("/company/get-companies");
+      const response = await apiPut(`/change-password-otp/${id}`, {otp});
       console.log(response.data);
+      toast.error(response.data.message)
 
       dispatch(fetchDataCompany(response.data.data));
+
+        toast.success(response.data.message)
     } catch (error: any) {
       console.log(error);
+      toast.error(error.response.data.message)
     }
   }
 );
@@ -576,10 +577,11 @@ export const accountSettings = createAsyncThunk(
 /**============== IMAGE UPDATE=======  **/
 export const updateLogo = createAsyncThunk(
   "updateLogo",
-  async (formData: any, { dispatch }: any) => {
+  async (fileData: any, { dispatch }: any) => {
     try {
       dispatch(fetchDataStart(true));
-      const response = await formDataPut(`/user/profileImage`, formData);
+      const response = await formDataPut(`/user/profileImage`, fileData);
+     localStorage.setItem("image", fileData)
 
       console.log(response);
     } catch (error: any) {

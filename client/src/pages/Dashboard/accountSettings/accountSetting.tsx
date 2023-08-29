@@ -18,7 +18,7 @@ const AccountSettings: React.FC = () => {
 
   const location = useLocation();
 
- const [formData, setFormData] = useState<LoginData>({
+ const [formData, setFormData] = useState({
    firstName:"",
    lastName:"",
    address:"",
@@ -33,7 +33,7 @@ const AccountSettings: React.FC = () => {
 
   const [file, setFile] = useState('') 
   
-  const handleInputChange = (e) => {
+  const handleInputChange = (e:any) => {
     const { name, value } = e.target;
     if (name === "file") {
 
@@ -110,37 +110,37 @@ const AccountSettings: React.FC = () => {
     // };
 
   return (
-    <div className="p-4 md:p-8 lg:p-16 ml-[15%]">
-      <form>
-        {/* Navigation Links */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 overflow-x-auto w-10/12">
-          <Link to="/dashboard/accountsettings" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
+    <div className="p-4 md:p-8 ml-[15%]">
+      <form className='w-[80%] flex flex-col align-center max-[480px]:w-[100%]'>
+        {/* Navigation Links */} 
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 overflow-x-auto w-10/12 ">
+          <Link to="/dashboard/accountsettings" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center justify-center border-2">
             <div className="flex items-center text-left space-x-2 md:space-x-4">
-              <BsPersonFillGear className="h-6 w-6 ml-2 md:ml-4 text-black" />
-              <span className="text-black justify-content: flex-start text-sm md:text-base">Personal Info</span>
+              <BsPersonFillGear className="h-6 w-6 ml-2 md:ml-4nmax-[480px]:ml-0 text-black" />
+              <span className="text-black justify-content: flex-start text-sm md:text-base max-[480px]:text-[13px]">Personal Info</span>
             </div>
           </Link>
-          <Link to="/dashboard/update-profile" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
+          <Link to="/dashboard/update-profile" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center justify-center border-2">
             <div className="flex items-center text-left space-x-4">
-                <BsFillCreditCard2FrontFill className="h-6 w-6 ml-4 text-black" />
-                <span className="text-black justify-content: flex-start">Update Profile</span>
+                <BsFillCreditCard2FrontFill className="h-6 w-6 ml-4 max-[480px]:ml-0 text-black" />
+                <span className="text-black justify-content: flex-start max-[480px]:text-[13px]">Update Profile</span>
               </div>
           </Link>
 
-          <Link to="/dashboard/notifications" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
-              <div className="flex items-center text-left space-x-4">
-                <BiSolidBellRing className="h-6 w-6 ml-4 text-black" />
-                <span className="text-black justify-content: flex-start">Notifications</span>
+          <Link to="/dashboard/notifications" className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center border-2 justify-center">
+              <div className="flex items-center text-left space-x-4 ">
+                <BiSolidBellRing className="h-6 w-6 ml-4 max-[480px]:ml-0 text-black" />
+                <span className="text-black justify-content: flex-start max-[480px]:text-[13px]">Notifications</span>
               </div>
           </Link>
 
       
         {/* Password and Security */}
         <div className="flex flex-col items-center">
-          <Link to="/changePassword"  className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center">
-            <div className="flex items-center text-left space-x-4">
-              <BiSolidLockOpen className="h-6 w-6 ml-4 text-black" />
-              <span className="text-black justify-content: flex-start">Password and Security</span>
+          <Link to="/changePassword"  className="bg-slate-50 hover:bg-blue-500 p-2 rounded-md flex flex-col items-center border-2">
+            <div className="flex items-center text-left space-x-4 ">
+              <BiSolidLockOpen className="h-6 w-6 ml-4 max-[480px]:ml-0 text-black" />
+              <span className="text-black max-[480px]:text-[13px]">Password and Security</span>
             </div>
           </Link >
         </div>
@@ -152,9 +152,9 @@ const AccountSettings: React.FC = () => {
         {/* Form Section */}
           {location.pathname === "/dashboard/update-profile" && (
             <>
-            <div className="space-y-4 w-8/12">
+            <div className="space-y-4 w-[83%] m-0">
               {/* Personal Info Fields */}
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 mt-10">
                 {!file ? <label htmlFor="fileInput" className="w-24 ml-2 mb-0 h-24 flex items-center justify-center rounded-full bg-gray-300">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +176,7 @@ const AccountSettings: React.FC = () => {
                   </svg>
                 </label> :
                   <img src={file} alt="hsdjh" className='h-[100px] w-[100px] rounded-[50%] object-cover object-top' />}
-                {file ? <button className='w-fit bg-black text-white py-2 rounded-md' onClick={updateImage}>Upload Image</button> : null}
+                {file ? <button className='w-fit bg-black text-white p-3 rounded-md hover:bg-blue-700 hover:text-black' onClick={updateImage}>Upload Image</button> : null}
                 <input type="file" name="file" id="fileInput" className="hidden" onChange={handleInputChange} />
             </div>
 
@@ -253,7 +253,7 @@ const AccountSettings: React.FC = () => {
                 <label className="flex flex-col">
                   State
                   <input onChange={handleInputChange}
-                    className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
+                    className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none "
                     placeholder="Abuja"
                     name="state"
                   />
@@ -279,12 +279,12 @@ const AccountSettings: React.FC = () => {
           </>
         )}
 
-{location.pathname === "/dashboard/accountsettings" && (
+          {location.pathname === "/dashboard/accountsettings" && (
             <>
-            <div className="space-y-4 w-8/12">
+            <div className="w-[80%]">
               {/* Personal Info Fields */}
-              <div className="flex items-center space-x-2">
-              {!users?.imageUrl ? <label htmlFor="fileInput" className="w-24 ml-2 mb-0 h-24 flex items-center justify-center rounded-full bg-gray-300">
+              <div className="flex items-center space-x-2 justify-center mt-16">
+              {!users?.imageUrl ? <label htmlFor="fileInput" className="w-24 ml-2 mb-0 h-24 flex items-center justify-center rounded-full bg-gray-300 mt-24">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-4 w-4 text-white"
@@ -304,115 +304,34 @@ const AccountSettings: React.FC = () => {
                     />
                   </svg>
                 </label> :
-                  <img src={users?.imageUrl} alt="hsdjh" className='h-[100px] w-[100px] rounded-[50%] object-cover object-top' />}
+                  <img src={users?.imageUrl} alt="hsdjh" className='h-[300px] w-[300px] rounded-[50%] object-cover object-top border-gray-700 border-solid border-4 max-[480px]:h-[200px] max-[480px]:w-[200px] justify-center' />}
               {/* <button onClick={updateImage}>Click Me</button> */}
                 <input type="file" name="file" id="fileInput" className="hidden" onChange={handleInputChange} />
             </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <label className="flex flex-col">
-                  First Name
-                  <input 
-                    className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                    placeholder={users?.firstName}
-                    name="firstName"
-                    readOnly
-                  />
-                </label>
 
-                <label className="flex flex-col">
-                  Last Name
-                  <input 
-                    className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                    placeholder={users?.lastName}
-                    name="lastName"
-                    readOnly
-                  />
-                </label>
+             <div className='flex flex-col text-gray-600 font-semibold p-8 max-[480px]:p-0 text-center '>
+                    <div className=' max-[480px]:p-4 w-100%'>
+                         <div className='flex flex-row max-[480px]:flex-col max-[480px]:w-[14rem] max-[480px]:justify-start'>
+                              <h3 className='text-[50px] max-[480px]:text-[20px] flex flex-row w-[px] justify-center'>{users?.firstName.toUpperCase()} {users?.lastName.toUpperCase() }</h3>
+                         </div>
+                         <h3 className='text-[30px] max-[480px]:text-[15px] mb-6 max-[480px]:text-start'>{users?.email}</h3>
+                         <div className='max-[480px]:text-start'>
+                              <p className='max-[480px]:text-[12px]'>Phone no: {users?.phoneNumber}</p>
+                              <p className='max-[480px]:text-[12px]'>Address: {users?.address}</p>
+                              <p className='max-[480px]:text-[12px]'>Zip code: {users?.zipCode}</p>
+                              <p className='max-[480px]:text-[12px]'>City: {users?.city}</p>                  
+                              <p className='max-[480px]:text-[12px]'>State: {users?.state}</p>                   
+                              <p className='max-[480px]:text-[12px]'>Country: {users?.country}</p>
+                         </div>
+                    </div>
+                   
+               </div>     
 
-                {/* Add other input fields here */}
-              </div>
 
-              <label className="flex flex-col">
-                Email
-                <input 
-                  className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                  placeholder={users?.email}
-                  name="email"
-                  readOnly
-                />
-              </label>
-
-              <label className="flex flex-col">
-                Phone Number
-                <input 
-                  className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                  placeholder={users?.phoneNumber}
-                  name="phoneNumber"
-                  readOnly
-                />
-              </label>
-
-              <label className="flex flex-col">
-                Street Address
-                <input 
-                  className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                  placeholder={users?.address}
-                  name="address"
-                  readOnly
-                />
-              </label>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <label className="flex flex-col">
-                  ZIP
-                  <input 
-                    className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                    placeholder={users?.zipCode}
-                    name="zipCode"
-                    readOnly
-                  />
-                </label>
-
-                <label className="flex flex-col">
-                  City
-                  <input 
-                    className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                    placeholder={users?.city}
-                    name="city"
-                    readOnly
-                  />
-                </label>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <label className="flex flex-col">
-                  State
-                  <input 
-                    className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                    placeholder={users?.state}
-                    name="state"
-                    readOnly
-                  />
-                </label>
-
-                <label className="flex flex-col">
-                  Country
-                  <input 
-                    className="w-full h-10 px-3 py-2 border rounded-md focus:outline-none"
-                    placeholder={users?.country}
-                    name="country"
-                    readOnly
-                  />
-                </label>
-              </div>
+            
 
               
-                {/* <button
-                  className="w-full bg-black text-white py-2 rounded-md"
-                type="submit" onClick={handleFormSubmit}>
-                  Update
-                </button> */}
             </div>  
           </>
         )}
@@ -426,7 +345,12 @@ const AccountSettings: React.FC = () => {
   );
 };
 
-  
+
+{/* <button
+  className="w-full bg-black text-white py-2 rounded-md"
+type="submit" onClick={handleFormSubmit}>
+  Update
+</button> */}
 
 //  return (
 //     <form onSubmit={handleFormSubmit}>

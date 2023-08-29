@@ -1,4 +1,4 @@
-.button{
+.content .button{
      height: 50px;
      margin: 2% 0%;
      width: 70%;
@@ -12,14 +12,19 @@
      transition: box-shadow .4s;
      @media only screen and (max-width: 780px) {
           margin: 2% auto;
+          margin: 0px;
+          width: 100%;
+
      }
 }
 
-.button:hover{
+ .button:hover{
      background-color: rgb(71,111,251);
      box-shadow: 0 0 11px rgba(33,33,33,.8);
      color: black;
 }
+
+
 input {
      transition: box-shadow .4s;
      width: 24.5rem;
@@ -90,7 +95,7 @@ input:hover{
      width:400px;
      margin-top: 93px;
      @media only screen and (max-width: 780px) {
-          width: 40%;
+          width: 70%;
      }
     
 }
@@ -98,9 +103,9 @@ input:hover{
      text-align: center;
      letter-spacing: normal;
      margin-top: 50px;
-     margin-left: auto;
-     margin-right: auto;
-     width: 50%;
+     margin-left: 20px;
+     margin-right: 20px;
+     width: 90%;
      font-weight: 30px;
      font-size: 30px;
      color: white;
@@ -135,23 +140,45 @@ input:hover{
           margin: 0px;
           margin-right: auto;
           margin-left: auto;
-          margin-top: 200px;
+          margin-top: 100px;
           margin-bottom: 200px;
           border-radius: 5px;
           width: 90%;
           text-align: center;
-          box-shadow: 0 0 11px rgba(33,33,33,.8);
      }
 }
 
+.content input{
+    
+     
+     @media only screen and (max-width: 780px) {
+          margin: 0px;
+          width: 100%;
+          margin-bottom: 30px;
+     }
+}
+
+
+
 .content p{
      margin: 3% 0%;
+     margin-bottom: 16px;
+     font-size: 16px;
+     margin-top: 0px;
+     font-weight: 300;
+
+}
+
+.content h2{
+     font-size: 18px;
+     font-weight: 700;
 }
 
 .form{
      display: flex;
      flex-direction: column;
      margin: 2% 0%;
+     width: 100%;
 }
 
 .inputEmail{
@@ -196,6 +223,12 @@ input:hover{
      animation: 1.3s ease-out 0s 1 slideInFromLeft;
      
      padding: 50px;
+
+     @media only screen and (max-width: 780px) {
+          padding: 10px;
+     }
+
+     
    }
 
 
@@ -212,7 +245,7 @@ input:hover{
 
 
 .otpinput input{
-     width: 100px;
+     width: 150px;
      height: 70px;
      margin-right: 40px;
      margin-bottom: 30px;
@@ -220,7 +253,7 @@ input:hover{
      align-items: center;
      border-radius: 5px;
      border: 1px solid black;
-     font-size: 40px;
+     font-size: 60px;
      box-sizing: border-box;
      padding: 0px;
      @media only screen and (max-width: 480px) {
@@ -231,10 +264,13 @@ input:hover{
 
 .countdowntext{
      margin-bottom: 30px;
+     margin-top: 30px;
+     font-weight: 300;
 }
 
-#otp_resend{
+ #otp_resend .button{
      border: 0;
+     margin-top: 100px;
 }
 
 .content1{
@@ -242,8 +278,11 @@ input:hover{
      @media only screen and (max-width: 480px) {
           width: 20rem;
           padding: 20px;
+          font-size: 18px
      }
 }
+
+.content1 
 
 #first{
      margin-bottom: 50px;
@@ -270,9 +309,13 @@ input:hover{
      
      @media only screen and (max-width: 780px) {
      display: flex;
-     justify-content: center;
-     text-align: center;
+     justify-content:space-evenly ;
    }
+}
+
+
+.otpStyle input{
+     margin: auto;
 }
  
   
@@ -285,7 +328,37 @@ input:hover{
       }
  }
 
+.button{
+     height: 50px;
+     margin: 2% 0%;
+     width: 100%;
+     color: white;
+     background-color: black;
+     background: black;
+     border-radius: 5px;
+     border: 1px solid black;
+     transition: 0.5s;
+     cursor: pointer;
+     transition: box-shadow .4s;
+     @media only screen and (max-width: 780px) {
+          margin: 2% auto;
+          margin: 0px;
+          width: 100%;
+          margin-top: 20px;
 
+     }
+}
+
+
+.btnEnd{
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+}
+
+.modal{
+     height: 400px;
+}
 
 
 

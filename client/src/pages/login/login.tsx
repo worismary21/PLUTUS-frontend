@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import log from "./login.module.css";
 import logo from "../../assets/logo.png";
 import { loginUser } from "../../redux/action";
 import { useDispatch } from "react-redux";
+import LoadingSpinner from "../../components/spinner";
+import { Link } from "react-router-dom";
 
-// import { useDispatch } from "react-redux";
-// import axios from "axios";
+
 
 interface LoginData {
   email: "";
@@ -15,14 +16,16 @@ interface LoginData {
 }
 
 function Login() {
-  const [formData, setFormData] = useState<LoginData>({
-    email: "",
-    password: "",
-  });
+     const [error] = useState("");
+     const [isLoading, setIsLoading] = useState(false);
+     const [formData, setFormData] = useState<LoginData>({
+          email: "",
+          password: "",
+     });
 
-  const [error] = useState("");
+    
 
-  const [loading] = useState(false);
+
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -39,7 +42,15 @@ function Login() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     dispatch(loginUser(formData));
+    setIsLoading(true)
+
+    setTimeout(() => {
+     setIsLoading(false)
+   }, 5000);
+
   };
+
+ 
 
   return (
     <>
@@ -66,8 +77,10 @@ function Login() {
 
         <div className={log.right_side}>
           <div className={log.logo}>
-            <h1 className={log.logo_one}>Plutus</h1>
-            <p className={log.logo_two}>Online Banking </p>
+               <Link to="/">
+               <h1 className={log.logo_one}>Plutus</h1>
+               <p className={log.logo_two}>Online Banking </p>
+               </Link>
           </div>
 
           <form action="" onSubmit={handleSubmit} className={log.right_form}>
@@ -84,7 +97,7 @@ function Login() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder=" FirstName"
+                placeholder=" Email"
               />
             </div>
 
@@ -101,16 +114,22 @@ function Login() {
               />
             </div>
 
+            
+         
             <button
               type="submit"
-              className="w-[340px] h-[50px] bg-black my-7 text-white rounded-lg
-               hover:bg-blue-700 hover:text-black"
+              disabled={isLoading}
+              className={log.loginButton}
             >
-              {loading ? "Loading..." : "Login"}
+              {isLoading ? <LoadingSpinner /> :"Login"}
             </button>
+            
 
             {error && <div>{error}</div>}
-            <p className={log.text8}>Forgot your password?</p>
+
+            <Link to="/changePassword">
+            <p className={log.text8} >Forgot your password?</p>
+            </Link>
           </form>
         </div>
       </div>
