@@ -8,7 +8,7 @@ import { PiUserListFill } from "react-icons/pi";
 import { ImOffice } from "react-icons/im"
 // import { FaMoneyBillTransfer } from "react-icons/fa"
 
-import { MdOutlineDashboard, MdLogout, MdOutlineAssuredWorkload, MdTableChart } from "react-icons/md";
+import { MdOutlineDashboard, MdLogout, MdTableChart } from "react-icons/md";
 
 import React, { useState } from "react";
 import "./dashboard.css";

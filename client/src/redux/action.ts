@@ -458,10 +458,14 @@ export const otpVerification = createAsyncThunk(
       //axios call
       const response = await apiPut(`/change-password-otp/${id}`, {otp});
       console.log(response.data);
+      toast.error(response.data.message)
 
       dispatch(fetchDataCompany(response.data.data));
+
+        toast.success(response.data.message)
     } catch (error: any) {
       console.log(error);
+      toast.error(error.response.data.message)
     }
   }
 );

@@ -19,6 +19,7 @@ import DashboardHome from "./pages/Dashboard/HomeDashBoard/DashboardHome";
 // import Dashboard from "./pages/Dashboard/Dashboard";
 import { RoutesDashBoard } from "./pages/Dashboard/Routes";
 import ProtectedRoute from "./pages/auth/Protectedroute";
+import {useState, useEffect} from "react"
 
 function App() {    
      const [isSignedIn, setIsSignedIn] = useState(false)

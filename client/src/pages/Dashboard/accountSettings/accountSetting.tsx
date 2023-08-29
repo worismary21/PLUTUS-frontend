@@ -18,7 +18,7 @@ const AccountSettings: React.FC = () => {
 
   const location = useLocation();
 
- const [formData, setFormData] = useState<LoginData>({
+ const [formData, setFormData] = useState({
    firstName:"",
    lastName:"",
    address:"",
@@ -33,7 +33,7 @@ const AccountSettings: React.FC = () => {
 
   const [file, setFile] = useState('') 
   
-  const handleInputChange = (e) => {
+  const handleInputChange = (e:any) => {
     const { name, value } = e.target;
     if (name === "file") {
 

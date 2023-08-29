@@ -83,11 +83,11 @@ function changePass() {
   const handleSubmit = async (e: React.FormEvent) => {
      try {
           e.preventDefault()
-          if (email) {
+          if (!userEmail && email || userEmail === email) {
                await dispatch(emailVerification(email))
           toggleModal();
           sendOTP();
-          }else if(userEmail !== email){
+          }else if(userEmail && userEmail !== email){
                toast.error("Email do not match");
                window.location.reload()
           }

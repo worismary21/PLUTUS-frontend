@@ -101,7 +101,6 @@ const handleRegister = async (e:  React.FormEvent<HTMLFormElement>) => {
 
 
                          {!email && (<form className={change.form} onSubmit={handleRegister}>
-                         <input type={passwordType} placeholder='Old Password' name='oldPassword' value={formData.oldPassword} required onChange={handleInputChange}  className={change.inputEmail} ></input>
                          <input type={passwordType} placeholder='New Password' name='newPassword' value={formData.newPassword} required onChange={handleInputChange} className={change.inputEmail}>
                          <div className="input-group-btn">
                               /
