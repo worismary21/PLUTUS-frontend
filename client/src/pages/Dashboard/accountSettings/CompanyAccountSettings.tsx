@@ -12,7 +12,7 @@ import { updateCompany } from '../../../redux/action'
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
-import { getCompanyInfo } from "../../../redux/action"
+import { getCompanyInfo } from "../../../redux/action";
 
 
 
