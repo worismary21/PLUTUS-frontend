@@ -6,10 +6,10 @@ import About from "./About";
 
 const SecondPage = () => {
   return (
-    <section className="bg-[white] px-20 mt-12">
-      <div className="bg-white transform -translate-y-20 rounded-lg shadow-lg pt-[2%] pb-[6%] px-[2%]  ">
-        <div className="flex flex-col md:flex-row justify-between bg-[#d6f0ff] rounded-lg shadow-lg p-5">
-          <div className="ml-5 mt-5">
+    <section className="bg-[white] px-5 md:px-10 mt-12 w-[100%]">
+      <div className="bg-white transform -translate-y-20 rounded-lg shadow-lg pt-[2%] pb-[6%] px-[2%]">
+        <div className="flex flex-col md:flex-row justify-between bg-[#d6f0ff] rounded-lg shadow-lg p-5 text-center ">
+          <div className="md:ml-5 mt-5">
             <h1 className="text-3xl font-bold">Easy payments with one tap</h1>
             <p className="text-xs mt-3">
               Send and request money easily with anyone. No extra fees
@@ -33,7 +33,7 @@ const SecondPage = () => {
             </div>
           </div>
 
-          <div className="text-center bg-[#d4ffe5] rounded-lg shadow-lg p-5 flex flex-wrap justify-center">
+          <div className="text-center bg-[#d4ffe5] rounded-lg shadow-lg p-5 flex flex-wrap justify-center mt-[30%] md:mt-0">
             <h1 className="text-2xl font-bold">
               Rewards await you as you invest on deals
             </h1>

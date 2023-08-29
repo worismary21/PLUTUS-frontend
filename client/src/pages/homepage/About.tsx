@@ -5,8 +5,8 @@ import arrow from "./images/arrow_forward.png";
 const About = () => {
   return (
     <div>
-      <div className="flex flex-col lg:flex-row">
-        <div className="">
+      <div className="flex flex-col lg:flex-row ">
+        <div className="text-center md:text-start">
           <h1 className="text-3xl font-bold">Personalize your credit card</h1>
           <p className="mt-3">
             Create your design or choose from a number of amazing and unique
@@ -26,12 +26,12 @@ const About = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row mt-20">
+      <div className="flex flex-col-reverse md:flex-row mt-20">
         <div className="">
           <img src={penCard} className="h-[100%] w-[90%] rounded-lg " />
         </div>
 
-        <div className="lg:pl-10">
+        <div className="lg:pl-10 text-center md:text-start">
           <h1 className="text-3xl font-bold">Investment made simple</h1>
           <p className="mt-3">
             Our financial advisors are here to guide you through the investment
