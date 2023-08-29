@@ -202,7 +202,7 @@ console.log(users.account_name)
         
         <div className="lg:w-3/5 ">
           <div>
-            <TransactionsList userTransactions={transactions} />
+            <TransactionsList userTransactions={transactions} userDetails={undefined} />
           </div>
           {/* <div className="flex flex-row  p-5 pr-10">
             <TransactionsList userTransactions={transactions} userDetails={undefined}/>

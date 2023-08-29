@@ -37,6 +37,12 @@ const Sidebar = () => {
       icon: MdOutlineDashboard,
     },
     { name: "Log out", link: "/", icon: MdLogout },
+    {
+      name: "Company settings",
+      link: "/dashboard/accountsettings",
+      icon: FiSettings,
+      margin: true,
+    }
   ];
   const companymenus = [
     { name: "Home", link: "/dashboard", icon: AiFillHome },

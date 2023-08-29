@@ -19,6 +19,7 @@ import CompanyAccountSettings from "./accountSettings/CompanyAccountSettings"
 import AllTransactions from "../AdminPageTransactions/AllTransactions";
 import CreateCompany from "./Company/CreateCompany";
 import CompanyTable from "../companytable/CompanyTable";
+import UpdateCompanyProfile from "./updateCompany/UpdateCompany";
 
 export interface transaction {
   id: string;
@@ -219,6 +220,7 @@ export const RoutesDashBoard = () => {
 
           <Route path="/createCompany" element={<CreateCompany />} />
           <Route path="/companies" element={<CompanyTable />} />
+          <Route path="/updateCompanyProfile" element={<UpdateCompanyProfile />}/>
         </Routes>
       </div>
     </div>
