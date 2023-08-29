@@ -110,7 +110,11 @@ const AccountSettings: React.FC = () => {
     // };
 
   return (
-    <div className="p-4 md:p-8 lg:p-16 ml-[15%]">
+    // <div className="p-4 md:p-8 lg:p-16 ml-[15%]">
+    // <div className="p-4 sm:p-8 md:p-16 ml-[40%] sm:ml-4 sm:mr-4 justify-center">
+    <div className="p-4 sm:p-8 md:p-16 ml-[40%] sm:ml-4 sm:mr-4 w-screen">
+
+
       <form>
         {/* Navigation Links */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 overflow-x-auto w-10/12">
