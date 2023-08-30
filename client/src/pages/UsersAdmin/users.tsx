@@ -68,8 +68,8 @@ function UsersAdmin() {
           value={searchInput}
         />
       </div>
-      <div className=' w-[100%]'>
-        <table className=''>
+      <div className=' w-[100%] overflow-x-scroll'>
+        <table className='w-auto overflow-x-auto sm:overflow-x-auto'>
           <thead className='shadow-lg sticky top-0 bg-blue-500 text-white-50'>
             <tr>
               <th className='p-4 w-4'>ID</th>

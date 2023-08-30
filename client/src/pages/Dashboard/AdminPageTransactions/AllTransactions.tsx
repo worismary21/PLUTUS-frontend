@@ -49,12 +49,12 @@ function AllTransactions (){
         <div className="mt-12 releative w-full flex flex-col shadow-lg mb-6">
             <div className = "flex flex-wrap items-center">
                 <div className = "relative w-full px-4 max-w-full flex-grow">
-            <p className = "text-center text-xl decoration-from-font text-black-700">TRANSACTIONS FOR ALL USERS</p>
+            <p className = " ml-[9%] md:ml-[0%] lg:ml-[0%] text-center text-xl decoration-from-font text-black-700 ">TRANSACTIONS FOR ALL USERS</p>
             </div>
             </div>
 
             <div className="flex px-6 justify-end">
-            <input className="w-96 h-10 px-2 italic" placeholder="search for transactions" value={searchValue} onChange={handleSearchChange}/>            
+            <input className=" w-[84%] md:w-[92%] lg:w-[25%] h-10 px-2 italic" placeholder="search for transactions" value={searchValue} onChange={handleSearchChange}/>            
             </div>
 
 
