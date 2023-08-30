@@ -54,7 +54,7 @@ function App() {
             path="/dashboard/*"
             element={
               <ProtectedRoute>
-                {" "}
+                {/* {" "} */}
                 <RoutesDashBoard />
               </ProtectedRoute>
             }
@@ -67,3 +67,6 @@ function App() {
 }
 
 export default App;
+
+
+

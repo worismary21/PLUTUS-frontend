@@ -40,9 +40,9 @@ const Sidebar = () => {
   ];
   const companymenus = [
     { name: "Home", link: "/dashboard", icon: AiFillHome },
-    { name: "transactions", link: "/dashboard/companies", icon: BiTransfer },
+    { name: "Transfer", link: "/dashboard/roitransfer", icon: BiTransfer },
     {
-      name: "profile",
+      name: "Profile",
       link: "/dashboard/transactions",
       icon: MdOutlineDashboard,
     },
@@ -71,6 +71,7 @@ const Sidebar = () => {
       }, 2000);
     }
   };
+
   return (
     // <section className='flex gap-6'>
     <div className={`md:${open ? 'w-48': 'w-20'} ${open ? 'w-20': 'w-20'} duration-500 fixed lg:h-[100vh] h-[200vh] z-[5] bg-[#f7fafc]  text-gray-500 px-4 shadow-xl} `}>
