@@ -16,7 +16,7 @@ import Homepage from "./pages/homepage/Homepage";
 import DashboardHome from "./pages/Dashboard/HomeDashBoard/DashboardHome";
 // import CompanyTable from './pages/companytable/CompanyTable';
 // import { AuthProvider } from "./pages/auth/Protectedroute";
-import Dashboard from "./pages/Dashboard/Dashboard";
+// import Dashboard from "./pages/Dashboard/Dashboard";
 import { RoutesDashBoard } from "./pages/Dashboard/Routes";
 import ProtectedRoute from "./pages/auth/Protectedroute";
 

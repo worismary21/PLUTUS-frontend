@@ -16,7 +16,7 @@ import CompanyDashboard from "../companydashboard/CompanyDashboard";
 import CompanyAccountSettings from "./accountSettings/CompanyAccountSettings"
 
 
-import AllTransactions from "../AdminPageTransactions/AllTransactions";
+import AllTransactions from "./AdminPageTransactions/AllTransactions";
 import CreateCompany from "./Company/CreateCompany";
 import CompanyTable from "../companytable/CompanyTable";
 import UpdateCompanyProfile from "./updateCompany/UpdateCompany";
@@ -192,10 +192,10 @@ export const RoutesDashBoard = () => {
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
-      <div>
+      <div className="lg:ml-[9%]">
         <Navbar />
         <Routes>
-          <Route path="" element={<DashboardHome />} />
+          <Route path="/" element={<DashboardHome />} />
           <Route path="/transfer" element={<Transfer />} />
           <Route path="/investment" element={<Investment />} />
           <Route path="/transfer" element={<Transfer />} />
@@ -220,7 +220,7 @@ export const RoutesDashBoard = () => {
 
           <Route path="/createCompany" element={<CreateCompany />} />
           <Route path="/companies" element={<CompanyTable />} />
-          <Route path="/updateCompanyProfile" element={<UpdateCompanyProfile />}/>
+          <Route path="/updateCompanyProfile" element={<UpdateCompanyProfile />} />
         </Routes>
       </div>
     </div>
