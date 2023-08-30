@@ -23,10 +23,11 @@ function Roitransfer() {
 
   return (
     <>
+    <section className = "lg:pl-4 md:pl-28 sm:pl-32 min-[375px]:pl-28 max-[374px]:pl-28">
     <div className = "text-center mt-8 text-2xl"> Return On Investment</div>
-    <div className='lg:flex sm:flex-wrap'>
-    <div className = "lg:w-1/2 sm:w-full text-justify leading-7">
-        <p className = "text-red-800"><strong className = "sm:ml-28">Investor Return on Investment (ROI) Policy</strong></p>
+    <div className='lg:flex md:flex-wrap sm:flex-wrap'>
+    <div className = "lg:w-1/2 md:w-full sm:w-full min-[375px]:w-full text-justify leading-7">
+        <p className = "text-red-800"><strong>Investor Return on Investment (ROI) Policy</strong></p>
         <p>Welcome to <span className = "text-blue-800">Plutus!</span></p>
         <p className = "text-sm"><span className = "text-blue-800"><strong>Our Commitment to Transparency and Accountability</strong></span><br/> At Plutus, we take pride in our dedication to transparency, open communication, and accountability. As part of this commitment, we want to outline our policy for providing Return on Investment (ROI) information to our valued investors. 
         <br/><span className = "text-blue-800"><strong>Timely and Accurate ROI Updates</strong></span><br/> We understand that staying informed about your investment's performance is crucial. To ensure that you have access to the latest information, we provide regular updates on the status of your investment and its corresponding ROI. These updates will be delivered as per the terms outlined in your investment agreement.
@@ -36,10 +37,10 @@ function Roitransfer() {
         <br/>Thank you for choosing Plutus as your investment partner. We look forward to achieving mutual success together.
         </p>
     </div>
-    <div className = "lg:w-1/2 sm:w-full mt-32">
-    <form action="" onSubmit = {handleSubmit} className="lg:pl-40 sm:pl-20 w-1/2">
+    <div className = "lg:w-1/2 md:w-full sm:w-full min-[375px]:items-center min-[375px]:w-full mt-32">
+    <form action="" onSubmit = {handleSubmit} className="md:pl-[60px] min-[375px]:pl-[5px] sm:pl-20 w-1/2">
           <input 
-            className="mt-6 w-96"
+            className="mt-6 w-96 min-[375px]:w-[300px] max-[374px]:w-52 md:w-[600px] sm:w-[500px] xl:w-[500px] italic"
             type="text"
             name="accountNumber"
             value={accountNumber}
@@ -49,15 +50,16 @@ function Roitransfer() {
           />
 
           <button type="submit" className=" block bg-gray-950 mt-8 text-white text-xs 
-          h-[50px] rounded-md w-96" >
+          h-[50px] rounded-md w-96 min-[375px]:w-[300px] max-[374px]:w-52 md:w-[600px] sm:w-[500px] xl:w-[500px]" >
             {" "}
             Transfer
           </button>
           
     </form> 
-    <p className="lg:pl-32 sm:pl-16 py-16 w-auto text-red-800 text-justify"><strong>Notice:</strong><br/> Transferring to investor means you are confirming that all terms and conditions have been met; the duraion of investment has elapsed and the investor is eligible for this transfer.</p>
+    <p className="lg:pl-32 xl:pl-[60px] sm:pl-3.5 py-16 w-auto pr-4 text-red-800 text-justify"><strong>Notice:</strong><br/> Any transfer made to investor means you are confirming that all terms and conditions have been met; the duraion of investment has elapsed and the investor is eligible for this transfer.</p>
     </div>
     </div>
+    </section>
     </>
   )
 }
