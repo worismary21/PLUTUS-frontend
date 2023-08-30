@@ -19,7 +19,7 @@ const Investment = () => {
     company_account_number:"",
     amount:""
   })
-
+  
   // const [isOpen, setIsOpen] = useState(false);
 
   const dispatch = useDispatch() as unknown as any
@@ -38,7 +38,6 @@ const Investment = () => {
             [name]: value,
           });
     }
-    
   };
 //   console.log(formData);
 
@@ -199,10 +198,6 @@ const Investment = () => {
           </button>
           
         </form> 
-
-        
-
-
     </div>
     </div>
     <div className="ml-10 lg:w-[680px] md:w-[200px] hidden lg:block md:block">

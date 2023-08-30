@@ -26,8 +26,7 @@
 //           <Route path="/password-and-security" element={<AccountSettings />} />
 //           <Route path="/choose-plan" element={<AccountSettings />} />
 //           <Route path="/update-profile" element={<AccountSettings />} />
-
-          
+         
 //         </Routes>
 
 //     </div>

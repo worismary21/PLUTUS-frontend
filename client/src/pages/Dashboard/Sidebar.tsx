@@ -30,17 +30,31 @@ const Sidebar = () => {
   ];
 
   const adminmenus = [
+    { name: "Users", link: "/dashboard/admin", icon: AiFillHome },
+    { name: "companies", link: "/dashboard/companies", icon: BiTransfer },
+    {
+      name: "Transactions",
+      link: "/dashboard/allTransactions",
+      icon: MdOutlineDashboard,
+    },
+    {
+      name: "Update",
+      link: "/dashboard/updateCompanyProfile",
+      icon: FiSettings,
+      margin: true,
+    },
      {name: "Home", link:'/dashboard/adminHome', icon: AiFillHome},
     {name: "Users", link:'/dashboard/admin', icon: PiUserListFill},
     {name: "companies", link:'/dashboard/companies', icon: ImOffice},
     {name: "Transactions", link:'/dashboard/allTransactions', icon: BiTransfer},
     { name: "Log out", link: "/", icon: MdLogout },
+  
   ];
   const companymenus = [
     { name: "Home", link: "/dashboard", icon: AiFillHome },
-    { name: "transactions", link: "/dashboard/companies", icon: BiTransfer },
+    { name: "Transfer", link: "/dashboard/roitransfer", icon: BiTransfer },
     {
-      name: "profile",
+      name: "Profile",
       link: "/dashboard/transactions",
       icon: MdOutlineDashboard,
     },
@@ -70,6 +84,7 @@ const Sidebar = () => {
       }, 500)
     }
   };
+
   return (
     // <section className='flex gap-6'>
     <div className={`md:${open ? 'w-48': 'w-20'} ${open ? 'w-20': 'w-20'} duration-500 fixed lg:h-[100vh] h-[200vh] z-[5] bg-[#f7fafc]  text-gray-500 px-4 shadow-xl} `}>

@@ -14,11 +14,13 @@ import Transactions from "./Transactions/Transactions";
 import CompanyDashboard from "../companydashboard/CompanyDashboard";
 // import AllTransactions from "../AdminPageTransactions/AllTransactions"
 import CompanyAccountSettings from "./accountSettings/CompanyAccountSettings"
+import Roitransfer from "./Transfer/Roitransfer";
 
 
-import AllTransactions from "../AdminPageTransactions/AllTransactions";
+import AllTransactions from "./AdminPageTransactions/AllTransactions";
 import CreateCompany from "./Company/CreateCompany";
 import CompanyTable from "../companytable/CompanyTable";
+import UpdateCompanyProfile from "./updateCompany/UpdateCompany";
 
 export interface transaction {
   id: string;
@@ -219,6 +221,8 @@ export const RoutesDashBoard = () => {
 
           <Route path="/createCompany" element={<CreateCompany />} />
           <Route path="/companies" element={<CompanyTable />} />
+          <Route path="/roitransfer" element={<Roitransfer />} />
+          <Route path="/updateCompanyProfile" element={<UpdateCompanyProfile />} />
         </Routes>
       </div>
     </div>
