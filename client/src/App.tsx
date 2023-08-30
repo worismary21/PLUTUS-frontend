@@ -19,11 +19,30 @@ import DashboardHome from "./pages/Dashboard/HomeDashBoard/DashboardHome";
 // import Dashboard from "./pages/Dashboard/Dashboard";
 import { RoutesDashBoard } from "./pages/Dashboard/Routes";
 import ProtectedRoute from "./pages/auth/Protectedroute";
+import {useState, useEffect} from "react"
+
+function App() {    
+     const [isSignedIn, setIsSignedIn] = useState(false)
+     const verify = localStorage.getItem("verify")
+     console.log( typeof isSignedIn)
+
+  const signin = () => {
+     if(verify === "true"){
+          setIsSignedIn(true)
+     }else setIsSignedIn(false)
+  }
+
+  useEffect (()=>{
+     signin()
+  },[])
+
+
+
 
 // import Privaterouter from './pages/auth/Privaterouter';
 // import React from 'react';
 
-function App() {
+
   return (
     <>
       {/* <AuthProvider> */}
@@ -65,6 +84,8 @@ function App() {
     </>
   );
 }
+
+
 
 export default App;
 

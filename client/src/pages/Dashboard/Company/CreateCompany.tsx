@@ -3,6 +3,7 @@ import React, { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { createCompany } from "../../../redux/action";
+import LoadingSpinner from "../../../components/spinner";
 // import { Link } from "react-router-dom";
 // import CompanyTable from "../../companytable/CompanyTable";
 
@@ -36,6 +37,7 @@ const CreateCompany = () => {
 
   const [cPassword, setCPassword] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -55,6 +57,12 @@ const CreateCompany = () => {
       toast.error("Invalid Password");
     } else {
       dispatch(createCompany(formData));
+      setIsLoading(true)
+
+
+    setTimeout(() => {
+     setIsLoading(false)
+   }, 7000);
     }
   };
 
@@ -206,7 +214,7 @@ const CreateCompany = () => {
               type="submit"
               className="w-[40%] rounded-full mt-5 bg-black h-[6vh] text-white hover:bg-blue-500 text-lg mr-5"
             >
-              Register
+              {isLoading ? <LoadingSpinner /> :"Register"}
             </button>
             <button
               onClick={closeModal}

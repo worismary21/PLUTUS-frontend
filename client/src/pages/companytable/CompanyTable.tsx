@@ -44,8 +44,6 @@ const CompanyTable: React.FC = () => {
 
   const companies = useSelector((state: any) => state.company);
 
-  console.log(companies);
-
   useEffect(() => {
     dispatch(getCompanies());
   }, []);

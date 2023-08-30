@@ -1,14 +1,15 @@
-// import React from 'react'
-// import {BiSolidInstitution,} from 'react-icons/bi'
 import { BsSave } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
-// import { FaUserCircle } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { BiTransfer } from "react-icons/bi";
-// import { IoIosCard } from "react-icons/io";
 import { AiFillHome } from "react-icons/ai";
+import { PiUserListFill } from "react-icons/pi";
+import { ImOffice } from "react-icons/im"
+// import { FaMoneyBillTransfer } from "react-icons/fa"
+
 import { MdOutlineDashboard, MdLogout, MdTableChart } from "react-icons/md";
+
 import React, { useState } from "react";
 import "./dashboard.css";
 
@@ -33,10 +34,21 @@ const Sidebar = () => {
     { name: "companies", link: "/dashboard/companies", icon: BiTransfer },
     {
       name: "Transactions",
-      link: "/dashboard/transactions",
+      link: "/dashboard/allTransactions",
       icon: MdOutlineDashboard,
     },
+    {
+      name: "Update",
+      link: "/dashboard/updateCompanyProfile",
+      icon: FiSettings,
+      margin: true,
+    },
+     {name: "Home", link:'/dashboard/adminHome', icon: AiFillHome},
+    {name: "Users", link:'/dashboard/admin', icon: PiUserListFill},
+    {name: "companies", link:'/dashboard/companies', icon: ImOffice},
+    {name: "Transactions", link:'/dashboard/allTransactions', icon: BiTransfer},
     { name: "Log out", link: "/", icon: MdLogout },
+  
   ];
   const companymenus = [
     { name: "Home", link: "/dashboard", icon: AiFillHome },
@@ -63,12 +75,13 @@ const Sidebar = () => {
 
   const role = localStorage.getItem("role");
 
+
   const LogOut = (name: string) => {
     if (name === "Log out") {
       localStorage.clear();
       setTimeout(() => {
-        window.location.href = "/";
-      }, 2000);
+      window.location.href = '/'
+      }, 500)
     }
   };
 
