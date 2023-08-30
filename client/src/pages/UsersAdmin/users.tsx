@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { apiDelete, apiGet } from '../../utils/axios';
-import Pagination from '../AdminPageTransactions/Pagination';
+import Pagination from '../Dashboard/AdminPageTransactions/Pagination';
 
 interface User {
   id: string;

@@ -51,13 +51,13 @@ export const loginUser = createAsyncThunk(
       console.log(response.data, "***");
 
       //response check
-      localStorage.setItem('token', response.data.user_token)
-      localStorage.setItem('role', response.data.role)
-      localStorage.setItem('email', response.data.email)
-      localStorage.setItem('id', response.data.id)
-      localStorage.setItem('verify', response.data.verify)
-      localStorage.setItem('firstName', response.data.firstName)
-      localStorage.setItem('lastName', response.data.lastName)
+      localStorage.setItem('token', response.data.user_token);
+      localStorage.setItem('role', response.data.role);
+      localStorage.setItem('email', response.data.email);
+      localStorage.setItem('id', response.data.id);
+      localStorage.setItem('verify', response.data.verify);
+      localStorage.setItem('firstName', response.data.firstName);
+      localStorage.setItem('lastName', response.data.lastName);
       toast.success("user login successful");
 
       //redirect
@@ -223,21 +223,21 @@ export const getCompanyInfo = createAsyncThunk(
   }
 );
 
-  /**============== Get All Companys =======  **/
+/**============== Get All Companys =======  **/
 
-  export const getAllCompanys= createAsyncThunk(
-    "getAllCompanys",
-    async (_, {dispatch}:any) => {
-      try {
-        //set loader true
-       dispatch(fetchDataStart(true))
+export const getAllCompanys = createAsyncThunk(
+  "getAllCompanys",
+  async (_, { dispatch }: any) => {
+    try {
+      //set loader true
+      dispatch(fetchDataStart(true));
 
-       //axios call
-       const response = await apiGet('/company/allCompanyInfo')
-     
-       dispatch(fetchDataCompany(response.data.data))
-      } catch (error: any) {
-       console.log(error)
+      //axios call
+      const response = await apiGet('/company/allCompanyInfo');
+
+      dispatch(fetchDataCompany(response.data.data));
+    } catch (error: any) {
+      console.log(error);
     }
   });
 
@@ -271,7 +271,7 @@ export const updateCompany = createAsyncThunk(
   async (formData: any, { dispatch }: any) => {
     try {
       dispatch(fetchDataStart(true));
-      const response = await apiPut(`/company/updateProfile`, formData);
+      const response = await apiPatch(`/company/updateProfile`, formData);
       toast.success(response.data.message);
 
       //redirect
@@ -436,15 +436,15 @@ export const emailVerification = createAsyncThunk(
   async (email: string, { dispatch }: any) => {
     try {
       dispatch(fetchDataStart(true));
-        const response = await apiPut(`/user/change-password-email`, { email });
-        console.log("response", response);
-        if (response) {
-          toast.success("OTP sent!!");
-          }
-     } 
-     catch (error: any) {
+      const response = await apiPut(`/user/change-password-email`, { email });
+      console.log("response", response);
+      if (response) {
+        toast.success("OTP sent!!");
+      }
+    }
+    catch (error: any) {
       // window.location.reload()
-     //  toast.error(error.response.data.message);
+      //  toast.error(error.response.data.message);
       dispatch(fetchDataFailure(error.response.data.message));
     }
   }
@@ -475,16 +475,16 @@ export const otpVerification = createAsyncThunk(
       const id = localStorage.getItem("id");
 
       //axios call
-      const response = await apiPut(`/change-password-otp/${id}`, {otp});
+      const response = await apiPut(`/change-password-otp/${id}`, { otp });
       console.log(response.data);
-      toast.error(response.data.message)
+      toast.error(response.data.message);
 
       dispatch(fetchDataCompany(response.data.data));
 
-        toast.success(response.data.message)
+      toast.success(response.data.message);
     } catch (error: any) {
       console.log(error);
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
     }
   }
 );
@@ -565,8 +565,10 @@ export const accountSettings = createAsyncThunk(
   async (formData: any, { dispatch }: any) => {
     try {
       dispatch(fetchDataStart(true));
-      const response = await apiPut(`/user/updateAccount`, formData);
+      const response = await apiPatch(`/user/updateAccount`, formData);
       toast.success(response.data.message);
+      localStorage.setItem('firstName', formData.firstName);
+      localStorage.setItem('lastName', formData.lastName);
     } catch (error: any) {
       toast.error(error.response.data.message);
       dispatch(fetchDataFailure(error.response.data.message));
@@ -581,7 +583,7 @@ export const updateLogo = createAsyncThunk(
     try {
       dispatch(fetchDataStart(true));
       const response = await formDataPut(`/user/profileImage`, fileData);
-     localStorage.setItem("image", fileData)
+      localStorage.setItem("image", fileData);
 
       console.log(response);
     } catch (error: any) {

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import axios from '../../api/axios';
-import { apiDelete, apiGet } from '../../utils/axios';
+import axios from '../../../api/axios';
+import { apiDelete, apiGet } from '../../../utils/axios';
 import Pagination from './Pagination';
  
 function AllTransactions (){
