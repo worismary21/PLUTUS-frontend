@@ -6,6 +6,7 @@ import picture from "./images/logo.png"
 import { toast } from 'react-toastify';
 import { useDispatch } from "react-redux";
 import { passwordChangeConfirmation } from "../../redux/action";
+import LoadingSpinner from '../../components/spinner';
 
 
 interface ChangePassword {
@@ -17,6 +18,18 @@ interface ChangePassword {
 
 
 function ChangePass2() {
+
+     const [passwordType, setPasswordType] = useState("")
+     const [isLoading, setIsLoading] = useState(false);
+
+     const togglePassword =()=>{
+          if(passwordType==="password")
+          {
+           setPasswordType("text")
+           return;
+          }
+          setPasswordType("password")
+        }
 
 const [formData, setFormData] = useState<ChangePassword>({
      oldPassword: "",
@@ -34,6 +47,8 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
      });
 }
 
+const email = localStorage.getItem("email")
+
 
 const handleRegister = async (e:  React.FormEvent<HTMLFormElement>) => {
      e.preventDefault()
@@ -45,36 +60,63 @@ const handleRegister = async (e:  React.FormEvent<HTMLFormElement>) => {
      }   
      else{
           dispatch(passwordChangeConfirmation(formData))
+          setIsLoading(true)
+
+          setTimeout(() => {
+         setIsLoading(false)
+       }, 5000);
      }
 }
-console.log("data", formData )
+
   return (
     <>
           <div className={change.changePassword}>
-          <div className={change.leftside}> 
-          <img src={picture}/>
-          <h5>Plutus is personal finance, made simple.</h5>
-          <p>All your accounts, cards, savings, and investments in one place</p>
-          </div>
-          <div className={change.rightSide}>
-               <div className='logo'>
-                    <h2>Plutus</h2>
-                    <p>Online Banking</p>
-               </div>
-               <div className={change.content}>
-                    <h2>Change Password</h2>
-                    <h5>Enter your details</h5>
-                    <form className={change.form} onSubmit={handleRegister}>
-                         <input type='password' placeholder='Old Password' name='oldPassword' value={formData.oldPassword} required onChange={handleInputChange}  className={change.inputEmail} ></input>
-                         <input type='password' placeholder='New Password' name='newPassword' value={formData.newPassword} required onChange={handleInputChange} className={change.inputEmail}></input>
+               <div className={change.leftside}> 
+                    <img src={picture}/>
+                    <h5>Plutus is personal finance, made simple.</h5>
+                    <p>All your accounts, cards, savings, and investments in one place</p>
+                    </div>
+               <div className={change.rightSide}>
+                    <div className='logo'>
+                         <h2>Plutus</h2>
+                         <p>Online Banking</p>
+                    </div>
+                    <div className={change.content}>
+                         <h2>Change Password</h2>
+                         <h5>Enter your details</h5>
+                         {email && (<form className={change.form} onSubmit={handleRegister}>
+                              <input type={passwordType} placeholder='Old Password' name='oldPassword' value={formData.oldPassword} required onChange={handleInputChange}  className={change.inputEmail} ></input>
+                              <input type={passwordType} placeholder='New Password' name='newPassword' value={formData.newPassword} required onChange={handleInputChange} className={change.inputEmail}>
+                              <div className="input-group-btn">
+                                   /
+                              </div>
+                              </input>
+                              <input type='password' placeholder='Confirm Password' name='confirm_password' value={formData.confirm_password} required onChange={handleInputChange}  className={change.inputEmail}></input>
+                              <div className={change.btnnn} >
+                                   <button className={change.button} disabled={isLoading}>
+                                        {isLoading ? <LoadingSpinner />: "Submit"}
+                                   </button>
+                              </div>
+                         </form>)}
+
+
+                         {!email && (<form className={change.form} onSubmit={handleRegister}>
+                         <input type={passwordType} placeholder='New Password' name='newPassword' value={formData.newPassword} required onChange={handleInputChange} className={change.inputEmail}>
+                         <div className="input-group-btn">
+                              /
+                         </div>
+                         </input>
                          <input type='password' placeholder='Confirm Password' name='confirm_password' value={formData.confirm_password} required onChange={handleInputChange}  className={change.inputEmail}></input>
-                         
-                              <button className={change.button} >Submit</button>
-                              {/* <ToastContainer /> */}
-                    </form>
+                         <div className={change.btnnn} >
+                              <button className={change.button} disabled={isLoading}>
+                                   {isLoading ? <LoadingSpinner />: "Submit"}
+                              </button>
+                         </div>
+                    </form>)}
+                    </div>
                </div>
           </div>
-     </div>
+
     </>
   )
 }
