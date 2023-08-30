@@ -97,7 +97,7 @@ const AccountSettings: React.FC = () => {
         e.preventDefault();
       // ...existing code to make API request
       await axios.put('/user/updateAccount', formData);
-      setSuccessMessage('Account settings updated successfully!');
+     //  setSuccessMessage('Account settings updated successfully!');
       toast.success('Account settings updated successfully!');
     } catch (error) {
      // ...error handling code
