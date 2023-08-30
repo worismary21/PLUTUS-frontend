@@ -33,7 +33,7 @@ export default function CompanyList() {
   
   return (
     <div className="px-[8%] lg:px-[0%]">
-      <h1 className="text-2xl text-left p-2">Companys</h1>
+      <h1 className="text-2xl text-left p-2">Companies</h1>
       <input
         type="text"
         placeholder="Search"

@@ -338,13 +338,7 @@ const AccountSettings: React.FC = () => {
                               <p className='max-[480px]:text-[12px]'>Country: {users?.country}</p>
                          </div>
                     </div>
-                   
-               </div>     
-
-
-            
-
-              
+               </div>  
             </div>  
           </>
         )}
