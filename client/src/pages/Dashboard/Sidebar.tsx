@@ -78,10 +78,7 @@ const Sidebar = () => {
 
   const LogOut = (name: string) => {
     if (name === "Log out") {
-      localStorage.clear();
-      setTimeout(() => {
-      window.location.href = '/'
-      }, 500)
+      localStorage.clear();   
     }
   };
 

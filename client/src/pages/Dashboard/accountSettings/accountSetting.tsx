@@ -9,7 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from 'react-toastify';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { accountSettings, getInfo, updateLogo } from '../../../redux/action';
+import { accountSettings, getInfo, getUserNotifications, updateLogo } from '../../../redux/action';
+import { apiGet } from '../../../utils/axios';
 import axios from 'axios';
 
 
@@ -18,6 +19,7 @@ const AccountSettings: React.FC = () => {
   const dispatch = useDispatch() as unknown as any;
 
   const location = useLocation();
+ 
 
  const [formData, setFormData] = useState({
    firstName:"",
@@ -72,20 +74,30 @@ const AccountSettings: React.FC = () => {
   const users = useSelector((state:any) => state.user.user)
 
 
+  console.log("users", users)
+
+  
+
+  const notification = users?.notification
+
 
   useEffect(() => {
     dispatch(getInfo())
-  }, [])
+  },[])
 
-  console.log("users", users)
-  const [successMessage, setSuccessMessage] = useState<string | null>('null');
+//   useEffect(() => {
+//      getNotifications()
+//    }, [transfer])
+
+
+  // const [successMessage, setSuccessMessage] = useState<string | null>('null');
   
   const handleSubmit = async (e: React.FormEvent) => {
     try {
         e.preventDefault();
       // ...existing code to make API request
       await axios.put('/user/updateAccount', formData);
-      setSuccessMessage('Account settings updated successfully!');
+     //  setSuccessMessage('Account settings updated successfully!');
       toast.success('Account settings updated successfully!');
     } catch (error) {
      // ...error handling code
@@ -336,6 +348,21 @@ const AccountSettings: React.FC = () => {
             </div>  
           </>
         )}
+
+          {location.pathname === "/dashboard/notifications" && (
+               <div className=''>
+                    {notification?.map((alert: any, i: any) => {
+                         return <div key={i} className='flex flex-row h-26 w-[83%] shadow-md mt-8 p-4 border-2'> 
+                              <div className={alert.txn === "DEBIT" ? "text-red" : "text-green"}>{alert.Txn}</div>
+                              <div>{alert.Ac}</div>
+                              <div>{alert.Amt}</div>
+                              <div>{alert.Bal}</div>
+                              <div>{alert.Des}</div>
+                              <div>{alert.Date}</div>
+                         </div>
+                    })}
+               </div>
+          )}
 
 
         {/* Other Sections */}

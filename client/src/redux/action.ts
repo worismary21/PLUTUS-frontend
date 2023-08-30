@@ -48,7 +48,7 @@ export const loginUser = createAsyncThunk(
 
       //axios call
       const response = await apiPost("/user/login", formData);
-      console.log(response.data, "***");
+      console.log("***", response.data);
 
       //response check
       localStorage.setItem('token', response.data.user_token);
@@ -464,7 +464,7 @@ export const emailVerification = createAsyncThunk(
     }
     catch (error: any) {
       // window.location.reload()
-      //  toast.error(error.response.data.message);
+      toast.error(error.response.data.message);
       dispatch(fetchDataFailure(error.response.data.message));
     }
   }
@@ -495,13 +495,16 @@ export const otpVerification = createAsyncThunk(
       const id = localStorage.getItem("id");
 
       //axios call
-      const response = await apiPut(`/change-password-otp/${id}`, { otp });
+      const response = await apiPut(`/user/change-password-otp/${id}`, {otp});
       console.log(response.data);
-      toast.error(response.data.message);
+      toast.success(response.data.message)
 
       dispatch(fetchDataCompany(response.data.data));
-
-      toast.success(response.data.message);
+        if(response){
+          setTimeout(() => { 
+               window.location.href="/changePasswordConfirm"
+          }, 2000);
+        }
     } catch (error: any) {
       console.log(error);
       toast.error(error.response.data.message);
@@ -631,3 +634,21 @@ export const getInvestors = createAsyncThunk(
     }
   }
 );
+
+
+//================= Get Notifications==================//
+export const getUserNotifications = createAsyncThunk(
+     "getUserNotifications",
+     async (_, { dispatch }: any) => {
+       try {
+
+         dispatch(fetchDataStart(true));
+         const response = await apiGet("/user/notifications");
+         console.log(response.data);
+   
+         dispatch(fetchDataUserInvestment(response.data));
+       } catch (error: any) {
+         console.log(error);
+       }
+     }
+   );
