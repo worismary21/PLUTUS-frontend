@@ -71,11 +71,11 @@ const CompanyTable: React.FC = () => {
   const companyId = localStorage.getItem("compId") as unknown as number;
 
   return (
-    <div className="p-4 md:p-8 lg:p-16 ml-8 w-full">
+    <div className="p-4 md:p-8 lg:p-16 ml-8 w-full overflow-x-scroll">
       <h1 className="text-2xl md:text-3xl font-semibold text-center pb-4 ">
         List of Companies
       </h1>
-      <div>
+      <div className="ml-[10%] md:max-2xl:ml-0">
         <table className="w-auto overflow-x-auto sm:overflow-x-auto">
           <thead>
             <tr className="bg-blue-600 text-white">
