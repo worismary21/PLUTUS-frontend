@@ -19,17 +19,17 @@ interface ChangePassword {
 
 function ChangePass2() {
 
-     const [passwordType, setPasswordType] = useState("")
+     // const [passwordType, setPasswordType] = useState("")
      const [isLoading, setIsLoading] = useState(false);
 
-     const togglePassword =()=>{
-          if(passwordType==="password")
-          {
-           setPasswordType("text")
-           return;
-          }
-          setPasswordType("password")
-        }
+     // const togglePassword =()=>{
+     //      if(passwordType==="password")
+     //      {
+     //       setPasswordType("text")
+     //       return;
+     //      }
+     //      setPasswordType("password")
+     //    }
 
 const [formData, setFormData] = useState<ChangePassword>({
      oldPassword: "",
@@ -84,13 +84,9 @@ const handleRegister = async (e:  React.FormEvent<HTMLFormElement>) => {
                     <div className={change.content}>
                          <h2>Change Password</h2>
                          <h5>Enter your details</h5>
-                         {email && (<form className={change.form} onSubmit={handleRegister}>
-                              <input type={passwordType} placeholder='Old Password' name='oldPassword' value={formData.oldPassword} required onChange={handleInputChange}  className={change.inputEmail} ></input>
-                              <input type={passwordType} placeholder='New Password' name='newPassword' value={formData.newPassword} required onChange={handleInputChange} className={change.inputEmail}>
-                              <div className="input-group-btn">
-                                   /
-                              </div>
-                              </input>
+                        {email && (<form className={change.form} onSubmit={handleRegister}>
+                              <input type="password" placeholder='Old Password' name='oldPassword' value={formData.oldPassword} required onChange={handleInputChange}  className={change.inputEmail} ></input>
+                              <input type="password" placeholder='New Password' name='newPassword' value={formData.newPassword} required onChange={handleInputChange} className={change.inputEmail}></input>
                               <input type='password' placeholder='Confirm Password' name='confirm_password' value={formData.confirm_password} required onChange={handleInputChange}  className={change.inputEmail}></input>
                               <div className={change.btnnn} >
                                    <button className={change.button} disabled={isLoading}>
@@ -98,14 +94,11 @@ const handleRegister = async (e:  React.FormEvent<HTMLFormElement>) => {
                                    </button>
                               </div>
                          </form>)}
+                 
 
 
                          {!email && (<form className={change.form} onSubmit={handleRegister}>
-                         <input type={passwordType} placeholder='New Password' name='newPassword' value={formData.newPassword} required onChange={handleInputChange} className={change.inputEmail}>
-                         <div className="input-group-btn">
-                              /
-                         </div>
-                         </input>
+                         <input type="password" placeholder='New Password' name='newPassword' value={formData.newPassword} required onChange={handleInputChange} className={change.inputEmail}></input>
                          <input type='password' placeholder='Confirm Password' name='confirm_password' value={formData.confirm_password} required onChange={handleInputChange}  className={change.inputEmail}></input>
                          <div className={change.btnnn} >
                               <button className={change.button} disabled={isLoading}>
