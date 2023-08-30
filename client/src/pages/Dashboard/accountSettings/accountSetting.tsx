@@ -11,6 +11,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { accountSettings, getInfo, getUserNotifications, updateLogo } from '../../../redux/action';
 import { apiGet } from '../../../utils/axios';
+import axios from 'axios';
 
 
 const AccountSettings: React.FC = () => {
@@ -91,35 +92,35 @@ const AccountSettings: React.FC = () => {
 
   // const [successMessage, setSuccessMessage] = useState<string | null>('null');
   
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   try {
-  //       e.preventDefault();
-  //     // ...existing code to make API request
-  //     await axios.put('/user/updateAccount', formData);
-  //     setSuccessMessage('Account settings updated successfully!');
-  //     toast.success('Account settings updated successfully!');
-  //   } catch (error) {
-  //    // ...error handling code
-  //   }
-  // };
+  const handleSubmit = async (e: React.FormEvent) => {
+    try {
+        e.preventDefault();
+      // ...existing code to make API request
+      await axios.put('/user/updateAccount', formData);
+      setSuccessMessage('Account settings updated successfully!');
+      toast.success('Account settings updated successfully!');
+    } catch (error) {
+     // ...error handling code
+    }
+  };
 
-    // const [selectedFile, setSelectedFile] = useState<File | null>(null);
-    // const [previewImage, setPreviewImage] = useState<string | null>(null);
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [previewImage, setPreviewImage] = useState<string | null>(null);
   
-    // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //   const file = e.target.files && e.target.files[0];
-    //   if (file) {
-    //     setSelectedFile(file);
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files && e.target.files[0];
+      if (file) {
+        setSelectedFile(file);
   
-    //     const reader = new FileReader();
-    //     reader.onload = () => {
-    //       if (typeof reader.result === 'string') {
-    //         setPreviewImage(reader.result);
-    //       }
-    //     };
-    //     reader.readAsDataURL(file);
-    //   }
-    // };
+        const reader = new FileReader();
+        reader.onload = () => {
+          if (typeof reader.result === 'string') {
+            setPreviewImage(reader.result);
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    };
 
   return (
     <div className="p-4 md:p-8 ml-[15%]">

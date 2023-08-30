@@ -32,46 +32,51 @@ function CompanyDashboard() {
   //   dispatch(getTransactions());
   // }, []);
   return (
-    <div className="flex  gap-4  flex-col  lg:flex-row  md:flex-col overflow-hidden lg:w-full pl-10">
-      <div className=" flex-1">
-        <div className="flex flex-col lg:flex-row md:px-0 sm:flex-col md:flex-col  md:gap-4  mt-10 gap-6 w-full lg:w-full md:m-0 sm:justify-center md:w-full md:ml-0">
-          <div className="   bg-[#ebf3f9] ml-10 p-10  sm:max-w-screen-sm md:max-w-screen-md">
-            <div className="inline-flex   gap-x-32">
+    <div className="flex  gap-4  flex-col  lg:flex-row  md:flex-col overflow-hidden lg:w-full ml-8 ">
+      <div>
+        <div className="flex flex-col lg:flex-row md:px-0 sm:flex-col md:flex-col  md:gap-4  gap-6 w-full lg:w-full md:m-0 sm:justify-center md:w-full sm:ml-4 items-center  ">
+          <div className="   bg-[#ebf3f9] ml-10 p-8 sm:max-w-screen-sm md:max-w-screen-md   md:w-full lg:full items-center">
+            <div className="inline-flex   ">
               <h1 className="font-semibold sm:text-sm">Total Balance</h1>
-              <div className="flex pl-24">
-                <AiOutlineArrowUp className="w-6 bg-[#2ab4ad] rounded-full fill-white h-4 mx-2" />
+              <div className="flex pl-24 ">
+                <AiOutlineArrowUp className="w-6 bg-[#2ab4ad] md:text-right rounded-full fill-white h-4 mx-2 " />
                 <span className="">2%</span>
               </div>
             </div>
-            <h3 className="text-3xl mt-4 font-semibold  ">USD 10,000.00</h3>
-            <div className="flex gap-x-16 my-4">
+            <h3 className="text-3xl mt-4 font-semibold mr-16 ">
+              USD 10,000.00
+            </h3>
+            <div className="flex  my-4">
               <div className="flex flex-col ">
                 <div className="flex ">
                   <AiFillCaretUp className="fill-lime-500 w-6" />
 
-                  <span className="text-sm">Income</span>
+                  <span className="text-sm">Income </span>
                 </div>
                 <span className="font-semibold">USD 30,000.00</span>
               </div>
-              <div className="flex flex-col">
-                <div className="flex pl-20">
+              <div className="flex flex-col ">
+                <div className="flex ">
                   <AiFillCaretDown className="fill-red-500 w-6" />
-                  <span className="text-sm"> Expenses</span>
+
+                  <span className="text-sm">Expenses </span>
                 </div>
-                <span className="font-semibold pl-10">USD 20,000.00</span>
+                <span className="font-semibold">USD 20,000.00</span>
               </div>
             </div>
           </div>
 
-          <div className=" bg-[#ebf3f9] ml-10 p-10 sm:max-w-screen-sm  md:max-w-screen-md">
-            <div className="flex mx-8 py-4 gap-x-20">
+          <div className="   bg-[#ebf3f9] ml-10  p-8 sm:max-w-screen-sm md:max-w-screen-md  md:w-full">
+            <div className="flex  py-4  justify-between">
               <h1 className="font-semibold sm:text-sm">Total Savings</h1>
-              <div className=" flex pl-24">
-                <AiOutlineArrowUp className=" w-6 bg-[#2ab4ad] rounded-full fill-white h-4 mx-2" />
-                <span>2%</span>
+              <div className=" flex  justify-between relative">
+                {/* <div className="flex  ">
+                  <AiOutlineArrowUp className="w-6 bg-[#2ab4ad] rounded-full fill-white h-4 mx-2" />
+                  <span className="">2%</span>
+                </div> */}
               </div>
             </div>
-            <h3 className="text-3xl ml-6 font-semibold  ">USD 5000.00</h3>
+            <h3 className="text-3xl  font-semibold  ">USD 5000.00</h3>
             <div className="flex ml-6 my-4">
               {/* <div>
                 <h1>Bar chart</h1>
@@ -89,8 +94,11 @@ function CompanyDashboard() {
           <p>All</p>
         </div> */}
 
-        <div className=" ml-10 pr-20 md:w-full md:flex md:flex-col md:items-center sm:max-w-screen-sm  md:max-w-screen-md">
-          <TransactionsList userTransactions={transactions} />
+        <div className=" ml-10 pr-20 md:w-full md:flex md:flex-col md:items-center sm:max-w-screen-sm  md:max-w-screen-md ">
+          <TransactionsList
+            userTransactions={transactions}
+            userDetails={undefined}
+          />
         </div>
         <div>
           {/* <div>
