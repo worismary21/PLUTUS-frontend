@@ -2,7 +2,7 @@
 import axios from "axios";
 // import { setData } from "../features/dataSlice";
 
-const baseUrl = "http://localhost:4500";
+const baseUrl = "http://localhost:5420";
 // export const baseUrl = "http://localhost:4500";
 // export const baseUrl = "http://localhost:4500";
 

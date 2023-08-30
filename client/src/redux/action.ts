@@ -121,6 +121,26 @@ export const transferFunds = createAsyncThunk(
   }
 );
 
+export const roiTransfer = createAsyncThunk (
+  "roiTransfer", 
+  async(accountNumber:any, {dispatch}:any) => {
+    try{
+     
+      dispatch(fetchDataStart(true));
+      const response = await apiPost("/transfer/roitransfer", {accountNumber});
+      console.log("roi", response)
+      toast.success("TRANSFER SUCCESSFUL")
+
+      setTimeout(() => {
+        window.location.href = "/dashboard/roitransfer";
+      }, 2000);
+    }catch(error:any){
+      console.log(error);
+      toast.error(error.response.data.message);
+      dispatch(fetchDataFailure(error.response.data.message));
+    }
+})
+
 /**============== Transfer Money to Savings Wallet=======  **/
 export const savingswallet = createAsyncThunk(
   "saveImages",

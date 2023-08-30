@@ -14,6 +14,7 @@ import Transactions from "./Transactions/Transactions";
 import CompanyDashboard from "../companydashboard/CompanyDashboard";
 // import AllTransactions from "../AdminPageTransactions/AllTransactions"
 import CompanyAccountSettings from "./accountSettings/CompanyAccountSettings"
+import Roitransfer from "./Transfer/Roitransfer";
 
 
 import AllTransactions from "./AdminPageTransactions/AllTransactions";
@@ -220,6 +221,7 @@ export const RoutesDashBoard = () => {
 
           <Route path="/createCompany" element={<CreateCompany />} />
           <Route path="/companies" element={<CompanyTable />} />
+          <Route path="/roitransfer" element={<Roitransfer />} />
           <Route path="/updateCompanyProfile" element={<UpdateCompanyProfile />} />
         </Routes>
       </div>
