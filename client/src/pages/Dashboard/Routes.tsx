@@ -21,6 +21,8 @@ import AllTransactions from "./AdminPageTransactions/AllTransactions";
 import CreateCompany from "./Company/CreateCompany";
 import CompanyTable from "../companytable/CompanyTable";
 import UpdateCompanyProfile from "./updateCompany/UpdateCompany";
+import CompanyHome from "./companyHome/CompanyHome";
+import InvestorsPage from "../investorspage/InvestorsPage";
 
 export interface transaction {
   id: string;
@@ -223,6 +225,8 @@ export const RoutesDashBoard = () => {
           <Route path="/companies" element={<CompanyTable />} />
           <Route path="/roitransfer" element={<Roitransfer />} />
           <Route path="/updateCompanyProfile" element={<UpdateCompanyProfile />} />
+          <Route path="/companyHome" element={<CompanyHome />}/>
+          <Route path="/investorTable" element={<InvestorsPage />}/>
         </Routes>
       </div>
     </div>

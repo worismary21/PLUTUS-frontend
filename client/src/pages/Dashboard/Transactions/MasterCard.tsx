@@ -11,7 +11,7 @@ interface Props {
 
 export default function MasterCard({ userDetails }: Props) {
   return (
-    <div className=" flex flex-col bg-orange-500 rounded-l-3xl rounded-r-3xl lg:w-2/5 text-left p-10 sm:max-lg:w-fit" >
+    <div className=" flex flex-col bg-orange-500 rounded-l-3xl rounded-r-3xl lg:w-[30rem] text-left p-10 sm:max-lg:w-fit" >
       <div className="flex justify-between">
         <img
           src={mastercardlogo}
@@ -27,7 +27,7 @@ export default function MasterCard({ userDetails }: Props) {
       <div className=''>
         <h6 className="p-2 text-xs">Available Balance</h6>
         <h2 className="p-2">
-          USD <span className="pl-2">{userDetails?.accountBalance || ''}</span>
+          NGN <span className="pl-2">{userDetails?.accountBalance || ''}</span>
         </h2>
       </div>
       <div className="p-2">{userDetails?.cardNumber || 'XXXX XXXX XXXX XXXX'}</div>

@@ -7,6 +7,7 @@ import veriffy from "./Verify.module.css";
 import OtpInput from "react-otp-input";
 import { useDispatch } from "react-redux";
 import { verifyUser } from "../../redux/action"
+import LoadingSpinner from "../../components/spinner";
 
 
 export default function Verify() {
@@ -14,6 +15,7 @@ export default function Verify() {
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const dispatch = useDispatch() as unknown as any;
+  const [isLoading, setIsLoading] = useState(false);
   
 
   console.log("otp", otp)
@@ -42,6 +44,10 @@ export default function Verify() {
   const handleClick = () => {
      if (otp) {
        dispatch(verifyUser(otp)); // Dispatch the action with the entered OTP
+       setIsLoading(true)
+       setTimeout(() => {
+          setIsLoading(false)
+        }, 10000);
      } else {
        console.error(Error);
      }
@@ -113,7 +119,9 @@ export default function Verify() {
             )}
           </div>
           <div className={veriffy.btncont}>
-              <button className={veriffy.button} onClick={handleClick} disabled={!otp}>Verify</button>
+              <button className={veriffy.button} onClick={handleClick} disabled={!otp || isLoading}>
+              {isLoading ? <LoadingSpinner /> :"Verify"}
+              </button>
             <button
             className={veriffy.button}
               disabled={seconds > 0 || minutes > 0}
