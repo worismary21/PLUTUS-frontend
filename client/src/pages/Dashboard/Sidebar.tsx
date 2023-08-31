@@ -30,37 +30,25 @@ const Sidebar = () => {
   ];
 
   const adminmenus = [
-    { name: "Users", link: "/dashboard/admin", icon: AiFillHome },
-    { name: "companies", link: "/dashboard/companies", icon: BiTransfer },
-    {
-      name: "Transactions",
-      link: "/dashboard/allTransactions",
-      icon: MdOutlineDashboard,
-    },
-    {
-      name: "Update",
-      link: "/dashboard/updateCompanyProfile",
-      icon: FiSettings,
-      margin: true,
-    },
-     {name: "Home", link:'/dashboard/adminHome', icon: AiFillHome},
+    
     {name: "Users", link:'/dashboard/admin', icon: PiUserListFill},
     {name: "companies", link:'/dashboard/companies', icon: ImOffice},
     {name: "Transactions", link:'/dashboard/allTransactions', icon: BiTransfer},
+    {
+     name: "Update",
+     link: "/dashboard/updateCompanyProfile",
+     icon: FiSettings,
+     margin: true,
+   },
     { name: "Log out", link: "/", icon: MdLogout },
   
   ];
   const companymenus = [
-    { name: "Home", link: "/dashboard", icon: AiFillHome },
+    { name: "Home", link: "/dashboard/companyHome", icon: AiFillHome },
     { name: "Transfer", link: "/dashboard/roitransfer", icon: BiTransfer },
     {
-      name: "Profile",
-      link: "/dashboard/transactions",
-      icon: MdOutlineDashboard,
-    },
-    {
       name: "Investor Table",
-      link: "/dashboard/investors",
+      link: "/dashboard/investorTable",
       icon: MdTableChart,
     },
     { name: "Log out", link: "/", icon: MdLogout },
@@ -71,7 +59,7 @@ const Sidebar = () => {
       margin: true,
     },
   ];
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const role = localStorage.getItem("role");
 

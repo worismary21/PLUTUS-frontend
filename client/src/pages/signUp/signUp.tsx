@@ -135,62 +135,6 @@ const SignUp = () => {
           </div>
         </form>
 
-        <form action="" onSubmit={handleSubmit} className="right-form">
-          <div className="heading">
-            <h2>Sign Up</h2>
-            <p>Sign up and enjoy the services</p>
-          </div>
-          <input
-            type="text"
-            name={"firstName"}
-            required
-            value={formData.firstName}
-            onChange={handleChange}
-            placeholder=" FirstName"
-          />
-          <input
-            type="text"
-            name={"lastName"}
-            required
-            value={formData.lastName}
-            onChange={handleChange}
-            placeholder=" LastName"
-          />
-          <input
-            type="email"
-            name={"email"}
-            required
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email"
-          />
-          <input
-            type="password"
-            name={"password"}
-            required
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Password"
-          />
-          <input
-            type="password"
-            name={"cPassword"}
-            required
-            placeholder="Confirm Password"
-            value={cPassword}
-            onChange={(e) => setCPassword(e.target.value)}
-          />
-          <button type="submit" className="btnn">
-            {" "}
-            Register
-          </button>
-          <div className="register">
-            <p className="already">Already have an account?</p>
-            <Link to="/login" className="alreadyLogin">
-              Login
-            </Link>
-          </div>
-        </form>
       </div>
     </div>
   );

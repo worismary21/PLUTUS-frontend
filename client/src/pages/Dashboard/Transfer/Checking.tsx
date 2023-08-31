@@ -12,9 +12,11 @@ import { getBeneficiary } from "../../../redux/action";
 
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import LoadingSpinner from "../../../components/spinner";
 // import { list } from "postcss";
 
 const Checking = () => {
+const [isLoading, setIsLoading] = useState(false);
  const [formData, setFormData] = useState({
     accountNumber:"",
     amount:"",
@@ -50,6 +52,11 @@ const Checking = () => {
     e.preventDefault()
     console.log(formData)
     dispatch(transferFunds(formData))
+    setIsLoading(true)
+
+      setTimeout(() => {
+     setIsLoading(false)
+   }, 10000);
   }
 
   const users = useSelector((state:any) => state.user)
@@ -114,7 +121,7 @@ const Checking = () => {
         <div className="m-5">
           <h3 className="text-white font-bold">Checking Account</h3>
           <p className="text-white text-xs mt-7">Balance</p>
-          <h1 className="text-teal-200 text-3xl mt-3">USD {users.account_balance}.00</h1>
+          <h1 className="text-teal-200 text-3xl mt-3">NGN {users.account_balance}.00</h1>
         </div>
         <div className="border-solid hidden lg:block border-2 border-gray-600 w-[300px] m-5 mt-7"></div>
         <div className="m-5">
@@ -243,7 +250,7 @@ const Checking = () => {
           <button type="submit" className=" block bg-gray-950 mt-8 text-white text-xs 
           h-[50px] rounded-md" >
             {" "}
-            Continue
+            Send
           </button>
           
         </form> 
@@ -367,10 +374,10 @@ const Checking = () => {
               value={formData.information_for_beneficiary}
               placeholder="Information for beneficiary"
             />
-            <button type="submit" className=" block bg-gray-950 mt-8 text-white text-xs 
+            <button type="submit" disabled={isLoading} className=" block bg-gray-950 mt-8 text-white text-xs 
             h-[50px] rounded-md" >
               {" "}
-              Continue
+              {isLoading ? <LoadingSpinner /> :"Send"}
             </button>
             
         </form>

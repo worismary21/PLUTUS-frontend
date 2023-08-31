@@ -58,8 +58,8 @@ function AllTransactions (){
             </div>
 
 
-            <div className = "block bg-transparent m-4 p-4 w-full overflow-x-auto">
-            <table className = " border-2 w-6/12 ml-38 pt-px ml-10">
+            <div className = "block bg-transparent mt-8 w-full overflow-x-auto">
+            <table className = " border-2 w-6/12  pt-px ">
                 <thead>
                     <tr className = "border border-solid border-l-0 bg-blue-500">
                         <th className = "text-md px-6 py-1">id</th>

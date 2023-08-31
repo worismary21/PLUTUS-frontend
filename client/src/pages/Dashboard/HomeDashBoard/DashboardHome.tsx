@@ -65,7 +65,7 @@ const DashboardHome = () => {
                 </div>
               </div>
               <h1 className="font-semibold ml-0 text-3xl leading-9 p-2">
-                USD {users.account_balance}.00
+                NGN {users.account_balance}.00
               </h1>
               <div className="flex justify-between items-center gap-10 ml-1">
                 <div>
@@ -73,7 +73,7 @@ const DashboardHome = () => {
                     <BsFillCaretUpFill />
                     <p className="text-xs font-normal mr-24">Income</p>
                   </div>
-                  <h1 className="font-semibold">USD 30,000</h1>
+                  <h1 className="font-semibold">NGN 0.00</h1>
                 </div>
                 <div className="w-0 h-14 border border-red-500"></div>
                 <div>
@@ -81,7 +81,7 @@ const DashboardHome = () => {
                     <BsCaretDownFill />
                     <p className="text-xs font-normal mr-20">Expenses</p>
                   </div>
-                  <h1 className="font-semibold">USD 20,000</h1>
+                  <h1 className="font-semibold">NGN 0.00</h1>
                 </div>
               </div>
             </div>
@@ -97,7 +97,7 @@ const DashboardHome = () => {
                 </div>
               </div>
               <h1 className="text-3xl ml-[-4%] mt-1 font-semibold leading-9 p-4">
-                USD {users.savings_wallet}.00
+                NGN {users.savings_wallet}.00
               </h1>
               <div className="flex flex-row  text-teal-500 p-6">
                 <BsFillBarChartFill />

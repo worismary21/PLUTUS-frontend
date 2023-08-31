@@ -110,7 +110,7 @@ const Investment = () => {
         <div className="m-5">
           <h3 className="text-white font-bold">Checking Account</h3>
           <p className="text-white text-xs mt-7">Balance</p>
-          <h1 className="text-teal-200 text-3xl mt-3">USD {users.account_balance}.00</h1>
+          <h1 className="text-teal-200 text-3xl mt-3">NGN {users.account_balance}.00</h1>
         </div>
         <div className="border-solid hidden lg:block border-2 border-gray-600 w-[300px] m-5 mt-7"></div>
         <div className="m-5">
@@ -236,7 +236,7 @@ const Investment = () => {
             <button type="submit" className=" block bg-gray-950 mt-8 text-white text-xs 
             h-[50px] rounded-md" >
               {" "}
-              Continue
+              Send
             </button>
             
         </form>

@@ -82,16 +82,16 @@ function UsersAdmin() {
   return (
      <>
 
-          <div className='ml-[10%] md:max-2xl:m-0 mx-auto  mt-4 text-3xl text-center align-center h-10 font-medium'>
-          LIST OF ALL USERS
+          <div className='ml-[10%]  md:max-2xl:m-0 mx-auto  mt-4 text-3xl text-center align-center h-10 font-medium'>
+          ALL USERS
           </div>
 
-          <div className='ml-[74%] m-3 w-3/12'> 
+          <div className='ml-[70%] m-3 w-3/12'> 
                <input className=' w-full h-10 rounded-lg ' type='search' placeholder='Search...' onChange={handleChange} value={searchInput} />
           </div>
           <div className='pl-2 overflow-x-scroll'>
                
-               <table className='ml-20 w-[92%] shadow-lg '>     
+               <table className='ml-0 w-[92%] shadow-lg '>     
                     <thead className='shadow-lg sticky top-0 bg-blue-500 text-white-50'>
                          <tr>
                               <th className='p-4 w-4'>ID</th>

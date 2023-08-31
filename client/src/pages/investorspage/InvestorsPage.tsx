@@ -30,7 +30,7 @@ const InvestorsPage: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div className="pl-[5rem]">
+    <div className="">
       <h1 className="mt-8 text-center mb-8 font-bold text-2xl">
         Investors Table
       </h1>

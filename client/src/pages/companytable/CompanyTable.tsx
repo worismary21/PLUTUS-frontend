@@ -71,33 +71,33 @@ const CompanyTable: React.FC = () => {
   const companyId = localStorage.getItem("compId") as unknown as number;
 
   return (
-    <div className="p-4 md:p-8 lg:p-16 ml-8 w-full overflow-x-scroll">
+    <div className=" lg:mt-4 ml-0 w-full overflow-x-scroll">
       <h1 className="text-2xl md:text-3xl font-semibold text-center pb-4 ">
-        List of Companies
+         Companies
       </h1>
       <div className="ml-[10%] md:max-2xl:ml-0">
         <table className="w-auto overflow-x-auto sm:overflow-x-auto">
           <thead>
             <tr className="bg-blue-600 text-white">
-              <th className="w-1/6 py-2 px-4 text-left">ID</th>
-              <th className="w-2/6 py-2 px-4 text-left">Company Name</th>
-              <th className="w-2/6 py-2 px-4 text-left">Duration</th>
-              <th className="w-2/6 py-2 px-4 text-left">ROI</th>
-              <th className="w-1/6 py-2 px-4 text-left">Investment Category</th>
-              <th className="w-1/6 py-2 px-4 text-left">Business Type</th>
-              <th className="w-1/6 py-2 px-4 text-right">Actions</th>
+              <th className="w-auto py-2 px-4 text-left">ID</th>
+              <th className="w-auto py-2 px-4 text-left">Company Name</th>
+              <th className="w-auto py-2 px-4 text-left">Duration</th>
+              <th className="w-auto py-2 px-4 text-left">ROI</th>
+              <th className="w-auto py-2 px-4 text-left">Investment Category</th>
+              <th className="w-auto py-2 px-4 text-left">Business Type</th>
+              <th className="w-auto py-2 px-4 text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
             {companiesToDisplay?.map((company: any, i: number) => (
               <tr key={company.id} className="border-b hover:bg-gray-100">
-                <td className="py-2 px-4">{i + 1}</td>
-                <td className="py-2 px-4">{company.companyName}</td>
-                <td className="py-2 px-4">{company.duration}</td>
-                <td className="py-2 px-4">{company.roi}</td>
-                <td className="py-2 px-4">{company.investment_category}</td>
-                <td className="py-2 px-4">{company.businessType}</td>
-                <td className="py-2 px-4 text-right">
+                <td className=" w-auto py-2 px-4">{i + 1}</td>
+                <td className=" w-auto py-2 px-4">{company.companyName}</td>
+                <td className=" w-auto py-2 px-4">{company.duration}</td>
+                <td className=" w-auto py-2 px-4">{company.roi}</td>
+                <td className=" w-auto py-2 px-4">{company.investment_category}</td>
+                <td className=" w-auto py-2 px-4">{company.businessType}</td>
+                <td className=" w-auto py-2 px-4 text-right">
                   <button
                     className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
                     onClick={() => openModal(company.id)}>

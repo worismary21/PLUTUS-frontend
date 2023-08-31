@@ -58,12 +58,28 @@ export const loginUser = createAsyncThunk(
       localStorage.setItem('verify', response.data.verify);
       localStorage.setItem('firstName', response.data.firstName);
       localStorage.setItem('lastName', response.data.lastName);
-      toast.success("user login successful");
+      localStorage.setItem('companyName', response.data.companyName);
 
+      console.log("res", response.data)
+
+      
+      toast.success("Login successful");
+   
       //redirect
-      setTimeout(() => {
-        window.location.href = "/dashboard";
-      }, 2000);
+      if(response.data.role == "admin"){
+          setTimeout(() => {
+               window.location.href = "/dashboard/admin";
+             }, 2000);
+      }else if(response.data.role == "user"){
+          setTimeout(() => {
+               window.location.href = "/dashboard";
+             }, 2000);
+      }else{
+          setTimeout(() => {
+               window.location.href = "/dashboard/companyHome";
+             }, 2000);
+     }
+      
     } catch (error: any) {
       //error check
       toast.error(error.response.data.message);

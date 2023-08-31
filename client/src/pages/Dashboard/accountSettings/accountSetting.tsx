@@ -123,7 +123,7 @@ const AccountSettings: React.FC = () => {
     };
 
   return (
-    <div className="p-4 md:p-8 ml-[15%]">
+    <div className="p-4 md:p-8 ml-[15%] ">
       <form className='w-[80%] flex flex-col align-center max-[480px]:w-[100%]'>
         {/* Navigation Links */} 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 overflow-x-auto w-10/12 ">

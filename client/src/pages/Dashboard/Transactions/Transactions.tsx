@@ -47,9 +47,9 @@ export default function Transactions() {
 
   return (
     <div className="pr-[7%] lg:pr-[2%]">
-    <h6 className="bg-slate-900 ml-20 mb-5 mt-5 p-2  w-fit text-white">Checking Account</h6>
+    <h6 className="bg-slate-900 ml-0 mb-5 mt-5 p-2  w-fit text-white">Checking Account</h6>
     <div className='flex flex-col lg:flex-row justify-between'>
-      <div className="ml-20 h-full">
+      <div className="ml-0 h-full">
         <div className='flex  flex-col lg:flex-row justify-between h-3/5'>
           <CheckingAccount userDetails={userDetails} userTransactions={userTransactions}/>
           <MasterCard userDetails={userDetails}/>
